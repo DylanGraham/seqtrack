@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Requests\CreateSampleRequest;
+use App\Http\Requests\SampleRequest;
 use App\Http\Controllers\Controller;
 use App\Sample;
+use Illuminate\Http\Request;
 
 class SamplesController extends Controller
 {
@@ -21,7 +22,7 @@ class SamplesController extends Controller
         return view('samples.create');
     }
 
-    public function store(CreateSampleRequest $request)
+    public function store(SampleRequest $request)
     {
         $input = $request->all();
 
@@ -46,4 +47,11 @@ class SamplesController extends Controller
         return view('samples.edit', compact('sample'));
     }
 
+    public function update($id, SampleRequest $request)
+    {
+        $sample = Sample::findOrFail($id);       
+        $sample->update($request->all());
+
+        return redirect('samples');
+    }
 }
