@@ -21,7 +21,7 @@ class CreateBatchesTable extends Migration
             $table->integer('tube_location')->nullable();
             $table->integer('lanes_required')->nullable();
             $table->string('user_id',4);
-            $table->float('ave_insert_from_tape_station')->nullable();
+            $table->float('tape_station_length')->nullable();
             $table->string('charge_code',20);
             $table->timestamps();
 
