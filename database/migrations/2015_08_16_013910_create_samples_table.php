@@ -13,7 +13,7 @@ class CreateSamplesTable extends Migration
     public function up()
     {
         Schema::create('samples', function (Blueprint $table) {
-            $table->string('id',255);
+//            $table->string('id',255);
             $table->string('name',255);
             $table->integer('plate')->nullable();
             $table->integer('column')->nullable();

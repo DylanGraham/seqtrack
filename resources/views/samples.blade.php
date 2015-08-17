@@ -13,10 +13,10 @@
     </thead>
     @foreach ($samples as $s)
     <tr>
-        <td>{{ $s->basc_project }}</td>
+        <td>{{ $s->basc_group_id }}</td>
         <td>{{ $s->name }}</td>
-        <td>{{ $s->i7_id }}</td>
-        <td>{{ $s->i5_id }}</td>
+        <td>{{ $s->i7_index_id }}</td>
+        <td>{{ $s->i5_index_id }}</td>
     </tr> 
     @endforeach
     </table>

@@ -1,12 +1,12 @@
 @extends('app')
 @section('content')
-    <h1><a href='/'>SeqTrack</a> - Enter samples</h1>
+    <h1><a href='/'>SeqTrack</a> - Edit sample</h1>
     <hr/>
 
-    {!! Form::open(['url'=>'samples', 'class'=>'form-inline']) !!}
+    {!! Form::open(['method'=>'PATCH', 'action'=>['SamplesController@update', $samples->id], 'class'=>'form-inline']) !!}
         <div class="form-group">
         {!! Form::label('basc_group_id', 'basc_group_id', ['class'=>'sr-only']) !!}
-        {!! Form::text('basc_group_id', null, ['class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
+        {!! Form::text('basc_group'_id, null, ['class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
         {!! Form::label('name', 'Name', ['class'=>'sr-only']) !!}
         {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Name']) !!}
         {!! Form::label('i7_index_id', 'i7_index_id', ['class'=>'sr-only']) !!}

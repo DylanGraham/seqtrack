@@ -15,17 +15,29 @@ class SamplesController extends Controller
         return view('samples')->with('samples', $samples);
         //return view('samples', $samples);
     }
+
     public function create()
     {
         return view('samples.create');
     }
+
     public function store(CreateSampleRequest $request)
     {
         $input = $request->all();
+
+        // Dummy data to satisfy NOT NULL constraints
+        $input['batch_id'] = 1;
 
         // Check input here and then store to database if correct
 
         Sample::create($input);
         return redirect('samples');
     }
+
+    public function edit($id)
+    {
+        $sample = Sample::findOrFail($id);
+        return view('samples.edit', compact('sample'));
+    }
+
 }
