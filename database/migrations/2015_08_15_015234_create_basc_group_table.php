@@ -12,13 +12,10 @@ class CreateBascProjectGroupTable extends Migration
      */
     public function up()
     {
-        Schema::create('basc_project_group', function (Blueprint $table) {
+        Schema::create('basc_group', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',255);
-
             $table->timestamps();
-
-           // $table->primary('Id');
             $table->unique('name');
         });
     }
@@ -30,6 +27,6 @@ class CreateBascProjectGroupTable extends Migration
      */
     public function down()
     {
-        Schema::drop('BASC_Project_Group');
+        Schema::drop('basc_group');
     }
 }

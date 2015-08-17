@@ -12,9 +12,9 @@ class CreateBatchTable extends Migration
      */
     public function up()
     {
-        Schema::create('batch', function (Blueprint $table) {
+        Schema::create('batches', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('batch',255);
+            $table->string('batch',255)->unique();
             $table->float('concentration');
             $table->float('volume');
             $table->integer('tube_bar_code');
@@ -25,8 +25,7 @@ class CreateBatchTable extends Migration
             $table->string('charge_code',20);
             $table->timestamps();
 
-            //$table->primary('Id');
-            $table->unique('batch');
+//            $table->unique('batch');
         });
     }
 
@@ -37,6 +36,6 @@ class CreateBatchTable extends Migration
      */
     public function down()
     {
-        Schema::drop('batch');
+        Schema::drop('batches');
     }
 }
