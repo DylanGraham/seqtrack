@@ -34,6 +34,12 @@ class SamplesController extends Controller
         return redirect('samples');
     }
 
+    public function show($id)
+    {
+//        $samples = Sample::findOrFail($id);
+//        return view('samples', compact('samples'));
+    }
+
     public function edit($id)
     {
         $sample = Sample::findOrFail($id);
