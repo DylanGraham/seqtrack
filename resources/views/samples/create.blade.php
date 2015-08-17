@@ -5,8 +5,8 @@
 
     {!! Form::open(['url'=>'samples', 'class'=>'form-inline']) !!}
         <div class="form-group">
-        {!! Form::label('basc_project', 'BASC Project', ['class'=>'sr-only']) !!}
-        {!! Form::text('basc_project', null, ['class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
+        {!! Form::label('basc_group', 'BASC Project', ['class'=>'sr-only']) !!}
+        {!! Form::text('basc_group', null, ['class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
         {!! Form::label('name', 'Name', ['class'=>'sr-only']) !!}
         {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Name']) !!}
         {!! Form::label('i7_id', 'i7_id', ['class'=>'sr-only']) !!}

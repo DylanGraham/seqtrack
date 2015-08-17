@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBascIndexi7Table extends Migration
+class Createi7IndexTable extends Migration
 {
     /**
      * Run the migrations.

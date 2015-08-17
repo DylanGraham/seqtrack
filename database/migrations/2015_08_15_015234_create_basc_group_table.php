@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBascProjectGroupTable extends Migration
+class CreateBascGroupTable extends Migration
 {
     /**
      * Run the migrations.

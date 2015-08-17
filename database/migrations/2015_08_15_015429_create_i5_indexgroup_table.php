@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateI5IndexgroupTable extends Migration
+class Createi5IndexGroupTable extends Migration
 {
     /**
      * Run the migrations.

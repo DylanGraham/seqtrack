@@ -25,7 +25,7 @@ class CreateSampleRequest extends Request
     public function rules()
     {
         return [
-            'basc_project'  =>  'required',
+            'basc_group'    =>  'required',
             'name'          =>  'required',
             'i7_id'         =>  'required',
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBatchTable extends Migration
+class CreateBatchesTable extends Migration
 {
     /**
      * Run the migrations.
