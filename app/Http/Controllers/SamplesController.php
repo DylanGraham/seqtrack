@@ -29,9 +29,13 @@ class SamplesController extends Controller
         // Dummy data to satisfy NOT NULL constraints
         $input['batch_id'] = 1;
 
-        // Check input here and then store to database if correct
+        // Check input here
 
-        Sample::create($input);
+        $sample = new Sample($input);
+
+        // Add the authenticated user as the sample creator
+        \Auth::user()->samples()->save($sample);
+
         return redirect('samples');
     }
 
