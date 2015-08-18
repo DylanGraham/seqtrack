@@ -15,3 +15,8 @@ Route::get('/', 'PageController@index');
 
 Route::resource('samples', 'SamplesController');
 Route::resource('batches', 'BatchesController');
+
+Route::controllers([
+    'auth'      => 'Auth\AuthController',
+    'password'  => 'Auth\PasswordController',
+]);

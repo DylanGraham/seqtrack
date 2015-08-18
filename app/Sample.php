@@ -15,4 +15,12 @@ class Sample extends Model
         'i5_index_id',
     ];
 
+    /**
+     * A sample is owned by a user
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

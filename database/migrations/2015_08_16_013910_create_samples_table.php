@@ -14,6 +14,7 @@ class CreateSamplesTable extends Migration
     {
         Schema::create('samples', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('name',255);
             $table->integer('plate')->nullable();
             $table->integer('column')->nullable();
@@ -26,6 +27,7 @@ class CreateSamplesTable extends Migration
             $table->integer('i7_index_id')->unsigned();
             $table->integer('i5_index_id')->unsigned()->nullable();
 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('basc_group_id')->references('id')->on('basc_group');
             $table->foreign('batch_id')->references('id')->on('batches');
             $table->foreign('run_id')->references('id')->on('run');
