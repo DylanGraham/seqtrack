@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class SamplesController extends Controller
 {
+
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $samples = Sample::all();

@@ -46,5 +46,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('App\Batch');
     }
 
+    /**
+     * Is the user a super-user?
+     */
+    public function isSuper()
+    {
+        // TODO: Make this check the database to see if user is super
+        return false;
+    }
 
 }
