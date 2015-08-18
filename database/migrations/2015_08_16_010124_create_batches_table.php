@@ -20,12 +20,13 @@ class CreateBatchesTable extends Migration
             $table->integer('tube_bar_code');
             $table->integer('tube_location')->nullable();
             $table->integer('lanes_required')->nullable();
-            $table->string('user_id',4);
             $table->float('tape_station_length')->nullable();
             $table->string('charge_code',20);
             $table->timestamps();
 
-//            $table->unique('batch');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

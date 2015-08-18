@@ -46,23 +46,21 @@ class BatchesController extends Controller
         return redirect('batches');
     }
 
-    public function show($id)
+    public function show(Batch $batch)
     {
 //        $batches = Batch::findOrFail($id);
 //        return view('batches', compact('batches'));
     }
 
-    public function edit($id)
+    public function edit(Batch $batch)
     {
-        $batch = Batch::findOrFail($id);
         return view('batches.edit', compact('batch'));
     }
 
 // Removed until BatchesRequest validation is created
-//    public function update($id, BatchesRequest $request)
-    public function update($id)
+//    public function update(Batch $batch, BatchesRequest $request)
+    public function update(Batch $batch)
     {
-        $batch = Batch::findOrFail($id);       
         $batch->update($request->all());
 
         return redirect('batches');
