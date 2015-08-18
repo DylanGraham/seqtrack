@@ -16,4 +16,12 @@ class Batch extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * A batch has many samples
+     */
+    public function samples()
+    {
+        return $this->hasMany('App\Sample');
+    }
+
 }

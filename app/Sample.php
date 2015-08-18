@@ -22,4 +22,13 @@ class Sample extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * A sample belongs to a batch
+     */
+    public function batches()
+    {
+        return $this->belongsTo('App\Batch');
+    }
+
 }
