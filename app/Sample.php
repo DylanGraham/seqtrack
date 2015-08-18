@@ -17,7 +17,6 @@ class Sample extends Model
 
     /**
      * A sample is owned by a user
-     *
      */
     public function user()
     {
