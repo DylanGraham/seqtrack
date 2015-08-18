@@ -13,4 +13,9 @@ class PageController extends Controller
     {
         return view('index');
     }
+
+    public function closed()
+    {
+        return view('closed');
+    }
 }
