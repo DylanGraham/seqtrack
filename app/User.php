@@ -51,8 +51,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function isSuper()
     {
-        // TODO: Make this check the database to see if user is super
-        return false;
+        return $this->super;
     }
 
 }
