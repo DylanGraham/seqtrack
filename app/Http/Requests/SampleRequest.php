@@ -25,7 +25,7 @@ class SampleRequest extends Request
     {
         return [
             'basc_group_id' =>  'required',
-            'name'          =>  'required',
+            'sample_id'     =>  'required',
             'i7_index_id'   =>  'required',
 
         ];

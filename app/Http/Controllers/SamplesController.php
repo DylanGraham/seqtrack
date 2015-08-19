@@ -26,6 +26,8 @@ class SamplesController extends Controller
 
     public function create()
     {
+        //TODO: Pass lists of fields needed to populate dropdown lists
+
         return view('samples.create');
     }
 

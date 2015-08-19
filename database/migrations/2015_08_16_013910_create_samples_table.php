@@ -14,7 +14,7 @@ class CreateSamplesTable extends Migration
     {
         Schema::create('samples', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sammple_id', 120);
+            $table->string('sample_id', 120);
             $table->string('plate', 120)->nullable();
             $table->integer('column')->nullable();
             $table->integer('lane')->nullable();

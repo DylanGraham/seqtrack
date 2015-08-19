@@ -14,7 +14,7 @@
     @foreach ($samples as $s)
     <tr>
         <td>{{ $s->basc_group_id }}</td>
-        <td><a href="/samples/{{ $s->id }}/edit">{{ $s->name }}</a></td>
+        <td><a href="/samples/{{ $s->id }}/edit">{{ $s->sample_id }}</a></td>
         <td>{{ $s->i7_index_id }}</td>
         <td>{{ $s->i5_index_id }}</td>
     </tr>

@@ -19,7 +19,7 @@
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script>
-            $('div.alert').delay(2000).slideUp('slow');
+            $('div.alert').delay(5000).slideUp('slow');
         </script>
 
        <div class="footer">
