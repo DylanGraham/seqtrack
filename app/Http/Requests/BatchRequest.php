@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class SampleRequest extends Request
+class BatchRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class SampleRequest extends Request
     public function rules()
     {
         return [
-            'basc_group_id' =>  'required',
-            'name'          =>  'required',
-            'i7_index_id'   =>  'required',
-
+            //
         ];
     }
 }
