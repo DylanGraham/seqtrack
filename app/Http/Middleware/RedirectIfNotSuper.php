@@ -16,6 +16,7 @@ class RedirectIfNotSuper
     public function handle($request, Closure $next)
     {
         if (! $request->user()->isSuper()) {
+            session()->flash('flash_message', 'You are not authorised');
             return redirect('/');
         }
 
