@@ -14,14 +14,13 @@ class CreateBatchesTable extends Migration
     {
         Schema::create('batches', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('batch',255)->unique();
+            $table->string('batch', 60)->unique();
             $table->float('concentration');
             $table->float('volume');
             $table->integer('tube_bar_code');
             $table->integer('tube_location')->nullable();
-            $table->integer('lanes_required')->nullable();
             $table->float('tape_station_length')->nullable();
-            $table->string('charge_code',20);
+            $table->string('charge_code', 17);
             $table->timestamps();
 
             $table->integer('user_id')->unsigned();
