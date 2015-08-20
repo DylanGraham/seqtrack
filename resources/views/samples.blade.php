@@ -1,3 +1,5 @@
+@inject('indexes', 'App\Indexes')
+
 @extends('app')
 @section('content')
     <h1><a href='/'>SeqTrack</a> - Samples</h1>
@@ -20,4 +22,9 @@
     </tr>
     @endforeach
     </table>
+
+@foreach ($indexes->i7List() as $i)
+<h3>{{ $i }}</h3>
+@endforeach
+
 @endsection
