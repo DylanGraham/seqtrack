@@ -145,6 +145,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Custom ViewComposerServiceProvider
+        //App\Providers\ViewComposerServiceProvider::class,
     ],
 
     /*
