@@ -1,8 +1,11 @@
 <?php
 
-View::composer('indexes', function($view) {
-    $view->with('indexes', app('App\Indexes'));
-});
+/* View composer option. Currently using @inject into
+ * partials/form.blade.php
+ */
+//View::composer('indexes', function($view) {
+//    $view->with('indexes', app('App\Indexes'));
+//});
 
 Route::get('/', 'PageController@index');
 Route::resource('samples', 'SamplesController');
