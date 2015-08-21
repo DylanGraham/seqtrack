@@ -14,21 +14,10 @@ class CreateI5IndexTable extends Migration
     {
         Schema::create('i5_index', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('i5_index_group_id')->unsigned();
             $table->string('index', 50);
             $table->string('sequence', 20);
-
             $table->timestamps();
-
         });
-        Schema::table('i5_index', function (Blueprint $table) {
-            $table->foreign('i5_index_group_id')->references('id')->on('i5_index_group');
-            $table->unique('index');
-            $table->unique('sequence');
-
-        });;
-
-
     }
 
     /**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateI7IndexgroupTable extends Migration
+class CreateIndexSetTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,11 @@ class CreateI7IndexgroupTable extends Migration
      */
     public function up()
     {
-        Schema::create('i7_index_group', function (Blueprint $table) {
+        Schema::create('index_set', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',50);
-
+            $table->string('index_set');
+            $table->boolean('single');
             $table->timestamps();
-
-          //  $table->primary('Id');
-            $table->unique('name');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateI7IndexgroupTable extends Migration
      */
     public function down()
     {
-        Schema::drop('i7_index_group');
+        Schema::drop('index_set');
     }
 }
