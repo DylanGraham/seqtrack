@@ -14,14 +14,10 @@ class CreateInstrumentTable extends Migration
     {
         Schema::create('instrument', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',50);
+            $table->string('name', 50)->unique();
             $table->integer('max_lanes');
 
             $table->timestamps();
-
-           // $table->primary('Id');
-            $table->unique('name');
-
         });
     }
 
@@ -32,6 +28,6 @@ class CreateInstrumentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Instrument');
+        Schema::drop('instrument');
     }
 }

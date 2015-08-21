@@ -14,9 +14,8 @@ class CreateRunsTable extends Migration
     {
         Schema::create('runs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('instrument_id')->unsigned();
             $table->integer('iem_file_version')->nullable();
-            $table->string('user_id',4);
+//            $table->string('user_id'); // Should be foreign key
             $table->string('experiment_name',255)->nullable();
             $table->date('date')->nullable();;
             $table->string('work_flow',255);
@@ -26,13 +25,11 @@ class CreateRunsTable extends Migration
             $table->string('chemistry',255);
             $table->integer('read1');
             $table->integer('read2')->nullable();
-            $table->boolean('single_double');
             $table->string('flow_cell_id',255);
             $table->boolean('run_success')->nullable();
             $table->integer('adaptor_id')->unsigned();
-
-            //  $table->primary('Id');
             $table->foreign('adaptor_id')->references('id')->on('adaptor');
+            $table->integer('instrument_id')->unsigned();
             $table->foreign('instrument_id')->references('id')->on('instrument');
             $table->timestamps();
         });

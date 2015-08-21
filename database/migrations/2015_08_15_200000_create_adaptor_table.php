@@ -14,13 +14,8 @@ class CreateAdaptorTable extends Migration
     {
         Schema::create('adaptor', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('value',50);
-
+            $table->string('value',50)->unique();
             $table->timestamps();
-
-            //$table->primary('Id');
-            $table->unique('value');
-
         });
     }
 
@@ -31,6 +26,6 @@ class CreateAdaptorTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Adaptor');
+        Schema::drop('adaptor');
     }
 }

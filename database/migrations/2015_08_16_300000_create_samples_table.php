@@ -18,10 +18,10 @@ class CreateSamplesTable extends Migration
             $table->string('plate', 120)->nullable();
             $table->integer('column')->nullable();
             $table->integer('lane')->nullable();
-            $table->integer('basc_group_id')->unsigned();
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('basc_group_id')->unsigned();
             $table->foreign('basc_group_id')->references('id')->on('basc_group');
             $table->integer('batch_id')->unsigned();
             $table->foreign('batch_id')->references('id')->on('batches');
@@ -29,7 +29,6 @@ class CreateSamplesTable extends Migration
             $table->foreign('run_id')->references('id')->on('run');
             $table->integer('i7_index_id')->unsigned();
             $table->integer('i5_index_id')->unsigned()->nullable();
-
             $table->timestamps();
         });
     }
