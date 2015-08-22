@@ -20,9 +20,7 @@ class SamplesController extends Controller
     public function index()
     {
         $samples = Sample::all();
-//        return view('samples.index')->with(compact($samples));
-        return view('samples.index')->with('samples', $samples);
-//        return view('samples', $samples);
+        return view('samples.index', ['samples' => $samples]);
     }
 
     public function create()
