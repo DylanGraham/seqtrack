@@ -20,14 +20,13 @@ class SamplesController extends Controller
     public function index()
     {
         $samples = Sample::all();
-        return view('samples')->with('samples', $samples);
-        //return view('samples', $samples);
+//        return view('samples.index')->with(compact($samples));
+        return view('samples.index')->with('samples', $samples);
+//        return view('samples', $samples);
     }
 
     public function create()
     {
-        //TODO: Pass lists of fields needed to populate dropdown lists
-
         return view('samples.create');
     }
 
@@ -50,7 +49,7 @@ class SamplesController extends Controller
 
     public function show(Sample $sample)
     {
-        return view('samples.show', compact('samples'));
+        return view('samples.show', compact('sample'));
     }
 
     public function edit(Sample $sample)
