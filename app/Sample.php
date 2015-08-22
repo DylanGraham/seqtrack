@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sample extends Model
 {
     protected $fillable = [
-        // Normally don't allow IDs to be updated from a form..
         'basc_group_id',
         'sample_id',
         'batch_id',
