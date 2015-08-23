@@ -9,9 +9,15 @@ use App\IndexSet;
 
 class IndexController extends Controller
 {
-    public function getIndexFromSet($id)
+    public function getI7IndexFromSet($id)
     {
         $data = IndexSet::find($id)->I7Indexes()->get();
+        return $data;
+    }
+
+    public function getI5IndexFromSet($id)
+    {
+        $data = IndexSet::find($id)->I5Indexes()->get();
         return $data;
     }
 }
