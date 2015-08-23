@@ -16,7 +16,7 @@ class CreateI5IndexTable extends Migration
             $table->increments('id');
             $table->string('index', 50);
             $table->string('sequence', 20);
-            $table->integer('index_set_id');
+            $table->integer('index_set_id')->unsigned();
             $table->foreign('index_set_id')->references('id')->on('index_set');
             $table->timestamps();
         });
