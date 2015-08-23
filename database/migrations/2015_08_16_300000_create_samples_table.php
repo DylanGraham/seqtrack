@@ -25,8 +25,8 @@ class CreateSamplesTable extends Migration
             $table->foreign('basc_group_id')->references('id')->on('basc_group');
             $table->integer('batch_id')->unsigned();
             $table->foreign('batch_id')->references('id')->on('batches');
-            $table->integer('run_id')->nullable()->unsigned();
-            $table->foreign('run_id')->references('id')->on('run');
+            //$table->integer('run_id')->nullable()->unsigned();
+            //$table->foreign('run_id')->references('id')->on('run');
             $table->integer('i7_index_id')->unsigned();
             $table->foreign('i7_index_id')->references('id')->on('i7_index');
             $table->integer('i5_index_id')->unsigned()->nullable();
