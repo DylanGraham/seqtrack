@@ -28,7 +28,9 @@ class CreateSamplesTable extends Migration
             $table->integer('run_id')->nullable()->unsigned();
             $table->foreign('run_id')->references('id')->on('run');
             $table->integer('i7_index_id')->unsigned();
+            $table->foreign('i7_index_id')->references('id')->on('i7_index');
             $table->integer('i5_index_id')->unsigned()->nullable();
+            $table->foreign('i5_index_id')->references('id')->on('i5_index');
             $table->timestamps();
         });
     }
