@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\IndexSet;
+use App\I7Index;
 
 class IndexController extends Controller
 {
@@ -19,5 +20,11 @@ class IndexController extends Controller
     {
         $data = IndexSet::find($id)->I5Indexes()->get();
         return $data;
+    }
+
+    public function test()
+    {
+        $I7 = I7Index::all();
+        return view('testing', ['I7' => $I7]);
     }
 }
