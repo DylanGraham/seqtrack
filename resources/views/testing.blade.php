@@ -31,12 +31,16 @@ $(document).ready(function() {
     $cname = $("select[name='cname']");
      
     $department.change(function() {
+
+@for ($i=0; $i<$IndexSet->sets()->count(); $i++)
          
-        if ($(this).val() == "Agilent NEW") {
+        if ($(this).selectedIndex == {{ $i }}) {
             $("select[name='cname'] option").remove();
-            $("<option></option>").appendTo($cname);
+            $("<option>{{ $i }}</option>").appendTo($cname);
         }
-         
+
+@endfor
+
     });
 });
 
