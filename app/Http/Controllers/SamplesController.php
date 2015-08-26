@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Requests\SampleRequest;
 use App\Http\Controllers\Controller;
-use App\Sample;
 use Illuminate\Http\Request;
+use App\Sample;
+use App\I7Index;
+use App\I5Index;
 
 class SamplesController extends Controller
 {
@@ -25,7 +27,12 @@ class SamplesController extends Controller
 
     public function create()
     {
-        return view('samples.create');
+        $i7 = I7Index::lists('sequence', 'id');
+        $i5 = I5Index::lists('sequence', 'id');
+        return view('samples.create', [
+            'i7' => $i7,
+            'i5' => $i5,
+        ]);
     }
 
     public function store(SampleRequest $request)

@@ -25,11 +25,11 @@ $(function() {
     var set = $('#set');  
     var seq = $('#seq');  
     set.change(function() {
-@for ($i=0; $i<$IndexSet->sets()->count(); $i++)
+        seq.empty();
+@for ($i=0; $i<=$IndexSet->sets()->count(); $i++)
         if (set.prop('selectedIndex') == {{ $i }}) {
-            seq.empty().append('<option>{{ $i }}</option>');
+            seq.append('<option>{{ $i }}</option>');
         }
-
 @endfor
     })
 })

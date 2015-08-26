@@ -11,7 +11,7 @@
 {!! Form::select('index_set', $IndexSet->sets(), ['class'=>'form-control', 'placeholder'=>'Index Set', 'id'=>'index_set']) !!}
 
 {!! Form::label('i7_index_id', 'i7_index_id', ['class'=>'sr-only']) !!}
-{!! Form::select('i7_index_id', $IndexSet->I7Indexes(), ['class'=>'form-control', 'placeholder'=>'i7', 'id'=>'I7']) !!}
+{!! Form::select('i7_index_id', $i7, ['class'=>'form-control', 'placeholder'=>'i7', 'id'=>'I7']) !!}
 
 {!! Form::label('i5_index_id', 'i5_index_id', ['class'=>'sr-only']) !!}
 {!! Form::select('i5_index_id', $IndexSet->I5Indexes(), ['class'=>'form-control', 'placeholder'=>'i5']) !!}
