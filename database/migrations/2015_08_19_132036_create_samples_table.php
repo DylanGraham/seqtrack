@@ -30,7 +30,7 @@ class CreateSamplesTable extends Migration
             $table->integer('instrumnet_lane');
 
             $table->foreign('project_group_id')->references('id')->on('project_group');
-            $table->foreign('batch_id')->references('id')->on('batchs');
+            $table->foreign('batch_id')->references('id')->on('batches');
 
             $table->foreign('i7_index_id')->references('id')->on('i7_index');
             $table->foreign('i5_index_id')->references('id')->on('i5_index');
