@@ -13,19 +13,24 @@
 
 @endsection
 
+{{-- dd($i7All->find(5)->I7Indexes->count()) --}}
+{{-- dd($i7) --}}
+
 @section('footer')
 <script>
 $(function() {
-    var set = $('#index_set'); 
-    var i7 = $('#i7_index_id'); 
-    var i5 = $('#i5_index_id'); 
+    var setID = $('#index_set'); 
+    var i7ID = $('#i7_index_id'); 
+    var i5ID = $('#i5_index_id'); 
 
-    set.change(function() {
-        i7.empty();
-        i5.empty();
+    setID.change(function() {
+        i7ID.empty();
+        i5ID.empty();
 @for ($i=0; $i<=$i7Set->count(); $i++)
-        if (set.prop('selectedIndex') == {{ $i }}) {
-            i7.append('<option>{{ $i }}</option>');
+        if (setID.prop('selectedIndex') == {{ $i }}) {
+  @for ($j=1; $j<= $i7All->find($j)->I7Indexes->count(); $j++)
+            i7ID.append('<option>{{ $i7All->find(7)->I7Indexes[$j] }}</option>');
+  @endfor
         }
 @endfor
     })
