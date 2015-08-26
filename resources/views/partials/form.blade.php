@@ -1,5 +1,3 @@
-@inject('IndexSet', 'App\IndexSet')
-
 <div class="form-group">
 {!! Form::label('basc_group_id', 'basc_group_id', ['class'=>'sr-only']) !!}
 {!! Form::text('basc_group_id', null, ['class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
@@ -8,13 +6,13 @@
 {!! Form::text('sample_id', null, ['class'=>'form-control', 'placeholder'=>'Name']) !!}
 
 {!! Form::label('index_set', 'index_set', ['class'=>'sr-only']) !!}
-{!! Form::select('index_set', $IndexSet->sets(), ['class'=>'form-control', 'placeholder'=>'Index Set', 'id'=>'index_set']) !!}
+{!! Form::select('index_set', $i7, ['class'=>'form-control',]) !!}
 
 {!! Form::label('i7_index_id', 'i7_index_id', ['class'=>'sr-only']) !!}
-{!! Form::select('i7_index_id', $i7, ['class'=>'form-control', 'placeholder'=>'i7', 'id'=>'I7']) !!}
+{!! Form::select('i7_index_id', $i7, ['class'=>'form-control']) !!}
 
 {!! Form::label('i5_index_id', 'i5_index_id', ['class'=>'sr-only']) !!}
-{!! Form::select('i5_index_id', $IndexSet->I5Indexes(), ['class'=>'form-control', 'placeholder'=>'i5']) !!}
+{!! Form::select('i5_index_id', $i7, ['class'=>'form-control']) !!}
 
 {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 </div>

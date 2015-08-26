@@ -1,4 +1,4 @@
-@inject('IndexSet', 'App\IndexSet')
+@inject('IndexSet', 'App\I7IndexSet')
 @extends('app')
 
 @section('content')
