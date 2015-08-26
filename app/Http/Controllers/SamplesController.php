@@ -7,7 +7,9 @@ use App\Http\Requests\SampleRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Sample;
+use App\I7IndexSet;
 use App\I7Index;
+use App\I5IndexSet;
 use App\I5Index;
 
 class SamplesController extends Controller
@@ -27,9 +29,14 @@ class SamplesController extends Controller
 
     public function create()
     {
+        $i7Set = I7IndexSet::lists('name', 'id');
+        $i5Set = I5IndexSet::lists('name', 'id');
         $i7 = I7Index::lists('sequence', 'id');
         $i5 = I5Index::lists('sequence', 'id');
+
         return view('samples.create', [
+            'i7Set' => $i7Set,
+            'i5Set' => $i5Set,
             'i7' => $i7,
             'i5' => $i5,
         ]);

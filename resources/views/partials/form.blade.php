@@ -6,13 +6,13 @@
 {!! Form::text('sample_id', null, ['class'=>'form-control', 'placeholder'=>'Name']) !!}
 
 {!! Form::label('index_set', 'index_set', ['class'=>'sr-only']) !!}
-{!! Form::select('index_set', $i7, ['class'=>'form-control',]) !!}
+{!! Form::select('index_set', $i7Set, ['class'=>'form-control',]) !!}
 
 {!! Form::label('i7_index_id', 'i7_index_id', ['class'=>'sr-only']) !!}
 {!! Form::select('i7_index_id', $i7, ['class'=>'form-control']) !!}
 
 {!! Form::label('i5_index_id', 'i5_index_id', ['class'=>'sr-only']) !!}
-{!! Form::select('i5_index_id', $i7, ['class'=>'form-control']) !!}
+{!! Form::select('i5_index_id', $i5, ['class'=>'form-control']) !!}
 
 {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 </div>
