@@ -26,14 +26,13 @@ $(function() {
     setID.change(function() {
         i7ID.empty();
         i5ID.empty();
-@for ($i=0; $i<=$i7Set->count(); $i++)
-        if (setID.prop('selectedIndex') == {{ $i }}) {
+@for ($i=1; $i<=$i7Set->count(); $i++)
+        if (setID.prop('selectedIndex') == {{ $i-1 }}) {
 
-  @for ($j=1; $j < $i7All->find($i+1)->I7Indexes->count(); $j++)
-    @foreach ($i7All->find($j)->I7Indexes as $x)
-            i7ID.append("<option> {{ $x['sequence'] }} </option>");
-    @endforeach
-  @endfor
+@foreach ($i7All->find($i)->I7Indexes as $x)
+            i7ID.append("<option>{{ $x['sequence'] }}</option>");
+@endforeach
+
         }
 @endfor
     })
