@@ -25,7 +25,6 @@ $(function() {
 
     setID.change(function() {
         i7ID.empty();
-        i5ID.empty();
 
         @for ($i=1; $i<=$i7Set->count(); $i++)
             if (setID.prop('selectedIndex') == {{ $i-1 }}) {
@@ -34,9 +33,13 @@ $(function() {
                 @endforeach
 
                 @if (count($i5All->find($i)))
+                    i5ID.show();
+                    i5ID.empty();
                     @foreach ($i5All->find($i)->I5Indexes as $y)
                         i5ID.append("<option>{{ $y['sequence'] }}</option>");
                     @endforeach
+                @else
+                    i5ID.hide();
                 @endif
             }
         @endfor
