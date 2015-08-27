@@ -14,7 +14,7 @@
 @endsection
 
 {{-- dd($i7All->find(5)->I7Indexes->count()) --}}
-{{-- dd($i7) --}}
+{{-- dd(head($i7All->find(1)->I7Indexes->where("id", 1)->toArray())['sequence']) --}}
 
 @section('footer')
 <script>
@@ -28,8 +28,11 @@ $(function() {
         i5ID.empty();
 @for ($i=0; $i<=$i7Set->count(); $i++)
         if (setID.prop('selectedIndex') == {{ $i }}) {
-  @for ($j=1; $j<= $i7All->find($j)->I7Indexes->count(); $j++)
-            i7ID.append('<option>{{ $i7All->find(7)->I7Indexes[$j] }}</option>');
+
+  @for ($j=1; $j < $i7All->find($i+1)->I7Indexes->count(); $j++)
+    @foreach ($i7All->find($j)->I7Indexes as $x)
+            i7ID.append("<option> {{ $x['sequence'] }} </option>");
+    @endforeach
   @endfor
         }
 @endfor
