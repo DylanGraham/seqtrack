@@ -20,6 +20,16 @@ $(function() {
     var i7ID = $('#i7_index_id'); 
     var i5ID = $('#i5_index_id'); 
 
+    function i7Init() {
+        i5ID.hide();
+        i7ID.empty();
+        @foreach ($i7All->find(1)->I7Indexes as $x)
+            i7ID.append("<option>{{ $x['sequence'] }}</option>");
+        @endforeach
+    }
+
+    i7Init();
+
     setID.change(function() {
         i7ID.empty();
 
