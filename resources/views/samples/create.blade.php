@@ -13,9 +13,6 @@
 
 @endsection
 
-{{-- dd($i7All->find(5)->I7Indexes->count()) --}}
-{{-- dd(head($i7All->find(1)->I7Indexes->where("id", 1)->toArray())['sequence']) --}}
-
 @section('footer')
 <script>
 $(function() {
@@ -33,8 +30,8 @@ $(function() {
                 @endforeach
 
                 @if (count($i5All->find($i)))
-                    i5ID.show();
                     i5ID.empty();
+                    i5ID.show();
                     @foreach ($i5All->find($i)->I5Indexes as $y)
                         i5ID.append("<option>{{ $y['sequence'] }}</option>");
                     @endforeach
