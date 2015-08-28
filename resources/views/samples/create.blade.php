@@ -12,3 +12,7 @@
     @include('errors.list')
 
 @endsection
+
+@section('footer')
+    @include('partials.js')
+@endsection
