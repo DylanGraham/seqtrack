@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('css/all.css') }}">
         <meta charset="utf-8">
         <title>SeqTrack</title>
     </head>
@@ -16,13 +16,10 @@
             @yield('content')
         </div>
  
-        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
-        <script>
-            $('div.alert').delay(5000).slideUp('slow');
-        </script>
+        <script src="{{ asset('js/all.js') }}"></script>
+        @include('partials.js')
 
-       <div class="footer">
+        <div class="footer">
             @yield('footer')
         </div>
 
