@@ -39,7 +39,6 @@ class SamplesController extends Controller
             'i5Set' => $i5Set,
             'i7All' => $i7All,
             'i5All' => $i5All,
-
         ]);
     }
 
