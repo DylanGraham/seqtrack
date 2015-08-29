@@ -15,18 +15,18 @@ class BatchesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('super');
     }
 
     public function index()
     {
         $batches = Batch::all();
-        return view('batches')->with('batches', $batches);
-        //return view('batches', $batches);
+        return view('batches.index')->with('batches', $batches);
     }
 
+    // Restrict access to super users
     public function create()
     {
+        $this->middleware('super');
         return view('batches.create');
     }
 
