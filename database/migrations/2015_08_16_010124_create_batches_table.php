@@ -15,7 +15,7 @@ class CreateBatchesTable extends Migration
         Schema::create('batches', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
-            $table->integer('users_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('batch_name',60);
             $table->float('concentration');
             $table->float('volume');
@@ -26,7 +26,7 @@ class CreateBatchesTable extends Migration
             $table->string('charge_code',17);
             $table->timestamps();
 
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unique('batch_name');
         });
     }
