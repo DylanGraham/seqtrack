@@ -1,4 +1,5 @@
 <div class="form-group">
+<h4>Batch</h4>
 {!! Form::label('concentration', 'concentration', ['class'=>'sr-only']) !!}
 {!! Form::number('concentration', null, ['class'=>'form-control', 'placeholder'=>'Concentration']) !!}
 
@@ -19,7 +20,8 @@
 
 {!! Form::label('project_group_id', 'project_group_id', ['class'=>'sr-only']) !!}
 {!! Form::text('project_group_id', null, ['class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
-
+<hr/>
+<h4>Sample</h4>
 {!! Form::label('sample_id', 'sample_id', ['class'=>'sr-only']) !!}
 {!! Form::text('sample_id', null, ['class'=>'form-control', 'placeholder'=>'Sample name']) !!}
 
