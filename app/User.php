@@ -34,12 +34,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * A user can have many samples and batches
-     */
+     * A user can have many batches. Samples don't have a user_id currently.
+
     public function samples()
     {
         return $this->hasMany('App\Sample');
     }
+     */
 
     public function batches()
     {
