@@ -54,6 +54,8 @@ class BatchesController extends Controller
 
     public function edit(Batch $batch)
     {
+        /* Should user be creator of batch to edit?
+           Probably either 'creator || super'  */
         return view('batches.edit', compact('batch'));
     }
 

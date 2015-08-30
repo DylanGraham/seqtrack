@@ -13,7 +13,7 @@
     </thead>
     @foreach ($batches as $b)
     <tr>
-        <td><a href="/batches/{{ $s->id }}/edit">{{ $b->batch }}</a></td>
+        <td><a href="/batches/{{ $b->id }}/edit">{{ $b->batch }}</a></td>
         <td>{{ $b->user_id}}</td>
         <td>{{ $b->charge_code}}</td>
     </tr>
