@@ -12,6 +12,7 @@ use App\I7IndexSet;
 use App\I7Index;
 use App\I5IndexSet;
 use App\I5Index;
+use App\ProjectGroup;
 
 class SamplesController extends Controller
 {

@@ -55,5 +55,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->super;
     }
 
-
+    public function defaultProject()
+    {
+        return $this->hasOne('App\ProjectGroup');
+    }
 }
