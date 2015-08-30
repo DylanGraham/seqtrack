@@ -18,6 +18,8 @@ class UserTableSeeder extends Seeder
             'user_id'   =>  'abcd',
             'password'  =>  bcrypt('password'),
             'super'     =>  '1',
+            'default_project_id' => '1',
+            'default_charge_code' => '8000-0000-00-001',
             'created_at'=>  Carbon::now(),
             'updated_at'=>  Carbon::now(),
         ]);
