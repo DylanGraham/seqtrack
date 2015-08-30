@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Requests\SampleRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Batch;
 use App\Sample;
 use App\I7IndexSet;
 use App\I7Index;
@@ -51,10 +52,14 @@ class SamplesController extends Controller
 
         // Check input here
 
+        // TODO: Add new batch then add sample to the batch
+        $batch = new Batch();
         $sample = new Sample($input);
 
         // Add the authenticated user as the sample creator
-        \Auth::user()->samples()->save($sample);
+        //\Auth::user()->samples()->save($sample);
+        // Should it now be this as user is stored in batch?
+        \Auth::user()->batches()->save($batch);
 
         return redirect('samples');
     }
