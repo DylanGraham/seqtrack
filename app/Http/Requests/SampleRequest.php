@@ -24,7 +24,7 @@ class SampleRequest extends Request
     public function rules()
     {
         return [
-            'basc_group_id' =>  'required',
+            'project_group_id' =>  'required',
             'sample_id'     =>  'required',
             'i7_index_id'   =>  'required',
 
