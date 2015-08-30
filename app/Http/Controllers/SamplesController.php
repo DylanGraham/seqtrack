@@ -61,6 +61,8 @@ class SamplesController extends Controller
         // Should it now be this as user is stored in batch?
         \Auth::user()->batches()->save($batch);
 
+        $sample->save();
+
         return redirect('samples');
     }
 
