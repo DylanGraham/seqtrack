@@ -27,7 +27,7 @@ class CreateSamplesTable extends Migration
 
             $table->string('description',120);
             $table->integer('runs_remaining');
-            $table->integer('instrumnet_lane');
+            $table->integer('instrument_lane');
 
             $table->foreign('project_group_id')->references('id')->on('project_group');
             $table->foreign('batch_id')->references('id')->on('batches');

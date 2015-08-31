@@ -26,7 +26,7 @@
 {!! Form::text('sample_id', null, ['class'=>'form-control', 'placeholder'=>'Sample name']) !!}
 
 {!! Form::label('index_set', 'index_set', ['class'=>'sr-only']) !!}
-{!! Form::select('index_set', $i7Set, null, ['class'=>'form-control']) !!}
+{!! Form::select('index_set', $iSet, null, ['class'=>'form-control']) !!}
 
 {!! Form::label('i7_index_id', 'i7_index_id', ['class'=>'sr-only']) !!}
 {!! Form::select('i7_index_id', ['name'=>''], null, ['class'=>'form-control']) !!}
