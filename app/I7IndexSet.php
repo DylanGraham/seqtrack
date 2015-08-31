@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class I7IndexSet extends Model
 {
 
-    protected $table = 'i7_index_set';
+    protected $table = 'index_set';
 
     public function sets()
     {
