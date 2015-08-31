@@ -1,5 +1,8 @@
 <div class="form-group">
 <h4>Batch</h4>
+{!! Form::label('batch_name', 'batch_name', ['class'=>'sr-only']) !!}
+{!! Form::text('batch_name', null, ['class'=>'form-control', 'placeholder'=>'Batch name']) !!}
+
 {!! Form::label('concentration', 'concentration', ['class'=>'sr-only']) !!}
 {!! Form::number('concentration', null, ['class'=>'form-control', 'placeholder'=>'Concentration']) !!}
 

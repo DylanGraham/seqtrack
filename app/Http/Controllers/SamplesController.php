@@ -31,15 +31,11 @@ class SamplesController extends Controller
     public function create()
     {
         $iSet = IndexSet::lists('name', 'id');
-//        $i5Set = I5IndexSet::lists('name', 'id');
         $iAll = IndexSet::all();
-//        $i5All = I5IndexSet::all();
 
         return view('samples.create', [
             'iSet' => $iSet,
-//            'i5Set' => $i5Set,
             'iAll' => $iAll,
-//            'i5All' => $i5All,
         ]);
     }
 
