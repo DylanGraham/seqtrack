@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Carbon\Carbon;
 class CreateProjectGroupTable extends Migration
 {
     /**
@@ -24,30 +24,30 @@ class CreateProjectGroupTable extends Migration
 
         DB::table('project_group')->insert(
             array(
-                array("name"=> "ABALONE"),
-                array("name"=> "AQUACULTURE"),
-                array("name"=> "BEEF"),
-                array("name"=> "CEREALS"),
-                array("name"=> "DAIRY"),
-                array("name"=> "DAS"),
-                array("name"=> "ENVIRO"),
-                array("name"=> "GENOMES"),
-                array("name"=> "GRAINS"),
-                array("name"=> "MCOD"),
-                array("name"=> "METABOLOMICS"),
-                array("name"=> "METAGEN"),
-                array("name"=> "NEMATODE"),
-                array("name"=> "PASTURE"),
-                array("name"=> "PATHOGENS"),
-                array("name"=> "PIG"),
-                array("name"=> "PROTEOMICS"),
-                array("name"=> "SALMON"),
-                array("name"=> "SEQEDIT"),
-                array("name"=> "SHEEP"),
-                array("name"=> "SOIL"),
-                array("name"=> "STUDENTS"),
-                array("name"=> "TREES"),
-                array("name"=> "VISITORS")
+                array("name"=> "ABALONE",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "AQUACULTURE",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "BEEF",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "CEREALS",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "DAIRY",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "DAS",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "ENVIRO",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "GENOMES",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "GRAINS",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "MCOD",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "METABOLOMICS",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "METAGEN",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "NEMATODE",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "PASTURE",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "PATHOGENS",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "PIG",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "PROTEOMICS",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "SALMON",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "SEQEDIT",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "SHEEP",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "SOIL",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "STUDENTS",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "TREES",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
+                array("name"=> "VISITORS",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
             ));
 
     }

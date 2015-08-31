@@ -12,74 +12,21 @@ class IndexSetTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('index_set')->insert([
-            'index_set' =>  'Agilent NEW',
-            'single'    =>  'true',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
 
-        DB::table('index_set')->insert([
-            'index_set' =>  'Agilent OLD',
-            'single'    =>  'true',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
+        DB::table('index_set')->insert(
+            array(
+                array("id" => "1", "name" => "Agilent NEW", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "2", "name" => "Agilent OLD", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "3", "name" => "Illumina Nextera", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "4", "name" => "Illumina NexteraXT", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "5", "name" => "Illumina RNA HT", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "6", "name" => "Illumina RNA LT", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "7", "name" => "Illumina small RNA", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "8", "name" => "ILLUMINA TRUSEQ 12 SET", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "9", "name" => "In house dual index", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "10", "name" => "INHOUSE 24 SET", "created_at" => Carbon::now(), "updated_at" => Carbon::now()),
+                array("id" => "11", "name" => "NimbleGen Set", "created_at" => Carbon::now(), "updated_at" => Carbon::now())
+            ));
 
-        DB::table('index_set')->insert([
-            'index_set' =>  'Illumina Nextera',
-            'single'    =>  'false',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
-
-        DB::table('index_set')->insert([
-            'index_set' =>  'Illumina NexteraXT',
-            'single'    =>  'false',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
-
-        DB::table('index_set')->insert([
-            'index_set' =>  'Illumina RNA HT',
-            'single'    =>  'false',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
-
-        DB::table('index_set')->insert([
-            'index_set' =>  'Illumina RNA LT',
-            'single'    =>  'true',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
-
-        DB::table('index_set')->insert([
-            'index_set' =>  'Illumina small RNA',
-            'single'    =>  'true',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
-
-        DB::table('index_set')->insert([
-            'index_set' =>  'ILLUMINA TRUSEQ 12 SET',
-            'single'    =>  'true',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
-
-        DB::table('index_set')->insert([
-            'index_set' =>  'In house dual index',
-            'single'    =>  'false',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
-
-        DB::table('index_set')->insert([
-            'index_set' =>  'INHOUSE 24 SET',
-            'single'    =>  'true',
-            'created_at'=>  Carbon::now(),
-            'updated_at'=>  Carbon::now(),
-        ]);
     }
 }

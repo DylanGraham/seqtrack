@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Carbon\Carbon;
 class CreateAssayTable extends Migration
 {
     /**
@@ -24,7 +24,7 @@ class CreateAssayTable extends Migration
 
         DB::table('assay')->insert(
             array(
-                array("name"=>"Nextera",  "default"=>true)
+                array("name"=>"Nextera",  "default"=>true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
             ));
     }
 

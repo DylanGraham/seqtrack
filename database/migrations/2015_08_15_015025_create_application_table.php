@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreateApplicationTable extends Migration
 {
@@ -25,7 +26,7 @@ class CreateApplicationTable extends Migration
 
         DB::table('application')->insert(
             array(
-                array("application"=>"FASTQOnly",  "default"=>true)
+                array("application"=>"FASTQOnly",  "default"=>true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
 
             ));
     }
