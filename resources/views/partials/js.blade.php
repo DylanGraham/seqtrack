@@ -23,7 +23,7 @@ $(function() {
                     i7ID.append("<option>{{ $x['sequence'] }}</option>");
                 @endforeach
 
-                @if (count($iAll->find($i)))
+                @if (count($iAll->find($i)->i5Indexes))
                     i5ID.empty();
                     i5ID.show();
                     @foreach ($iAll->find($i)->I5Indexes as $y)

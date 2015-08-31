@@ -8,9 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Batch;
 use App\Sample;
-use App\I7IndexSet;
+use App\IndexSet;
 use App\I7Index;
-use App\I5IndexSet;
 use App\I5Index;
 use App\ProjectGroup;
 

@@ -12,14 +12,6 @@ class I7TableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('i7_index')->insert([
-            'index'         =>  'Name',
-            'sequence'      =>  'AAAAAAAA',
-            'index_set_id'  =>  '1',
-            'created_at'    =>  Carbon::now(),
-            'updated_at'    =>  Carbon::now(),
-        ]);
-
         DB::table('i7_index')->insert(
             array(
                 array("index_set_id"=>"1",  "index"=>"A01",  "sequence"=>"ATGCCTAA",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
