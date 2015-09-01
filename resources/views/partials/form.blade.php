@@ -22,7 +22,7 @@
 {!! Form::text('charge_code', null, ['class'=>'form-control', 'placeholder'=>'Charge code']) !!}
 
 {!! Form::label('project_group_id', 'project_group_id', ['class'=>'sr-only']) !!}
-{!! Form::text('project_group_id', null, ['class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
+{!! Form::select('project_group_id', $pg, null, ['class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
 <hr/>
 <h4>Sample</h4>
 {!! Form::label('sample_id', 'sample_id', ['class'=>'sr-only']) !!}

@@ -32,10 +32,12 @@ class SamplesController extends Controller
     {
         $iSet = IndexSet::lists('name', 'id');
         $iAll = IndexSet::all();
+        $pg = ProjectGroup::lists('name', 'id');
 
         return view('samples.create', [
-            'iSet' => $iSet,
-            'iAll' => $iAll,
+            'iSet'  => $iSet,
+            'iAll'  => $iAll,
+            'pg'    => $pg,
         ]);
     }
 
