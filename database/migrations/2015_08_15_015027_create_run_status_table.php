@@ -23,12 +23,7 @@ class CreateRunStatusTable extends Migration
 
         });
 
-        DB::table('run_status')->insert(
-            array(
-                array("status"=>"Run built",  "default"=>true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
-                array("status"=>"Run succeeded",  "default"=>false,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
-                array("status"=>"Run failed",  "default"=>false,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
-            ));
+
     }
 
     /**

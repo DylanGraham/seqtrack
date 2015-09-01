@@ -17,7 +17,7 @@ class CreateRunsTable extends Migration
             $table->integer('project_group_id')->unsigned();
             $table->integer('users_id')->unsigned();
             $table->integer('instrument_id')->unsigned();
-            $table->string('iem_file_version', 10);
+            $table->integer('iem_file_version')->unsigned();
 
             $table->string('experiment_name', 120);
             $table->date('date');
@@ -44,6 +44,7 @@ class CreateRunsTable extends Migration
             $table->foreign('chemistry_id')->references('id')->on('chemistry');
             $table->foreign('adaptor_id')->references('id')->on('adaptor');
             $table->foreign('run_status_id')->references('id')->on('run_status');
+            $table->foreign('iem_file_version')->references('id')->on('iem_file_version');
             $table->timestamps();
         });
 

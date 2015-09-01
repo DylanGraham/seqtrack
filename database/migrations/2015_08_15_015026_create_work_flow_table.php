@@ -23,11 +23,7 @@ class CreateWorkFlowTable extends Migration
 
         });
 
-        DB::table('work_flow')->insert(
-            array(
-                array("value"=>"GenerateFASTQ",  "default"=>true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
-                array("value"=>"Amplicon",  "default"=>false,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
-            ));
+
     }
 
     /**
