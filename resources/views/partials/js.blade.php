@@ -8,7 +8,7 @@ $(function() {
         i5ID.hide();
         i7ID.empty();
         @foreach ($iAll->find(1)->I7Indexes as $x)
-            i7ID.append("<option>{{ $x['sequence'] }}</option>");
+            i7ID.append("<option value={{ $x['id'] }}> {{ $x['sequence'] }}</option>");
         @endforeach
     }
 
@@ -20,14 +20,14 @@ $(function() {
         @for ($i=1; $i<=$iSet->count(); $i++)
             if (setID.prop('selectedIndex') == {{ $i-1 }}) {
                 @foreach ($iAll->find($i)->I7Indexes as $x)
-                    i7ID.append("<option>{{ $x['sequence'] }}</option>");
+                    i7ID.append("<option value={{ $x['id'] }}> {{ $x['sequence'] }}</option>");
                 @endforeach
 
                 @if (count($iAll->find($i)->i5Indexes))
                     i5ID.empty();
                     i5ID.show();
                     @foreach ($iAll->find($i)->I5Indexes as $y)
-                        i5ID.append("<option>{{ $y['sequence'] }}</option>");
+                        i5ID.append("<option value={{ $y['id'] }}> {{ $y['sequence'] }}</option>");
                     @endforeach
                 @else
                     i5ID.hide();
