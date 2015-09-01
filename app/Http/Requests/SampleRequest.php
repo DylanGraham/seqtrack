@@ -49,21 +49,22 @@ class SampleRequest extends Request
             // batch_id and sample_id created when saved by database ??
             //'batch_id' => 'required|exists:batchs,id',
 
-            'project_group_id' =>  'required | exists:project_group,id',
+            'project_group_id' => array( 'required', 'exists:project_group,id'),
 
-            'sample_id'     =>  'required | regex:/[a-zA-Z0-9]/ | max:120',
+            'sample_id'     => array( 'required', 'regex:/[a-zA-Z0-9]{1,120}/' , 'max:120'),
 
-            'plate' => 'max:120 | regex:/[a-zA-Z0-9]/',
+            'plate' => array('max:120' , 'regex:/^[a-zA-Z0-9]{1,120}$/', 'max:120'),
 
-            'well' => 'max:120 | regex:/[a-zA-Z0-9]/',
+            'well' => array('max:120' ,'regex:/^[a-zA-Z0-9]{1,120}$/', 'max:120'),
 
             'i7_index_id'   =>  'required| integer | exists:i7_index,id',
 
-            'i5_index_id'   =>  'integer | exists:i5_index,id',
+            // TODO check if exits in i5_index set or is NULL
+           // 'i5_index_id'   =>  array('integer','exists:i5_index,id'),
 
-            'description' => array('required' , 'regex:/[a-zA-Z0-9]/' , 'max:120'),
+            'description' => array('required' , 'regex:/^[a-zA-Z0-9]{1,120}$/' , 'max:120'),
 
-            'runs_remaining' => 'required | integer | between:1,60',
+            'runs' => 'required | integer | between:1,60',
 
             'instrument_lane' => 'required | integer | between:1,8'
         ];

@@ -30,4 +30,14 @@ class Sample extends Model
         return $this->belongsTo('App\Batch');
     }
 
+    /**
+     * A Sample can have many SampleRun.
+     */
+
+    public function sampleRuns()
+    {
+        return $this->hasMany('App\SampleRun');
+    }
+
+
 }
