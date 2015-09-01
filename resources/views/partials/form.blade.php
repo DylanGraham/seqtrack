@@ -28,7 +28,13 @@
 {!! Form::label('sample_id', 'sample_id', ['class'=>'sr-only']) !!}
 {!! Form::text('sample_id', null, ['class'=>'form-control', 'placeholder'=>'Sample name']) !!}
 
-{!! Form::label('index_set', 'index_set', ['class'=>'sr-only']) !!}
+{!! Form::label('plate', 'plate', ['class'=>'sr-only']) !!}
+{!! Form::text('plate', null, ['class'=>'form-control', 'placeholder'=>'Plate']) !!}
+
+{!! Form::label('well', 'well', ['class'=>'sr-only']) !!}
+{!! Form::text('well', null, ['class'=>'form-control', 'placeholder'=>'Well']) !!}
+
+{!! Form::label('index_set', 'index_set', ['data-toggle'=>'tooltip', 'title'=>'Index set', 'class'=>'sr-only']) !!}
 {!! Form::select('index_set', $iSet, null, ['class'=>'form-control']) !!}
 
 {!! Form::label('i7_index_id', 'i7_index_id', ['class'=>'sr-only']) !!}
@@ -36,6 +42,15 @@
 
 {!! Form::label('i5_index_id', 'i5_index_id', ['class'=>'sr-only']) !!}
 {!! Form::select('i5_index_id', ['name'=>''], null, ['class'=>'form-control']) !!}
+
+{!! Form::label('description', 'description', ['class'=>'sr-only']) !!}
+{!! Form::text('description', null, ['class'=>'form-control', 'placeholder'=>'Description']) !!}
+
+{!! Form::label('runs', 'runs', ['class'=>'sr-only']) !!}
+{!! Form::number('runs', null, ['class'=>'form-control', 'placeholder'=>'Runs']) !!}
+
+{!! Form::label('instrument_lane', 'instrument_lane', ['class'=>'sr-only']) !!}
+{!! Form::number('instrument_lane', null, ['class'=>'form-control', 'placeholder'=>'Instrument lane']) !!}
 
 {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 </div>
