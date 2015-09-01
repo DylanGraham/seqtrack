@@ -4,10 +4,10 @@
 {!! Form::text('batch_name', null, ['class'=>'form-control', 'placeholder'=>'Batch name']) !!}
 
 {!! Form::label('concentration', 'concentration', ['class'=>'sr-only']) !!}
-{!! Form::number('concentration', null, ['class'=>'form-control', 'placeholder'=>'Concentration']) !!}
+{!! Form::number('concentration', null, ['step'=>'0.1', 'class'=>'form-control', 'placeholder'=>'Concentration']) !!}
 
 {!! Form::label('volume', 'volume', ['class'=>'sr-only']) !!}
-{!! Form::number('volume', null, ['class'=>'form-control', 'placeholder'=>'Volume']) !!}
+{!! Form::number('volume', null, ['step'=>'0.1', 'class'=>'form-control', 'placeholder'=>'Volume']) !!}
 
 {!! Form::label('tube_bar_code', 'tube_bar_code', ['class'=>'sr-only']) !!}
 {!! Form::text('tube_bar_code', null, ['class'=>'form-control', 'placeholder'=>'Tube bar code']) !!}
