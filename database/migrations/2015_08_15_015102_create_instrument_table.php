@@ -21,16 +21,7 @@ class CreateInstrumentTable extends Migration
             $table->unique('name');
 
         });
-        DB::table('instrument')->insert(
-            array(
-                array("name" => "M01054"),
-                array("name" => "M01697"),
-                array("name" => "M03633"),
-                array("name" => "J00108"),
-                array("name" => "J00119"),
-                array("name" => "NS500295"),
-                array("name" => "C00103")
-            ));
+
     }
 
 

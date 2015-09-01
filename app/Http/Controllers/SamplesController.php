@@ -45,8 +45,16 @@ class SamplesController extends Controller
     {
         $input = $request->all();
 
+
+        dd($input);
+
+        // Dummy data to satisfy NOT NULL constraints
+        $input['batch_id'] = 1;
+
+
         // Check input here
 
+        // TODO: Add new batch then add sample to the batch
         $batch = new Batch();
         $sample = new Sample($input);
 

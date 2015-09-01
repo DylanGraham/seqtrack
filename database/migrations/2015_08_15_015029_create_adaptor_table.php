@@ -23,11 +23,7 @@ class CreateAdaptorTable extends Migration
 
         });
 
-        DB::table('adaptor')->insert(
-            array(
-                'value' => 'CTGTCTCTTATACACATCT','default' => true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
 
-                   );
     }
 
     /**

@@ -22,10 +22,6 @@ class CreateAssayTable extends Migration
 
         });
 
-        DB::table('assay')->insert(
-            array(
-                array("name"=>"Nextera",  "default"=>true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
-            ));
     }
 
     /**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIndexi7Table extends Migration
+class IemFileVersion extends Migration
 {
     /**
      * Run the migrations.
@@ -12,19 +12,12 @@ class CreateIndexi7Table extends Migration
      */
     public function up()
     {
-        Schema::create('i7_index', function (Blueprint $table) {
+        Schema::create('iem_file_version', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('index_set_id')->unsigned();
-            $table->string('index', 16);
-            $table->string('sequence', 16);
-
-            $table->foreign('index_set_id')->references('id')->on('index_set');
-
-
+            $table->string('file_version',10);
+            $table->boolean('default');
             $table->timestamps();
         });
-
-
     }
 
     /**
@@ -34,6 +27,6 @@ class CreateIndexi7Table extends Migration
      */
     public function down()
     {
-        Schema::drop('i7_index');
+        Schema::drop('iem_file_version');
     }
 }
