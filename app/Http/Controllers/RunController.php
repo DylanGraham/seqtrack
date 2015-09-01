@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use App\Http\Requests;
 use App\Http\Requests\RunRequest;
@@ -46,6 +47,16 @@ class RunController extends Controller
 
         $this->middleware('super');
 
+        $dates = array( '0'=>Carbon::now()->format('d-m-Y'),
+                        '1'=>Carbon::now()->addDays(1)->format('d-m-Y'),
+                        '2'=>Carbon::now()->addDays(2)->format('d-m-Y'),
+                        '3'=>Carbon::now()->addDays(3)->format('d-m-Y'),
+                        '4'=>Carbon::now()->addDays(4)->format('d-m-Y'),
+                        '5'=>Carbon::now()->addDays(5)->format('d-m-Y'),
+                        '6'=>Carbon::now()->addDays(6)->format('d-m-Y'),
+                        '7'=>Carbon::now()->addDays(7)->format('d-m-Y')
+        );
+
         $adaptor = Adaptor::lists('value', 'id');
         $iem_file_version = Iem_file_version::lists('file_version', 'id');
         $application = Application::lists('application', 'id');
@@ -70,7 +81,7 @@ class RunController extends Controller
             'instrument' => $instrument,
             'work_flow' => $work_flow,
             'assay' => $assay,
-
+'date'=> $dates,
             'sampleRun' => $sampleRun,
             'projectGroup' => $projectGroup
         ]);

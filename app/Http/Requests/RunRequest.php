@@ -13,7 +13,7 @@ class RunRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,12 +32,12 @@ class RunRequest extends Request
 
             'instrument_id' => 'required | integer | exists:instrument,id',
 
-            'iem_file_version' => 'required | integer |exists:iem_file_version,id',
+            'iem_file_version_id' => 'required | integer |exists:iem_file_version,id',
 
             'experiment_name' => array('required' , 'regex:/[_a-zA-Z0-9]/' , 'max:120'),
 
             // make a date as integar off set from today eg 1 to 7 days from today
-            'date' => 'required | integer | between:0,7',
+           // 'date' => 'required | integer | between:0,7',
 
             'work_flow_id' => 'required | integer |exists:work_flow,id',
 
@@ -49,11 +49,11 @@ class RunRequest extends Request
 
             'chemistry_id' => 'required |integer | exists:chemistry,id',
 
-            'read1' => 'required | integer | between:20:600',
+            'read1' => 'required | integer | between:20,600',
 
-            'read2' => 'integer | between:1:600',
+            'read2' => 'integer | between:1,600',
 
-            'adaptor' =>  'required |integer | exists:adaptor,id',
+            'adaptor_id' =>  'required |integer | exists:adaptor,id',
 
             'flow_cell' => array('required' , 'regex:/[A-Z0-9]/' , 'max:10'),
 
