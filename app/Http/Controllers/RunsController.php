@@ -21,7 +21,7 @@ use App\SampleRun;
 use App\ProjectGroup;
 use App\Run;
 
-class RunController extends Controller
+class RunsController extends Controller
 {
 
     /*
