@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use DB;
+use Auth;
 use App\Http\Requests;
 use App\Http\Requests\RunRequest;
 use App\Http\Controllers\Controller;
@@ -18,6 +19,7 @@ use App\Assay;
 use App\Adaptor;
 use App\SampleRun;
 use App\ProjectGroup;
+use App\Run;
 
 class RunController extends Controller
 {
@@ -56,34 +58,37 @@ class RunController extends Controller
                         '6'=>Carbon::now()->addDays(6)->format('d-m-Y'),
                         '7'=>Carbon::now()->addDays(7)->format('d-m-Y')
         );
+/*
+        $adaptor = Adaptor::lists('value', 'default', 'id');
+        $iem_file_version = Iem_file_version::lists('file_version', 'default', 'id');
+        $application = Application::lists('application', 'default', 'id');
+        $chemistry = Chemistry::lists('chemistry', 'default', 'id');
+        $run_status = Run_status::lists('status', 'default', 'id');
+        $instrument = Instrument::lists('name','id');
 
-        $adaptor = Adaptor::lists('value', 'id');
-        $iem_file_version = Iem_file_version::lists('file_version', 'id');
-        $application = Application::lists('application', 'id');
-        $chemistry = Chemistry::lists('chemistry', 'id');
-        $run_status = Run_status::lists('status', 'id');
-        $instrument = Instrument::lists('name', 'id');
-
-        $work_flow = Work_flow::lists('value', 'id');
-        $assay = Assay::lists('name', 'id');
-
+        $work_flow = Work_flow::lists('value','id','default');
+        $assay = Assay::lists('name', 'default', 'id');
+         'work_flow' => Work_flow::lists('value','id'),
         $sampleRun = SampleRun::lists('run_id', 'sample_id');
         $projectGroup = ProjectGroup::lists('name', 'id');
-
+*/
+      //  $work_flow = DB::table('work_flow')->select('value','id')->orderBy('default');
+       // $work_flow = $work_flow->lists();
 
         return view('runs.create', [
 
-            'adaptor' => $adaptor,
-            'iem_file_version' => $iem_file_version,
-            'application' => $application,
-            'chemistry' => $chemistry,
-            'run_status' => $run_status,
-            'instrument' => $instrument,
-            'work_flow' => $work_flow,
-            'assay' => $assay,
-'date'=> $dates,
-            'sampleRun' => $sampleRun,
-            'projectGroup' => $projectGroup
+            'adaptor' => Adaptor::lists('value',  'id'),
+            'iem_file_version' => Iem_file_version::lists('file_version', 'id'),
+            'application' => Application::lists('application', 'id'),
+            'chemistry' => Chemistry::lists('chemistry',  'id'),
+            'run_status' => Run_status::lists('status',  'id'),
+            'instrument' => Instrument::lists('name','id'),
+            'work_flow' => Work_flow::lists('value','id'),
+            'assay' => Assay::lists('name',  'id'),
+            'date'=> $dates,
+            'sampleRun' => SampleRun::lists('run_id', 'sample_id'),
+            'projectGroup' => ProjectGroup::lists('name', 'id')
+
         ]);
     }
 
@@ -95,11 +100,43 @@ class RunController extends Controller
      */
     public function store(RunRequest $request)
     {
+
+        $request->attributes('adaptor');
+        $id = Auth::user()->id;
+        $run = new Run;
+        $run->project_group_id = $request->get('project_group_id');
+        $run->users_id = $id;
+        $run->application_id = $request->get('application_id');
+        $run->instrument_id = $request->get('instrument_id');
+        $run->iem_file_version = $request->get('iem_file_version_id');
+        $run->experiment_name = $request->get('experiment_name');
+        $run->work_flow_id = $request->get('work_flow_id');
+        $run->assay_id = $request->get('assay_id');
+        $run->description  = $request->get('description');
+        $run->chemistry_id = $request->get('chemistry_id');
+        $run->read1 = $request->get('read1');
+        $run->read2 = $request->get('read2');
+        $run->single_double = 1;
+        $run->date = Carbon::now()->addDays($request->get('date'));
+      //  $run->single_double = $request->get('single_double');
+        $run->flow_cell = $request->get('flow_cell');
+        $run->adaptor_id = $request->get('adaptor_id');
+        $run->run_status_id = $request->get('run_status_id');
+        $run->created_at = Carbon::now();
+
+        $run->updated_at = Carbon::now();
+
+
+
+        $run->save();
+
+        return \Redirect::route('runs.create', array($run))->with('message', 'Your list has been created!');
+
         $input = $request->all();
 
 
-        dd($input);
-        return "Runs store controller";
+      //  dd($input);
+
 
     }
 
