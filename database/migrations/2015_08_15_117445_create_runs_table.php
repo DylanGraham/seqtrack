@@ -20,7 +20,7 @@ class CreateRunsTable extends Migration
             $table->integer('iem_file_version')->unsigned();
 
             $table->string('experiment_name', 120);
-            $table->date('date');
+            $table->date('run_date');
             $table->integer('work_flow_id')->unsigned();
             $table->integer('application_id')->unsigned();
             $table->integer('assay_id')->unsigned();
