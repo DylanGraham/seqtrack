@@ -16,6 +16,13 @@ use App\ProjectGroup;
 class SamplesController extends Controller
 {
 
+/*
+ *  For custom error messages see "resources/lang/en/validation.php"
+ *
+ *  For validation see "Http/Requests/SampleRequest.php"
+ */
+
+
     // Restrict access to authenticated users
     public function __construct()
     {
@@ -27,6 +34,8 @@ class SamplesController extends Controller
         $samples = Sample::all();
         return view('samples.index', ['samples' => $samples]);
     }
+
+
 
     public function create()
     {

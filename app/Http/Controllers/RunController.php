@@ -23,8 +23,16 @@ use App\Run;
 
 class RunController extends Controller
 {
+
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/RunRequest.php"
+    */
+
+
     /**
-     * Display a listing of the resource.
+     * Display a listing of Runs.
      *
      * @return Response
      */
@@ -40,7 +48,7 @@ class RunController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Run.
      *
      * @return Response
      */
