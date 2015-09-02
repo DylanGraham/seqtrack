@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <h1>SeqTrack</h1>
+    {!! Html::image('images/logo.png', null, ['width'=>'30%', 'height'=>'30%']) !!}
     <hr/>
     <a href="{!! route('samples.index') !!}">View Samples</a><br>
     <a href="{!! route('samples.create') !!}">Enter samples</a><br>
