@@ -24,12 +24,18 @@ class SampleRequest extends Request
     public function rules()
     {
         return [
+
+            /*
+             * For custom error messages see resources/lang/en/validation.php
+             *
+             */
+
             /* BATCH TABLE FIELDS */
 
             //  id and date created by database
             //  users id from loged in user
 
-            'batch_name' => array('required' , 'regex:/^[a-zA-Z0-9]{1,60}$/' , 'max:60', 'unique:batches,batch_name'),
+            'batch_name' => array('required' , 'regex:/^[_a-zA-Z0-9]{1,60}$/' , 'max:60', 'unique:batches,batch_name'),
 
             'concentration' => array('required' ,'numeric', 'between:1,200', 'regex:/^[\d]{1,3}([.][\d]){0,1}$/'),
 
@@ -37,7 +43,7 @@ class SampleRequest extends Request
 
             'tube_bar_code' => array('required' , 'regex:/^[A-Z0-9]{1,60}$/' , 'max:60'),
 
-            'tube_location' => array('required' , 'regex:/^[a-zA-Z0-9]{1,60}$/' , 'max:60'),
+            'tube_location' => array('required' , 'regex:/^[_a-zA-Z0-9]{1,60}$/' , 'max:60'),
 
             'tape_station_length' => 'required | integer | between:50,900',
 
@@ -51,11 +57,11 @@ class SampleRequest extends Request
 
             'project_group_id' => array( 'required', 'exists:project_group,id'),
 
-            'sample_id'     => array( 'required', 'regex:/[a-zA-Z0-9]{1,120}/' , 'max:120'),
+            'sample_id'     => array( 'required', 'regex:/[a-zA-Z0-9]{1,120}/' , 'max:120', 'unique:samples,sample_id' ),
 
             'plate' => array('max:120' , 'regex:/^[a-zA-Z0-9]{1,120}$/', 'max:120'),
 
-            'well' => array('max:120' ,'regex:/^[a-zA-Z0-9]{1,120}$/', 'max:120'),
+            'well' => array('max:120' , 'regex:/^[a-zA-Z0-9]{1,120}$/', 'max:120'),
 
             'i7_index_id'   =>  'required| integer | exists:i7_index,id',
 

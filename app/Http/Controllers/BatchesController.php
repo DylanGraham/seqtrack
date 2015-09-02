@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class BatchesController extends Controller
 {
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/BatchRequest.php"
+    */
 
     // Restrict access to authenticated users
     public function __construct()
@@ -32,7 +37,7 @@ class BatchesController extends Controller
 
 // Removed until BatchesRequest validation is created
 //    public function store(BatchRequest $request)
-    public function store()
+    public function store(BatchRequest $request)
     {
         $input = $request->all();
 
