@@ -93,7 +93,7 @@ class RunsController extends Controller
             'instrument' => Instrument::lists('name','id'),
             'work_flow' => Work_flow::lists('value','id'),
             'assay' => Assay::lists('name',  'id'),
-            'date'=> $dates,
+            'run_date'=> $dates,
             'sampleRun' => SampleRun::lists('run_id', 'sample_id'),
             'projectGroup' => ProjectGroup::lists('name', 'id')
 
@@ -134,17 +134,10 @@ class RunsController extends Controller
 
         $run->updated_at = Carbon::now();
 
-
-
         $run->save();
 
-        return \Redirect::route('runs.create', array($run))->with('message', 'Your list has been created!');
-
-        $input = $request->all();
-
-
-      //  dd($input);
-
+        //return \Redirect::route('runs.create', array($run))->with('message', 'Your list has been created!');
+        return redirect('runs', array($run))->with('message', 'Your list has been created!');
 
     }
 

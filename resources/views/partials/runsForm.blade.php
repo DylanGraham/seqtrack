@@ -60,9 +60,9 @@
         {!! Form::select('project_group_id', $projectGroup, null, ['data-toggle'=>'tooltip','title'=>'Project Group','class'=>'form-control']) !!}
     </span>
 
-    <span class="group @if ($errors->has('date')) has-error @endif">
-        {!! Form::label('date', 'Date', ['data-toggle'=>'tooltip', 'title'=>'Date', 'class'=>'sr-only']) !!}
-        {!! Form::select('date', $date, null, ['data-toggle'=>'tooltip','title'=>'Date','class'=>'form-control']) !!}
+    <span class="group @if ($errors->has('run_date')) has-error @endif">
+        {!! Form::label('run_date', 'Date', ['data-toggle'=>'tooltip', 'title'=>'Date', 'class'=>'sr-only']) !!}
+        {!! Form::select('run_date', $run_date, null, ['data-toggle'=>'tooltip','title'=>'Date','class'=>'form-control']) !!}
     </span>
 
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
