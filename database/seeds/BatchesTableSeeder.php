@@ -13,7 +13,6 @@ class BatchesTableSeeder extends Seeder
     public function run()
     {
         DB::table("batches")->insert([
-            "date"          =>  Carbon::today(),
             "user_id"       =>  "1",
             "batch_name"    =>  "Historical",
             "concentration" =>  "0.0",
