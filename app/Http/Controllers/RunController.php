@@ -73,14 +73,14 @@ class RunController extends Controller
 
         return view('runs.create', [
 
-            'adaptor' => Adaptor::lists('value', 'default', 'id'),
-            'iem_file_version' => Iem_file_version::lists('file_version', 'default', 'id'),
-            'application' => Application::lists('application', 'default', 'id'),
-            'chemistry' => Chemistry::lists('chemistry', 'default', 'id'),
-            'run_status' => Run_status::lists('status', 'default', 'id'),
+            'adaptor' => Adaptor::lists('value',  'id'),
+            'iem_file_version' => Iem_file_version::lists('file_version', 'id'),
+            'application' => Application::lists('application', 'id'),
+            'chemistry' => Chemistry::lists('chemistry',  'id'),
+            'run_status' => Run_status::lists('status',  'id'),
             'instrument' => Instrument::lists('name','id'),
-            'work_flow' => Work_flow::lists('value','id','default'),
-            'assay' => Assay::lists('name', 'default', 'id'),
+            'work_flow' => Work_flow::lists('value','id'),
+            'assay' => Assay::lists('name',  'id'),
             'date'=> $dates,
             'sampleRun' => SampleRun::lists('run_id', 'sample_id'),
             'projectGroup' => ProjectGroup::lists('name', 'id')
