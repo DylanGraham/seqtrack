@@ -38,8 +38,6 @@ class SamplesController extends Controller
         return view('samples.index', ['samples' => $samples]);
     }
 
-
-
     public function create()
     {
         $iSet = IndexSet::lists('name', 'id');

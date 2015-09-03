@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <h1><a href='/'>SeqTrack</a> - Samples</h1>
+    <h1><a href='/'>SeqTrack</a> - Recent samples</h1>
     <hr/>    
     <table class="table table-striped">
     <thead>
