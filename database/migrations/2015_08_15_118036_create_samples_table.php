@@ -15,7 +15,6 @@ class CreateSamplesTable extends Migration
         Schema::create('samples', function (Blueprint $table) {
 
             $table->integer('batch_id')->unsigned();
-            $table->integer('project_group_id')->unsigned();
 
             $table->increments('id');
             $table->string('sample_id',120);
@@ -29,7 +28,7 @@ class CreateSamplesTable extends Migration
             $table->integer('runs_remaining');
             $table->integer('instrument_lane');
 
-            $table->foreign('project_group_id')->references('id')->on('project_group');
+
             $table->foreign('batch_id')->references('id')->on('batches');
 
             $table->foreign('i7_index_id')->references('id')->on('i7_index');

@@ -38,7 +38,10 @@ class RunsController extends Controller
      */
     public function index()
     {
-        return "runs index";
+        // Show 10 latest samples
+        $runs = Run::orderBy('created_at', 'DESC')->take(10)->get();
+
+        return view('run.index', ['samples' => $runs]);
     }
 
     // Restrict access to authenticated users
@@ -137,7 +140,7 @@ class RunsController extends Controller
         $run->save();
 
         //return \Redirect::route('runs.create', array($run))->with('message', 'Your list has been created!');
-        return redirect('runs', array($run))->with('message', 'Your list has been created!');
+        return redirect('runs/index');
 
     }
 
@@ -149,7 +152,11 @@ class RunsController extends Controller
      */
     public function show($id)
     {
-        return view('runs.show', compact('runs'));
+        // Show 10 latest samples
+        $runs = Run::orderBy('created_at', 'DESC')->take(10)->get();
+
+
+        return view('runs.index', ['runs' => $runs]);
     }
 
     /**

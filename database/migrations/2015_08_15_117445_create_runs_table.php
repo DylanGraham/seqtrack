@@ -17,7 +17,7 @@ class CreateRunsTable extends Migration
             $table->integer('project_group_id')->unsigned();
             $table->integer('users_id')->unsigned();
             $table->integer('instrument_id')->unsigned();
-            $table->integer('iem_file_version')->unsigned();
+            $table->integer('iem_file_version_id')->unsigned();
 
             $table->string('experiment_name', 120);
             $table->date('run_date');
