@@ -29,11 +29,10 @@
         {!! Form::label('charge_code', 'charge_code', ['class'=>'sr-only']) !!}
         {!! Form::text('charge_code', null, ['data-toggle'=>'tooltip', 'title'=>'Charge code','class'=>'form-control', 'placeholder'=>'Charge code']) !!}
     </span>
-    <span class="group @if ($errors->has('sample_id')) has-error @endif">
-        {!! Form::label('project_group_idproject_group_id', 'project_group_id', ['class'=>'sr-only']) !!}
+    <span class="group @if ($errors->has('project_group_id')) has-error @endif">
+        {!! Form::label('project_group_id', 'project_group_id', ['class'=>'sr-only']) !!}
         {!! Form::select('project_group_id', $pg, null, ['data-toggle'=>'tooltip', 'title'=>'Project group','class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
      </span>
-
 
     <hr/>
     <h4>Sample</h4>
