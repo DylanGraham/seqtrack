@@ -8,6 +8,13 @@ use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
+
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('index');

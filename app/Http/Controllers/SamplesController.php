@@ -27,15 +27,16 @@ class SamplesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('super', ['except' => ['index', 'create', 'store', 'show']]);
     }
 
     public function index()
     {
-        $samples = Sample::all();
+        // Show 10 latest samples
+        $samples = Sample::orderBy('created_at', 'DESC')->take(10)->get();
+
         return view('samples.index', ['samples' => $samples]);
     }
-
-
 
     public function create()
     {
@@ -54,17 +55,9 @@ class SamplesController extends Controller
     {
         $input = $request->all();
 
-
-        dd($input);
-
-        // Dummy data to satisfy NOT NULL constraints
-        $input['batch_id'] = 1;
-
-
         // Check input here
 
-        // TODO: Add new batch then add sample to the batch
-        $batch = new Batch();
+        $batch = new Batch($input);
         $sample = new Sample($input);
 
         // Add the authenticated user as the sample creator
@@ -84,7 +77,18 @@ class SamplesController extends Controller
 
     public function edit(Sample $sample)
     {
-        return view('samples.edit', compact('sample'));
+        $iSet = IndexSet::lists('name', 'id');
+        $iAll = IndexSet::all();
+        $pg = ProjectGroup::lists('name', 'id');
+
+        return view('samples.edit', [
+            'iSet'  => $iSet,
+            'iAll'  => $iAll,
+            'pg'    => $pg,
+            'sample'=> $sample,
+        ]);
+
+//        return view('samples.edit', compact('sample'));
     }
 
     public function update(Sample $sample, SampleRequest $request)

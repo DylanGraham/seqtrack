@@ -20,6 +20,7 @@ class BatchesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+//        $this->middleware('super' ['except' => ['index', '' ]]);
     }
 
     public function index()
@@ -31,7 +32,6 @@ class BatchesController extends Controller
     // Restrict access to super users
     public function create()
     {
-        $this->middleware('super');
         return view('batches.create');
     }
 

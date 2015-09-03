@@ -26,7 +26,7 @@ class RealTest extends TestCase
             ->see('Samples');
     }
 
-    public function test_samples_page_form()
+/*    public function test_samples_page_form()
     {
         $this->visit('/samples/create')
             ->type('PASTURE', 'basc_group_id')
@@ -35,6 +35,6 @@ class RealTest extends TestCase
             ->type('GGCTCTGA', 'i5_index_id')
             ->press('submit')
             ->seePageIs('/samples');
-    }
+    }*/
 
 }

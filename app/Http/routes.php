@@ -12,7 +12,7 @@
 Route::get('/', 'PageController@index');
 Route::resource('samples', 'SamplesController');
 Route::resource('batches', 'BatchesController');
-Route::resource('runs', 'RunController');
+Route::resource('runs', 'RunsController');
 
 // To close registrations
 //Route::get('/auth/register', 'PageController@closed');
