@@ -1,5 +1,5 @@
 <div class="form-group">
-    <h4>Run</h4>
+    <h4>Create run</h4>
     <span class="group @if ($errors->has('experiment_name')) has-error @endif">
        {!! Form::label('experiment_name', 'Experiment Name', ['class'=>'sr-only']) !!}
        {!! Form::text('experiment_name', null, ['data-toggle'=>'tooltip', 'title'=>'Experiment Name', 'class'=>'form-control', 'placeholder'=>'Experiment Name']) !!}

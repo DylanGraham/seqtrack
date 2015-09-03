@@ -55,16 +55,12 @@ class SamplesController extends Controller
     {
         $input = $request->all();
 
+        // Dummy batch_id until removed from DB
+        $input->batch_id = 1;
+
         // Check input here
 
-        $batch = new Batch($input);
         $sample = new Sample($input);
-
-        // Add the authenticated user as the sample creator
-        //\Auth::user()->samples()->save($sample);
-        // Should it now be this as user is stored in batch?
-        \Auth::user()->batches()->save($batch);
-
         $sample->save();
 
         return redirect('samples');

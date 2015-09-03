@@ -2,9 +2,9 @@
 @section('content')
     <a href='/'>@include('partials.logo')</a> 
 
-    {!! Form::open(['url'=>'samples', 'class'=>'form-inline']) !!}
+    {!! Form::open(['url'=>'batches', 'class'=>'form-inline']) !!}
 
-    @include('partials.sample', ['submitButtonText'=>'Submit'])
+    @include('partials.batch', ['submitButtonText'=>'Submit'])
 
     {!! Form::close() !!}
 
@@ -12,8 +12,5 @@
 
 @endsection
 
-{{-- var_dump(old()) --}}
-
 @section('footer')
-    @include('partials.js')
 @endsection

@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Sample extends Model
 {
     protected $fillable = [
-        'basc_group_id',
-        'sample_id',
         'batch_id',
+        'project_group_id',
+        'sample_id',
+        'plate',
+        'well',
         'i7_index_id',
         'i5_index_id',
+        'description',
+        'runs_remaining',
+        'instrument_lane',
     ];
 
     /**
