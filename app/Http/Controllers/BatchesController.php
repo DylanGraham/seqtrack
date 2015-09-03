@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-//use App\Http\Requests\BatchesRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\BatchesRequest;
 use App\Http\Controllers\Controller;
 use App\Batch;
-use Illuminate\Http\Request;
+use App\ProjectGroup;
 
 class BatchesController extends Controller
 {
@@ -29,10 +30,13 @@ class BatchesController extends Controller
         return view('batches.index')->with('batches', $batches);
     }
 
-    // Restrict access to super users
     public function create()
     {
-        return view('batches.create');
+        $pg = ProjectGroup::lists('name', 'id');
+
+        return view('batches.create', [
+            'pg'    => $pg,
+        ]);
     }
 
 // Removed until BatchesRequest validation is created

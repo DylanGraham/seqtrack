@@ -8,6 +8,16 @@ class Batch extends Model
 {
     protected $table = 'batches';
 
+    protected $fillable = [
+        'batch_name',
+        'concentration',
+        'volume',
+        'tube_bar_code',
+        'tube_location',
+        'tape_station_length',
+        'charge_code',    
+    ];
+
     /**
      * A batch is owned by a user
      */
