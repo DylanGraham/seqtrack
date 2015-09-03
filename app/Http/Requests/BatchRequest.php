@@ -32,6 +32,8 @@ class BatchRequest extends Request
 
             'batch_name' => array('required' , 'regex:/^[\_a-zA-Z0-9]{1,60}$/' , 'max:60', 'unique:batches,batch_name'),
 
+            'project_group_id' => array( 'required', 'exists:project_group,id'),
+
             'concentration' => array('numeric', 'between:1,200', 'regex:/^[\d]{1,3}[.\d]{0,1}$/'),
 
             'volume' => array('numeric', 'between:1,10000', 'regex:/^[\d]{1,5}[.\d]{0,1}$/'),
