@@ -33,7 +33,7 @@
         <td>{{ $run->read2}}</td>
         <td>{{ $run->description}}</td>
         <td>{{ $run->flow_cell}}</td>
-        <td>{{ $run->date}}</td>
+        <td>{{ $run->run_date}}</td>
         <td>{{ $run->run_status->status}}</td>
         <td>{{ $run->adaptor->value}}</td>
         <td>{{ $run->chemistry->chemistry}}</td>
