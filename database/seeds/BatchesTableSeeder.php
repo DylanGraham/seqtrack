@@ -15,6 +15,7 @@ class BatchesTableSeeder extends Seeder
         DB::table("batches")->insert([
             "user_id"       =>  "1",
             "batch_name"    =>  "Historical",
+            "project_group_id" =>  "1",
             "concentration" =>  "0.0",
             "volume"        =>  "0.0",
             "tube_bar_code" =>  "x",
