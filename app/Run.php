@@ -9,7 +9,7 @@ class Run extends Model
     /**
      * A Runs belongs to a Adaptor
      */
-    public function adaptors()
+    public function adaptor()
     {
         return $this->belongsTo('App\Adaptor');
     }
@@ -17,14 +17,14 @@ class Run extends Model
     /**
      * A Runs belongs to a Applications
      */
-    public function applications()
+    public function application()
     {
         return $this->belongsTo('App\Application');
     }
 
     /**
      * A Runs belongs to a Assays
-     */    public function assays()
+     */    public function assay()
     {
         return $this->belongsTo('App\Assay');
     }
@@ -40,7 +40,7 @@ class Run extends Model
     /**
      * A Runs belongs to a Iem_file_version
      */
-    public function iem_file_versions()
+    public function iem_file_version()
     {
         return $this->belongsTo('App\Iem_file_version');
     }
@@ -48,7 +48,7 @@ class Run extends Model
     /**
      * A Runs belongs to a Instrument
      */
-    public function instruments()
+    public function instrument()
     {
         return $this->belongsTo('App\Instrument');
     }
@@ -64,7 +64,7 @@ class Run extends Model
     /**
      * A Runs belongs to a work_flow
      */
-    public function work_flows()
+    public function work_flow()
     {
         return $this->belongsTo('App\Work_flow');
     }
@@ -80,7 +80,7 @@ class Run extends Model
     /**
      * A Runs belongs to a Project Group
      */
-    public function project_groups()
+    public function project_group()
     {
         return $this->belongsTo('App\ProjectGroup');
     }

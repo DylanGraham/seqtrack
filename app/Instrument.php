@@ -21,7 +21,7 @@ class Instrument extends Model
 
      */
 
-    public function runs()
+    public function run()
     {
         return $this->hasMany('App\Run');
     }
