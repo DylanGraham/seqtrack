@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
     <a href='/'>@include('partials.logo')</a> 
-    <hr/>
 
     {!! Form::open(['url'=>'batches', 'class'=>'form-inline']) !!}
 

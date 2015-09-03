@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
-    <h1><a href='/'>SeqTrack</a> - Enter runs</h1>
-    <hr/>
+    <a href='/'>@include('partials.logo')</a>
 
     {!! Form::open(['url'=>'runs', 'class'=>'form-inline']) !!}
        @include('partials.runsForm', ['submitButtonText'=>'Submit'])

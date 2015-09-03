@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <a href='/'>@include('partials.logo')</a> 
-    <hr/>    
+    <h4>Batches</h4>
     <table class="table table-striped">
     <thead>
         <tr>

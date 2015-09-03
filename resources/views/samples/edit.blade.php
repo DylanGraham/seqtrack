@@ -1,7 +1,8 @@
 @extends('app')
 @section('content')
-    <h1><a href='/'>SeqTrack</a> - Edit sample - {{ $sample->sample_id }}</h1>
-    <hr/>
+    <a href='/'>@include('partials.logo')</a> 
+
+     {{ $sample->sample_id }}</h1>
 
     {!! Form::model($sample, ['method'=>'PATCH', 'action'=>['SamplesController@update', $sample->id], 'class'=>'form-inline']) !!}
 

@@ -1,5 +1,5 @@
 <div class="form-group">
-    <h4>Enter Sample</h4>
+    <h4>Create sample</h4>
 
     <span class="group @if ($errors->has('sample_id')) has-error @endif">
         {!! Form::label('sample_id', 'sample_id', ['class'=>'sr-only']) !!}
