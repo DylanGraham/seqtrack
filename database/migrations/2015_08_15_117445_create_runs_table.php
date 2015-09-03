@@ -44,7 +44,7 @@ class CreateRunsTable extends Migration
             $table->foreign('chemistry_id')->references('id')->on('chemistry');
             $table->foreign('adaptor_id')->references('id')->on('adaptor');
             $table->foreign('run_status_id')->references('id')->on('run_status');
-            $table->foreign('iem_file_version')->references('id')->on('iem_file_version');
+            $table->foreign('iem_file_version_id')->references('id')->on('iem_file_version');
             $table->timestamps();
         });
 

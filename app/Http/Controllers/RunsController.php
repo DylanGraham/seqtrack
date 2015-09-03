@@ -41,7 +41,7 @@ class RunsController extends Controller
         // Show 10 latest samples
         $runs = Run::orderBy('created_at', 'DESC')->take(10)->get();
 
-        return view('run.index', ['samples' => $runs]);
+        return view('runs.index', ['runs' => $runs]);
     }
 
     // Restrict access to authenticated users
@@ -152,11 +152,7 @@ class RunsController extends Controller
      */
     public function show($id)
     {
-        // Show 10 latest samples
-        $runs = Run::orderBy('created_at', 'DESC')->take(10)->get();
-
-
-        return view('runs.index', ['runs' => $runs]);
+        return 'show page';
     }
 
     /**
