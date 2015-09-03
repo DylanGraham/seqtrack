@@ -24,12 +24,17 @@ use App\Run;
 class RunsController extends Controller
 {
 
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /*
     *  For custom error messages see "resources/lang/en/validation.php"
     *
     *  For validation see "Http/Requests/RunRequest.php"
     */
-
 
     /**
      * Display a listing of Runs.
@@ -42,12 +47,6 @@ class RunsController extends Controller
         $runs = Run::orderBy('created_at', 'DESC')->take(10)->get();
 
         return view('runs.index', ['runs' => $runs]);
-    }
-
-    // Restrict access to authenticated users
-    public function __construct()
-    {
-        $this->middleware('auth');
     }
 
     /**
@@ -119,7 +118,7 @@ class RunsController extends Controller
         $run->users_id = $id;
         $run->application_id = $request->get('application_id');
         $run->instrument_id = $request->get('instrument_id');
-        $run->iem_file_version = $request->get('iem_file_version_id');
+        $run->iem_file_version_id = $request->get('iem_file_version_id');
         $run->experiment_name = $request->get('experiment_name');
         $run->work_flow_id = $request->get('work_flow_id');
         $run->assay_id = $request->get('assay_id');
@@ -128,7 +127,7 @@ class RunsController extends Controller
         $run->read1 = $request->get('read1');
         $run->read2 = $request->get('read2');
         $run->single_double = 1;
-        $run->date = Carbon::now()->addDays($request->get('date'));
+        $run->run_date = Carbon::now()->addDays($request->get('run_date'));
       //  $run->single_double = $request->get('single_double');
         $run->flow_cell = $request->get('flow_cell');
         $run->adaptor_id = $request->get('adaptor_id');
