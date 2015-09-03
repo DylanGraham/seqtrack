@@ -30,10 +30,27 @@ class Sample extends Model
     /**
      * A sample belongs to a batch
      */
-    public function batches()
+    public function batch()
     {
         return $this->belongsTo('App\Batch');
     }
+
+    /**
+     * A sample belongs to a i7 Index
+     */
+    public function i7_index()
+    {
+        return $this->belongsTo('App\I7Index');
+    }
+
+    /**
+     * A sample belongs to a i5 Index
+     */
+    public function i5_index()
+    {
+        return $this->belongsTo('App\I5Index');
+    }
+
 
     /**
      * A Sample can have many SampleRun.

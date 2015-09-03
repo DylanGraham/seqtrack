@@ -55,12 +55,17 @@ class SamplesController extends Controller
     {
         $input = $request->all();
 
-        // Dummy batch_id until removed from DB
-        $input->batch_id = 1;
-
-        // Check input here
+          // Check input here
 
         $sample = new Sample($input);
+
+        // Dummy batch_id until removed from DB
+        $sample->batch_id = 2;
+
+        // i5_index_id returned as name from form if null
+        if ($sample->i5_index_id == 'name')
+            $sample->i5_index_id = null;
+
         $sample->save();
 
         return redirect('samples');
