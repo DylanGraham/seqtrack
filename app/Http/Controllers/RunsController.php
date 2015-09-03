@@ -140,7 +140,7 @@ class RunsController extends Controller
         $run->save();
 
         //return \Redirect::route('runs.create', array($run))->with('message', 'Your list has been created!');
-        return redirect('runs', array($run))->with('message', 'Your list has been created!');
+        return redirect('runs/index');
 
     }
 
