@@ -12,7 +12,7 @@
 
 @endsection
 
-{{-- var_dump(old()) --}}
+{{ var_dump(old()) }}
 
 @section('footer')
     @include('partials.js')

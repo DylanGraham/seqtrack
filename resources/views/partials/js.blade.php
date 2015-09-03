@@ -12,7 +12,9 @@ $(function() {
         @endforeach
     }
 
-    i7Init();
+    @if (! old())
+        i7Init();
+    @endif
 
     setID.change(function() {
         i7ID.empty();
