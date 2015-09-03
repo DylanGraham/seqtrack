@@ -29,9 +29,9 @@
         {!! Form::label('description', 'description', ['class'=>'sr-only']) !!}
         {!! Form::text('description', null, ['data-toggle'=>'tooltip', 'title'=>'Description','class'=>'form-control', 'placeholder'=>'Description']) !!}
     </span>
-    <span class="group @if ($errors->has('runs')) has-error @endif">
-        {!! Form::label('runs', 'runs', ['class'=>'sr-only']) !!}
-        {!! Form::number('runs', null, ['data-toggle'=>'tooltip', 'title'=>'Runs','class'=>'form-control', 'placeholder'=>'Runs']) !!}
+    <span class="group @if ($errors->has('runs_remaining')) has-error @endif">
+        {!! Form::label('runs_remaining', 'Runs_remaining', ['class'=>'sr-only']) !!}
+        {!! Form::number('runs_remaining', null, ['data-toggle'=>'tooltip', 'title'=>'Runs','class'=>'form-control', 'placeholder'=>'Runs']) !!}
     </span>
     <span class="group @if ($errors->has('instrument_lane')) has-error @endif">
         {!! Form::label('instrument_lane', 'instrument_lane', ['class'=>'sr-only']) !!}

@@ -14,4 +14,12 @@ class I5Index extends Model
         return $this->belongsTo('App\IndexSet');
     }
 
+    /**
+     * A I5 Index can have many Sample.
+     */
+    public function sample()
+    {
+        return $this->hasMany('App\Sample');
+    }
+
 }

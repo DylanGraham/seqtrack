@@ -151,7 +151,11 @@ class RunsController extends Controller
      */
     public function show($id)
     {
-        return 'show page';
+        // Show 10 latest samples
+        $runs = Run::orderBy('created_at', 'DESC')->take(10)->get();
+
+
+        return view('runs.index', ['runs' => $runs]);
     }
 
     /**
