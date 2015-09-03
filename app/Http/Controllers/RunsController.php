@@ -24,12 +24,17 @@ use App\Run;
 class RunsController extends Controller
 {
 
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /*
     *  For custom error messages see "resources/lang/en/validation.php"
     *
     *  For validation see "Http/Requests/RunRequest.php"
     */
-
 
     /**
      * Display a listing of Runs.
@@ -42,12 +47,6 @@ class RunsController extends Controller
         $runs = Run::orderBy('created_at', 'DESC')->take(10)->get();
 
         return view('runs.index', ['runs' => $runs]);
-    }
-
-    // Restrict access to authenticated users
-    public function __construct()
-    {
-        $this->middleware('auth');
     }
 
     /**
