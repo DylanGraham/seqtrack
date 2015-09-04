@@ -27,11 +27,11 @@
     </span>
     <span class="group @if ($errors->has('charge_code')) has-error @endif">
         {!! Form::label('charge_code', 'charge_code', ['class'=>'sr-only']) !!}
-        {!! Form::text('charge_code', null, ['data-toggle'=>'tooltip', 'title'=>'Charge code','class'=>'form-control', 'placeholder'=>'Charge code']) !!}
+        {!! Form::text('charge_code', $charge, ['data-toggle'=>'tooltip', 'title'=>'Charge code','class'=>'form-control', 'placeholder'=>'Charge code']) !!}
     </span>
     <span class="group @if ($errors->has('project_group_id')) has-error @endif">
         {!! Form::label('project_group_id', 'project_group_id', ['class'=>'sr-only']) !!}
-        {!! Form::select('project_group_id', $pg, null, ['data-toggle'=>'tooltip', 'title'=>'Project group','class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
+        {!! Form::select('project_group_id', $pg, $my_group, ['data-toggle'=>'tooltip', 'title'=>'Project group','class'=>'form-control', 'placeholder'=>'BASC Project']) !!}
      </span>
 
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}

@@ -94,7 +94,6 @@ class RunsController extends Controller
         $default_run_status = DB::table('run_status')->where('default', 1)->first();
 
         return view('runs.create', [
-
             'adaptor' => Adaptor::lists('value',  'id'),
             'iem_file_version' => Iem_file_version::lists('file_version', 'id'),
             'application' => Application::lists('application', 'id'),

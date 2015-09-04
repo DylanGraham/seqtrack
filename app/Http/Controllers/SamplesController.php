@@ -60,8 +60,6 @@ class SamplesController extends Controller
     {
         $input = $request->all();
 
-          // Check input here
-
         $sample = new Sample($input);
 
         // i5_index_id returned as name from form if null

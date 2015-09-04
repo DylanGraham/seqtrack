@@ -90,52 +90,65 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
-
         'charge_code' => [
-            'regex' => 'Charge code must be of pattern XXXX-XXXXX-XX-XXX where X is 0-9'
+            'regex' => 'Charge code must be of pattern XXXX-XXXXX-XX-XXX where X is 0-9',
+            'required' => 'Charge code is required',
         ],
-
         'batch_name' => [
-            'regex' => 'Batch name may only contain _ or a-z or A-Z or 0-9 '
+            'regex' => 'Batch name may only contain _ or a-z or A-Z or 0-9',
+            'required' => 'Batch name is required',
         ],
         'tube_bar_code' => [
-            'regex' => 'Tube Bar code name may only contain A-Z or 0-9'
+            'regex' => 'Tube Bar code name may only contain A-Z or 0-9',
+            'required' => 'Tube bar code is required',
         ],
-
         'sample_id' => [
-            'regex' => 'Sample ID may only contain a-z or A-Z or 0-9'
+            'regex' => 'Sample ID may only contain a-z or A-Z or 0-9',
+            'required' => 'Sample name is required',
         ],
-
         'well' => [
-            'regex' => 'Well may only contain a-z or A-Z or 0-9'
+            'regex' => 'Well may only contain a-z or A-Z or 0-9',
         ],
         'plate' => [
-            'regex' => 'Plate may only contain a-z or A-Z or 0-9'
+            'regex' => 'Plate may only contain a-z or A-Z or 0-9',
         ],
-
         'flow_cell' => [
-            'regex' => 'Flow cell may only contain A-Z or 0-9'
+            'regex' => 'Flow cell may only contain A-Z or 0-9',
+            'required' => 'Flow cell is required',
         ],
-
         'concentration'=> [
-            'regex' => 'Concentration may only have one decimal place'
+            'regex' => 'Concentration may only have one decimal place',
         ],
         'volume'=> [
-            'regex' => 'Volume may only have one decimal place'
+            'regex' => 'Volume may only have one decimal place',
         ],
         'description'=> [
-            'regex' => 'Description may only contain _ or a-z or A-Z or 0-9 '
+            'regex' => 'Description may only contain _ or a-z or A-Z or 0-9',
+            'required' => 'Description is required',
         ],
-
         'tube_location'=> [
-            'regex' => 'Tube location may only contain a-z or A-Z or 0-9 or _ '
+            'regex' => 'Tube location may only contain a-z or A-Z or 0-9 or _',
+            'required' => 'Tube location is required',
         ],
         'experiment_name'=> [
-            'regex' => 'Experiment name may only contain _ or a-z or A-Z or 0-9 '
+            'regex' => 'Experiment name may only contain _ or a-z or A-Z or 0-9',
+            'required' => 'Experiment name is required',
         ],
-
-
-
+        'runs_remaining' => [
+            'required' => 'Runs are required',
+        ],
+        'instrument_lane' => [
+            'required' => 'Instrument lane is required',
+        ],
+        'tape_station_length' => [
+            'required' => 'Tape station length is required',
+        ],
+        'read1' => [
+            'required' => 'Read 1 length is required',
+        ],
+        'project_group_id' => [
+            'required' => 'BASC Project is required',
+        ],
     ],
 
     /*

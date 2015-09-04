@@ -17,6 +17,7 @@ elixir(function(mix) {
 
     mix.styles([
         'bootstrap.min.css',
+        'custom.css',
     ]);
 
     mix.scripts([
