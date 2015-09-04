@@ -15,13 +15,10 @@ class Batch extends Model
         'tube_bar_code',
         'tube_location',
         'tape_station_length',
-<<<<<<< HEAD
         'charge_code',
         'project_group_id'
-=======
-        'charge_code',    
-        'project_group_id',
->>>>>>> 9c5fbc8429aad93f7a558fec375641787fccad5d
+
+
     ];
 
     /**
