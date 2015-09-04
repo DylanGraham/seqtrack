@@ -146,6 +146,9 @@ return [
         'read1' => [
             'required' => 'Read 1 length is required',
         ],
+        'project_group_id' => [
+            'required' => 'BASC Project is required',
+        ],
     ],
 
     /*
