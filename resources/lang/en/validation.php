@@ -92,12 +92,15 @@ return [
         ],
         'charge_code' => [
             'regex' => 'Charge code must be of pattern XXXX-XXXXX-XX-XXX where X is 0-9',
+            'required' => 'Charge code is required',
         ],
         'batch_name' => [
             'regex' => 'Batch name may only contain _ or a-z or A-Z or 0-9',
+            'required' => 'Batch name is required',
         ],
         'tube_bar_code' => [
             'regex' => 'Tube Bar code name may only contain A-Z or 0-9',
+            'required' => 'Tube bar code is required',
         ],
         'sample_id' => [
             'regex' => 'Sample ID may only contain a-z or A-Z or 0-9',
@@ -124,6 +127,7 @@ return [
         ],
         'tube_location'=> [
             'regex' => 'Tube location may only contain a-z or A-Z or 0-9 or _',
+            'required' => 'Tube location is required',
         ],
         'experiment_name'=> [
             'regex' => 'Experiment name may only contain _ or a-z or A-Z or 0-9',
@@ -133,6 +137,9 @@ return [
         ],
         'instrument_lane' => [
             'required' => 'Instrument lane is required',
+        ],
+        'tape_station_length' => [
+            'required' => 'Tape station length is required',
         ],
     ],
 
