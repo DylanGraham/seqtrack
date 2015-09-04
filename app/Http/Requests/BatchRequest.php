@@ -34,9 +34,9 @@ class BatchRequest extends Request
 
             'project_group_id' => array( 'required', 'exists:project_group,id'),
 
-            'concentration' => array('numeric', 'between:1,200', 'regex:/^[\d]{1,3}[.\d]{0,1}$/'),
+            'concentration' => array('numeric', 'between:1,200', 'regex:/^[\d]{1,3}([.][\d]){0,1}$/'),
 
-            'volume' => array('numeric', 'between:1,10000', 'regex:/^[\d]{1,5}[.\d]{0,1}$/'),
+            'volume' => array('numeric', 'between:1,10000', 'regex:/^[\d]{1,5}([.][\d]){0,1}$/'),
 
             'tube_bar_code' => array('required' , 'regex:/^[A-Z0-9]{1,60}$/' , 'max:60'),
 
