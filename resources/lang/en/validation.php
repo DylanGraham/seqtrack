@@ -114,6 +114,7 @@ return [
         ],
         'flow_cell' => [
             'regex' => 'Flow cell may only contain A-Z or 0-9',
+            'required' => 'Flow cell is required',
         ],
         'concentration'=> [
             'regex' => 'Concentration may only have one decimal place',
@@ -131,6 +132,7 @@ return [
         ],
         'experiment_name'=> [
             'regex' => 'Experiment name may only contain _ or a-z or A-Z or 0-9',
+            'required' => 'Experiment name is required',
         ],
         'runs_remaining' => [
             'required' => 'Runs are required',
@@ -140,6 +142,9 @@ return [
         ],
         'tape_station_length' => [
             'required' => 'Tape station length is required',
+        ],
+        'read1' => [
+            'required' => 'Read 1 length is required',
         ],
     ],
 
