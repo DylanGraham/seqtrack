@@ -39,14 +39,11 @@ class BatchesController extends Controller
         ]);
     }
 
-// Removed until BatchesRequest validation is created
-//    public function store(BatchRequest $request)
     public function store(BatchRequest $request)
     {
         $input = $request->all();
 
         // Check input here
-
         $batch = new Batch($input);
         $batch->created_at = Carbon::now();
         $batch->updated_at = Carbon::now();
