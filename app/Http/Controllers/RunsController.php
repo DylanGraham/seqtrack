@@ -86,7 +86,6 @@ class RunsController extends Controller
        // $work_flow = $work_flow->lists();
 
         return view('runs.create', [
-
             'adaptor' => Adaptor::lists('value',  'id'),
             'iem_file_version' => Iem_file_version::lists('file_version', 'id'),
             'application' => Application::lists('application', 'id'),
