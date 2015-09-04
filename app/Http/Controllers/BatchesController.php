@@ -8,7 +8,7 @@ use App\Http\Requests\BatchRequest;
 use App\Http\Controllers\Controller;
 use App\Batch;
 use App\ProjectGroup;
-
+use Carbon\Carbon;
 class BatchesController extends Controller
 {
     /*
@@ -45,6 +45,8 @@ class BatchesController extends Controller
 
         // Check input here
         $batch = new Batch($input);
+        $batch->created_at = Carbon::now();
+        $batch->updated_at = Carbon::now();
 
         // Add the authenticated user as the batch creator
         \Auth::user()->batches()->save($batch);

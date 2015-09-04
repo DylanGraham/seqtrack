@@ -15,8 +15,10 @@ class Batch extends Model
         'tube_bar_code',
         'tube_location',
         'tape_station_length',
-        'charge_code',    
-        'project_group_id',
+        'charge_code',
+        'project_group_id'
+
+
     ];
 
     /**
@@ -33,6 +35,11 @@ class Batch extends Model
     public function samples()
     {
         return $this->hasMany('App\Sample');
+    }
+
+    public function project_group()
+    {
+        return $this->belongsTo('App\ProjectGroup');
     }
 
 }
