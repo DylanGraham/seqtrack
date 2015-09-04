@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Requests\BatchesRequest;
+use App\Http\Requests\BatchRequest;
 use App\Http\Controllers\Controller;
 use App\Batch;
 use App\ProjectGroup;
@@ -39,14 +39,11 @@ class BatchesController extends Controller
         ]);
     }
 
-// Removed until BatchesRequest validation is created
-//    public function store(BatchRequest $request)
     public function store(BatchRequest $request)
     {
         $input = $request->all();
 
         // Check input here
-
         $batch = new Batch($input);
 
         // Add the authenticated user as the batch creator

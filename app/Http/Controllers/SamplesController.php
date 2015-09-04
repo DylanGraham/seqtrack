@@ -12,6 +12,7 @@ use App\IndexSet;
 use App\I7Index;
 use App\I5Index;
 use App\ProjectGroup;
+use Auth;
 
 class SamplesController extends Controller
 {
@@ -43,11 +44,15 @@ class SamplesController extends Controller
         $iSet = IndexSet::lists('name', 'id');
         $iAll = IndexSet::all();
         $pg = ProjectGroup::lists('name', 'id');
-
-        return view('samples.create', [
+        $user = Auth::user();
+        $batches = $user->batches->lists('batch_name', 'id');
+ 
+       return view('samples.create', [
             'iSet'  => $iSet,
             'iAll'  => $iAll,
             'pg'    => $pg,
+            'user'  => $user,
+            'batches' => $batches,
         ]);
     }
 

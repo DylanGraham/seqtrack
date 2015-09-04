@@ -16,6 +16,7 @@ class Batch extends Model
         'tube_location',
         'tape_station_length',
         'charge_code',    
+        'project_group_id',
     ];
 
     /**
