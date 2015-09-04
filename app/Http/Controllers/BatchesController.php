@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Batch;
 use App\ProjectGroup;
 use Carbon\Carbon;
+
 class BatchesController extends Controller
 {
     /*
@@ -33,9 +34,13 @@ class BatchesController extends Controller
     public function create()
     {
         $pg = ProjectGroup::lists('name', 'id');
+        $charge = \Auth::user()->default_charge_code;
+        $my_group = \Auth::user()->default_project_id;
 
         return view('batches.create', [
             'pg'    => $pg,
+            'charge'=> $charge,
+            'my_group' => $my_group,
         ]);
     }
 
