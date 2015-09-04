@@ -7,6 +7,9 @@
     <a href="{!! route('samples.index') !!}">View samples</a><br><br>
     <a href="{!! route('runs.create') !!}">Create run</a><br>
     <a href="{!! route('runs.index') !!}">View runs</a><br>
+    <a href="{!! route('sampleRuns.create') !!}">Add Batches to run</a><br>
+
+
     @include('errors.list')
 
 @endsection

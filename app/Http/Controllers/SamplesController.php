@@ -33,8 +33,8 @@ class SamplesController extends Controller
 
     public function index()
     {
-        // Show 10 latest samples
-        $samples = Sample::orderBy('created_at', 'DESC')->take(10)->get();
+        // Show 60 latest samples
+        $samples = Sample::orderBy('created_at', 'DESC')->take(60)->get();
 
         return view('samples.index', ['samples' => $samples]);
     }

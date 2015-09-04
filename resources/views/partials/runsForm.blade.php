@@ -25,27 +25,27 @@
     </span>
     <span class="group @if ($errors->has('adaptor_id')) has-error @endif">
         {!! Form::label('adaptor_id', 'Adaptor', ['data-toggle'=>'tooltip', 'title'=>'Adaptor', 'class'=>'sr-only']) !!}
-        {!! Form::select('adaptor_id', $adaptor, null, ['data-toggle'=>'tooltip','title'=>'Adaptor','class'=>'form-control']) !!}
+        {!! Form::select('adaptor_id', $adaptor, $default_adaptor_id, ['data-toggle'=>'tooltip','title'=>'Adaptor','class'=>'form-control']) !!}
     </span>
     <span class="group @if ($errors->has('work_flow_id')) has-error @endif">
         {!! Form::label('work_flow_id', 'Work Flow', ['data-toggle'=>'tooltip', 'title'=>'Work Flow', 'class'=>'sr-only']) !!}
-        {!! Form::select('work_flow_id', $work_flow, null, ['data-toggle'=>'tooltip','title'=>'Work Flow','class'=>'form-control']) !!}
+        {!! Form::select('work_flow_id', $work_flow, $default_work_flow_id, ['data-toggle'=>'tooltip','title'=>'Work Flow','class'=>'form-control']) !!}
     </span>
     <span class="group @if ($errors->has('iem_file_version_id')) has-error @endif">
         {!! Form::label('iem_file_version_id', 'IEM file version', ['data-toggle'=>'tooltip', 'title'=>'IEM file version', 'class'=>'sr-only']) !!}
-        {!! Form::select('iem_file_version_id', $iem_file_version, null, ['data-toggle'=>'tooltip','title'=>'IEM file version','class'=>'form-control']) !!}
+        {!! Form::select('iem_file_version_id', $iem_file_version, $default_iem_file_version_id, ['data-toggle'=>'tooltip','title'=>'IEM file version','class'=>'form-control']) !!}
     </span>
     <span class="group @if ($errors->has('application_id')) has-error @endif">
         {!! Form::label('application_id', 'Application', ['data-toggle'=>'tooltip', 'title'=>'Application', 'class'=>'sr-only']) !!}
-        {!! Form::select('application_id', $application, null, ['data-toggle'=>'tooltip','title'=>'Application','class'=>'form-control']) !!}
+        {!! Form::select('application_id', $application, $default_application_id, ['data-toggle'=>'tooltip','title'=>'Application','class'=>'form-control']) !!}
     </span>
     <span class="group @if ($errors->has('chemistry_id')) has-error @endif">
         {!! Form::label('chemistry_id', 'Chemistry', ['data-toggle'=>'tooltip', 'title'=>'Chemistry', 'class'=>'sr-only']) !!}
-        {!! Form::select('chemistry_id', $chemistry, null, ['data-toggle'=>'tooltip','title'=>'Chemistry','class'=>'form-control']) !!}
+        {!! Form::select('chemistry_id', $chemistry, $default_chemistry_id, ['data-toggle'=>'tooltip','title'=>'Chemistry','class'=>'form-control']) !!}
     </span>
     <span class="group @if ($errors->has('run_status_id')) has-error @endif">
         {!! Form::label('run_status_id', 'Run Status', ['data-toggle'=>'tooltip', 'title'=>'Run Status', 'class'=>'sr-only']) !!}
-        {!! Form::select('run_status_id', $run_status, 'default', ['data-toggle'=>'tooltip','title'=>'Run Status','class'=>'form-control']) !!}
+        {!! Form::select('run_status_id', $run_status, $default_run_status_id, ['data-toggle'=>'tooltip','title'=>'Run Status','class'=>'form-control']) !!}
     </span>
     <span class="group @if ($errors->has('instrument_id')) has-error @endif">
         {!! Form::label('instrument_id', 'Instrument', ['data-toggle'=>'tooltip', 'title'=>'Instrument', 'class'=>'sr-only']) !!}
@@ -53,7 +53,7 @@
     </span>
     <span class="group @if ($errors->has('assay_id')) has-error @endif">
         {!! Form::label('assay_id', 'Assay', ['data-toggle'=>'tooltip', 'title'=>'Assay', 'class'=>'sr-only']) !!}
-        {!! Form::select('assay_id', $assay, null, ['data-toggle'=>'tooltip','title'=>'Assay','class'=>'form-control']) !!}
+        {!! Form::select('assay_id', $assay, $default_assay_id, ['data-toggle'=>'tooltip','title'=>'Assay','class'=>'form-control']) !!}
     </span>
     <span class="group @if ($errors->has('project_group_id')) has-error @endif">
         {!! Form::label('project_group_id', 'Project Group', ['data-toggle'=>'tooltip', 'title'=>'Project Group', 'class'=>'sr-only']) !!}
