@@ -17,7 +17,7 @@ $(function() {
                  i7ID.append("<option @if (old('i7_index_id')==$x['id'])' selected ' @endif value={{ $x['id'] }}>{{ $x['index'] }} {{ $x['sequence'] }}</option>");
             @endforeach
 
-            
+
             @if (count($iAll->find(old('index_set'))->I5Indexes) > 0)
                 i5ID.show();
 
