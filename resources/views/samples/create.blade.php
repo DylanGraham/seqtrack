@@ -7,11 +7,12 @@
     <br><br>
     Select a batch to add samples to:
 
+    {!! Form::open(['url'=>'batches', 'class'=>'form-inline']) !!}
+
     @include('partials.batchSelect')
+    or <a href="{!! route('batches.create') !!}">create a new batch</a>
     
     <hr/>
-
-    {!! Form::open(['url'=>'samples', 'class'=>'form-inline']) !!}
 
     @include('partials.sample', ['submitButtonText'=>'Submit'])
 
@@ -20,7 +21,7 @@
 @else
 
     <br><br>
-    Please <a href="{!! route('batches.create') !!}">Create a batch</a> before
+    Please <a href="{!! route('batches.create') !!}">create a batch</a> before
     adding samples.
 
 @endif
