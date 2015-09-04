@@ -64,9 +64,6 @@ class SamplesController extends Controller
 
         $sample = new Sample($input);
 
-        // Dummy batch_id until removed from DB
-        $sample->batch_id = 2;
-
         // i5_index_id returned as name from form if null
         if ($sample->i5_index_id == 'name')
             $sample->i5_index_id = null;
