@@ -37,12 +37,11 @@ class sampleRunController extends Controller
     {
         $runs = Run::lists('description', 'id');
 
-        $batches = DB::table('batches')
-                    ->join('samples', function ($join) {
-                        $join->on('batches.id','=', 'samples.batch_id');
-                    })
-                    ->where('samples.runs_remaining', '>', 0)
-                    ->get();
+        $batches = Batch::whereHas('samples', function($query)
+        {
+            $query->where('runs_remaining' ,'>', 0);
+        })->get();
+
 
         return view('sampleRuns.create',[
 
@@ -81,40 +80,46 @@ class sampleRunController extends Controller
     public function batchesRunsRemaining()
     {
 
-        $runs = Run::lists('description', 'id');
+//        $batches = DB::table('batches')
+//            ->select('batches.id','batches.batch_name', DB::raw('COUNT(*) as num_samples'), DB::raw('MAX(samples.runs_remaining) as max_runs'),'users.name')
+//            ->join('samples', function ($join) {
+//                $join->on('batches.id','=', 'samples.batch_id');
+//            })
+//            ->join('users', function ($join) {
+//                $join->on('users.id','=', 'batches.user_id');
+//            })
+//            ->where('samples.runs_remaining', '>', 0)
+//            ->groupBy('batches.id')
+//            ->get();
 
-        $batches = DB::table('batches')
-            ->select('batches.id','batches.batch_name', DB::raw('COUNT(*) as num_samples'), DB::raw('MAX(samples.runs_remaining) as max_runs'))
-            ->join('samples', function ($join) {
-                $join->on('batches.id','=', 'samples.batch_id');
-            })
-            ->where('samples.runs_remaining', '>', 0)
-            ->groupBy('batches.id')
-            ->get();
+        $batches = Batch::whereHas('samples', function($query)
+        {
+            $query->where('runs_remaining' ,'>', 0);
+        })->get();
 
 
 
         return view('sampleRuns.batchesRunsRemaining',[
 
-            'runs' =>$runs,
             'batches' => $batches
         ]);
     }
 
     public function samplesRunsRemaining()
     {
-        $runs = Run::lists('description', 'id');
 
         $batches = DB::table('batches')
             ->join('samples', function ($join) {
                 $join->on('batches.id','=', 'samples.batch_id');
             })
+            ->join('users', function ($join) {
+                $join->on('users.id','=', 'batches.user_id');
+            })
             ->where('samples.runs_remaining', '>', 0)
             ->get();
 
-        return view('sampleRuns.create',[
+        return view('sampleRuns.samplesRunsRemaining',[
 
-            'runs' =>$runs,
             'batches' => $batches
         ]);
     }
