@@ -11,6 +11,7 @@ use App\Run;
 use App\Sample;
 use App\ProjectGroup;
 use Carbon\Carbon;
+use DB;
 class sampleRunController extends Controller
 {
     /*
@@ -36,7 +37,12 @@ class sampleRunController extends Controller
     {
         $runs = Run::lists('description', 'id');
 
-        $batches = Batch::all();
+        $batches = DB::table('batches')
+                    ->join('samples', function ($join) {
+                        $join->on('batches.id','=', 'samples.batch_id');
+                    })
+                    ->where('samples.runs_remaining', '>', 0)
+                    ->get();
 
         return view('sampleRuns.create',[
 
@@ -70,5 +76,46 @@ class sampleRunController extends Controller
     {
 
         return "Todo sample run update";
+    }
+
+    public function batchesRunsRemaining()
+    {
+
+        $runs = Run::lists('description', 'id');
+
+        $batches = DB::table('batches')
+            ->select('batches.id','batches.batch_name', DB::raw('COUNT(*) as num_samples'), DB::raw('MAX(samples.runs_remaining) as max_runs'))
+            ->join('samples', function ($join) {
+                $join->on('batches.id','=', 'samples.batch_id');
+            })
+            ->where('samples.runs_remaining', '>', 0)
+            ->groupBy('batches.id')
+            ->get();
+
+
+
+        return view('sampleRuns.batchesRunsRemaining',[
+
+            'runs' =>$runs,
+            'batches' => $batches
+        ]);
+    }
+
+    public function samplesRunsRemaining()
+    {
+        $runs = Run::lists('description', 'id');
+
+        $batches = DB::table('batches')
+            ->join('samples', function ($join) {
+                $join->on('batches.id','=', 'samples.batch_id');
+            })
+            ->where('samples.runs_remaining', '>', 0)
+            ->get();
+
+        return view('sampleRuns.create',[
+
+            'runs' =>$runs,
+            'batches' => $batches
+        ]);
     }
 }
