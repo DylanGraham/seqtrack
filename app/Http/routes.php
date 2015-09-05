@@ -14,6 +14,11 @@ Route::resource('samples', 'SamplesController');
 Route::resource('batches', 'BatchesController');
 Route::resource('runs', 'RunsController');
 Route::resource('sampleRuns', 'SampleRunController');
+Route::get('/batchesRunsRemaining', 'SampleRunController@batchesRunsRemaining');
+Route::get('/samplesRunsRemaining', 'SampleRunController@samplesRunsRemaining');
+
+
+
 
 // To close registrations
 //Route::get('/auth/register', 'PageController@closed');

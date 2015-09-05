@@ -11,6 +11,7 @@ use App\Run;
 use App\Sample;
 use App\ProjectGroup;
 use Carbon\Carbon;
+use DB;
 class sampleRunController extends Controller
 {
     /*
@@ -36,7 +37,11 @@ class sampleRunController extends Controller
     {
         $runs = Run::lists('description', 'id');
 
-        $batches = Batch::all();
+        $batches = Batch::whereHas('samples', function($query)
+        {
+            $query->where('runs_remaining' ,'>', 0);
+        })->get();
+
 
         return view('sampleRuns.create',[
 
@@ -70,5 +75,52 @@ class sampleRunController extends Controller
     {
 
         return "Todo sample run update";
+    }
+
+    public function batchesRunsRemaining()
+    {
+
+//        $batches = DB::table('batches')
+//            ->select('batches.id','batches.batch_name', DB::raw('COUNT(*) as num_samples'), DB::raw('MAX(samples.runs_remaining) as max_runs'),'users.name')
+//            ->join('samples', function ($join) {
+//                $join->on('batches.id','=', 'samples.batch_id');
+//            })
+//            ->join('users', function ($join) {
+//                $join->on('users.id','=', 'batches.user_id');
+//            })
+//            ->where('samples.runs_remaining', '>', 0)
+//            ->groupBy('batches.id')
+//            ->get();
+
+        $batches = Batch::whereHas('samples', function($query)
+        {
+            $query->where('runs_remaining' ,'>', 0);
+        })->get();
+
+
+
+        return view('sampleRuns.batchesRunsRemaining',[
+
+            'batches' => $batches
+        ]);
+    }
+
+    public function samplesRunsRemaining()
+    {
+
+        $batches = DB::table('batches')
+            ->join('samples', function ($join) {
+                $join->on('batches.id','=', 'samples.batch_id');
+            })
+            ->join('users', function ($join) {
+                $join->on('users.id','=', 'batches.user_id');
+            })
+            ->where('samples.runs_remaining', '>', 0)
+            ->get();
+
+        return view('sampleRuns.samplesRunsRemaining',[
+
+            'batches' => $batches
+        ]);
     }
 }

@@ -10,6 +10,11 @@
     <a href="{!! route('sampleRuns.create') !!}">Add Batches to run</a><br>
 
 
+<h2>Temporary pages</h2>
+<a href="./batchesRunsRemaining" >View batches with runs remaining</a><br>
+<a href="./samplesRunsRemaining" >View samples with runs remaining</a><br>
+
+
     @include('errors.list')
 
 @endsection
