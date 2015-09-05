@@ -85,6 +85,14 @@ class RunsController extends Controller
       //  $work_flow = DB::table('work_flow')->select('value','id')->orderBy('default');
        // $work_flow = $work_flow->lists();
 
+        $default_chemistry = DB::table('chemistry')->where('default', 1)->first();
+        $default_adaptor = DB::table('adaptor')->where('default', 1)->first();
+        $default_iem_file_version = DB::table('iem_file_version')->where('default', 1)->first();
+        $default_application = DB::table('application')->where('default', 1)->first();
+        $default_assay = DB::table('assay')->where('default', 1)->first();
+        $default_work_flow = DB::table('work_flow')->where('default', 1)->first();
+        $default_run_status = DB::table('run_status')->where('default', 1)->first();
+
         return view('runs.create', [
             'adaptor' => Adaptor::lists('value',  'id'),
             'iem_file_version' => Iem_file_version::lists('file_version', 'id'),
@@ -96,7 +104,15 @@ class RunsController extends Controller
             'assay' => Assay::lists('name',  'id'),
             'run_date'=> $dates,
             'sampleRun' => SampleRun::lists('run_id', 'sample_id'),
-            'projectGroup' => ProjectGroup::lists('name', 'id')
+            'projectGroup' => ProjectGroup::lists('name', 'id'),
+
+            'default_chemistry_id' => $default_chemistry->id,
+            'default_adaptor_id' => $default_adaptor->id,
+            'default_iem_file_version_id' => $default_iem_file_version->id,
+            'default_application_id' => $default_application->id,
+            'default_assay_id' =>  $default_assay->id,
+            'default_work_flow_id' => $default_work_flow->id,
+            'default_run_status_id' => $default_run_status->id,
 
         ]);
     }
