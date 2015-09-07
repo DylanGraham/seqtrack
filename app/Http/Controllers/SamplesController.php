@@ -108,22 +108,25 @@ class SamplesController extends Controller
         if (count($batch->samples)) {
             foreach ($batch->samples as $s) {
                 $checkSet = $s->i7_index->index_set_id;
+
+                // If both i7 & i5 are already used 
+                if ($sample->i5_index_id) {
+                    if ($s->i7_index_id == $i7) {
+                        if ($s->i5_index_id == $i5) {
+                            Session::flash('flash_message', 'Both indexes conflict!');
+                            return false;
+                        }
+                    }
+                // If single index but i7 is used
+                } elseif ($s->i7_index_id == $i7) {
+                    Session::flash('flash_message', 'Index conflict!');
+                    return false;
+                }
+                // Must be from the same index set
                 if ($currentIndexSet->id != $checkSet) {
                     Session::flash('flash_message', 'Index set mismatch!');
                     return false;
                 }
-                if ($sample->i5_index_id) {
-                    if ($s->i7_index_id == $i7) {
-                        if ($s->i5_index_id == $i5) {
-                            Session::flash('flash_message', 'Double Index and i7/i5 conflict');
-                            return false;
-                        }
-                    }
-                } elseif ($s->i7_index_id == $i7) {
-                    Session::flash('flash_message', 'Single Index and i7 matched');
-                    return false;
-                }
-
             }
         }
         return true;
