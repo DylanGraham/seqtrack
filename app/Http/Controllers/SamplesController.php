@@ -13,16 +13,10 @@ use App\I7Index;
 use App\I5Index;
 use App\ProjectGroup;
 use Auth;
+use Session;
 
 class SamplesController extends Controller
 {
-
-/*
- *  For custom error messages see "resources/lang/en/validation.php"
- *
- *  For validation see "Http/Requests/SampleRequest.php"
- */
-
 
     // Restrict access to authenticated users
     public function __construct()
@@ -63,10 +57,16 @@ class SamplesController extends Controller
         $sample = new Sample($input);
 
         // i5_index_id returned as name from form if null
-        if ($sample->i5_index_id == 'name')
+        if ($sample->i5_index_id == 'name') {
             $sample->i5_index_id = null;
+        }
 
-        $sample->save();
+        // Check if sample is compatible for batch
+        if ($this->checkBatchCompatibility($sample)) {
+            $sample->save();
+        } else {
+            return back()->withInput();
+        }
 
         return redirect('samples');
     }
@@ -88,8 +88,6 @@ class SamplesController extends Controller
             'pg'    => $pg,
             'sample'=> $sample,
         ]);
-
-//        return view('samples.edit', compact('sample'));
     }
 
     public function update(Sample $sample, SampleRequest $request)
@@ -98,4 +96,37 @@ class SamplesController extends Controller
 
         return redirect('samples');
     }
+
+    public function checkBatchCompatibility(Sample $sample)
+    {
+        if ($sample->i5_index_id) {
+            $i5 = $sample->i5_index->index_set_id;
+        }
+        $i7 = $sample->i7_index->index_set_id;
+        $currentIndexSet = IndexSet::find($i7);
+        $batch = Batch::find($sample->batch_id);
+        if (count($batch->samples)) {
+            foreach ($batch->samples as $s) {
+                $checkSet = $s->i7_index->index_set_id;
+                if ($currentIndexSet->id != $checkSet) {
+                    Session::flash('flash_message', 'Index set mismatch!');
+                    return false;
+                }
+                if ($sample->i5_index_id) {
+                    if ($s->i7_index_id == $i7) {
+                        if ($s->i5_index_id == $i5) {
+                            Session::flash('flash_message', 'Double Index and i7/i5 conflict');
+                            return false;
+                        }
+                    }
+                } elseif ($s->i7_index_id == $i7) {
+                    Session::flash('flash_message', 'Single Index and i7 matched');
+                    return false;
+                }
+
+            }
+        }
+        return true;
+    }
+
 }

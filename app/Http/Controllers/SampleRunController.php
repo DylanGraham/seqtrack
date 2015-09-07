@@ -12,7 +12,7 @@ use App\Sample;
 use App\ProjectGroup;
 use Carbon\Carbon;
 use DB;
-class sampleRunController extends Controller
+class RampleRunController extends Controller
 {
     /*
     *  For custom error messages see "resources/lang/en/validation.php"
