@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <a href='/'>@include('partials.logo')</a>
-    @include('partials.batchCompatibilityJS')
+
     {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
     <br/>
     <p>Add batches to a run</p>
@@ -87,7 +87,7 @@
 
                 ?>
             <tr>
-                <td><input name="batch_check_id" type="checkbox" value="{{($batch->id)}}" onchange="checkSelectedBatches()"/></td>
+                <td><input name="batch_check_id" id="batch_check_id" type="checkbox" value="{{($batch->id)}}" onchange="checkSelectedBatches()"/></td>
                 <td> {{ ($batch->id)}}          </td>
                 <td> {{ ($batch->batch_name) }} </td>
                 <td> {{ $i7_lenghth}}           </td>
@@ -103,7 +103,9 @@
     {!! Form::label('selected_batches_label', 'none', [ 'id'=>'selected_batches_label'] ) !!}
     <br/>
     {!! Form::label('unselected_batches_label', 'none', [ 'id'=>'unselected_batches_label'] ) !!}
-    <br/><br/>
+    <br/>
+    {!! Form::label('errors_label', 'none', [ 'id'=>'errors_label'] ) !!}
+    <br/>
 
     {!! Form::submit("save", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
@@ -129,7 +131,7 @@
 
 
     @include('errors.list')
-
+    @include('partials.batchCompatibilityJS')
 @endsection
 
 @section('footer')
