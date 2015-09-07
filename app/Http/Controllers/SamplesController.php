@@ -17,13 +17,6 @@ use Auth;
 class SamplesController extends Controller
 {
 
-/*
- *  For custom error messages see "resources/lang/en/validation.php"
- *
- *  For validation see "Http/Requests/SampleRequest.php"
- */
-
-
     // Restrict access to authenticated users
     public function __construct()
     {
@@ -63,10 +56,22 @@ class SamplesController extends Controller
         $sample = new Sample($input);
 
         // i5_index_id returned as name from form if null
-        if ($sample->i5_index_id == 'name')
+        if ($sample->i5_index_id == 'name') {
             $sample->i5_index_id = null;
+        }
 
-        $sample->save();
+        // Check if sample is compatible for batch
+        if ($this->checkBatchCompatibility($sample, $request)) {
+            $sample->save();
+        } else {
+           return view('samples.create', [
+                'iSet'  => $iSet,
+                'iAll'  => $iAll,
+                'pg'    => $pg,
+                'user'  => $user,
+                'batches' => $batches,
+            ]);
+        }
 
         return redirect('samples');
     }
@@ -88,8 +93,6 @@ class SamplesController extends Controller
             'pg'    => $pg,
             'sample'=> $sample,
         ]);
-
-//        return view('samples.edit', compact('sample'));
     }
 
     public function update(Sample $sample, SampleRequest $request)
@@ -98,4 +101,37 @@ class SamplesController extends Controller
 
         return redirect('samples');
     }
+
+    public function checkBatchCompatibility(Sample $sample, $request)
+    {
+        $i5 = $sample->i5_index->index_set_id;
+        $i7 = $sample->i7_index->index_set_id;
+        $currentIndexSet = IndexSet::find($i7);
+        $batch = Batch::find($sample->batch_id);
+        if (count($batch->samples)) {
+            foreach ($batch->samples as $s) {
+                $checkSet = $s->i7_index->index_set_id;
+                if ($currentIndexSet->id != $checkSet) {
+                    $request->session()->flash('status', 'Index set mismatch!');
+                    return false;
+                }
+                if ($i5) {
+                    if ($s->i7_index_id == $i7) {
+                        if ($s->i5_index_id == $i5) {
+                            dd("Double Index and i7/i5 conflict", $sample, $s, $batch);
+                            return false;
+                        }
+                    }
+                } else {
+                    if ($s->i7_index_id == $i7) {
+                        dd("Single Index and i7 matched", $sample, $s, $batch);
+                        return false;
+                    }
+
+                }
+            }
+        }
+        return true;
+    }
+
 }
