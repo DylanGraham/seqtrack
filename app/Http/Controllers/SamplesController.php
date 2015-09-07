@@ -119,13 +119,11 @@ class SamplesController extends Controller
                             return false;
                         }
                     }
-                } else {
-                    if ($s->i7_index_id == $i7) {
-                        Session::flash('flash_message', 'Single Index and i7 matched');
-                        return false;
-                    }
-
+                } elseif ($s->i7_index_id == $i7) {
+                    Session::flash('flash_message', 'Single Index and i7 matched');
+                    return false;
                 }
+
             }
         }
         return true;
