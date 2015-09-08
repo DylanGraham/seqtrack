@@ -123,4 +123,20 @@ class SampleRunController extends Controller
             'batches' => $batches
         ]);
     }
+
+    public function runDetails()
+    {
+        $message = " enter details";
+//        if (Input::post())
+//        {
+//            $batch_ids = Input::get('batch_check_id');
+//            foreach($batch_ids as $batch_id)
+//            {
+//                $message += $batch_id+" ";
+//            }
+//
+//        }
+
+        return $message;
+    }
 }

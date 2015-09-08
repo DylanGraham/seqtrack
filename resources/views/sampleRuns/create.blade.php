@@ -2,17 +2,11 @@
 @section('content')
     <a href='/'>@include('partials.logo')</a>
 
-    {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
+    {!! Form::open(['url'=>'sampleRuns/runDetails', 'class'=>'form-inline']) !!}
     <br/>
     <p>Add batches to a run</p>
     <br/>
-    <p> Select run
-        @include('partials.runSelect')
 
-
-        or <a href="{!! route('runs.create') !!}"> create a new run</a></p>
-
-    <hr/>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -107,7 +101,7 @@
     {!! Form::label('errors_label', 'none', [ 'id'=>'errors_label'] ) !!}
     <br/>
 
-    {!! Form::submit("save", ['class'=>'btn btn-primary']) !!}
+    {!! Form::submit("Next -> Enter run details", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
 
     <h3> used sequeces</h3>

@@ -13,6 +13,7 @@ Route::get('/', 'PageController@index');
 Route::resource('samples', 'SamplesController');
 Route::resource('batches', 'BatchesController');
 Route::resource('runs', 'RunsController');
+Route::post('sampleRuns/runDetails', 'SampleRunController@runDetails');
 Route::resource('sampleRuns', 'SampleRunController');
 Route::get('/batchesRunsRemaining', 'SampleRunController@batchesRunsRemaining');
 Route::get('/samplesRunsRemaining', 'SampleRunController@samplesRunsRemaining');
