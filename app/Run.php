@@ -6,6 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Run extends Model
 {
+    protected $fillable = [
+       'adaptor_id',
+        'application_id',
+        'assay_id',
+        'chemistry_id',
+        'created_at',
+        'description',
+        'experiment_name',
+        'flow_cell',
+        'iem_file_version_id',
+        'instrument_id',
+        'project_group_id',
+        'read1',
+        'read2',
+        'run_date',
+        'run_status_id',
+        'single_double',
+        'updated_at',
+        'user_id',
+        'work_flow_id'
+    ];
     /**
      * A Runs belongs to a Adaptor
      */

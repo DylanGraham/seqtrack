@@ -81,7 +81,7 @@
 
                 ?>
             <tr>
-                <td><input name="batch_check_id" id="batch_check_id" type="checkbox" value="{{($batch->id)}}" onchange="checkSelectedBatches()"/></td>
+                <td><input name="batch_check_id[]" id="batch_check_id" type="checkbox" value="{{($batch->id)}}" onchange="checkSelectedBatches()"/></td>
                 <td> {{ ($batch->id)}}          </td>
                 <td> {{ ($batch->batch_name) }} </td>
                 <td> {{ $i7_lenghth}}           </td>

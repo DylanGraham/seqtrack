@@ -11,7 +11,7 @@
         var $selected = [];
         var $notselected = [];
 
-        $("input:checkbox[name=batch_check_id]:checked").each(function () {
+        $("input:checkbox[id=batch_check_id]:checked").each(function () {
 
             $selected.push($(this).val());
             $count++;
@@ -21,7 +21,7 @@
         document.getElementById('selected_batches_label').innerHTML = 'batches selected ' + $selected;
 
 
-        $("input:checkbox[name=batch_check_id]").each(function () {
+        $("input:checkbox[id=batch_check_id]").each(function () {
             if (this.checked == false) {
 
                 $notselected.push($(this).val());
@@ -141,7 +141,7 @@
                                     $i7_length_first != '<?php echo $i5_length; ?>' ||
                                     $i5_length_first != '<?php echo $i5_length; ?>'   )
                     {
-                       $("input:checkbox[name=batch_check_id]").each(function () {
+                       $("input:checkbox[id=batch_check_id]").each(function () {
                             if($(this).val()=='{{($batch->id)}}' )
                            this.style.display = 'none';
 

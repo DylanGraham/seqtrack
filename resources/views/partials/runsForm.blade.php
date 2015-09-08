@@ -65,6 +65,11 @@
         {!! Form::select('run_date', $run_date, null, ['data-toggle'=>'tooltip','title'=>'Date','class'=>'form-control']) !!}
     </span>
 
+        @foreach($batch_ids as $batch_id)
+        {!! Form::hidden('batch_ids[]',$batch_id) !!}
+        @endforeach
+
+
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 
 </div>
