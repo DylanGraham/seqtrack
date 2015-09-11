@@ -1,5 +1,6 @@
 <script>
 $(function() {
+    var batchID = $('#batch_id');
     var setID = $('#index_set');
     var i7ID = $('#i7_index_id');
     var i5ID = $('#i5_index_id');
@@ -53,5 +54,11 @@ $(function() {
             }
         @endfor
     })
+
+    batchID.change(function() {
+
+
+    })
+
 })
 </script>
