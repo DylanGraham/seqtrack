@@ -171,6 +171,9 @@ class SampleRunController extends Controller
 
     public function runDetails(Requests\SampleRunRequest $input)
     {
+
+        $this->middleware('super');
+        
         $message = " enter details";
 
         $batch_ids = $input->batch_check_id;
@@ -181,8 +184,31 @@ class SampleRunController extends Controller
             }
 
         $batches = Batch::whereIn('id', $batch_ids)->get();
+        $countProjectSamples = array();
+        // initialise array to count number samples with runs remaining
+        foreach ($batches as $batch)
+        {
+            $countProjectSamples[$batch->project_group_id]=0;
+        }
 
-        $this->middleware('super');
+        // count number samples with runs remaining in each selected batch
+        foreach ($batches as $batch)
+        {
+            $count =0;
+
+            foreach ($batch->samples as $sample)
+            {
+                if ($sample->runs_remaining >0)
+                {
+                    $count++;
+                }
+            }
+            $countProjectSamples[$batch->project_group_id] += $count;
+        }
+        // most common project is one with highest count of samples with runs remaining
+        $mostCommonProject = array_keys($countProjectSamples, max($countProjectSamples) );
+
+
 
         $dates = array( '0'=>Carbon::now()->format('d-m-Y'),
             '1'=>Carbon::now()->addDays(1)->format('d-m-Y'),
@@ -224,6 +250,7 @@ class SampleRunController extends Controller
             'default_assay_id' =>  $default_assay->id,
             'default_work_flow_id' => $default_work_flow->id,
             'default_run_status_id' => $default_run_status->id,
+            'default_project_id' => $mostCommonProject[0]
 
         ]);
 
