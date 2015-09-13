@@ -173,7 +173,7 @@ class SampleRunController extends Controller
     {
 
         $this->middleware('super');
-        
+
         $message = " enter details";
 
         $batch_ids = $input->batch_check_id;
@@ -210,14 +210,14 @@ class SampleRunController extends Controller
 
 
 
-        $dates = array( '0'=>Carbon::now()->format('d-m-Y'),
-            '1'=>Carbon::now()->addDays(1)->format('d-m-Y'),
-            '2'=>Carbon::now()->addDays(2)->format('d-m-Y'),
-            '3'=>Carbon::now()->addDays(3)->format('d-m-Y'),
-            '4'=>Carbon::now()->addDays(4)->format('d-m-Y'),
-            '5'=>Carbon::now()->addDays(5)->format('d-m-Y'),
-            '6'=>Carbon::now()->addDays(6)->format('d-m-Y'),
-            '7'=>Carbon::now()->addDays(7)->format('d-m-Y')
+        $dates = array( '0'=>Carbon::now()->format('d-M-Y'),
+            '1'=>Carbon::now()->addDays(1)->format('d-M-Y'),
+            '2'=>Carbon::now()->addDays(2)->format('d-M-Y'),
+            '3'=>Carbon::now()->addDays(3)->format('d-M-Y'),
+            '4'=>Carbon::now()->addDays(4)->format('d-M-Y'),
+            '5'=>Carbon::now()->addDays(5)->format('d-M-Y'),
+            '6'=>Carbon::now()->addDays(6)->format('d-M-Y'),
+            '7'=>Carbon::now()->addDays(7)->format('d-M-Y')
         );
 
         $default_chemistry = DB::table('chemistry')->where('default', 1)->first();
