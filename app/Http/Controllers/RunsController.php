@@ -8,7 +8,6 @@ use DB;
 use Auth;
 use App\Http\Requests;
 use App\Http\Requests\RunRequest;
-use App\Http\Controllers\Controller;
 use App\Application;
 use App\Chemistry;
 use App\Run_status;
@@ -20,6 +19,7 @@ use App\Adaptor;
 use App\SampleRun;
 use App\ProjectGroup;
 use App\Run;
+use Illuminate\Http\Response;
 
 class RunsController extends Controller
 {
@@ -120,7 +120,7 @@ class RunsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request $request
+     * @param RunRequest|Request $request
      * @return Response
      */
     public function store(RunRequest $request)
@@ -203,6 +203,10 @@ class RunsController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return string
+     */
     public function setStatus(Request $request)
     {
         $input = $request->all();
@@ -219,7 +223,7 @@ class RunsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return Response
+     *
      */
     public function destroy($id)
     {

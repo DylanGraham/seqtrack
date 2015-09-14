@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use Illuminate\Http\Request;
-use App\Http\Requests\BatchRequest;
-use App\Http\Controllers\Controller;
 use App\Batch;
-
-use App\Sample;
 
 use Carbon\Carbon;
 use DB;
@@ -16,7 +11,6 @@ use DB;
 use Auth;
 
 use App\Http\Requests\RunRequest;
-use App\Http\Requests\SampleRunRequest;
 use App\Application;
 use App\Chemistry;
 use App\Run_status;
