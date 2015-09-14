@@ -126,6 +126,7 @@ class RunsController extends Controller
     public function store(RunRequest $request)
     {
 
+
         $request->attributes('adaptor');
         $id = Auth::user()->id;
         $run = new Run;

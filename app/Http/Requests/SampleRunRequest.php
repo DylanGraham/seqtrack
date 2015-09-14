@@ -13,7 +13,7 @@ class SampleRunRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,9 +24,9 @@ class SampleRunRequest extends Request
     public function rules()
     {
         return [
-            'run_id' =>  'required | exists:runs,id',
+          //  'run_id' =>  'required | exists:runs,id',
 
-            'sample_id' =>  'required | exists:samples,id',
+           // 'sample_id' =>  'required | exists:samples,id',
         ];
     }
 }
