@@ -25,7 +25,7 @@
         </thead>
 
             <tr>
-                <td><a href="/runs/{{ $run->id }}/edit">{{ $run->id }}</a></td>
+                <td>{{ $run->id }}</td>
 
                 <td>{{ $run->experiment_name}}</td>
                 <td>{{ $run->read1}}</td>
@@ -53,6 +53,10 @@
 
     {!! Form::submit("Set status", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
+
+    <br><br>
+
+    <p>Where run status is either 'Run built' or 'Run succeded' and it is set to 'Run failed' all included samples will have runs remaining incremented by 1 </p>
     @include('errors.list')
 
 @endsection

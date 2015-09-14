@@ -21,7 +21,7 @@ class ProjectGroup extends Model
 {
     protected $table = 'project_group';
 
-
+    protected $fillable = ['name'];
 
     /**
      * A project group has many batches
