@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Assay;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Requests\ChemistryRequest;
-use App\Chemistry;
+use App\Http\Requests\AssayRequest;
+use App\Http\Controllers\Controller;
 
-class ChemistryController extends Controller
+class AssayController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     *
+     * @return Response
      */
     public function index()
     {
-        $chemistry = Chemistry::all();
+        $assays = Assay::all();
 
-        return view('chemistry.index', [
-            'chemistry'  => $chemistry,
+        return view('assay.index', [
+            'assays'  => $assays,
 
         ]);
     }
@@ -28,17 +28,17 @@ class ChemistryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     *
+     * @return Response
      */
     public function create()
     {
-        $chemistry = Chemistry::all();
+        $assays = Assay::all();
 
         $defaults=[ '1'=>'True', '0'=>'False'];
 
-        return view('chemistry.create', [
+        return view('assay.create', [
             'defaults'   => $defaults,
-            'chemistry'  => $chemistry,
+            'assays'  => $assays,
 
         ]);
     }
@@ -46,35 +46,35 @@ class ChemistryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ChemistryRequest|Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param  Request  $request
+     * @return Response
      */
-    public function store(ChemistryRequest $request)
+    public function store(AssayRequest $request)
     {
         $input = $request->all();
-        $chemistry = new Chemistry($input);
-        if ($chemistry->default ==1)
+        $assay = new Assay($input);
+        if ($assay->default ==1)
         {
-            $chemistrys = Chemistry::all();
-            foreach($chemistrys as $chem)
+            $assays = Assay::all();
+            foreach($assays as $ass)
             {
-                $chem->default =0;
-                $chem->update();
+                $ass->default =0;
+                $ass->update();
             }
 
         }
 
-        $chemistry->save();
+        $assay->save();
 
 
-        return redirect('chemistry');
+        return redirect('assay');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     *
+     * @return Response
      */
     public function show($id)
     {
@@ -85,7 +85,7 @@ class ChemistryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     *
+     * @return Response
      */
     public function edit($id)
     {
@@ -97,7 +97,7 @@ class ChemistryController extends Controller
      *
      * @param  Request  $request
      * @param  int  $id
-     *
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -108,6 +108,7 @@ class ChemistryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     * @return Response
      */
     public function destroy($id)
     {

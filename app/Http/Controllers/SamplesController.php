@@ -40,7 +40,7 @@ class SamplesController extends Controller
         $pg = ProjectGroup::lists('name', 'id');
         $user = Auth::user();
         $batches = $user->batches->lists('batch_name', 'id');
-        $batch = $user->batches;
+
  
        return view('samples.create', [
             'iSet'  => $iSet,

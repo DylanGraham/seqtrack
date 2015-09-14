@@ -1,35 +1,36 @@
-@extends('app')
-@section('content')
-    <a href='/'>@include('partials.logo')</a>
+{{--@extends('app')--}}
+{{--@section('content')--}}
+    {{--<a href='/'>@include('partials.logo')</a>--}}
 
-    {!! Form::open(['url'=>'sampleRuns/runSave', 'class'=>'form-inline']) !!}
-       @include('partials.runsForm', ['submitButtonText'=>'Submit'])
-    {!! Form::close() !!}
-    @include('errors.list')
+    {{--{!! Form::open(['url'=>'sampleRuns/runSave', 'class'=>'form-inline']) !!}--}}
+       {{--@include('partials.runsForm', ['submitButtonText'=>'Submit'])--}}
+    {{--{!! Form::close() !!}--}}
+    {{--@include('errors.list')--}}
 
-    <br/>
-    <h3>Selected batches</h3>
+    {{--<br/>--}}
+    {{--<h3>Selected batches</h3>--}}
 
-    <table class="table table-striped">
+    {{--<table class="table table-striped">--}}
 
-        <tr>
-            <th>Batch Name</th>
-            <th>Project Group</th>
-            <th>Number Samples</th>
-        </tr>
+        {{--<tr>--}}
+            {{--<th>Batch Name</th>--}}
+            {{--<th>Project Group</th>--}}
+            {{--<th>Number Samples</th>--}}
+        {{--</tr>--}}
 
-    @foreach ($batches as $batch)
-        <tr>
-            <td>{{($batch->batch_name)}}</td>
-            <td>{{($batch->project_group->name)}}</td>
-            <td>{{count($batch->samples)}}</td>
-        </tr>
-    @endforeach
+    {{--@foreach ($batches as $batch)--}}
+        {{--<tr>--}}
+            {{--<td>{{($batch->batch_name)}}</td>--}}
+            {{--<td>{{($batch->project_group->name)}}</td>--}}
+            {{--<td>{{count($batch->samples)}}</td>--}}
+        {{--</tr>--}}
+    {{--@endforeach--}}
 
-    </table>
+    {{--</table>--}}
 
-@endsection
+    {{--@include('errors.list')--}}
+{{--@endsection--}}
 
-@section('footer')
+{{--@section('footer')--}}
 
-@endsection
+{{--@endsection--}}

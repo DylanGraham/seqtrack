@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+
 
 class InstrumentRequest extends Request
 {
@@ -13,7 +13,7 @@ class InstrumentRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

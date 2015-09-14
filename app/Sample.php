@@ -4,6 +4,39 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Sample
+ *
+ * @property-read \App\User $user
+ * @property-read \App\Batch $batch
+ * @property-read \App\I7Index $i7_index
+ * @property-read \App\I5Index $i5_index
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\SampleRun[] $sampleRuns
+ * @property integer $batch_id
+ * @property integer $id
+ * @property string $sample_id
+ * @property string $plate
+ * @property string $well
+ * @property integer $i7_index_id
+ * @property integer $i5_index_id
+ * @property string $description
+ * @property integer $runs_remaining
+ * @property integer $instrument_lane
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereBatchId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereSampleId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample wherePlate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereWell($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereI7IndexId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereI5IndexId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereRunsRemaining($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereInstrumentLane($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Sample whereUpdatedAt($value)
+ */
 class Sample extends Model
 {
     protected $fillable = [

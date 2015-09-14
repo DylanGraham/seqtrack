@@ -3,20 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use Illuminate\Http\Request;
-use App\Http\Requests\BatchRequest;
-use App\Http\Controllers\Controller;
 use App\Batch;
-
-use App\Sample;
 
 use Carbon\Carbon;
 use DB;
 
 use Auth;
-
-use App\Http\Requests\RunRequest;
 use App\Http\Requests\SampleRunRequest;
+use App\Http\Requests\BatchIdRequest;
+
 use App\Application;
 use App\Chemistry;
 use App\Run_status;
@@ -39,8 +34,8 @@ class SampleRunController extends Controller
     // Restrict access to authenticated users
     public function __construct()
     {
-        $this->middleware('auth');
-//        $this->middleware('super' ['except' => ['index', '' ]]);
+  //      $this->middleware('auth');
+        $this->middleware('super' ,['except' => ['index'=> '' ]]);
     }
 
     public function index()
@@ -66,7 +61,7 @@ class SampleRunController extends Controller
         ]);
     }
 
-    public function store(RunRequest $request)
+    public function store(SampleRunRequest $request)
     {
         $input = $request->all();
 
@@ -101,7 +96,7 @@ class SampleRunController extends Controller
 
         }
 
-        return "Sample run stored - TODO redirect";
+        return redirect('runs');
     }
 
     public function show(SampleRun $sampleRun)
@@ -169,19 +164,19 @@ class SampleRunController extends Controller
         ]);
     }
 
-    public function runDetails(Requests\SampleRunRequest $input)
+    public function runDetails(BatchIdRequest $input)
     {
 
         $this->middleware('super');
 
-        $message = " enter details";
+        //$message = " enter details";
 
         $batch_ids = $input->batch_check_id;
 
-            foreach($batch_ids as $batch_id)
-            {
-                $message = $message ." ".$batch_id;
-            }
+//            foreach($batch_ids as $batch_id)
+//            {
+//                $message = $message ." ".$batch_id;
+//            }
 
         $batches = Batch::whereIn('id', $batch_ids)->get();
         $countProjectSamples = array();
@@ -228,7 +223,7 @@ class SampleRunController extends Controller
         $default_work_flow = DB::table('work_flow')->where('default', 1)->first();
         $default_run_status = DB::table('run_status')->where('default', 1)->first();
 
-        return view('runs.create', [
+        return view('sampleRuns.createRunDetails', [
             'batch_ids' => $batch_ids,
             'batches' =>   $batches,
             'adaptor' => Adaptor::lists('value',  'id'),

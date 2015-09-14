@@ -8,7 +8,6 @@ use DB;
 use Auth;
 use App\Http\Requests;
 use App\Http\Requests\RunRequest;
-use App\Http\Controllers\Controller;
 use App\Application;
 use App\Chemistry;
 use App\Run_status;
@@ -20,6 +19,7 @@ use App\Adaptor;
 use App\SampleRun;
 use App\ProjectGroup;
 use App\Run;
+use Illuminate\Http\Response;
 
 class RunsController extends Controller
 {
@@ -120,7 +120,7 @@ class RunsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request $request
+     * @param RunRequest|Request $request
      * @return Response
      */
     public function store(RunRequest $request)
@@ -203,23 +203,53 @@ class RunsController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return string
+     */
     public function setStatus(Request $request)
     {
         $input = $request->all();
         $run = Run::where('id', $input['run_id'])->first();
 
+
+
+        // existing run status is either run built or run succeeded and new value is run failed
+        // increment all samples in run by one
+        if(($run->run_status_id ==1 ||$run->run_status_id ==1)&&  $input['run_status']==3)
+        {
+            $samples = DB::table('samples')->select('samples.id','runs_remaining')
+                ->join('sample_runs', function ($join) {
+                    $join->on('samples.id','=', 'sample_runs.sample_id');
+                })
+                ->join('runs', function ($join) {
+                    $join->on('runs.id','=', 'sample_runs.run_id');
+                })
+                ->where('runs.id', '=', $input['run_id'])
+                ->get();
+
+
+            foreach ($samples as $sample)
+            {
+                DB::table('samples')
+                    ->where('id', $sample->id)
+                    ->update(['runs_remaining' => ($sample->runs_remaining -1)]);
+            }
+        }
+
         $run->run_status_id = $input['run_status'];
+
 
         $run->update();
 
-        return "set status ".$input['run_status']." ".$input['run_id'];
+        return redirect('runs');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return Response
+     *
      */
     public function destroy($id)
     {

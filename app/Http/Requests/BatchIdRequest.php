@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AdaptorRequest extends Request
+class BatchIdRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class AdaptorRequest extends Request
     public function rules()
     {
         return [
-            'value' => array('required' , 'regex:/^[ACGT]{0,20}$/' , 'max:20'),
-
-            'default' => 'required | boolean'
+            'batch_check_id'  => 'required'
         ];
     }
 }
