@@ -171,6 +171,9 @@ class SampleRunController extends Controller
 
     public function runDetails(Requests\SampleRunRequest $input)
     {
+
+        $this->middleware('super');
+
         $message = " enter details";
 
         $batch_ids = $input->batch_check_id;
@@ -181,17 +184,40 @@ class SampleRunController extends Controller
             }
 
         $batches = Batch::whereIn('id', $batch_ids)->get();
+        $countProjectSamples = array();
+        // initialise array to count number samples with runs remaining
+        foreach ($batches as $batch)
+        {
+            $countProjectSamples[$batch->project_group_id]=0;
+        }
 
-        $this->middleware('super');
+        // count number samples with runs remaining in each selected batch
+        foreach ($batches as $batch)
+        {
+            $count =0;
 
-        $dates = array( '0'=>Carbon::now()->format('d-m-Y'),
-            '1'=>Carbon::now()->addDays(1)->format('d-m-Y'),
-            '2'=>Carbon::now()->addDays(2)->format('d-m-Y'),
-            '3'=>Carbon::now()->addDays(3)->format('d-m-Y'),
-            '4'=>Carbon::now()->addDays(4)->format('d-m-Y'),
-            '5'=>Carbon::now()->addDays(5)->format('d-m-Y'),
-            '6'=>Carbon::now()->addDays(6)->format('d-m-Y'),
-            '7'=>Carbon::now()->addDays(7)->format('d-m-Y')
+            foreach ($batch->samples as $sample)
+            {
+                if ($sample->runs_remaining >0)
+                {
+                    $count++;
+                }
+            }
+            $countProjectSamples[$batch->project_group_id] += $count;
+        }
+        // most common project is one with highest count of samples with runs remaining
+        $mostCommonProject = array_keys($countProjectSamples, max($countProjectSamples) );
+
+
+
+        $dates = array( '0'=>Carbon::now()->format('d-M-Y'),
+            '1'=>Carbon::now()->addDays(1)->format('d-M-Y'),
+            '2'=>Carbon::now()->addDays(2)->format('d-M-Y'),
+            '3'=>Carbon::now()->addDays(3)->format('d-M-Y'),
+            '4'=>Carbon::now()->addDays(4)->format('d-M-Y'),
+            '5'=>Carbon::now()->addDays(5)->format('d-M-Y'),
+            '6'=>Carbon::now()->addDays(6)->format('d-M-Y'),
+            '7'=>Carbon::now()->addDays(7)->format('d-M-Y')
         );
 
         $default_chemistry = DB::table('chemistry')->where('default', 1)->first();
@@ -224,6 +250,7 @@ class SampleRunController extends Controller
             'default_assay_id' =>  $default_assay->id,
             'default_work_flow_id' => $default_work_flow->id,
             'default_run_status_id' => $default_run_status->id,
+            'default_project_id' => $mostCommonProject[0]
 
         ]);
 

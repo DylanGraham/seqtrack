@@ -1,5 +1,6 @@
 <script>
 
+
     var selectedBatches = document.getElementsByName('batch_check_id');
 
     var selectBatchesLabel = document.getElementById('selected_batches_label');
@@ -30,132 +31,154 @@
 
         });
         document.getElementById('unselected_batches_label').innerHTML = 'batches not selected ' + $notselected;
+        document.getElementById('errors_label').innerHTML = ' ';
 
-
-        var $used_sequences ={init:1} ;
-        var $repeated_sequences ={init:1} ;
+        var $used_sequences = {'': 1};
+        var $repeated_sequences = {'': 1};
         var $compatible;
         var $i7_length;
         var $i5_length;
         var $i7_length_first;
         var $i5_length_first;
+        var $used_pairs = '';
 
         @foreach($batches as $batch)
-            if ($selected[0] =='{{($batch->id)}}') {
+            if ($selected[0] == '{{($batch->id)}}') {
             <?php
-                   // check first sequnce length in batch. all sequences in batch should be same length
-                   $i7_length = strlen($batch->samples[0]->i7_index->sequence);
+               // check first sequnce length in batch. all sequences in batch should be same length
+               $i7_length = strlen($batch->samples[0]->i7_index->sequence);
 
-                   if (count($batch->samples[0]->i5_index_id) != NULL) {
-                       $i5_length = strlen($batch->samples[0]->i5_index->sequence);
-                       $i5_used = true;
+               if (count($batch->samples[0]->i5_index_id) != NULL) {
+                   $i5_length = strlen($batch->samples[0]->i5_index->sequence);
+                   $i5_used = true;
 
-                   } else {
-                       $i5_length = 0;
-                       $i5_used = false;
+               } else {
+                   $i5_length = 0;
+                   $i5_used = false;
 
-                   }
-                   ?>
+               }
+            ?>
 
-                $i7_length_first = '<?php  echo $i7_length;?>';
-                $i5_length_first = '<?php  echo $i5_length;?>';
+            $i7_length_first = '{{$i7_length}}';
+            $i5_length_first = '{{$i5_length}}';
 
         }
         @endforeach
 
-           @foreach($batches as $batch)
+        @foreach($batches as $batch)
 
+                $compatible = true;
+        var $batch_sequences = {'': 1};
+        if ($selected.indexOf('{{($batch->id)}}') > -1) {
+            <?php
+            $i7_length = strlen($batch->samples[0]->i7_index->sequence);
+            if (count($batch->samples[0]->i5_index_id) != NULL ){
 
-                $compatible = "Compatible";
-                var $batch_sequences ={init:1} ;
-                if ($selected.indexOf('{{($batch->id)}}') > -1) {
-                @foreach($batch->samples as $sample)
+                $i5_length = strlen($batch->samples[0]->i5_index->sequence);
+                $i5_used = true;
+            }else{
+                $i5_length = 0;
+                $i5_used = false;
+            }
 
-                    <?php
+            ?>
+            if ($i5_length_first != '{{($i5_length)}}' || $i7_length_first != '{{($i7_length)}}') {
+                $compatible = false;
+                document.getElementById('errors_label').innerHTML = 'Error incompatable batch selected';
+            }
 
-                    $i7_length = strlen($sample->i7_index->sequence);
-                    if (count($batch->samples[0]->i5_index_id) != NULL ){
+            @foreach($batch->samples as $sample)
 
-                        $i5_length = strlen($sample->i5_index->sequence);
-                        $i5_used = true;
-                        $key = ($sample->i7_index->sequence).'/'.($sample->i5_index->sequence);
+                <?php
+                    if ($i5_used){
+                        $key = ($sample->i7_index->sequence).' / '.($sample->i5_index->sequence);
 
                     }else{
-
-                        $i5_length = 0;
-                        $i5_used = false;
                         $key = ($sample->i7_index->sequence);
-
                     }
-                    ?>
+                ?>
 
-                     $i5_length = '<?php  echo $i5_length; ?>';
-                     $i7_length = '<?php  echo $i7_length; ?>';
+                    if ($used_sequences.hasOwnProperty('{{ $key}}')) {
 
-                    if ($used_sequences.hasOwnProperty('<?php echo $key; ?>') ) {
+                $repeated_sequences['{{$key}}'] = 1;
+                $compatible = false;
 
-                        $repeated_sequences[ '<?php echo $key; ?>'] = 1 ;
-                        $compatible = "Not Compatible";
+            } else {
 
-
-                    } else {
-
-                        $batch_sequences[ '<?php echo $key; ?>' ] = 1;
-
-                    }
-
-                @endforeach
-
-                if ($compatible == "Compatible") {
-
-
-                    for (var attrname in $batch_sequences) { $used_sequences[attrname] = $batch_sequences[attrname]; }
-                }else {
-                    document.getElementById('errors_label').innerHTML = 'Error '+ $compatible;
-                }
+                $batch_sequences['{{ $key }}'] = 1;
             }
+            @endforeach
+
+
+        if ($compatible) {
+
+                for (var attrname in $batch_sequences) {
+                    $used_sequences[attrname] = $batch_sequences[attrname];
+                    $used_pairs += attrname + '<br>';
+                }
+            } else {
+                document.getElementById('errors_label').innerHTML = 'Error incompatable batch selected';
+            }
+        }
+        document.getElementById('used_indexes').innerHTML = $used_pairs;
         @endforeach
 
 
         @foreach($batches as $batch)
 
 
+            $compatible = true;
+        if ($notselected.indexOf('{{($batch->id)}}') >= 0 && $selected.length > 0) {
+            <?php
+            if (count($batch->samples[0]->i5_index_id) != NULL ){
 
-            if ($notselected.indexOf('{{($batch->id)}}')  >= 0 && $selected.length >0) {
+                   $i5_length = strlen($batch->samples[0]->i5_index->sequence);
+                   $i5_used = true;
+
+               }else{
+                   $i5_length = 0;
+                   $i5_used = false;
+            }
+            $i7_length = strlen($batch->samples[0]->i7_index->sequence);
+            ?>
+           if ($i7_length_first == '{{ ($i5_length)}}' && $i5_length_first == '{{($i5_length)}}') {
                 @foreach($batch->samples as $sample)
                     <?php
-                    if (count($batch->samples[0]->i5_index_id) != NULL ){
-                        $i5_length = strlen($sample->i5_index->sequence);
+                    if ($i5_used ){
 
-                        $i5_used = true;
-                        $key = ($sample->i7_index->sequence).'/'.($sample->i5_index->sequence);
+                        $key = ($sample->i7_index->sequence).' / '.($sample->i5_index->sequence);
                     }else{
-                        $i5_length = 0;
-                        $i5_used = false;
+
                         $key = ($sample->i7_index->sequence);
                     }
-                    $i7_length = strlen($sample->i7_index->sequence);
                     ?>
 
-                    if ($used_sequences.hasOwnProperty('<?php echo $key ?>')    ||
-                                    $i7_length_first != '<?php echo $i5_length; ?>' ||
-                                    $i5_length_first != '<?php echo $i5_length; ?>'   )
-                    {
-                       $("input:checkbox[id=batch_check_id]").each(function () {
-                            if($(this).val()=='{{($batch->id)}}' )
-                           this.style.display = 'none';
+                    if ($used_sequences.hasOwnProperty('{{($key) }}')) {
 
-                        });
-
-
-
-
+                        $compatible = false;
                     }
                 @endforeach
+
+            } else {
+
+                $compatible = false;
             }
+            if (!$compatible) {
+                $("input:checkbox[id=batch_check_id]").each(function () {
+                    if ($(this).val() == '{{($batch->id)}}')
+                        this.style.display = 'none';
+
+                });
+            }
+
+        }
 
         @endforeach
 
+
     }
+
+
+
 
 </script>

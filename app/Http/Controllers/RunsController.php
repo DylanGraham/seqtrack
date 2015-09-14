@@ -182,7 +182,13 @@ class RunsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $run = Run::where('id', $id)->first();
+        $status_options = Run_status::lists('status', 'id');
+     //   $run->sample_runs;
+        return view('runs.edit', [
+            'run' => $run,
+            'status_options' => $status_options
+        ]);
     }
 
     /**
@@ -194,7 +200,19 @@ class RunsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+    }
+
+    public function setStatus(Request $request)
+    {
+        $input = $request->all();
+        $run = Run::where('id', $input['run_id'])->first();
+
+        $run->run_status_id = $input['run_status'];
+
+        $run->update();
+
+        return "set status ".$input['run_status']." ".$input['run_id'];
     }
 
     /**
