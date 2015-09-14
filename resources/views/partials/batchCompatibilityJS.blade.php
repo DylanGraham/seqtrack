@@ -1,5 +1,6 @@
 <script>
 
+
     var selectedBatches = document.getElementsByName('batch_check_id');
 
     var selectBatchesLabel = document.getElementById('selected_batches_label');
@@ -176,5 +177,8 @@
 
 
     }
+
+
+
 
 </script>
