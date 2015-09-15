@@ -33,7 +33,6 @@ class Adaptor extends Model
 
     /**
      * A adaptor can have many runs.
-
     */
 
     public function runs()

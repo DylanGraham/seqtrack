@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\WorkFlowRequest;
 use App\Http\Controllers\Controller;
+use App\Work_flow;
 
 class WorkFlowController extends Controller
 {
@@ -16,7 +17,12 @@ class WorkFlowController extends Controller
      */
     public function index()
     {
-        //
+        $workflows = Work_Flow::all();
+
+        return view('workflow.index', [
+            'workflows'  => $workflows,
+
+        ]);
     }
 
     /**
@@ -26,7 +32,15 @@ class WorkFlowController extends Controller
      */
     public function create()
     {
-        //
+        $workflows = Work_flow::all();
+
+        $defaults=[ '1'=>'True', '0'=>'False'];
+
+        return view('workflow.create', [
+            'defaults'   => $defaults,
+            'workflows'  => $workflows,
+
+        ]);
     }
 
     /**
@@ -35,9 +49,25 @@ class WorkFlowController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(WorkFlowRequest $request)
     {
-        //
+        $input = $request->all();
+        $workflow = new Work_flow($input);
+        if ($workflow->default ==1)
+        {
+            $workflows = Work_flow::all();
+            foreach($workflows as $workflw)
+            {
+                $workflw->default =0;
+                $workflw->update();
+            }
+
+        }
+
+        $workflow->save();
+
+
+        return redirect('workflow');
     }
 
     /**
