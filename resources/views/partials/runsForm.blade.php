@@ -57,13 +57,18 @@
     </span>
     <span class="group @if ($errors->has('project_group_id')) has-error @endif">
         {!! Form::label('project_group_id', 'Project Group', ['data-toggle'=>'tooltip', 'title'=>'Project Group', 'class'=>'sr-only']) !!}
-        {!! Form::select('project_group_id', $projectGroup, null, ['data-toggle'=>'tooltip','title'=>'Project Group','class'=>'form-control']) !!}
+        {!! Form::select('project_group_id', $projectGroup, $default_project_id, ['data-toggle'=>'tooltip','title'=>'Project Group','class'=>'form-control']) !!}
     </span>
 
     <span class="group @if ($errors->has('run_date')) has-error @endif">
         {!! Form::label('run_date', 'Date', ['data-toggle'=>'tooltip', 'title'=>'Date', 'class'=>'sr-only']) !!}
         {!! Form::select('run_date', $run_date, null, ['data-toggle'=>'tooltip','title'=>'Date','class'=>'form-control']) !!}
     </span>
+
+        @foreach($batch_ids as $batch_id)
+        {!! Form::hidden('batch_ids[]',$batch_id) !!}
+        @endforeach
+
 
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 

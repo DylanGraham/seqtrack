@@ -3,7 +3,7 @@
 @include('partials.navbar')
     <a href='/'>@include('partials.logo')</a> 
 
-     {{ $sample->sample_id }}</h1>
+    <h1> {{ $sample->sample_id }}</h1>
 
     {!! Form::model($sample, ['method'=>'PATCH', 'action'=>['SamplesController@update', $sample->id], 'class'=>'form-inline']) !!}
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 
 class ChemistryRequest extends Request
 {
@@ -13,7 +12,7 @@ class ChemistryRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +23,7 @@ class ChemistryRequest extends Request
     public function rules()
     {
         return [
-            'chemistry' => array('required' , 'regex:/[a-zA-Z0-9]{0,15}/' , 'max:15'),
+            'chemistry' => array('required' , 'regex:/^[a-zA-Z0-9]{0,15}$/' , 'max:15'),
 
             'default' => 'required | boolean'
         ];

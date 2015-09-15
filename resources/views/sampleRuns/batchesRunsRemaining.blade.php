@@ -24,6 +24,7 @@
             ?>
 
         @foreach($batch->samples as $sample)
+
            @if ($sample->runs_remaining >0)
                 <?php
                   $count++;
