@@ -21,9 +21,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Requests\SampleImportRequest;
 use App\I7Index;
+use App\IndexSet;
+use App\ProjectGroup;
 use App\Sample;
 use DB;
 use File;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Input;
 use Redirect;
@@ -36,6 +39,9 @@ use Validator;
  */
 class ImportSampleController extends Controller
 {
+    /**
+     * @var array
+     */
     protected $errorTitles = [
         'header',
         'sampleIdAlreadyExists',
@@ -64,6 +70,9 @@ class ImportSampleController extends Controller
         'missingI5Index' => array(),
     );
 
+    /**
+     * @var array
+     */
     protected $stringErrors = array();
 
     /**
@@ -101,7 +110,20 @@ class ImportSampleController extends Controller
     {
         //
         $this->middleware('super');
-        return view('import.index');
+        $iSet = IndexSet::lists('name', 'id');
+        $iAll = IndexSet::all();
+        $pg = ProjectGroup::lists('name', 'id');
+        $user = Auth::user();
+        $batches = $user->batches->lists('batch_name', 'id');
+
+
+        return view('import.index', [
+            'iSet' => $iSet,
+            'iAll' => $iAll,
+            'pg' => $pg,
+            'user' => $user,
+            'batches' => $batches,
+        ]);
     }
 
     /**
@@ -207,7 +229,7 @@ class ImportSampleController extends Controller
                     Session::flash('error', $this->stringErrors);
                 } else {
                     Session::flash('success', "File Upload Successful");
-                    $this->addData(Request::file('sampleFile'));
+                    //$this->addData(Request::file('sampleFile'));
                 }
                 return Redirect::to('import');
             } else {
@@ -362,10 +384,18 @@ class ImportSampleController extends Controller
 
     /**
      * @param $filename
+     * @param $batchId
+     * @param $projectId
+     * @param $plate
+     * @param $well
+     * @param string $description
+     * @param int $runs
+     * @param int $lanes
      * @param string $delimiter
      * @return bool
      */
-    public function addData($filename, $delimiter = ',')
+    public function addData($filename, $batchId, $projectId, $plate, $well, $description = '',
+                            $runs = 0, $lanes = 0, $delimiter = ',')
     {
         $header = NULL;
         $data = array();
@@ -380,21 +410,16 @@ class ImportSampleController extends Controller
                 } else {
                     //TODO Check with
                     $sample = Sample::create(array(
-                        'batch_id' => '1',
-                        //TODO Take the user project group id
-                        'project_group_id',
+                        'batch_id' => $batchId,
+                        'project_group_id' => $projectId,
                         'sample_id' => $row[0],
-                        //TODO Add fields for plate and well
-                        'plate' => NULL,
-                        'well' => NULL,
-                        'i7_index_id',
-                        'i5_index_id',
-                        //TODO Add a field in the form to add the description
-                        'description' => "Imported",
-                        //TODO Add a field in the form to add the runs_remaining
-                        'runs_remaining' => 100,
-                        //TODO Add a field in the form to add the instrument_lane
-                        'instrument_lane' => 0));
+                        'plate' => $plate,
+                        'well' => $well,
+                        'i7_index_id' => $this->getI7IndexId($row[1]),
+                        'i5_index_id' => $this->getI5IndexId($row[3]),
+                        'description' => $description,
+                        'runs_remaining' => $runs,
+                        'instrument_lane' => $lanes));
 
                     $data[] = array_combine($header, $row);
                 }
@@ -403,13 +428,36 @@ class ImportSampleController extends Controller
         }
     }
 
+    /**
+     * @param $index
+     * @return mixed
+     */
+    public function getI7IndexId($index)
+    {
+        $index = I7Index::where('index', 'LIKE', $index)->get();
+        return $index;
+    }
+
+    /**
+     * @param $index
+     * @return mixed
+     */
+    public function getI5IndexId($index)
+    {
+        $index = I5Index::where('index', 'LIKE', $index)->get();
+        return $index;
+    }
+
+    /**
+     *
+     */
     public function generateErrors() {
         foreach ($this->errorArray as $key=>$value) {
             if(Count($value) > 0) {
                 if ($key == $this->errorTitles[0]) {
                     array_push($this->stringErrors, $value);
                 } elseif ($key == $this->errorTitles[1]) {
-                    $this->errorStringHelper($value, "The Sample ID present in lines ", " already exists in the database");
+                    $this->errorStringHelper($value, "The Sample ID already exists in the database in lines ");
                 } elseif ($key == $this->errorTitles[2]) {
                     $this->errorStringHelper($value, "Column Sample ID is empty for lines ");
                 } elseif ($key == $this->errorTitles[3]) {
@@ -431,6 +479,11 @@ class ImportSampleController extends Controller
         }
     }
 
+    /**
+     * @param $value
+     * @param string $startString
+     * @param string $endString
+     */
     public function errorStringHelper($value, $startString = '', $endString = '') {
         $string = $startString;
         $lastItem = array_pop($value);
