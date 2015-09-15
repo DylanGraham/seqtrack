@@ -18,7 +18,9 @@
 
     <p class="errors">{!!$errors->first('image')!!}</p>
     @if(Session::has('error'))
-        <p class="errors">{!! Session::get('error') !!}</p>
+        @foreach (Session::get('error') as $error)
+            <p class="errors">{!! $error !!}</p>
+        @endforeach
     @endif
 
 @endsection

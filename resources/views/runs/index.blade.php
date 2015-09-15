@@ -21,7 +21,7 @@
             <th>Instrument</th>
             <th>Work Flow</th>
 
-            
+
         </tr>
     </thead>
     @foreach ($runs as $run)

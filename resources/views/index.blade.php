@@ -3,7 +3,8 @@
 @include('partials.logo')<br><br>
     <a href="{!! route('batches.create') !!}">Create batch</a><br>
     <a href="{!! route('batches.index') !!}">View batches</a><br><br>
-    <a href="{!! route('samples.create') !!}">Create sample</a><br>
+    <a href="{!! route('samples.create') !!}">Create sample</a><br><br>
+    <a href="{!! route('import.index') !!}">Import samples</a><br><br>
     <a href="{!! route('samples.index') !!}">View samples</a><br><br>
     <a href="{!! route('runs.create') !!}">Create run</a><br>
     <a href="{!! route('runs.index') !!}">View runs</a><br>
