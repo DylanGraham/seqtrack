@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Requests\BatchRequest;
-use App\Http\Controllers\Controller;
 use App\Batch;
 use App\ProjectGroup;
 use Carbon\Carbon;
@@ -31,6 +29,9 @@ class BatchesController extends Controller
         return view('batches.index')->with('batches', $batches);
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         $pg = ProjectGroup::lists('name', 'id');
@@ -76,7 +77,8 @@ class BatchesController extends Controller
 //    public function update(Batch $batch, BatchesRequest $request)
     public function update(Batch $batch)
     {
-        $batch->update($request->all());
+        $input = $batch->all();
+        $batch->update($input);
 
         return redirect('batches');
     }

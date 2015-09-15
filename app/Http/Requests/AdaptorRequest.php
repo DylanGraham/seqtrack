@@ -13,7 +13,7 @@ class AdaptorRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class AdaptorRequest extends Request
     public function rules()
     {
         return [
-            'adaptor' => array('required' , 'regex:/[ACGT]{0,20}/' , 'max:20'),
+            'value' => array('required' , 'regex:/^[ACGT]{0,20}$/' , 'max:20'),
 
             'default' => 'required | boolean'
         ];

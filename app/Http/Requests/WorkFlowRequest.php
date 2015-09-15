@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 
 class WorkFlowRequest extends Request
 {
@@ -13,7 +12,7 @@ class WorkFlowRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

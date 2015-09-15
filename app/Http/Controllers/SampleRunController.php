@@ -3,20 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use Illuminate\Http\Request;
-use App\Http\Requests\BatchRequest;
-use App\Http\Controllers\Controller;
 use App\Batch;
-
-use App\Sample;
 
 use Carbon\Carbon;
 use DB;
 
 use Auth;
-
-use App\Http\Requests\RunRequest;
 use App\Http\Requests\SampleRunRequest;
+use App\Http\Requests\BatchIdRequest;
+
 use App\Application;
 use App\Chemistry;
 use App\Run_status;
@@ -39,8 +34,8 @@ class SampleRunController extends Controller
     // Restrict access to authenticated users
     public function __construct()
     {
-        $this->middleware('auth');
-//        $this->middleware('super' ['except' => ['index', '' ]]);
+  //      $this->middleware('auth');
+        $this->middleware('super' ,['except' => ['index'=> '' ]]);
     }
 
     public function index()
@@ -66,7 +61,7 @@ class SampleRunController extends Controller
         ]);
     }
 
-    public function store(RunRequest $request)
+    public function store(SampleRunRequest $request)
     {
         $input = $request->all();
 
@@ -101,7 +96,7 @@ class SampleRunController extends Controller
 
         }
 
-        return "Sample run stored - TODO redirect";
+        return redirect('runs');
     }
 
     public function show(SampleRun $sampleRun)
@@ -169,29 +164,55 @@ class SampleRunController extends Controller
         ]);
     }
 
-    public function runDetails(Requests\SampleRunRequest $input)
+    public function runDetails(BatchIdRequest $input)
     {
-        $message = " enter details";
-
-        $batch_ids = $input->batch_check_id;
-
-            foreach($batch_ids as $batch_id)
-            {
-                $message = $message ." ".$batch_id;
-            }
-
-        $batches = Batch::whereIn('id', $batch_ids)->get();
 
         $this->middleware('super');
 
-        $dates = array( '0'=>Carbon::now()->format('d-m-Y'),
-            '1'=>Carbon::now()->addDays(1)->format('d-m-Y'),
-            '2'=>Carbon::now()->addDays(2)->format('d-m-Y'),
-            '3'=>Carbon::now()->addDays(3)->format('d-m-Y'),
-            '4'=>Carbon::now()->addDays(4)->format('d-m-Y'),
-            '5'=>Carbon::now()->addDays(5)->format('d-m-Y'),
-            '6'=>Carbon::now()->addDays(6)->format('d-m-Y'),
-            '7'=>Carbon::now()->addDays(7)->format('d-m-Y')
+        //$message = " enter details";
+
+        $batch_ids = $input->batch_check_id;
+
+//            foreach($batch_ids as $batch_id)
+//            {
+//                $message = $message ." ".$batch_id;
+//            }
+
+        $batches = Batch::whereIn('id', $batch_ids)->get();
+        $countProjectSamples = array();
+        // initialise array to count number samples with runs remaining
+        foreach ($batches as $batch)
+        {
+            $countProjectSamples[$batch->project_group_id]=0;
+        }
+
+        // count number samples with runs remaining in each selected batch
+        foreach ($batches as $batch)
+        {
+            $count =0;
+
+            foreach ($batch->samples as $sample)
+            {
+                if ($sample->runs_remaining >0)
+                {
+                    $count++;
+                }
+            }
+            $countProjectSamples[$batch->project_group_id] += $count;
+        }
+        // most common project is one with highest count of samples with runs remaining
+        $mostCommonProject = array_keys($countProjectSamples, max($countProjectSamples) );
+
+
+
+        $dates = array( '0'=>Carbon::now()->format('d-M-Y'),
+            '1'=>Carbon::now()->addDays(1)->format('d-M-Y'),
+            '2'=>Carbon::now()->addDays(2)->format('d-M-Y'),
+            '3'=>Carbon::now()->addDays(3)->format('d-M-Y'),
+            '4'=>Carbon::now()->addDays(4)->format('d-M-Y'),
+            '5'=>Carbon::now()->addDays(5)->format('d-M-Y'),
+            '6'=>Carbon::now()->addDays(6)->format('d-M-Y'),
+            '7'=>Carbon::now()->addDays(7)->format('d-M-Y')
         );
 
         $default_chemistry = DB::table('chemistry')->where('default', 1)->first();
@@ -202,7 +223,7 @@ class SampleRunController extends Controller
         $default_work_flow = DB::table('work_flow')->where('default', 1)->first();
         $default_run_status = DB::table('run_status')->where('default', 1)->first();
 
-        return view('runs.create', [
+        return view('sampleRuns.createRunDetails', [
             'batch_ids' => $batch_ids,
             'batches' =>   $batches,
             'adaptor' => Adaptor::lists('value',  'id'),
@@ -224,6 +245,7 @@ class SampleRunController extends Controller
             'default_assay_id' =>  $default_assay->id,
             'default_work_flow_id' => $default_work_flow->id,
             'default_run_status_id' => $default_run_status->id,
+            'default_project_id' => $mostCommonProject[0]
 
         ]);
 

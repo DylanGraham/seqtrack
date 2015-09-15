@@ -40,6 +40,7 @@ class SamplesController extends Controller
         $pg = ProjectGroup::lists('name', 'id');
         $user = Auth::user();
         $batches = $user->batches->lists('batch_name', 'id');
+
  
        return view('samples.create', [
             'iSet'  => $iSet,
@@ -112,6 +113,7 @@ class SamplesController extends Controller
                 if ($sample->i5_index_id && ! $s->i5_index_id) {
                     Session::flash('flash_message', 'Batch is single index!');
                     return false;
+                // Or vice cersa
                 } elseif ($s->i5_index_id && ! $sample->i5_index_id) {
                     Session::flash('flash_message', 'Batch is dual index!');
                     return false;
@@ -127,9 +129,10 @@ class SamplesController extends Controller
                 } elseif ($s->i7_index_id == $i7) {
                     Session::flash('flash_message', 'Index conflict!');
                     return false;
-                
+                }                
+
                 // Must be from the same index set
-                } elseif ($currentIndexSet->id != $checkSet) {
+                if ($currentIndexSet->id != $checkSet) {
                     //dd($currentIndexSet->id, $checkSet);
                     Session::flash('flash_message', 'Index set mismatch!');
                     return false;

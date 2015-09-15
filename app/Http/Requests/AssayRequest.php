@@ -13,7 +13,7 @@ class AssayRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class AssayRequest extends Request
     public function rules()
     {
         return [
-            'name' => array('required' , 'regex:/[a-zA-Z0-9]{0,15}/' , 'max:15'),
+            'name' => array('required' , 'regex:/^[a-zA-Z0-9]{0,15}$/' , 'max:15','unique:assay,name'),
 
             'default' => 'required | boolean'
         ];
