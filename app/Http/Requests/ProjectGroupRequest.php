@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 
 class ProjectGroupRequest extends Request
 {
@@ -13,7 +12,7 @@ class ProjectGroupRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +23,7 @@ class ProjectGroupRequest extends Request
     public function rules()
     {
         return [
-            'name' => array('required' , 'regex:/[a-zA-Z0-9]{0,20}/' , 'max:20')
+            'name' => array('required' , 'regex:/^[A-Z0-9]{0,20}$/' , 'max:20', 'unique:project_group,name')
         ];
     }
 }
