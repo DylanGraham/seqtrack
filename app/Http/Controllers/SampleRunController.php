@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Adaptor;
+use App\Application;
+use App\Assay;
 use App\Batch;
-
+use App\Chemistry;
+use App\Http\Requests;
+use App\Http\Requests\BatchIdRequest;
+use App\Http\Requests\SampleRunRequest;
+use App\Iem_file_version;
+use App\Instrument;
+use App\ProjectGroup;
+use App\Run;
+use App\Run_status;
+use App\SampleRun;
+use App\Work_flow;
+use Auth;
 use Carbon\Carbon;
 use DB;
 
-use Auth;
-use App\Http\Requests\SampleRunRequest;
-use App\Http\Requests\BatchIdRequest;
-
-use App\Application;
-use App\Chemistry;
-use App\Run_status;
-use App\Instrument;
-use App\Iem_file_version;
-use App\Work_flow;
-use App\Assay;
-use App\Adaptor;
-use App\SampleRun;
-use App\ProjectGroup;
-use App\Run;
 class SampleRunController extends Controller
 {
     /*
@@ -248,8 +246,10 @@ class SampleRunController extends Controller
             'default_project_id' => $mostCommonProject[0]
 
         ]);
+    }
 
-
+    public function exportRuns()
+    {
 
     }
 }

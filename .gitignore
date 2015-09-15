@@ -6,4 +6,3 @@ Homestead.yaml
 storage/database.sqlite
 .idea
 _ide_helper.php
-database/seeds/DatabaseSeeder.php

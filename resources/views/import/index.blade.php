@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
-    <h1><a href='/'>SeqTrack</a> - Import Samples</h1>
-    <hr/>
+    <a href='/'>@include('partials.logo')</a>
     @if(Session::has('success'))
         <div class="alert-box success">
             <h2>{!! Session::get('success') !!}</h2>
@@ -18,9 +17,11 @@
 
     <p class="errors">{!!$errors->first('image')!!}</p>
     @if(Session::has('error'))
+        <ul class="alert alert-danger">
         @foreach (Session::get('error') as $error)
-            <p class="errors">{!! $error !!}</p>
+                <li>{!! $error !!}</li>
         @endforeach
+        </ul>
     @endif
 
 @endsection
