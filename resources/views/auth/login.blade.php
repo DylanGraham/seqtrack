@@ -4,9 +4,8 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
+			<div>
+				<div>
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -17,7 +16,7 @@
 							</ul>
 						</div>
 					@endif
-
+					<img class="center-block" src="/images/logo.png" alt="SeqTrack Logo" style="width:60%;height:60%;padding:30px;">
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -49,6 +48,7 @@
 										<input type="checkbox" name="remember"> Remember Me
 									</label>
 								</div>
+								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
 							</div>
 						</div>
 
@@ -56,7 +56,7 @@
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Login</button>
 
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
+								
 							</div>
 						</div>
 					</form>

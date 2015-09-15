@@ -12,12 +12,12 @@
 
     <span class="group @if ($errors->has('read1')) has-error @endif">
         {!! Form::label('read1', 'Read 1', ['class'=>'sr-only']) !!}
-        {!! Form::number('read1', null, ['data-toggle'=>'tooltip', 'title'=>'Read 1','class'=>'form-control', 'placeholder'=>'Read 1']) !!}
+        {!! Form::number('read1', null, ['data-toggle'=>'tooltip', 'title'=>'Read 1','class'=>'number-field', 'placeholder'=>'Read 1']) !!}
     </span>
 
     <span class="group @if ($errors->has('read2')) has-error @endif">
         {!! Form::label('read2', 'Read 2', ['class'=>'sr-only']) !!}
-        {!! Form::number('read2', null, ['data-toggle'=>'tooltip', 'title'=>'Read 2','class'=>'form-control', 'placeholder'=>'Read 2']) !!}
+        {!! Form::number('read2', null, ['data-toggle'=>'tooltip', 'title'=>'Read 2','class'=>'number-field', 'placeholder'=>'Read 2']) !!}
     </span>
     <span class="group @if ($errors->has('flow_cell')) has-error @endif">
         {!! Form::label('flow_cell', 'Flow cell', ['class'=>'sr-only']) !!}

@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+@include('partials.navbar')
     <a href='/'>@include('partials.logo')</a> 
     <h4>Batches</h4>
     <table class="table table-striped">

@@ -7,11 +7,11 @@
     </span>
     <span class="group @if ($errors->has('concentration')) has-error @endif">
         {!! Form::label('concentration', 'concentration', ['class'=>'sr-only']) !!}
-        {!! Form::number('concentration', null, ['data-toggle'=>'tooltip', 'title'=>'Concentration','step'=>'0.1', 'class'=>'form-control', 'placeholder'=>'Concentration']) !!}
+        {!! Form::number('concentration', null, ['data-toggle'=>'tooltip', 'title'=>'Concentration','step'=>'0.1', 'class'=>'number-field', 'placeholder'=>'Concentration']) !!}
     </span>
     <span class="group @if ($errors->has('volume')) has-error @endif">
         {!! Form::label('volume', 'volume', ['class'=>'sr-only']) !!}
-        {!! Form::number('volume', null, ['data-toggle'=>'tooltip', 'title'=>'Volume','step'=>'0.1', 'class'=>'form-control', 'placeholder'=>'Volume']) !!}
+        {!! Form::number('volume', null, ['data-toggle'=>'tooltip', 'title'=>'Volume','step'=>'0.1', 'class'=>'number-field', 'placeholder'=>'Volume']) !!}
     </span>
     <span class="group @if ($errors->has('tube_bar_code')) has-error @endif">
         {!! Form::label('tube_bar_code', 'tube_bar_code', ['class'=>'sr-only']) !!}
@@ -23,7 +23,7 @@
     </span>
     <span class="group @if ($errors->has('tape_station_length')) has-error @endif">
         {!! Form::label('tape_station_length', 'tape_station_length', ['class'=>'sr-only']) !!}
-        {!! Form::number('tape_station_length', null, ['data-toggle'=>'tooltip', 'title'=>'Tape station length','class'=>'form-control', 'placeholder'=>'Tape station length']) !!}
+        {!! Form::number('tape_station_length', null, ['data-toggle'=>'tooltip', 'title'=>'Tape station length','class'=>'number-field', 'placeholder'=>'Tape station length']) !!}
     </span>
     <span class="group @if ($errors->has('charge_code')) has-error @endif">
         {!! Form::label('charge_code', 'charge_code', ['class'=>'sr-only']) !!}
