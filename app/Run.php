@@ -92,8 +92,7 @@ class Run extends Model
 
     /**
      * A Runs belongs to a Applications
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function application()
     {

@@ -22,6 +22,7 @@
 
         @foreach($batches as $batch)
             <?php
+
                 $first_i7_lenghth = strlen($batch->samples[0]->i7_index->sequence);
 
                 if (count($batch->samples[0]->i5_index_id) != NULL) {
@@ -29,7 +30,10 @@
                 } else $first_i5_lenghth = 0;
             ?>
             <tr>
-                <td><input name="batch_check_id[]" id="batch_check_id" type="checkbox" value="{{($batch->id)}}" onchange="checkSelectedBatches()"/></td>
+                {{-- Check box when changed calls javascirpt in partials/batchCompatibilityJS.blade.php --}}
+                {{-- to validate compatability--}}
+                <td><input name="batch_check_id[]" id="batch_check_id" type="checkbox" value="{{($batch->id)}}"
+                           onchange="checkSelectedBatches()"/></td>
                 <td> {{ ($batch->id)}}          </td>
                 <td> {{ ($batch->batch_name) }} </td>
                 <td> {{ $first_i7_lenghth }}    </td>
