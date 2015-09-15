@@ -118,7 +118,7 @@ class SamplesController extends Controller
                 }
 
                 // If both i7 & i5 are already used 
-                if ($sample->i5_index_id) {
+                if ($s->i5_index_id) {
                     if ($s->i7_index_id == $i7 && $s->i5_index_id == $i5) {
                         Session::flash('flash_message', 'Both indexes conflict!');
                         return false;
