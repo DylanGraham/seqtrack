@@ -63,6 +63,7 @@ class SampleRunController extends Controller
 
     public function store(SampleRunRequest $request)
     {
+
         $input = $request->all();
 
         $run = new Run($input);
@@ -92,8 +93,6 @@ class SampleRunController extends Controller
                     $sample->update();
                 }
             }
-
-
         }
 
         return redirect('runs');
@@ -101,7 +100,7 @@ class SampleRunController extends Controller
 
     public function show(SampleRun $sampleRun)
     {
-
+        return "TODO sample run show";
     }
 
     public function edit(SampleRun $sampleRun)
@@ -169,14 +168,7 @@ class SampleRunController extends Controller
 
         $this->middleware('super');
 
-        //$message = " enter details";
-
         $batch_ids = $input->batch_check_id;
-
-//            foreach($batch_ids as $batch_id)
-//            {
-//                $message = $message ." ".$batch_id;
-//            }
 
         $batches = Batch::whereIn('id', $batch_ids)->get();
         $countProjectSamples = array();
