@@ -5,7 +5,7 @@
     {{--{!! Form::open(['url'=>'sampleRuns/runSave', 'class'=>'form-inline']) !!}--}}
        {{--@include('partials.runsForm', ['submitButtonText'=>'Submit'])--}}
     {{--{!! Form::close() !!}--}}
-    {{--@include('errors.list')--}}
+    {{--@include('errorBag.list')--}}
 
     {{--<br/>--}}
     {{--<h3>Selected batches</h3>--}}
@@ -28,7 +28,7 @@
 
     {{--</table>--}}
 
-    {{--@include('errors.list')--}}
+    {{--@include('errorBag.list')--}}
 {{--@endsection--}}
 
 {{--@section('footer')--}}

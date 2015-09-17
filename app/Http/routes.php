@@ -42,3 +42,6 @@ Route::controllers([
     'auth'      => 'Auth\AuthController',
     'password'  => 'Auth\PasswordController',
 ]);
+
+Route::post('import/validateFile', 'ImportSampleController@validateFile');
+Route::resource('import', 'ImportSampleController');
