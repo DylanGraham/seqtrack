@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+@include('partials.navbar')
     <a href='/'>@include('partials.logo')</a>
 
     {!! Form::open(['url'=>'sampleRuns/runDetails', 'class'=>'form-inline']) !!}

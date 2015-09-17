@@ -14,8 +14,12 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
+<<<<<<< .merge_file_4Iz78f
+        "barryvdh/laravel-ide-helper": "^2.1"
+=======
         "barryvdh/laravel-ide-helper": "^2.1",
         "doctrine/dbal": "~2.3"
+>>>>>>> .merge_file_4WKDEk
     },
     "autoload": {
         "classmap": [

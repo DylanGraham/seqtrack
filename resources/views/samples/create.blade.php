@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+@include('partials.navbar')
     <a href='/'>@include('partials.logo')</a> 
 
 @if (count($user->batches))

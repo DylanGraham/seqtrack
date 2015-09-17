@@ -31,11 +31,11 @@
     </span>
     <span class="group @if ($errors->has('runs_remaining')) has-error @endif">
         {!! Form::label('runs_remaining', 'Runs_remaining', ['class'=>'sr-only']) !!}
-        {!! Form::number('runs_remaining', null, ['data-toggle'=>'tooltip', 'title'=>'Runs','class'=>'form-control', 'placeholder'=>'Runs']) !!}
+        {!! Form::number('runs_remaining', null, ['data-toggle'=>'tooltip', 'title'=>'Runs','class'=>'number-field', 'placeholder'=>'Runs']) !!}
     </span>
     <span class="group @if ($errors->has('instrument_lane')) has-error @endif">
         {!! Form::label('instrument_lane', 'instrument_lane', ['class'=>'sr-only']) !!}
-        {!! Form::number('instrument_lane', null, ['data-toggle'=>'tooltip', 'title'=>'Instrument lane','class'=>'form-control', 'placeholder'=>'Instrument lane']) !!}
+        {!! Form::number('instrument_lane', null, ['data-toggle'=>'tooltip', 'title'=>'Instrument lane','class'=>'number-field', 'placeholder'=>'Instrument lane']) !!}
     </span>
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 </div>

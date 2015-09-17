@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+@include('partials.navbar')
     <a href='/'>@include('partials.logo')</a>
     <br/><br/>
     <h4>List of all samples with runs remaining</h4>

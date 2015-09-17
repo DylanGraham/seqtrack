@@ -30,7 +30,11 @@ class DatabaseSeeder extends Seeder
         $this->call(IemFileVersionTableSeeder::class);
         $this->call(ChemistryTableSeeder::class);
         $this->call(BatchesTableSeeder::class);
+<<<<<<< HEAD
         //$this->call(SamplesTableSeeder::class);
+=======
+        /*$this->call(SamplesTableSeeder::class);*/
+>>>>>>> e6db2abd90bd9de187dbb4ae9054fdafc9e32d10
         $this->call(BatchesTestTableSeeder::class);
         $this->call(SamplesTestTableSeeder::class);
 
