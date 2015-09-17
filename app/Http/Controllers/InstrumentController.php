@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\InstrumentRequest;
 use App\Http\Controllers\Controller;
-
+use App\Instrument;
 class InstrumentController extends Controller
 {
     /**
@@ -16,7 +16,12 @@ class InstrumentController extends Controller
      */
     public function index()
     {
-        //
+        $instruments = Instrument::all();
+
+        return view('instrument.index', [
+            'instruments'  => $instruments ,
+
+        ]);
     }
 
     /**
@@ -26,7 +31,12 @@ class InstrumentController extends Controller
      */
     public function create()
     {
-        //
+        $instruments = Instrument::all();
+
+        return view('instrument.create', [
+            'instruments'  => $instruments ,
+
+        ]);
     }
 
     /**
@@ -35,9 +45,15 @@ class InstrumentController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(InstrumentRequest $request)
     {
-        //
+        $input = $request->all();
+        $instrument = new Instrument($input);
+
+        $instrument->save();
+
+
+        return redirect('instrument');
     }
 
     /**

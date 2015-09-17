@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Adaptor;
+use App\Application;
+use App\Assay;
 use App\Batch;
-
+use App\Chemistry;
+use App\Http\Requests;
+use App\Http\Requests\BatchIdRequest;
+use App\Http\Requests\SampleRunRequest;
+use App\Iem_file_version;
+use App\Instrument;
+use App\ProjectGroup;
+use App\Run;
+use App\Run_status;
+use App\SampleRun;
+use App\Work_flow;
+use Auth;
 use Carbon\Carbon;
 use DB;
 
-use Auth;
-use App\Http\Requests\SampleRunRequest;
-use App\Http\Requests\BatchIdRequest;
-
-use App\Application;
-use App\Chemistry;
-use App\Run_status;
-use App\Instrument;
-use App\Iem_file_version;
-use App\Work_flow;
-use App\Assay;
-use App\Adaptor;
-use App\SampleRun;
-use App\ProjectGroup;
-use App\Run;
 class SampleRunController extends Controller
 {
     /*
@@ -63,6 +61,7 @@ class SampleRunController extends Controller
 
     public function store(SampleRunRequest $request)
     {
+
         $input = $request->all();
 
         $run = new Run($input);
@@ -92,8 +91,6 @@ class SampleRunController extends Controller
                     $sample->update();
                 }
             }
-
-
         }
 
         return redirect('runs');
@@ -101,7 +98,7 @@ class SampleRunController extends Controller
 
     public function show(SampleRun $sampleRun)
     {
-
+        return "TODO sample run show";
     }
 
     public function edit(SampleRun $sampleRun)
@@ -169,14 +166,7 @@ class SampleRunController extends Controller
 
         $this->middleware('super');
 
-        //$message = " enter details";
-
         $batch_ids = $input->batch_check_id;
-
-//            foreach($batch_ids as $batch_id)
-//            {
-//                $message = $message ." ".$batch_id;
-//            }
 
         $batches = Batch::whereIn('id', $batch_ids)->get();
         $countProjectSamples = array();
@@ -248,8 +238,10 @@ class SampleRunController extends Controller
             'default_project_id' => $mostCommonProject[0]
 
         ]);
+    }
 
-
+    public function exportRuns()
+    {
 
     }
 }

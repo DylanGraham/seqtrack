@@ -142,5 +142,4 @@ class SamplesController extends Controller
         Session::flash('success_message', 'Sample added');
         return true;
     }
-
 }

@@ -2,7 +2,7 @@
 @section('content')
 <a href='/'>@include('partials.logo')</a>
 
-{!! Form::open(['url'=>'sampleRuns/runSave', 'class'=>'form-inline']) !!}
+{!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
 @include('partials.runsForm', ['submitButtonText'=>'Submit'])
 {!! Form::close() !!}
 @include('errors.list')
