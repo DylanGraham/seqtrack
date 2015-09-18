@@ -2,7 +2,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="{{ asset('css/all.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <meta charset="utf-8">
         <title>SeqTrack</title>
     </head>
