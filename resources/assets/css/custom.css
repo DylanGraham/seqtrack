@@ -1,5 +1,6 @@
 .alert {
     padding: 8px 15px 8px 24px;
+    margin-top: 8px;
     margin-bottom: 18px;
     border: 10px;
     -webkit-border-radius: 4px;
