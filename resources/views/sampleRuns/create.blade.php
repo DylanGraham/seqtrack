@@ -5,9 +5,9 @@
 
     {!! Form::open(['url'=>'sampleRuns/runDetails', 'class'=>'form-inline']) !!}
     <br/>
-    <p>Add batches to a run</p>
+    <h4>Add batches to a run</h4>
     <br/>
-
+    <div class="table-container">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -42,6 +42,7 @@
         @endforeach
 
     </table>
+    </div>
     <br>
     {!! Form::label('selected_batches_label', 'none', [ 'id'=>'selected_batches_label'] ) !!}
     <br/>
