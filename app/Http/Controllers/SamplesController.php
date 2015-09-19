@@ -113,7 +113,7 @@ class SamplesController extends Controller
                 if ($sample->i5_index_id && ! $s->i5_index_id) {
                     Session::flash('flash_message', 'Batch is single index!');
                     return false;
-                // Or vice cersa
+                // Or vice versa
                 } elseif ($s->i5_index_id && ! $sample->i5_index_id) {
                     Session::flash('flash_message', 'Batch is dual index!');
                     return false;
