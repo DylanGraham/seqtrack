@@ -424,7 +424,8 @@ class ImportSampleController extends Controller
                 if(!in_array($indexString, $this->uniqueIndexes)) {
                     array_push($this->uniqueIndexes, $indexString);
                     if ($sequenceId == $this->i7Indexes[$indexId]) {
-                        if($this->i7IndexSet != $this->i7IndexSetArray[$indexId]) {
+                        if(($this->i7IndexSet != $this->i7IndexSetArray[$indexId]) ||
+                            ($this->batchI7IndexSet != $this->i7IndexSetArray[$indexId])) {
                             array_push($this->errorArray[$this->errorTitles[10]], $line);
                             return FALSE;
                         }
@@ -464,7 +465,8 @@ class ImportSampleController extends Controller
             }
             if (isset($this->i5Indexes[$indexId])) {
                 if ($sequenceId == $this->i5Indexes[$indexId]) {
-                    if($this->i5IndexSet != $this->i5IndexSetArray[$indexId]) {
+                    if(($this->i5IndexSet != $this->i5IndexSetArray[$indexId]) ||
+                        ($this->batchI5IndexSet != $this->i5IndexSetArray[$indexId])) {
                         array_push($this->errorArray[$this->errorTitles[11]], $line);
                         return FALSE;
                     }
@@ -581,7 +583,6 @@ class ImportSampleController extends Controller
         $samples = $this->getBatchSamples($batchId);
         foreach ($samples as $sample) {
             if($this->batchI5IndexSet == -1) {
-                print_r($sample->i5_Index);
                 if($sample->i5_Index != "") {
                     $this->batchPairChecker = 1;
                     $this->batchI5IndexSet = $sample->i5_index->index_set_id;
