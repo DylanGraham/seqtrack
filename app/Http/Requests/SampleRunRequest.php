@@ -27,6 +27,7 @@ class SampleRunRequest extends Request
     *
     */
 
+
         return [
 
             // users id from loged in user
@@ -41,7 +42,7 @@ class SampleRunRequest extends Request
             'experiment_name' => array('required', 'regex:/^[_a-zA-Z0-9]{1,120}$/', 'max:120'),
 
             // make a date as integar off set from today eg 1 to 7 days from today
-            //'date' => 'required | integer | between:0,7',
+            'run_date' => 'required | integer | between:0,7',
 
             'work_flow_id' => 'required | integer |exists:work_flow,id',
 

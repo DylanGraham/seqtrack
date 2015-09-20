@@ -76,6 +76,42 @@ class SampleRunController extends Controller
 
         $batches = Batch::whereIn('id', $batch_ids)->get();
 
+        $first_sample = $batches[0]->samples[0];
+
+        $errors = false;
+        $sequnces = array();
+
+        $i7_length = strlen($first_sample->i7_index->sequence);
+        if (count($first_sample->i5_index)>0) {
+            $i5_length = strlen($first_sample->i5_index->sequence);
+
+        }else $i5_length = 0;
+
+        foreach ($batches as $batch)
+        {
+            foreach ($batch->samples as $sample)
+            {
+                if (strlen($sample->i7_index->sequence) != $i7_length)
+                {
+                    $errors =true;
+                }
+                if (count($first_sample->i5_index)==0 )
+                {
+                    if ($i5_length != 0) {
+                        $errors = true;
+                    }
+                    $current_sequnce = $sample->i7_index->sequence;
+                }elseif ($sample->i5_index->sequence != $i5_length)
+                {
+                    $errors = true;
+                }
+
+
+            }
+        }
+        
+        dd($i5_length,$i7_length,$first_sample);
+
         foreach ($batches as $batch)
         {
             foreach ($batch->samples as $sample)
