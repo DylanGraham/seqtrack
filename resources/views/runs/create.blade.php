@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 @extends('app')
 @section('content')
 @include('partials.navbar')
     <div class="container-fluid">
     <a href='/'>@include('partials.logo')</a>
-=======
-=======
 @extends('app')
 @section('content')
 @include('partials.navbar')
     <a href='/'>@include('partials.logo')</a>
->>>>>>> c97b2ba7a7093b55db0b0f22a037e3ef0c72b2ed
-{{--@extends('app')--}}
-{{--@section('content')--}}
-    {{--<a href='/'>@include('partials.logo')</a>--}}
->>>>>>> 2789552b8a8a50c5946c9e9923efac3d4f34d240
 
     {{--{!! Form::open(['url'=>'sampleRuns/runSave', 'class'=>'form-inline']) !!}--}}
        {{--@include('partials.runsForm', ['submitButtonText'=>'Submit'])--}}
