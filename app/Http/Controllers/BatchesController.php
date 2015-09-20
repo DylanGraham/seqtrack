@@ -63,9 +63,7 @@ class BatchesController extends Controller
 
     public function show(Batch $batch)
     {
-        dd($batch);
-        return view('batches.index')->with('batches', $batch);
-        //return view('batches', compact('batches'));
+        return view('batches.show')->with('batch', $batch);
     }
 
     public function edit(Batch $batch)
