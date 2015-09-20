@@ -7,7 +7,7 @@
 
     {!! Form::model($sample, ['method'=>'PATCH', 'action'=>['SamplesController@update', $sample->id], 'class'=>'form-inline']) !!}
 
-    @include('partials.form', ['submitButtonText'=>'Update'])
+    @include('partials.sample', ['formName'=>'Edit Sample', 'submitButtonText'=>'Update'])
 
     {!! Form::close() !!}
 

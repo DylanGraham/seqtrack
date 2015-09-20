@@ -163,9 +163,6 @@ class SampleRunController extends Controller
 
     public function runDetails(BatchIdRequest $input)
     {
-
-        $this->middleware('super');
-
         $batch_ids = $input->batch_check_id;
 
         $batches = Batch::whereIn('id', $batch_ids)->get();

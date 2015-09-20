@@ -23,7 +23,6 @@ Route::resource('workflow', 'WorkFlowController');
 Route::resource('instrument', 'InstrumentController');
 Route::resource('application', 'ApplicationController');
 
-
 Route::post('sampleRuns/runDetails', 'SampleRunController@runDetails');
 
 Route::resource('sampleRuns', 'SampleRunController');

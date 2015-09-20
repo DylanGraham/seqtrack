@@ -57,6 +57,9 @@
 		<div class = "button">
 			<a class="btn btn-default" href="{!! route('batches.index') !!}" role="button">View batches</a>
 		</div>
+		<div class = "button">
+			<a class="btn btn-default" href="{!! route('import.index') !!}" role="button">Import samples</a>
+		</div>
 		<div class = "button">	
 			<a class="btn btn-default" href="{!! route('samples.create') !!}" role="button">Create samples</a>
 		</div>

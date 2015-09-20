@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Requests\BatchRequest;
+use App\Http\Requests\BatchEditRequest;
 use App\Batch;
 use App\ProjectGroup;
 use Carbon\Carbon;
@@ -70,16 +71,21 @@ class BatchesController extends Controller
     {
         /* Should user be creator of batch to edit?
            Probably either 'creator || super'  */
-        return view('batches.edit', compact('batch'));
+        $pg = ProjectGroup::lists('name', 'id');
+        $charge = $batch->charge_code;
+        $my_group = $batch->project_group_id;
+
+        return view('batches.edit', [
+            'batch'     => $batch,
+            'pg'        => $pg,
+            'charge'    => $charge,
+            'my_group'  => $my_group,
+        ]);
     }
 
-// Removed until BatchesRequest validation is created
-//    public function update(Batch $batch, BatchesRequest $request)
-    public function update(Batch $batch)
+    public function update(Batch $batch, BatchEditRequest $request)
     {
-        $input = $batch->all();
-        $batch->update($input);
-
+        $batch->update($request->all());
         return redirect('batches');
     }
 }
