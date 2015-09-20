@@ -47,3 +47,21 @@ body {
 	margin-right: 10%;
 	margin-left: 10%;
 }
+.table-container{
+	background-color: #B4B4B4;
+}
+h4{
+	color: white;
+}
+
+.table-container a{
+	color: #2E5CB8;
+}
+
+a{
+	color: #D6AD33;
+}
+
+a:hover{
+	color: #CC6600;
+}

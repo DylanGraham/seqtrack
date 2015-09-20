@@ -1,10 +1,12 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
+    <div class="container-fluid">
     <a href='/'>@include('partials.logo')</a>
-{{--@extends('app')--}}
-{{--@section('content')--}}
-    {{--<a href='/'>@include('partials.logo')</a>--}}
+@extends('app')
+@section('content')
+@include('partials.navbar')
+    <a href='/'>@include('partials.logo')</a>
 
     {{--{!! Form::open(['url'=>'sampleRuns/runSave', 'class'=>'form-inline']) !!}--}}
        {{--@include('partials.runsForm', ['submitButtonText'=>'Submit'])--}}
@@ -38,3 +40,4 @@
 {{--@section('footer')--}}
 
 {{--@endsection--}}
+    </div>
