@@ -32,5 +32,5 @@
 @endsection
 
 @section('footer')
-
 @endsection
+

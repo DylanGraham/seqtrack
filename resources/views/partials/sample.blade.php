@@ -1,10 +1,12 @@
 <div class="form-group">
-    <h4>Create sample</h4>
+    <h4>{{ $formName }}</h4>
 
+@if ($formName === "Create Sample")
     <span class="group @if ($errors->has('sample_id')) has-error @endif">
         {!! Form::label('sample_id', 'sample_id', ['class'=>'sr-only']) !!}
         {!! Form::text('sample_id', null, ['data-toggle'=>'tooltip', 'title'=>'Sample name','class'=>'form-control', 'placeholder'=>'Sample name']) !!}
     </span>
+@endif
     <span class="group @if ($errors->has('plate')) has-error @endif">
         {!! Form::label('plate', 'plate', ['class'=>'sr-only']) !!}
         {!! Form::text('plate', null, ['data-toggle'=>'tooltip', 'title'=>'Plate','class'=>'form-control', 'placeholder'=>'Plate']) !!}
@@ -13,6 +15,7 @@
         {!! Form::label('well', 'well', ['class'=>'sr-only']) !!}
         {!! Form::text('well', null, ['data-toggle'=>'tooltip', 'title'=>'Well','class'=>'form-control', 'placeholder'=>'Well']) !!}
     </span>
+@if ($formName === "Create Sample")
     <span class="group @if ($errors->has('index_set')) has-error @endif">
         {!! Form::label('index_set', 'index_set', ['data-toggle'=>'tooltip', 'title'=>'Index set', 'class'=>'sr-only']) !!}
         {!! Form::select('index_set', $iSet, null, ['data-toggle'=>'tooltip', 'title'=>'Index set','class'=>'form-control']) !!}
@@ -25,6 +28,7 @@
         {!! Form::label('i5_index_id', 'i5_index_id', ['class'=>'sr-only']) !!}
         {!! Form::select('i5_index_id', ['name'=>''], null, ['data-toggle'=>'tooltip', 'title'=>'I5 index','class'=>'form-control']) !!}
     </span>
+@endif
     <span class="group @if ($errors->has('description')) has-error @endif">
         {!! Form::label('description', 'description', ['class'=>'sr-only']) !!}
         {!! Form::text('description', null, ['data-toggle'=>'tooltip', 'title'=>'Description','class'=>'form-control', 'placeholder'=>'Description']) !!}

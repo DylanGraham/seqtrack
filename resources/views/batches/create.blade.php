@@ -5,7 +5,7 @@
 
     {!! Form::open(['url'=>'batches', 'class'=>'form-inline']) !!}
 
-    @include('partials.batch', ['submitButtonText'=>'Submit'])
+    @include('partials.batch', ['formName'=>'Create Batch', 'submitButtonText'=>'Submit'])
 
     {!! Form::close() !!}
 

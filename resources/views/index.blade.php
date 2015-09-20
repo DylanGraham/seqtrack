@@ -1,12 +1,19 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
+
+<div class = "container-fluid"> 
+	<div class = "content">
+
 @include('partials.logo')<br><br>
 		<div class = "button">
 			<a class="btn btn-default" href="{!! route('batches.create') !!}" role="button">Create batch</a>
 		</div>
 		<div class = "button">
 			<a class="btn btn-default" href="{!! route('batches.index') !!}" role="button">View batches</a>
+		</div>
+		<div class = "button">
+			<a class="btn btn-default" href="{!! route('import.index') !!}" role="button">Import samples</a>
 		</div>
 		<div class = "button">	
 			<a class="btn btn-default" href="{!! route('samples.create') !!}" role="button">Create samples</a>
@@ -38,6 +45,7 @@
 		@include('errors.list')
 
 	<!-- end of content-->
+
 
         
         <h2>OTHER</h2>
@@ -82,4 +90,3 @@
 </div> <!-- end of container -->
 
 @endsection
-

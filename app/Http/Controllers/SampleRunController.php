@@ -198,9 +198,6 @@ class SampleRunController extends Controller
 
     public function store(BatchIdRequest $input)
     {
-
-        $this->middleware('super');
-
         $batch_ids = $input->batch_check_id;
 
         Session::put('run_batch_ids', $batch_ids);
