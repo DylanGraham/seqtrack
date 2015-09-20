@@ -7,8 +7,8 @@
 
 
     function checkSelectedBatches() {
-    }
-    function tempdisable(){
+//    }
+//    function tempdisable(){
         var $count = 0;
         var $selected = [];
         var $notselected = [];
