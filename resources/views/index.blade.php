@@ -9,8 +9,8 @@
 		@include('partials.logo')<br><br>
         <table class="home-menu-table">
             <tr>
-                <td><h4>Create</h4></td>
-                <td><h4>View</h4></td>
+                <td class="row-create"><h4>Create</h4></td>
+                <td class="row-view"><h4>View</h4></td>
             </tr>
             <tr>
                 <td>

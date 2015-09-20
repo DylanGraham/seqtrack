@@ -1,4 +1,5 @@
-<div class="form-group">
+<div>
+
     <h4>Create sample</h4>
 
     <span class="group @if ($errors->has('sample_id')) has-error @endif">
