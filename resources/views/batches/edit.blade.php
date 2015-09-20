@@ -5,7 +5,7 @@
 
 
     {!! Form::open(['url'=>'batches', 'class'=>'form-inline']) !!}
-<h3>TO do edit batch</h3>
+
     {{--@include('partials.batch', ['submitButtonText'=>'Submit'])--}}
 
     <h1> {{ $batch->batch_name }}</h1>
