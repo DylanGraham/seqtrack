@@ -1,10 +1,12 @@
 <div class="form-group">
-    <h4>Create Batch</h4>
+    <h4>{{ $formName }}</h4>
 
+@if ($formName === "Create Batch")
     <span class="group @if ($errors->has('batch_name')) has-error @endif">
         {!! Form::label('batch_name', 'batch_name', ['class'=>'sr-only']) !!}
         {!! Form::text('batch_name', null, ['data-toggle'=>'tooltip', 'title'=>'Batch name', 'class'=>'form-control', 'placeholder'=>'Batch name']) !!}
     </span>
+@endif
     <span class="group @if ($errors->has('concentration')) has-error @endif">
         {!! Form::label('concentration', 'concentration', ['class'=>'sr-only']) !!}
         {!! Form::number('concentration', null, ['data-toggle'=>'tooltip', 'title'=>'Concentration','step'=>'0.1', 'class'=>'number-field', 'placeholder'=>'Concentration']) !!}
