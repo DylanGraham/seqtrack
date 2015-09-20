@@ -31,7 +31,7 @@ class SampleRequest extends Request
 
             // SAMPLE TABLE FIELDS
 
-            'sample_id'     => array( 'required', 'regex:/[a-zA-Z0-9]{1,120}/' , 'max:120', 'unique:samples,sample_id' ),
+            'sample_id'     => array( 'required', 'regex:/[a-zA-Z0-9]{1,120}/' , 'between:6,120', 'unique:samples,sample_id' ),
 
             'plate' => array('max:120' , 'regex:/^[a-zA-Z0-9]{1,120}$/', 'max:120'),
 

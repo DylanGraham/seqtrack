@@ -20,8 +20,8 @@
     @foreach($batches as $batch)
 
         <tr>
-            <td> {{ ($batch->batch_id)}}     </td>
-            <td> {{ ($batch->batch_name) }}  </td>
+            <td> <a href="/batches/{{($batch->id)}} ">{{ ($batch->id)}}    </a> </td>
+            <td> <a href="/batches/{{($batch->id)}} ">{{ ($batch->batch_name) }} </a> </td>
             <td> {{ $batch->sample_id }}     </td>
             <td> {{ $batch->runs_remaining}} </td>
             <td> {{ ($batch->name)}}    </td>

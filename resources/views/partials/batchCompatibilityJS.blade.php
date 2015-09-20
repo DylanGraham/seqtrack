@@ -180,6 +180,11 @@
     }
 
 
-
+    script.onreadystatechange(function(){
+        if(script.readyState == 'loaded' || script.readyState == 'complete') {
+            checkSelectedBatches();
+            dd("yyyyy");
+        }
+    });
 
 </script>
