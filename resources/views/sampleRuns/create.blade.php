@@ -3,7 +3,7 @@
 @include('partials.navbar')
     <a href='/'>@include('partials.logo')</a>
 
-    {!! Form::open(['url'=>'sampleRuns/runDetails', 'class'=>'form-inline']) !!}
+    {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
     <br/>
     <h4>Add batches to a run</h4>
     <br/>
