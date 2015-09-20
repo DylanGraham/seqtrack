@@ -22,6 +22,7 @@ use App\Http\Requests;
 use App\Http\Requests\SampleImportRequest;
 use App\I7Index;
 use App\I5Index;
+use App\Batch;
 use App\IndexSet;
 use App\ProjectGroup;
 use App\Sample;
@@ -132,6 +133,10 @@ class ImportSampleController extends Controller
      * @var int
      */
     protected $compatibilityChecker = -1;
+
+    protected $batchI7IndexSet = -1;
+    protected $batchI5IndexSet = -1;
+    protected $batchPairChecker = -1;
 
     /**
      * Restrict access to authenticated users
@@ -251,6 +256,7 @@ class ImportSampleController extends Controller
         $this->i5Indexes = I5Index::lists('sequence', 'index');
         $this->i5IndexSetArray = I5Index::lists('index_set_id', 'index');
         $this->samplesList = DB::table('samples')->lists('sample_id');
+        $this->loadExistingSamples(Input::get()['batch_id']);
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
@@ -269,8 +275,14 @@ class ImportSampleController extends Controller
                 if (Count($this->stringErrors)) {
                     Session::flash('error', $this->stringErrors);
                 } else {
-                    Session::flash('success', "File Upload Successful");
-                    //$this->addData(Request::file('sampleFile'));
+                    if($this->checkBatchCompatibility(Input::get()['batch_id'])) {
+                        $this->addData(Request::file('sampleFile'), Input::get()['batch_id'], Input::get()['plate'],
+                            Input::get()['well'], Input::get()['description'], Input::get()['runs_remaining'],
+                            Input::get()['instrument_lane']);
+                        Session::flash('success', "File Upload Successful");
+                    } else {
+                        Session::flash('error', "Hi");
+                    }
                 }
                 return Redirect::to('import');
             } else {
@@ -300,7 +312,7 @@ class ImportSampleController extends Controller
                         return FALSE;
                     }
                 } else {
-                    $this->setCheckers($row);
+                    $this->setCompatiblityCheckers($row);
                     $this->checkSampleId($row[0], $count);
                     $this->checkI7Index($row[1], $row[2], $row[3], $count);
                     $this->checkI5Index($row[3], $row[4], $count);
@@ -316,7 +328,7 @@ class ImportSampleController extends Controller
     /**
      * @param $row
      */
-    private function setCheckers($row) {
+    private function setCompatiblityCheckers($row) {
         if($this->i7IndexSet == -1) {
             if(isset($this->i7IndexSetArray[$row[1]])) {
                 $this->i7IndexSet = $this->i7IndexSetArray[$row[1]];
@@ -482,11 +494,10 @@ class ImportSampleController extends Controller
      * @param string $delimiter
      * @return bool
      */
-    private function addData($filename, $batchId, $projectId, $plate, $well, $description = '',
+    private function addData($filename, $batchId, $plate = '', $well = '', $description = '',
                             $runs = 0, $lanes = 0, $delimiter = ',')
     {
         $header = NULL;
-        $data = array();
         if (($handle = fopen($filename, 'r')) !== FALSE) {
             while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE) {
                 if (!$header) {
@@ -497,9 +508,9 @@ class ImportSampleController extends Controller
                     }
                 } else {
                     //TODO Check for compatiblity
+                    $this->getI7IndexId($row[1]);
                     $sample = Sample::create(array(
                         'batch_id' => $batchId,
-                        'project_group_id' => $projectId,
                         'sample_id' => $row[0],
                         'plate' => $plate,
                         'well' => $well,
@@ -508,8 +519,6 @@ class ImportSampleController extends Controller
                         'description' => $description,
                         'runs_remaining' => $runs,
                         'instrument_lane' => $lanes));
-
-                    $data[] = array_combine($header, $row);
                 }
             }
             fclose($handle);
@@ -523,7 +532,7 @@ class ImportSampleController extends Controller
     private function getI7IndexId($index)
     {
         $index = I7Index::where('index', 'LIKE', $index)->get();
-        return $index;
+        return $index[0]['id'];
     }
 
     /**
@@ -533,7 +542,11 @@ class ImportSampleController extends Controller
     private function getI5IndexId($index)
     {
         $index = I5Index::where('index', 'LIKE', $index)->get();
-        return $index;
+        if(isset($index[0])) {
+            return $index[0]['id'];
+        } else {
+            return NULL;
+        }
     }
 
     /**
@@ -548,7 +561,44 @@ class ImportSampleController extends Controller
     /**
      *
      */
-    private function checkBatchCompatibility() {
+    private function checkBatchCompatibility($batchId) {
+        $samples = $this->getBatchSamples($batchId);
+        if(Count($samples) > 0) {
+            if ($this->batchPairChecker == $this->compatibilityChecker) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        }
+        return TRUE;
+    }
+
+    /**
+     *
+     */
+    private function loadExistingSamples($batchId) {
+        $samples = $this->getBatchSamples($batchId);
+        foreach ($samples as $sample) {
+            if($this->batchI5IndexSet == -1) {
+                print_r($sample->i5_Index);
+                if($sample->i5_Index != "") {
+                    $this->batchPairChecker = 1;
+                    $this->batchI5IndexSet = $sample->i5_index->index_set_id;
+                } else {
+                    $this->batchI5IndexSet = -2;
+                    $this->batchPairChecker = 0;
+                }
+            }
+            if($this->batchI7IndexSet == -1) {
+                $this->batchI7IndexSet = $sample->i7_index->index_set_id;
+            }
+            if($sample->i5_index == NULL) {
+                $string = $sample->i7_index->index;
+            } else {
+                $string = $sample->i7_index->index.$sample->i5_index->index;
+            }
+            array_push($this->uniqueIndexes, $string);
+        }
     }
 
     /**
