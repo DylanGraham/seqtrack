@@ -12,6 +12,7 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
+<<<<<<< HEAD
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -28,6 +29,8 @@
             <li><a href="{!! route('runs.index') !!}">View Run</a></li>
           </ul>
         </li>
+=======
+>>>>>>> c97b2ba7a7093b55db0b0f22a037e3ef0c72b2ed
       </ul>
     </div><!--/.nav-collapse -->
   </div>

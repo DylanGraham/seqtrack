@@ -62,6 +62,7 @@ body {
 	margin-right: 10%;
 	margin-left: 10%;
 }
+<<<<<<< HEAD
 .table-container{
 	background-color: #B4B4B4;
 }
@@ -81,9 +82,14 @@ a:hover{
 	color: #CC6600;
 }
 
+<<<<<<< HEAD
 table.home-menu-table{
     margin-left:auto; 
     margin-right:auto;
 }
+=======
+=======
+>>>>>>> c97b2ba7a7093b55db0b0f22a037e3ef0c72b2ed
+>>>>>>> parent of dbde373... Correcting merge issues
 
 /*# sourceMappingURL=all.css.map */
