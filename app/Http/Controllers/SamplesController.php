@@ -113,14 +113,14 @@ class SamplesController extends Controller
                 if ($sample->i5_index_id && ! $s->i5_index_id) {
                     Session::flash('flash_message', 'Batch is single index!');
                     return false;
-                // Or vice cersa
+                // Or vice versa
                 } elseif ($s->i5_index_id && ! $sample->i5_index_id) {
                     Session::flash('flash_message', 'Batch is dual index!');
                     return false;
                 }
 
                 // If both i7 & i5 are already used 
-                if ($sample->i5_index_id) {
+                if ($s->i5_index_id) {
                     if ($s->i7_index_id == $i7 && $s->i5_index_id == $i5) {
                         Session::flash('flash_message', 'Both indexes conflict!');
                         return false;
@@ -142,5 +142,4 @@ class SamplesController extends Controller
         Session::flash('success_message', 'Sample added');
         return true;
     }
-
 }

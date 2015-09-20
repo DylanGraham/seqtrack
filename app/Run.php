@@ -92,8 +92,7 @@ class Run extends Model
 
     /**
      * A Runs belongs to a Applications
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function application()
     {
@@ -119,6 +118,7 @@ class Run extends Model
 
     /**
      * A Runs belongs to a Iem_file_version
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function iem_file_version()
     {
@@ -127,6 +127,7 @@ class Run extends Model
 
     /**
      * A Runs belongs to a Instrument
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function instrument()
     {
@@ -134,7 +135,9 @@ class Run extends Model
     }
 
     /**
+     *
      * A Runs belongs to a Run_status
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function run_status()
     {
@@ -143,6 +146,7 @@ class Run extends Model
 
     /**
      * A Runs belongs to a work_flow
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function work_flow()
     {
@@ -151,6 +155,7 @@ class Run extends Model
 
     /**
      * A Runs belongs to a User
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function users()
     {
@@ -159,6 +164,7 @@ class Run extends Model
 
     /**
      * A Runs belongs to a Project Group
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function project_group()
     {
@@ -167,6 +173,7 @@ class Run extends Model
 
     /**
     * A Run can have many SampleRun.
+     *
     */
     public function runs()
     {

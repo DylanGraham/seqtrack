@@ -1,10 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 @extends('app')
 @section('content')
 @include('partials.navbar')
     <div class="container-fluid">
     <a href='/'>@include('partials.logo')</a>
 =======
+=======
+@extends('app')
+@section('content')
+@include('partials.navbar')
+    <a href='/'>@include('partials.logo')</a>
+>>>>>>> c97b2ba7a7093b55db0b0f22a037e3ef0c72b2ed
 {{--@extends('app')--}}
 {{--@section('content')--}}
     {{--<a href='/'>@include('partials.logo')</a>--}}
@@ -13,7 +20,7 @@
     {{--{!! Form::open(['url'=>'sampleRuns/runSave', 'class'=>'form-inline']) !!}--}}
        {{--@include('partials.runsForm', ['submitButtonText'=>'Submit'])--}}
     {{--{!! Form::close() !!}--}}
-    {{--@include('errors.list')--}}
+    {{--@include('errorBag.list')--}}
 
     {{--<br/>--}}
     {{--<h3>Selected batches</h3>--}}
@@ -36,7 +43,7 @@
 
     {{--</table>--}}
 
-    {{--@include('errors.list')--}}
+    {{--@include('errorBag.list')--}}
 {{--@endsection--}}
 
 {{--@section('footer')--}}

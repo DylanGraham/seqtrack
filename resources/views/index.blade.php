@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+<<<<<<< HEAD
 
 
 @include('partials.navbar')
@@ -10,6 +11,10 @@
 		@include('partials.logo')<br><br>
     <h2>Temporary pages</h2>
 
+=======
+@include('partials.navbar')
+@include('partials.logo')<br><br>
+>>>>>>> c97b2ba7a7093b55db0b0f22a037e3ef0c72b2ed
 		<div class = "button">
 			<a class="btn btn-default" href="{!! route('batches.create') !!}" role="button">Create batch</a>
 		</div>
@@ -41,6 +46,7 @@
 		</div>
 
 		@include('errors.list')
+<<<<<<< HEAD
         
         <h2>OTHER</h2>
         <a href="./batchesRunsRemaining">View batches with runs remaining</a><br>
@@ -78,6 +84,8 @@
         <a href="{!! route('application.create') !!}">Add Application to list</a><br>
         <a href="{!! route('application.index') !!}">View list of Applications</a><br>
         <br>
+=======
+>>>>>>> c97b2ba7a7093b55db0b0f22a037e3ef0c72b2ed
 	</div> <!-- end of content-->
 </div> <!-- end of container -->
 

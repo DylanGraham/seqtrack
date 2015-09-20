@@ -1,5 +1,6 @@
 .alert {
     padding: 8px 15px 8px 24px;
+    margin-top: 8px;
     margin-bottom: 18px;
     border: 10px;
     -webkit-border-radius: 4px;
@@ -46,6 +47,7 @@ body {
 	margin-right: 10%;
 	margin-left: 10%;
 }
+<<<<<<< HEAD
 .table-container{
 	background-color: #B4B4B4;
 }
@@ -65,3 +67,5 @@ a:hover{
 	color: #CC6600;
 }
 
+=======
+>>>>>>> c97b2ba7a7093b55db0b0f22a037e3ef0c72b2ed
