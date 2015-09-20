@@ -23,6 +23,9 @@
 		<div class = "button">	
 			<a class="btn btn-default" href="{!! route('sampleRuns.create') !!}" role="button">Add batches to run</a>
 		</div>
+<div class = "button">
+	<a class="btn btn-default" href="{!! url('auth/logout') !!}" role="button">Log out</a>
+</div>
 
 		<h2>Temporary Pages</h2>
 		<div class = "button">
@@ -33,7 +36,7 @@
 		</div>
 
 		@include('errors.list')
-	</div> <!-- end of content-->
+	<!-- end of content-->
 </div> <!-- end of container -->
 
 @endsection
