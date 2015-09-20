@@ -1,11 +1,13 @@
 @extends('app')
 @section('content')
+<<<<<<< HEAD
 
+=======
+>>>>>>> dbde37330050ddd149fa72394a6d459a94891612
 @include('partials.navbar')
-
-
 <div class = "container-fluid"> 
 	<div class = "content">
+<<<<<<< HEAD
 		@include('partials.logo')<br><br>
         <table class="home-menu-table">
             <tr>
@@ -49,6 +51,27 @@
                 </td>
             </tr>
         </table>
+=======
+@include('partials.logo')<br><br>
+		<div class = "button">
+			<a class="btn btn-default" href="{!! route('batches.create') !!}" role="button">Create batch</a>
+		</div>
+		<div class = "button">
+			<a class="btn btn-default" href="{!! route('batches.index') !!}" role="button">View batches</a>
+		</div>
+		<div class = "button">	
+			<a class="btn btn-default" href="{!! route('samples.create') !!}" role="button">Create samples</a>
+		</div>
+		<div class = "button">	
+			<a class="btn btn-default" href="{!! route('samples.index') !!}" role="button">View samples</a>
+		</div>
+		<div class = "button">
+			<a class="btn btn-default" href="{!! route('runs.create') !!}" role="button">Create run</a>
+		</div>
+		<div class = "button">
+			<a class="btn btn-default" href="{!! route('runs.index') !!}" role="button">View runs</a>
+		</div>
+>>>>>>> dbde37330050ddd149fa72394a6d459a94891612
 		<div class = "button">	
 			<a class="btn btn-default" href="{!! route('sampleRuns.create') !!}" role="button">Add Batches to Run</a>
 		</div>
@@ -103,4 +126,3 @@
 </div> <!-- end of container -->
 
 @endsection
-
