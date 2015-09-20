@@ -63,8 +63,9 @@ class BatchesController extends Controller
 
     public function show(Batch $batch)
     {
-//        $batches = Batch::findOrFail($id);
-//        return view('batches', compact('batches'));
+        dd($batch);
+        return view('batches.index')->with('batches', $batch);
+        //return view('batches', compact('batches'));
     }
 
     public function edit(Batch $batch)
