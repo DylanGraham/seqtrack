@@ -15,7 +15,7 @@
     
     <hr/>
 
-    @include('partials.sample', ['submitButtonText'=>'Submit'])
+    @include('partials.sample', ['formName'=>'Create Sample', 'submitButtonText'=>'Submit'])
 
     {!! Form::close() !!}
 
