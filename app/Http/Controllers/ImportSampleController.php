@@ -281,7 +281,8 @@ class ImportSampleController extends Controller
                             Input::get()['instrument_lane']);
                         Session::flash('success', "File Upload Successful");
                     } else {
-                        Session::flash('error', "Hi");
+                        array_push($this->stringErrors, "File is not compatible with the batch selected.");
+                        Session::flash('error', $this->stringErrors);
                     }
                 }
                 return Redirect::to('import');
