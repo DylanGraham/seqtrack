@@ -26,6 +26,54 @@ use Auth;
 
 class RunDetailsController extends Controller
 {
+    public function validateBatches($batches)
+    {
+        $first_sample = $batches[0]->samples[0];
+
+        $errors = false;
+        $sequnces = array();
+
+        $i7_length = strlen($first_sample->i7_index->sequence);
+        if (count($first_sample->i5_index)>0) {
+            $i5_length = strlen($first_sample->i5_index->sequence);
+
+        }else $i5_length = 0;
+
+        foreach ($batches as $batch)
+        {
+            foreach ($batch->samples as $sample)
+            {
+                if (strlen($sample->i7_index->sequence) != $i7_length)
+                {
+                    $errors =true;
+                }
+                if (count($sample->i5_index)>0 )
+                {
+                    if (strlen($sample->i5_index->sequence) != $i5_length)
+                    {
+                        $errors = true;
+                    }
+                    $current_sequnce = $sample->i7_index->sequence." ".$sample->i5_index->sequence;
+
+                }else
+                {
+                    if ($i5_length != 0) {
+                        $errors = true;
+                    }
+                    $current_sequnce = $sample->i7_index->sequence;
+                }
+                if (array_key_exists ($current_sequnce,$sequnces)){
+                    $errors = true;
+                }else{
+                    $sequnces[$current_sequnce]=1;
+                }
+
+
+            }
+        }
+
+        return $errors;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -140,55 +188,13 @@ class RunDetailsController extends Controller
 
         $run->save();
 
-        $batch_ids = $input['batch_ids'];
+        $batch_ids = Session::get('run_batch_ids');
 
         $batches = Batch::whereIn('id', $batch_ids)->get();
 
-        $first_sample = $batches[0]->samples[0];
-
-        $errors = false;
-        $sequnces = array();
-
-        $i7_length = strlen($first_sample->i7_index->sequence);
-        if (count($first_sample->i5_index)>0) {
-            $i5_length = strlen($first_sample->i5_index->sequence);
-
-        }else $i5_length = 0;
-
-        foreach ($batches as $batch)
-        {
-            foreach ($batch->samples as $sample)
-            {
-                if (strlen($sample->i7_index->sequence) != $i7_length)
-                {
-                    $errors =true;
-                }
-                if (count($sample->i5_index)>0 )
-                {
-                    if (strlen($sample->i5_index->sequence) != $i5_length)
-                    {
-                        $errors = true;
-                    }
-                    $current_sequnce = $sample->i7_index->sequence." ".$sample->i5_index->sequence;
-
-                }else
-                {
-                    if ($i5_length != 0) {
-                        $errors = true;
-                    }
-                    $current_sequnce = $sample->i7_index->sequence;
-                }
-                if (array_key_exists ($current_sequnce,$sequnces)){
-                    $errors = true;
-                }else{
-                    $sequnces[$current_sequnce]=1;
-                }
+        $errors = $this->validateBatches($batches);
 
 
-            }
-        }
-
-        dd("errors",$errors,"i5",$i5_length,"i7",$i7_length,$first_sample);
         if (!$errors) {
             foreach ($batches as $batch) {
                 foreach ($batch->samples as $sample) {
@@ -206,8 +212,17 @@ class RunDetailsController extends Controller
             }
         }
 
+        if ($errors)
+        {
+            return view('sampleRuns.errors',[
+
+                'batches' =>$batches
+            ]);
+        }
+
         return redirect('runs');
     }
+
 
 
     /**

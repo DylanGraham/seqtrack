@@ -28,7 +28,6 @@
 
 </table>
 
-@include('errors.list')
 @endsection
 
 @section('footer')
