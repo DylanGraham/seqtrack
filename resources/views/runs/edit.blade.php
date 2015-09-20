@@ -1,6 +1,8 @@
 @extends('app')
 @section('content')
+@include('partials.navbar')
     <a href='/'>@include('partials.logo')</a>
+    <div class="table-container">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -46,6 +48,7 @@
             </tr>
 
     </table>
+    </div>
     {!! Form::open(['url'=>'runs/setStatus', 'class'=>'form-inline']) !!}
     {!! Form::hidden('run_id',$run->id) !!}
     {!! Form::label('run_status', 'run_status', ['class'=>'sr-only']) !!}

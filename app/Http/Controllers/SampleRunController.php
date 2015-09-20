@@ -101,30 +101,38 @@ class SampleRunController extends Controller
                         $errors = true;
                     }
                     $current_sequnce = $sample->i7_index->sequence;
-                }elseif ($sample->i5_index->sequence != $i5_length)
+                }else
                 {
-                    $errors = true;
+                    if ($sample->i5_index->sequence != $i5_length)
+                    {
+                        $errors = true;
+                    }
+                    $current_sequnce = $sample->i7_index->sequence." ".$sample->i5_index->sequence;
+                }
+                if (array_key_exists ($current_sequnce,$sequnces)){
+                     $errors = true;
+                }else{
+                    $sequnces[$current_sequnce]=1;
                 }
 
 
             }
         }
-        
-        dd($i5_length,$i7_length,$first_sample);
 
-        foreach ($batches as $batch)
-        {
-            foreach ($batch->samples as $sample)
-            {
-                if ($sample->runs_remaining >0) {
-                    $sampleRun  = new SampleRun();
-                    $sampleRun->created_at = Carbon::now();
-                    $sampleRun->updated_at = Carbon::now();
-                    $sampleRun->run_id = $run->id;
-                    $sampleRun->sample_id = $sample->id;
-                    $sampleRun->save();
-                    $sample->runs_remaining -=1;
-                    $sample->update();
+        dd("errors",$errors,"i5",$i5_length,"i7",$i7_length,$first_sample);
+        if (!$errors) {
+            foreach ($batches as $batch) {
+                foreach ($batch->samples as $sample) {
+                    if ($sample->runs_remaining > 0) {
+                        $sampleRun = new SampleRun();
+                        $sampleRun->created_at = Carbon::now();
+                        $sampleRun->updated_at = Carbon::now();
+                        $sampleRun->run_id = $run->id;
+                        $sampleRun->sample_id = $sample->id;
+                        $sampleRun->save();
+                        $sample->runs_remaining -= 1;
+                        $sample->update();
+                    }
                 }
             }
         }
