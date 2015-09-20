@@ -7,7 +7,6 @@
     border-radius: 4px;
 }
 
-<<<<<<< HEAD
 body {
   padding-top: 50px;
   background-color: #007170;
@@ -47,6 +46,22 @@ body {
 	margin-right: 10%;
 	margin-left: 10%;
 }
-=======
+.table-container{
+	background-color: #B4B4B4;
+}
+h4{
+	color: white;
+}
 
->>>>>>> 2789552b8a8a50c5946c9e9923efac3d4f34d240
+.table-container a{
+	color: #2E5CB8;
+}
+
+a{
+	color: #D6AD33;
+}
+
+a:hover{
+	color: #CC6600;
+}
+

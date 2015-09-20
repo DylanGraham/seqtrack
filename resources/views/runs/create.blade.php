@@ -2,6 +2,7 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
+    <div class="container-fluid">
     <a href='/'>@include('partials.logo')</a>
 =======
 {{--@extends('app')--}}
@@ -41,3 +42,4 @@
 {{--@section('footer')--}}
 
 {{--@endsection--}}
+    </div>
