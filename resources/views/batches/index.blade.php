@@ -3,6 +3,7 @@
 @include('partials.navbar')
     <a href='/'>@include('partials.logo')</a> 
     <h4>Batches</h4>
+    <div class="table-container">
     <table class="table table-striped">
     <thead>
         <tr>
@@ -33,4 +34,5 @@
     </tr>
     @endforeach
     </table>
+    </div>
 @endsection
