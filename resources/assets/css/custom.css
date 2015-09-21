@@ -12,6 +12,10 @@ body {
   padding-top: 25px;
   background-color: #007170;
 }
+
+p{
+	color: #fff;
+}
 .content {
   padding: 25px 15px;
   text-align: center;
@@ -71,4 +75,10 @@ table.home-menu-table{
     margin-right:auto;
     width: 55%;
     table-layout: fixed;
+}
+input{
+	color: #fff;
+}
+span{
+	color: #fff;
 }
