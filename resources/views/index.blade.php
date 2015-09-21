@@ -3,8 +3,6 @@
 
 @include('partials.navbar')
 
-<<<<<<< HEAD
-
 <div class = "container-fluid"> 
 	<div class = "content">
 		@include('partials.logo')<br><br>
@@ -58,13 +56,10 @@
         </div>
         </div> <!-- end content-->
     <h2>Temporary pages</h2>
-
-=======
 <div class = "container-fluid"> 
 	<div class = "content">
 
 @include('partials.logo')<br><br>
->>>>>>> d88e43d4865d6e998312894d08a50ff737de56a3
 		<div class = "button">
 			<a class="btn btn-default" href="{!! route('batches.create') !!}" role="button">Create batch</a>
 		</div>
