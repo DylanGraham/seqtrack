@@ -29,7 +29,7 @@
         <td>{{ $s->well }}</td>
         <td>{{ $s->instrument_lane}}</td>
         <td>{{ $s->runs_remaining}}</td>
-        <td>{{ $s->created_at}}</td>
+        <td>{{ Carbon\Carbon::parse($s->created_at)->format('d M Y')}}</td>
         <td>{{ $s->batch['batch_name']}}</td>
     </tr>
     @endforeach
