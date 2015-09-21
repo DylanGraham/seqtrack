@@ -95,7 +95,7 @@ return [
             'required' => 'Charge code is required',
         ],
         'batch_name' => [
-            'regex' => 'Batch name may only contain _ or a-z or A-Z or 0-9',
+            'regex' => 'Batch name may only contain _ or - or a-z or A-Z or 0-9',
             'required' => 'Batch name is required',
         ],
         'tube_bar_code' => [
@@ -107,10 +107,10 @@ return [
             'required' => 'Sample name is required',
         ],
         'well' => [
-            'regex' => 'Well may only contain a-z or A-Z or 0-9',
+            'regex' => 'Well may only contain a-z or A-Z or 0-9 or - ',
         ],
         'plate' => [
-            'regex' => 'Plate may only contain a-z or A-Z or 0-9',
+            'regex' => 'Plate may only contain a-z or A-Z or 0-9 or - ',
         ],
         'flow_cell' => [
             'regex' => 'Flow cell may only contain A-Z or 0-9',

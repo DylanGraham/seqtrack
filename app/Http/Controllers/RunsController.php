@@ -76,6 +76,8 @@ class RunsController extends Controller
     {
         $run = Run::where('id', $id)->first();
 
+        // query selects batch name, date, charge code, user and project for run having status updated.
+        // smaller return than eloquent query were only small sub set of data required.
         $batches = DB::table('batches')
             ->join('samples', function ($join) {
                 $join->on('batches.id','=', 'samples.batch_id');
