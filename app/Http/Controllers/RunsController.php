@@ -74,11 +74,23 @@ class RunsController extends Controller
     public function edit($id)
     {
         $run = Run::where('id', $id)->first();
+
+        $batches = DB::table('batches')
+            ->join('samples', function ($join) {
+                $join->on('batches.id','=', 'samples.batch_id');
+            })
+            ->join('sample_runs', function ($join) {
+                $join->on('sample_runs.sample_id','=', 'batches.user_id');
+            })
+            ->where('sample_runs.run_id', '=', $run->id)
+            ->get();
+
         $status_options = Run_status::lists('status', 'id');
      //   $run->sample_runs;
         return view('runs.edit', [
             'run' => $run,
-            'status_options' => $status_options
+            'status_options' => $status_options,
+            'batches' => $batches
         ]);
     }
 
