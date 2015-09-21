@@ -49,7 +49,7 @@
                // check first sequnce length in batch. all sequences in batch should be same length
                $i7_length = strlen($batch->samples[0]->i7_index->sequence);
 
-               if (count($batch->samples[0]->i5_index_id) != NULL) {
+               if ($batch->samples[0]->i5_index_id) {
                    $i5_length = strlen($batch->samples[0]->i5_index->sequence);
                    $i5_used = true;
 
@@ -73,7 +73,7 @@
         if ($selected.indexOf('{{($batch->id)}}') > -1) {
             <?php
             $i7_length = strlen($batch->samples[0]->i7_index->sequence);
-            if (count($batch->samples[0]->i5_index_id) != NULL ){
+            if ($batch->samples[0]->i5_index_id ){
 
                 $i5_length = strlen($batch->samples[0]->i5_index->sequence);
                 $i5_used = true;
@@ -99,15 +99,15 @@
                     }
                 ?>
 
-                    if ($used_sequences.hasOwnProperty('{{ $key}}')) {
+                if ($used_sequences.hasOwnProperty('{{ $key}}')) {
 
-                $repeated_sequences['{{$key}}'] = 1;
-                $compatible = false;
+                    $repeated_sequences['{{$key}}'] = 1;
+                    $compatible = false;
 
-            } else {
+                } else {
 
-                $batch_sequences['{{ $key }}'] = 1;
-            }
+                    $batch_sequences['{{ $key }}'] = 1;
+                }
             @endforeach
 
 
@@ -131,7 +131,7 @@
             $compatible = true;
         if ($notselected.indexOf('{{($batch->id)}}') >= 0 && $selected.length > 0) {
             <?php
-            if (count($batch->samples[0]->i5_index_id) != NULL ){
+            if ($batch->samples[0]->i5_index_id){
 
                    $i5_length = strlen($batch->samples[0]->i5_index->sequence);
                    $i5_used = true;
@@ -183,7 +183,7 @@
     script.onreadystatechange(function(){
         if(script.readyState == 'loaded' || script.readyState == 'complete') {
             checkSelectedBatches();
-            dd("yyyyy");
+
         }
     });
 

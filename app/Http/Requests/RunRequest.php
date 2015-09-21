@@ -37,7 +37,7 @@ class RunRequest extends Request
 
             'iem_file_version_id' => 'required | integer |exists:iem_file_version,id',
 
-            'experiment_name' => array('required' , 'regex:/^[_a-zA-Z0-9_]{1,120}$/' , 'between:6,120'),
+            'experiment_name' => array('required' , 'regex:/^[a-zA-Z0-9_-]{1,120}$/' , 'between:6,120'),
 
             // make a date as integar off set from today eg 1 to 7 days from today
             'run_date' => 'required | integer | between:0,7',
@@ -48,7 +48,7 @@ class RunRequest extends Request
 
             'assay_id' => 'required | integer |exists:assay,id',
 
-            'description' => array('regex:/^[a-zA-Z0-9_]{1,120}$/' , 'max:120'),
+            'description' => array('regex:/^[a-zA-Z0-9_-]{1,120}$/' , 'max:120'),
 
             'chemistry_id' => 'required |integer | exists:chemistry,id',
 

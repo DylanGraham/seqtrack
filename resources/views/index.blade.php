@@ -73,9 +73,6 @@
 			<a class="btn btn-default" href="{!! route('samples.index') !!}" role="button">View samples</a>
 		</div>
 		<div class = "button">
-			<a class="btn btn-default" href="{!! route('runs.create') !!}" role="button">Create run</a>
-		</div>
-		<div class = "button">
 			<a class="btn btn-default" href="{!! route('runs.index') !!}" role="button">View runs</a>
 		</div>
 		<div class = "button">	
