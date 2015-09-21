@@ -30,7 +30,7 @@ class BatchRequest extends Request
             //  id and date created by database
             //  users id from loged in user
 
-            'batch_name' => array('required' , 'regex:/^[\_a-zA-Z0-9]{1,60}$/' , 'max:60', 'unique:batches,batch_name'),
+            'batch_name' => array('required' , 'regex:/^[\_a-zA-Z0-9]{1,60}$/' , 'between:6,60', 'unique:batches,batch_name'),
 
             'project_group_id' => array( 'required', 'exists:project_group,id'),
 

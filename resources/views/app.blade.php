@@ -2,11 +2,14 @@
 <html>
     <head>
         <link rel="stylesheet" href="{{ asset('css/all.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <meta charset="utf-8">
         <title>SeqTrack</title>
     </head>
     <body>
+       <div class="content">
+            @yield('content')
+        </div>
+
         @if (Session::has('flash_message'))
             <div class="alert alert-danger">
                 {{ session('flash_message') }}
@@ -17,10 +20,6 @@
                 {{ session('success_message') }}
             </div>
         @endif
-        
-        <div class="content">
-            @yield('content')
-        </div>
  
         <script src="{{ asset('js/all.js') }}"></script>
 

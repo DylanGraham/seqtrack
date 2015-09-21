@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 
-class SampleRequest extends Request
+class SampleEditRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,16 +31,9 @@ class SampleRequest extends Request
 
             // SAMPLE TABLE FIELDS
 
-            'sample_id'     => array( 'required', 'regex:/[a-zA-Z0-9]{1,120}/' , 'between:6,120', 'unique:samples,sample_id' ),
-
             'plate' => array('max:120' , 'regex:/^[a-zA-Z0-9]{1,120}$/', 'max:120'),
 
             'well' => array('max:120' , 'regex:/^[a-zA-Z0-9]{1,120}$/', 'max:120'),
-
-            'i7_index_id'   =>  'required| integer | exists:i7_index,id',
-
-            // TODO check if exits in i5_index set or is NULL
-           // 'i5_index_id'   =>  array('integer','exists:i5_index,id'),
 
             'description' => array('required' , 'regex:/^[a-zA-Z0-9]{1,120}$/' , 'max:120'),
 

@@ -21,7 +21,7 @@
     </thead>
     @foreach ($batches as $b)
     <tr>
-        <td><a href="/batches/{{ $b->id }}/edit">{{ $b->batch_name }}</a></td>
+        <td><a href="/batches/{{ $b->id }}">{{ $b->batch_name }}</a></td>
         <td>{{ $b->user_id}}</td>
         <td>{{ $b->charge_code}}</td>
         <td>{{ $b->concentration}}</td>
@@ -31,6 +31,7 @@
         <td>{{ $b->tube_location}}</td>
         <td>{{ $b->tape_station_length}}</td>
         <td>{{ $b->project_group->name}}</td>
+        <td><a href="/batches/{{ $b->id }}/edit"><button>Edit</button></a></td>
     </tr>
     @endforeach
     </table>

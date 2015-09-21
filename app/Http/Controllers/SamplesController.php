@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Requests\SampleRequest;
+use App\Http\Requests\SampleEditRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Batch;
@@ -90,7 +91,7 @@ class SamplesController extends Controller
         ]);
     }
 
-    public function update(Sample $sample, SampleRequest $request)
+    public function update(Sample $sample, SampleEditRequest $request)
     {
         $sample->update($request->all());
 

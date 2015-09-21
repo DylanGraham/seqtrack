@@ -3,6 +3,7 @@
 
 @include('partials.navbar')
 
+<<<<<<< HEAD
 
 <div class = "container-fluid"> 
 	<div class = "content">
@@ -58,6 +59,12 @@
         </div> <!-- end content-->
     <h2>Temporary pages</h2>
 
+=======
+<div class = "container-fluid"> 
+	<div class = "content">
+
+@include('partials.logo')<br><br>
+>>>>>>> d88e43d4865d6e998312894d08a50ff737de56a3
 		<div class = "button">
 			<a class="btn btn-default" href="{!! route('batches.create') !!}" role="button">Create batch</a>
 		</div>
@@ -82,6 +89,9 @@
 		<div class = "button">	
 			<a class="btn btn-default" href="{!! route('sampleRuns.create') !!}" role="button">Add Batches to Run</a>
 		</div>
+<div class = "button">
+	<a class="btn btn-default" href="{!! url('auth/logout') !!}" role="button">Log out</a>
+</div>
 
 		<h2>Temporary Pages</h2>
 		<div class = "button">
@@ -92,6 +102,10 @@
 		</div>
 
 		@include('errors.list')
+
+	<!-- end of content-->
+
+
         
         <h2>OTHER</h2>
         <a href="./batchesRunsRemaining">View batches with runs remaining</a><br>
@@ -129,7 +143,9 @@
         <a href="{!! route('application.create') !!}">Add Application to list</a><br>
         <a href="{!! route('application.index') !!}">View list of Applications</a><br>
         <br>
+
 	</div> <!-- end of content-->
+
 </div> <!-- end of container -->
 
 @endsection

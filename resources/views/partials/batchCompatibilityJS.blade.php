@@ -7,7 +7,8 @@
 
 
     function checkSelectedBatches() {
-
+//    }
+//    function tempdisable(){
         var $count = 0;
         var $selected = [];
         var $notselected = [];
@@ -179,6 +180,11 @@
     }
 
 
-
+    script.onreadystatechange(function(){
+        if(script.readyState == 'loaded' || script.readyState == 'complete') {
+            checkSelectedBatches();
+            dd("yyyyy");
+        }
+    });
 
 </script>

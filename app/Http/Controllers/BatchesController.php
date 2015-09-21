@@ -21,7 +21,7 @@ class BatchesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-//        $this->middleware('super' ['except' => ['index', '' ]]);
+        $this->middleware('super', ['except' => ['index', 'create', 'store', 'show']]);
     }
 
     public function index()
@@ -63,8 +63,7 @@ class BatchesController extends Controller
 
     public function show(Batch $batch)
     {
-//        $batches = Batch::findOrFail($id);
-//        return view('batches', compact('batches'));
+        return view('batches.show')->with('batch', $batch);
     }
 
     public function edit(Batch $batch)
