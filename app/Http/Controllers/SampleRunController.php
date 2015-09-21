@@ -113,7 +113,7 @@ class SampleRunController extends Controller
         return redirect('runDetails/create');
     }
 
-    public function exportRuns()
+    public function exportRuns($run)
     {
 
     }
