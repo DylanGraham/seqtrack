@@ -17,6 +17,7 @@
           <ul class="dropdown-menu">
             <li><a href="{!! route('batches.create') !!}">Create Batch</a></li>
             <li><a href="{!! route('samples.create') !!}">Create Sample</a></li>
+            <li><a href="{!! route('import.index') !!}">Import Sample</a></li>
             <li><a href="{!! route('sampleRuns.create') !!}">Create Run</a></li>
           </ul>
         </li>
@@ -28,6 +29,8 @@
             <li><a href="{!! route('runs.index') !!}">View Run</a></li>
           </ul>
         </li>
+        <li><a href="{!! route('sampleRuns.create') !!}">Add Batch to Run</a></li>
+        <li class="logout-page"><a href="">Logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
