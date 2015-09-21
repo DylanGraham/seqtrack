@@ -20,6 +20,7 @@ use App\SampleRun;
 use App\ProjectGroup;
 use App\Run;
 use Illuminate\Http\Response;
+use App\Batch;
 
 class RunsController extends Controller
 {
@@ -80,13 +81,24 @@ class RunsController extends Controller
                 $join->on('batches.id','=', 'samples.batch_id');
             })
             ->join('sample_runs', function ($join) {
-                $join->on('sample_runs.sample_id','=', 'batches.user_id');
+                $join->on('sample_runs.sample_id','=', 'samples.id');
+            })
+            ->join('users',function ($join) {
+                $join->on('batches.user_id','=', 'users.id');
+            })
+            ->join('project_group',function ($join) {
+                $join->on('batches.project_group_id','=', 'project_group.id');
             })
             ->where('sample_runs.run_id', '=', $run->id)
+            ->distinct('batches.id')
+           ->select('batches.id','batch_name','batches.created_at','batches.charge_code','users.name','project_group.name as project')
             ->get();
 
+
+
+
         $status_options = Run_status::lists('status', 'id');
-     //   $run->sample_runs;
+
         return view('runs.edit', [
             'run' => $run,
             'status_options' => $status_options,

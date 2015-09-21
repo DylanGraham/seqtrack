@@ -61,6 +61,7 @@
 
     <p>Where run status is either 'Run built' or 'Run succeed' and it is set to 'Run failed' all included samples will have runs remaining incremented by 1 </p>
     @include('errors.list')
+<h4>Included batches</h4>
 
 
 <div class="table-container">
@@ -70,28 +71,17 @@
             <th>Batch name</th>
             <th>User ID</th>
             <th>Charge code</th>
-            <th>Concentration</th>
-            <th>Volume</th>
             <th>Date</th>
-            <th>Tube bar code</th>
-            <th>Tube location</th>
-            <th>Tape station length</th>
-            <th>Project group</th>
+            <th>Project</th>
         </tr>
         </thead>
         @foreach ($batches as $b)
             <tr>
                 <td><a href="/batches/{{ $b->id }}">{{ $b->batch_name }}</a></td>
-                <td>{{ $b->user_id}}</td>
+                <td>{{ $b->name}}</td>
                 <td>{{ $b->charge_code}}</td>
-                <td>{{ $b->concentration}}</td>
-                <td>{{ $b->volume}}</td>
                 <td>{{Carbon\Carbon::parse($b->created_at)->format('d M Y') }}</td>
-                <td>{{ $b->tube_bar_code}}</td>
-                <td>{{ $b->tube_location}}</td>
-                <td>{{ $b->tape_station_length}}</td>
-                <td>{{ $b->project_group->name}}</td>
-                <td><a href="/batches/{{ $b->id }}/edit"><button>Edit</button></a></td>
+                <td>{{ $b->project}}</td>
             </tr>
         @endforeach
     </table>
