@@ -237,7 +237,7 @@ class SampleRunController extends Controller
         ]);
     }
 
-    public function exportRuns()
+    public function exportRuns($run)
     {
 
     }

@@ -134,8 +134,19 @@ class ImportSampleController extends Controller
      */
     protected $compatibilityChecker = -1;
 
+    /**
+     * @var int
+     */
     protected $batchI7IndexSet = -1;
+
+    /**
+     * @var int
+     */
     protected $batchI5IndexSet = -1;
+
+    /**
+     * @var int
+     */
     protected $batchPairChecker = -1;
 
     /**
@@ -251,12 +262,6 @@ class ImportSampleController extends Controller
      */
     public function validateFile(Request $request)
     {
-        $this->i7Indexes = I7Index::lists('sequence', 'index');
-        $this->i7IndexSetArray = I7Index::lists('index_set_id', 'index');
-        $this->i5Indexes = I5Index::lists('sequence', 'index');
-        $this->i5IndexSetArray = I5Index::lists('index_set_id', 'index');
-        $this->samplesList = DB::table('samples')->lists('sample_id');
-        $this->loadExistingSamples(Input::get()['batch_id']);
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
@@ -269,7 +274,12 @@ class ImportSampleController extends Controller
         } else {
             // checking file is valid.
             if (Input::file('sampleFile')->isValid()) {
-
+                $this->i7Indexes = I7Index::lists('sequence', 'index');
+                $this->i7IndexSetArray = I7Index::lists('index_set_id', 'index');
+                $this->i5Indexes = I5Index::lists('sequence', 'index');
+                $this->i5IndexSetArray = I5Index::lists('index_set_id', 'index');
+                $this->samplesList = DB::table('samples')->lists('sample_id');
+                $this->loadExistingSamples(Input::get()['batch_id']);
                 $this->csvToArray(Request::file('sampleFile'));
                 $this->generateErrors();
                 if (Count($this->stringErrors)) {
