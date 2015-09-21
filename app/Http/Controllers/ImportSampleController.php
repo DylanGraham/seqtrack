@@ -149,6 +149,8 @@ class ImportSampleController extends Controller
      */
     protected $batchPairChecker = -1;
 
+    protected $newBatch = 0;
+
     /**
      * Restrict access to authenticated users
      */
@@ -435,7 +437,7 @@ class ImportSampleController extends Controller
                     array_push($this->uniqueIndexes, $indexString);
                     if ($sequenceId == $this->i7Indexes[$indexId]) {
                         if(($this->i7IndexSet != $this->i7IndexSetArray[$indexId]) ||
-                            ($this->batchI7IndexSet != $this->i7IndexSetArray[$indexId])) {
+                            ($this->newBatch == 0 && $this->batchI7IndexSet != $this->i7IndexSetArray[$indexId])) {
                             array_push($this->errorArray[$this->errorTitles[10]], $line);
                             return FALSE;
                         }
@@ -476,7 +478,7 @@ class ImportSampleController extends Controller
             if (isset($this->i5Indexes[$indexId])) {
                 if ($sequenceId == $this->i5Indexes[$indexId]) {
                     if(($this->i5IndexSet != $this->i5IndexSetArray[$indexId]) ||
-                        ($this->batchI5IndexSet != $this->i5IndexSetArray[$indexId])) {
+                        ($this->newBatch == 0 && $this->batchI5IndexSet != $this->i5IndexSetArray[$indexId])) {
                         array_push($this->errorArray[$this->errorTitles[11]], $line);
                         return FALSE;
                     }
@@ -610,6 +612,9 @@ class ImportSampleController extends Controller
                 $string = $sample->i7_index->index.$sample->i5_index->index;
             }
             array_push($this->uniqueIndexes, $string);
+        }
+        if(Count($samples) == 0) {
+            $this->newBatch = 1;
         }
     }
 
