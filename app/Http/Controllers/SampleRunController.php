@@ -32,6 +32,8 @@ class SampleRunController extends Controller
         return " to do Sample Runs Index";
     }
 
+
+    // to add samples to a run find all batches with samples with runs remaining greater than 0
     public function create()
     {
         $runs = Run::lists('description', 'id');
@@ -47,6 +49,18 @@ class SampleRunController extends Controller
             'runs' =>$runs,
             'batches' => $batches
         ]);
+    }
+
+    // Save in session batch ids selected to place in a run then go to
+    // runDetails to add run fields.
+    public function store(BatchIdRequest $input)
+    {
+        $batch_ids = $input->batch_check_id;
+
+        Session::forget('run_batch_ids');
+        Session::put('run_batch_ids', $batch_ids);
+
+        return redirect('runDetails/create');
     }
 
 
@@ -68,6 +82,7 @@ class SampleRunController extends Controller
         return "Todo sample run update";
     }
 
+    // Show a list of batches with runs remaining
     public function batchesRunsRemaining()
     {
 
@@ -76,14 +91,13 @@ class SampleRunController extends Controller
             $query->where('runs_remaining' ,'>', 0);
         })->get();
 
-
-
         return view('sampleRuns.batchesRunsRemaining',[
 
             'batches' => $batches
         ]);
     }
 
+    // Show a list of samples with runs remaining
     public function samplesRunsRemaining()
     {
 
@@ -103,15 +117,7 @@ class SampleRunController extends Controller
         ]);
     }
 
-    public function store(BatchIdRequest $input)
-    {
-        $batch_ids = $input->batch_check_id;
 
-        Session::forget('run_batch_ids');
-        Session::put('run_batch_ids', $batch_ids);
-
-        return redirect('runDetails/create');
-    }
 
     public function exportRuns()
     {

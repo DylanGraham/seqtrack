@@ -35,7 +35,7 @@
         <td>{{ $run->read2}}</td>
         <td>{{ $run->description}}</td>
         <td>{{ $run->flow_cell}}</td>
-        <td>{{ $run->run_date}}</td>
+        <td>{{ Carbon\Carbon::parse($run->run_date)->format('d M Y')}}</td>
         <td>{{ $run->run_status->status}}</td>
         <td>{{ $run->adaptor->value}}</td>
         <td>{{ $run->chemistry->chemistry}}</td>
