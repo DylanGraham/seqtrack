@@ -23,19 +23,14 @@ Route::resource('workflow', 'WorkFlowController');
 Route::resource('instrument', 'InstrumentController');
 Route::resource('application', 'ApplicationController');
 
-Route::post('sampleRuns/runDetails', 'SampleRunController@runDetails');
-
 Route::resource('sampleRuns', 'SampleRunController');
-
+Route::resource('runDetails', 'RunDetailsController');
 
 Route::get('/batchesRunsRemaining', 'SampleRunController@batchesRunsRemaining');
 Route::get('/samplesRunsRemaining', 'SampleRunController@samplesRunsRemaining');
 
-
-
-
 // To close registrations
-//Route::get('/auth/register', 'PageController@closed');
+Route::get('/auth/register', 'PageController@closed');
 
 Route::controllers([
     'auth'      => 'Auth\AuthController',

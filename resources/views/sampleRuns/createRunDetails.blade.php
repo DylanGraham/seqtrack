@@ -2,7 +2,7 @@
 @section('content')
 <a href='/'>@include('partials.logo')</a>
 
-{!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
+{!! Form::open(['url'=>'runDetails', 'class'=>'form-inline']) !!}
 @include('partials.runsForm', ['submitButtonText'=>'Submit'])
 {!! Form::close() !!}
 @include('errors.list')
@@ -28,7 +28,6 @@
 
 </table>
 
-@include('errors.list')
 @endsection
 
 @section('footer')
