@@ -42,7 +42,7 @@ class SampleRequest extends Request
             // TODO check if exits in i5_index set or is NULL
            // 'i5_index_id'   =>  array('integer','exists:i5_index,id'),
 
-            'description' => array('required' , 'regex:/^[a-zA-Z0-9]{1,120}$/' , 'max:120'),
+            'description' => array('required' , 'regex:/^[a-zA-Z0-9-]{1,120}$/' , 'max:120'),
 
             'runs_remaining' => 'required | integer | between:1,60',
 

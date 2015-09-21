@@ -123,7 +123,7 @@ return [
             'regex' => 'Volume may only have one decimal place',
         ],
         'description'=> [
-            'regex' => 'Description may only contain _ or a-z or A-Z or 0-9',
+            'regex' => 'Description may only contain a-z or A-Z or 0-9 or - ',
             'required' => 'Description is required',
         ],
         'tube_location'=> [
