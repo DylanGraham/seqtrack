@@ -29,8 +29,8 @@
             <li><a href="{!! route('runs.index') !!}">View Run</a></li>
           </ul>
         </li>
-        <li><a href="{!! route('sampleRuns.create') !!}">Add Batch to Run</a></li>
-        <li class="logout-page"><a href="">Logout</a></li>
+        <li class""><a href="{!! route('sampleRuns.create') !!}">Add Batch to Run</a></li>
+        <li><a href="">Logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
