@@ -1,6 +1,6 @@
 <div>
 
-    <h4>Create sample</h4>
+    <h4>{{ $formName }}</h4>
 
 @if ($formName === "Create Sample")
     <span class="group @if ($errors->has('sample_id')) has-error @endif">
