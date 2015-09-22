@@ -24,7 +24,7 @@ class CreateSamplesTable extends Migration
             $table->integer('i7_index_id')->unsigned();
             $table->integer('i5_index_id')->unsigned()->nullable();
 
-            $table->string('description',120);
+            $table->string('description',120)->nullable();
             $table->integer('runs_remaining');
             $table->integer('instrument_lane');
 

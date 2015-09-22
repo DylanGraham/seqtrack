@@ -100,7 +100,7 @@ class SamplesController extends Controller
 
     public function checkBatchCompatibility(Sample $sample)
     {
-        
+
         if ($sample->i5_index_id) {
             $i5 = $sample->i5_index->index_set_id;
         }
