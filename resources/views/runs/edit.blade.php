@@ -59,7 +59,32 @@
 
     <br><br>
 
-    <p>Where run status is either 'Run built' or 'Run succeded' and it is set to 'Run failed' all included samples will have runs remaining incremented by 1 </p>
+    <p>Where run status is either 'Run built' or 'Run succeed' and it is set to 'Run failed' all included samples will have runs remaining incremented by 1 </p>
     @include('errors.list')
+<h4>Included batches</h4>
+
+
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Batch name</th>
+            <th>User ID</th>
+            <th>Charge code</th>
+            <th>Date</th>
+            <th>Project</th>
+        </tr>
+        </thead>
+        @foreach ($batches as $b)
+            <tr>
+                <td><a href="/batches/{{ $b->id }}">{{ $b->batch_name }}</a></td>
+                <td>{{ $b->name}}</td>
+                <td>{{ $b->charge_code}}</td>
+                <td>{{Carbon\Carbon::parse($b->created_at)->format('d M Y') }}</td>
+                <td>{{ $b->project}}</td>
+            </tr>
+        @endforeach
+    </table>
+</div>
 
 @endsection

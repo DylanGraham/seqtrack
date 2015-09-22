@@ -26,7 +26,7 @@
         <td>{{ $b->charge_code}}</td>
         <td>{{ $b->concentration}}</td>
         <td>{{ $b->volume}}</td>
-        <td>{{ $b->created_at}}</td>
+        <td>{{Carbon\Carbon::parse($b->created_at)->format('d M Y') }}</td>
         <td>{{ $b->tube_bar_code}}</td>
         <td>{{ $b->tube_location}}</td>
         <td>{{ $b->tape_station_length}}</td>

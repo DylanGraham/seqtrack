@@ -23,7 +23,7 @@
                 <td>{{ $batch->charge_code}}</td>
                 <td>{{ $batch->concentration}}</td>
                 <td>{{ $batch->volume}}</td>
-                <td>{{ $batch->created_at}}</td>
+                <td>{{ Carbon\Carbon::parse($batch->created_at)->format('d M Y')}}</td>
                 <td>{{ $batch->tube_bar_code}}</td>
                 <td>{{ $batch->tube_location}}</td>
                 <td>{{ $batch->tape_station_length}}</td>
@@ -40,28 +40,26 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Description</th>
                 <th>Sample name</th>
                 <th>i7 index</th>
                 <th>i5 index</th>
+                <th>Description</th>
                 <th>Plate</th>
                 <th>Well</th>
                 <th>Instrument Lane</th>
                 <th>Runs Remaining</th>
-                <th>Created At</th>
             </tr>
             </thead>
             @foreach ($batch->samples as $s)
                 <tr>
-                    <td>{{ $s->description }}</td>
                     <td><a href="/samples/{{ $s->id }}/edit">{{ $s->sample_id }}</a></td>
                     <td>{{ $s->i7_index['index'] }}</td>
                     <td>{{ $s->i5_index['index'] }}</td>
+                    <td>{{ $s->description }}</td>
                     <td>{{ $s->plate}}</td>
                     <td>{{ $s->well }}</td>
                     <td>{{ $s->instrument_lane}}</td>
                     <td>{{ $s->runs_remaining}}</td>
-                    <td>{{ $s->created_at}}</td>
                 </tr>
             @endforeach
         </table>
