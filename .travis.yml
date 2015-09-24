@@ -4,7 +4,18 @@ php:
     - 5.6
 
 before_script:
-  - composer self-update
-  - composer install --no-interaction
+    - mv travis.env.php .env.testing.php
+    - mysql -e 'create database dna;'
+    - composer self-update
+    - composer install --prefer-source --no-interaction
+    - chmod -R 777 app/storage
+    - php artisan migrate:install --env=testing --no-interaction -vvv
 
-script: phpunit tests/RealTest.php
+script:
+    - php artisan migrate --env=testing --no-interaction -vvv
+    - php artisan db:seed --env=testing --no-interaction -vvv
+    - phpunit tests/RealTest.php
+    - php artisan migrate:rollback --env=testing --no-interaction -vvv
+
+matrix:
+    fast_finish: true
