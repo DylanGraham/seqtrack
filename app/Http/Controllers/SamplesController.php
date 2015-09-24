@@ -23,7 +23,12 @@ class SamplesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('super', ['except' => ['index', 'create', 'store', 'show']]);
+        $this->middleware('super', ['except' => [
+            'index',
+            'create',
+            'store',
+            'show'
+        ]]);
     }
 
     public function index()
