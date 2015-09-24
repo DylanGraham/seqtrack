@@ -4,7 +4,7 @@ php:
     - 5.6
 
 before_script:
-    - mv travis.env.php .env.testing.php
+    - mv travis.env.php .env
     - mysql -e 'create database dna;'
     - composer self-update
     - composer install --prefer-source --no-interaction
