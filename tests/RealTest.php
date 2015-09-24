@@ -9,21 +9,18 @@ class RealTest extends TestCase
     public function test_main_page()
     {
         $this->visit('/')
-            ->seePageIs('/')
+            ->seePageIs('/auth/login')
             ->see('SeqTrack');
     }
 
     public function test_main_link_to_samples()
     {
-        $this->visit('/')
-            ->click('Enter samples')
-            ->seePageIs('/samples/create');
-    }
+        $user = factory(App\User::class)->create();
 
-    public function test_samples_page_exists()
-    {
-        $this->visit('/samples')
-            ->see('Samples');
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Create samples')
+            ->seePageIs('/samples/create');
     }
 
 /*    public function test_samples_page_form()
