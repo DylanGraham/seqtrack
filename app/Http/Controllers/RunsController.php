@@ -62,7 +62,6 @@ class RunsController extends Controller
         // Show 10 latest samples
         $runs = Run::orderBy('created_at', 'DESC')->take(10)->get();
 
-
         return view('runs.index', ['runs' => $runs]);
     }
 
@@ -95,9 +94,6 @@ class RunsController extends Controller
             ->distinct('batches.id')
            ->select('batches.id','batch_name','batches.created_at','batches.charge_code','users.name','project_group.name as project')
             ->get();
-
-
-
 
         $status_options = Run_status::lists('status', 'id');
 

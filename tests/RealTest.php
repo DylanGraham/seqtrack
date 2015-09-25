@@ -44,7 +44,6 @@ class RealTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/samples/create')
-//            ->type('PASTURE', 'project_group_id')
             ->select(3, 'batch_id')
             ->type('AF0TJ_Cs-WW-419124R-20150109-well-D1', 'sample_id')
             ->select(1, 'index_set')
@@ -75,5 +74,25 @@ class RealTest extends TestCase
             ->seePageIs('/batches')
             ->see('PHPUnit-batch')
             ->seeInDatabase('batches', ['batch_name' => 'PHPUnit-batch']);
+    }
+
+    public function test_create_run_denied_for_non_super_user()
+    {
+        $user = factory(App\User::class)->create();
+        
+        $this->actingAs($user)
+            ->visit('/sampleRuns/create')
+            ->seePageIs('/');
+    }
+
+    public function test_create_run()
+    {
+        $user = App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/sampleRuns/create')
+            ->check('batch_check_id2')
+            ->check('batch_check_id4')
+            ->press('Next -> Enter run details');
     }
 }
