@@ -73,6 +73,7 @@ class RealTest extends TestCase
             ->press('Submit')
             ->dontSee('alert-danger')
             ->seePageIs('/batches')
-            ->see('PHPUNITBARCODE');
+            ->see('PHPUnit-batch')
+            ->seeInDatabase('batches', ['batch_name' => 'PHPUnit-batch']);
     }
 }
