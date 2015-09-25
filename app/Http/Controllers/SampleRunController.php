@@ -53,9 +53,7 @@ class SampleRunController extends Controller
 
     // Save in session batch ids selected to place in a run then go to
     // runDetails to add run fields.
-    public function store(request $input)
-    // Removed validation until "batch_check_id{{$batch->id}}" is supported.
-    //public function store(BatchIdRequest $input)
+    public function store(BatchIdRequest $input)
     {
         $batch_ids = $input->batch_check_id;
 
