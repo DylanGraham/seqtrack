@@ -76,6 +76,24 @@ class RealTest extends TestCase
             ->seeInDatabase('batches', ['batch_name' => 'PHPUnit-batch']);
     }
 
+    public function test_create_batch_fail_name()
+    {
+        $user = App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/batches/create')
+            ->type('PHPUnit batch', 'batch_name')
+            ->type(1.5, 'concentration')
+            ->type(1.5, 'volume')
+            ->type('PHPUNITBARCODE', 'tube_bar_code')
+            ->type('PHPUnitLocation', 'tube_location')
+            ->type(55, 'tape_station_length')
+            ->type('8000-00000-00-888', 'charge_code')
+            ->select(3, 'project_group_id')
+            ->press('Submit')
+            ->see('alert-danger');
+    }
+
     public function test_create_run_denied_for_non_super_user()
     {
         $user = factory(App\User::class)->create();
