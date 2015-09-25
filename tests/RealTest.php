@@ -45,7 +45,7 @@ class RealTest extends TestCase
         $this->actingAs($user)
             ->visit('/samples/create')
 //            ->type('PASTURE', 'project_group_id')
-            ->select(23, 'batch_id')
+            ->select(3, 'batch_id')
             ->type('AF0TJ_Cs-WW-419124R-20150109-well-D1', 'sample_id')
             ->select(1, 'index_set')
             ->select(1, 'i7_index_id')
