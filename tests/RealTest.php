@@ -94,6 +94,23 @@ class RealTest extends TestCase
             ->see('alert-danger');
     }
 
+    public function test_create_batch_fail_blank()
+    {
+        $user = App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/batches/create')
+            ->type('', 'batch_name')
+            ->type('', 'concentration')
+            ->type('', 'volume')
+            ->type('', 'tube_bar_code')
+            ->type('', 'tube_location')
+            ->type('', 'tape_station_length')
+            ->type('', 'charge_code')
+            ->press('Submit')
+            ->see('alert-danger');
+    }
+
     public function test_create_run_denied_for_non_super_user()
     {
         $user = factory(App\User::class)->create();
