@@ -7,6 +7,7 @@
     <br/>
 
     <h3>Project Group</h3>
+    <div class ="table-container">
 
     <table class="table table-striped">
         <tr>
@@ -22,6 +23,7 @@
             </tr>
         @endforeach
     </table>
+        </div>
     {!! Form::open(['url'=>'project_groups', 'class'=>'form-inline']) !!}
 
         <span class="group @if ($errors->has('chemistry')) has-error @endif">

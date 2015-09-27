@@ -5,6 +5,7 @@
 
     <br/>
     <h3>Applications</h3>
+    <div class ="table-container">
 
     <table class="table table-striped">
 
@@ -24,7 +25,7 @@
 
 
     </table>
-
+    </div>
 @endsection
 
 @section('footer')
