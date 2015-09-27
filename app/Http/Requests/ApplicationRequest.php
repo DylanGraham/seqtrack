@@ -24,7 +24,7 @@ class ApplicationRequest extends Request
     public function rules()
     {
         return [
-            'application' => array('required' , 'regex:/[a-zA-Z0-9]{0,15}/' , 'max:15'),
+            'application' => array('required' , 'regex:/[a-zA-Z0-9]{0,15}/' , 'max:15','unique:application,application'),
 
             'default' => 'required | boolean'
         ];
