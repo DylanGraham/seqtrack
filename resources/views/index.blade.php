@@ -52,7 +52,7 @@
                 <a class="btn btn-default" href="{!! route('import.index') !!}" role="button">Import samples</a>
         </div>
 
-        </div> <!-- end content-->
+        </div>
 
 		<div class = "button">
 			<a class ="btn btn-default" href="./batchesRunsRemaining" role="button">View batches with runs remaining</a>
