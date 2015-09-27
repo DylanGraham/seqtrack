@@ -103,7 +103,7 @@ return [
             'required' => 'Tube bar code is required',
         ],
         'sample_id' => [
-            'regex' => 'Sample ID may only contain a-z or A-Z or 0-9',
+            'regex' => 'Sample ID may only contain a-z or A-Z or 0-9 or -_',
             'required' => 'Sample name is required',
         ],
         'well' => [
@@ -123,7 +123,7 @@ return [
             'regex' => 'Volume may only have one decimal place',
         ],
         'description' => [
-            'regex' => 'Description may only contain a-z or A-Z or 0-9 or - ',
+            'regex' => 'Description may only contain a-z or A-Z or 0-9 or -_ ',
             'required' => 'Description is required',
         ],
         'tube_location' => [
