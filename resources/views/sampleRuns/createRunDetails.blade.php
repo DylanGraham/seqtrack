@@ -9,7 +9,7 @@
 
 <br/>
 <h3>Selected batches</h3>
-
+<div class="table-container">
 <table class="table table-striped">
 
     <tr>
@@ -27,7 +27,7 @@
     @endforeach
 
 </table>
-
+</div>
 @endsection
 
 @section('footer')

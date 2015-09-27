@@ -23,7 +23,7 @@ class ProjectGroupRequest extends Request
     public function rules()
     {
         return [
-            'name' => array('required' , 'regex:/^[A-Z0-9]{0,20}$/' , 'max:20', 'unique:project_group,name')
+            'name' => array('required' , 'regex:/^[A-Z]{0,20}$/' , 'max:20', 'unique:project_group,name')
         ];
     }
 }

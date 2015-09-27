@@ -1,12 +1,13 @@
 @extends('app')
 @section('content')
+    @include('partials.navbar')
     <a href='/'>@include('partials.logo')</a>
 
 
 
     <br/>
     <h3>Applications</h3>
-
+    <div class="table-container">
     <table class="table table-striped">
 
         <tr>
@@ -25,6 +26,7 @@
 
 
     </table>
+    </div>
     {!! Form::open(['url'=>'application', 'class'=>'form-inline']) !!}
 
         <span class="group @if ($errors->has('application')) has-error @endif">

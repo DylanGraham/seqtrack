@@ -24,7 +24,7 @@ class IEM_FileVersion extends Request
     public function rules()
     {
         return [
-            'file_version' => array('required' , 'regex:/[a-zA-Z0-9]{0,10}/' , 'max:10'),
+            'file_version' => array('required' , 'regex:/^[a-zA-Z0-9]{0,10}$/' , 'max:10'),
 
             'default' => 'required | boolean'
         ];

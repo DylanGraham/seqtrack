@@ -33,7 +33,7 @@
             <tr>
                 {{-- Check box when changed calls javascirpt in partials/batchCompatibilityJS.blade.php --}}
                 {{-- to validate compatability--}}
-                <td><input name="batch_check_id{{$batch->id}}" id="batch_check_id" type="checkbox" value="{{($batch->id)}}"
+                <td><input name="batch_check_id[]" id="batch_check_id" type="checkbox" value="{{($batch->id)}}"
                            onchange="checkSelectedBatches()"/></td>
                 <td> <a href="/batches/{{($batch->id)}} ">{{ ($batch->id)}}    </a> </td>
                 <td> <a href="/batches/{{($batch->id)}} ">{{ ($batch->batch_name) }} </a> </td>

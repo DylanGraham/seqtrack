@@ -23,7 +23,7 @@ class RunStatusRequest extends Request
     public function rules()
     {
         return [
-            'status' => array('required' , 'regex:/[a-zA-Z0-9]{0,20}/' , 'max:20'),
+            'status' => array('required' , 'regex:/^[a-zA-Z0-9]{0,20}$/' , 'max:20'),
 
             'default' => 'required | boolean'
         ];

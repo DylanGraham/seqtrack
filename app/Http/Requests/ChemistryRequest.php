@@ -23,7 +23,7 @@ class ChemistryRequest extends Request
     public function rules()
     {
         return [
-            'chemistry' => array('required' , 'regex:/^[a-zA-Z0-9]{0,15}$/' , 'max:15'),
+            'chemistry' => array('required' , 'regex:/^[a-zA-Z0-9]{0,15}$/' , 'max:15','unique:chemistry,chemistry'),
 
             'default' => 'required | boolean'
         ];
