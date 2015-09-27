@@ -40,7 +40,7 @@
                     <div class = "button">
                         <a class="btn btn-default" href="{!! route('sampleRuns.create') !!}" role="button">Add Batches to Run</a>
                     </div>
->                </td>
+                </td>
                 <td>
                     <div class = "button">
                         <a class="btn btn-default" href="{!! route('runs.index') !!}" role="button">View Run</a>

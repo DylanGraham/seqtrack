@@ -1,11 +1,12 @@
 @extends('app')
 @section('content')
+    @include('partials.navbar')
     <a href='/'>@include('partials.logo')</a>
 
 
 
     <br/>
-    <h3>Chemistry</h3>
+    <h3>Adaptor</h3>
     <div class ="table-container">
 
     <table class="table table-striped">

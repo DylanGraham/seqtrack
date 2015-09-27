@@ -48,8 +48,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Add to list<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{!! route('adaptor.create') !!}">Adaptort</a></li>
-                        <li><a href="{!! route('application.create') !!}">Applicationt</a></li>
+                        <li><a href="{!! route('adaptor.create') !!}">Adaptors</a></li>
+                        <li><a href="{!! route('application.create') !!}">Applications</a></li>
                         <li><a href="{!! route('assay.create') !!}">Assay</a></li>
                         <li><a href="{!! route('chemistry.create') !!}">Chemistry</a></li>
                         <li><a href="{!! route('instrument.create') !!}">Instrument</a></li>
@@ -58,8 +58,7 @@
                     </ul>
                 </li>
 
-                <li class
-                ""><a href="{!! route('sampleRuns.create') !!}">Add Batch to Run</a></li>
+                <li class= ""><a href="{!! route('sampleRuns.create') !!}">Add Batch to Run</a></li>
                 <li><a href='./auth/logout'>Logout</a></li>
             </ul>
         </div>
