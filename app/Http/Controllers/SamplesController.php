@@ -23,7 +23,12 @@ class SamplesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('super', ['except' => ['index', 'create', 'store', 'show']]);
+        $this->middleware('super', ['except' => [
+            'index',
+            'create',
+            'store',
+            'show'
+        ]]);
     }
 
     public function index()
@@ -38,6 +43,8 @@ class SamplesController extends Controller
     {
         $iSet = IndexSet::lists('name', 'id');
         $iAll = IndexSet::all();
+        $i7 = I7Index::lists('index', 'id');
+        $i5 = I5Index::lists('index', 'id');
         $pg = ProjectGroup::lists('name', 'id');
         $user = Auth::user();
         $batches = $user->batches->lists('batch_name', 'id');
@@ -46,6 +53,8 @@ class SamplesController extends Controller
        return view('samples.create', [
             'iSet'  => $iSet,
             'iAll'  => $iAll,
+            'i7'    => $i7,
+            'i5'    => $i5,
             'pg'    => $pg,
             'user'  => $user,
             'batches' => $batches,
