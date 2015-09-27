@@ -23,7 +23,7 @@ class WorkFlowRequest extends Request
     public function rules()
     {
         return [
-            'value' => array('required' , 'regex:/[a-zA-Z0-9]{0,15}/' , 'max:15','unique:work_flow,value'),
+            'value' => array('required' , 'regex:/^[a-zA-Z0-9]{0,15}$/' , 'max:15','unique:work_flow,value'),
 
             'default' => 'required | boolean'
         ];

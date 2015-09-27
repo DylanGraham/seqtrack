@@ -25,7 +25,7 @@ class InstrumentRequest extends Request
     {
         return [
 
-            'name' => array('required' , 'regex:/[a-zA-Z0-9]{0,20}/' , 'max:20','unique:instrument,name')
+            'name' => array('required' , 'regex:/^[a-zA-Z0-9]{0,20}$/' , 'max:20','unique:instrument,name')
 
         ];
     }

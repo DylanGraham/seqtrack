@@ -23,13 +23,13 @@ class UsersRequest extends Request
     public function rules()
     {
         return [
-            'user_id' => array('required' , 'regex:/[a-zA-Z0-9]/' , 'max:10'),
+            'user_id' => array('required' , 'regex:/^[a-zA-Z0-9]$/' , 'max:10','unique:users,user_id'),
 
             'default_project_id' =>  'required | exists:project_group,id',
 
-            'name' => array('required' , 'regex:/[a-zA-Z0-9]/' , 'max:50'),
+            'name' => array('required' , 'regex:/^[ a-zA-Z0-9-]$/' , 'max:50'),
 
-            'default_charge_code' => array('required' , 'regex:/[\d]{4}[-][\d]{5}[-][\d]{2}[-][\d]{3}/' , 'max:17'),
+            'default_charge_code' => array('required' , 'regex:/^[\d]{4}[-][\d]{5}[-][\d]{2}[-][\d]{3}$/' , 'max:17'),
 
             'super' => 'required | boolean'
 
