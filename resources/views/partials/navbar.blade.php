@@ -19,7 +19,9 @@
                     <ul class="dropdown-menu">
                         <li><a href="{!! route('batches.create') !!}">Create Batch</a></li>
                         <li><a href="{!! route('samples.create') !!}">Create Sample</a></li>
+                        @if ($currentUserSuper)
                         <li><a href="{!! route('sampleRuns.create') !!}">Create Run</a></li>
+                        @endif
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -44,6 +46,7 @@
                         <li><a href="{!! route('workflow.index') !!}">Work flows</a></li>
                     </ul>
                 </li>
+                @if ($currentUserSuper)
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Add to list<span class="caret"></span></a>
@@ -57,9 +60,8 @@
                         <li><a href="{!! route('workflow.create') !!}">Work flow</a></li>
                     </ul>
                 </li>
-
-                <li class= ""><a href="{!! route('sampleRuns.create') !!}">Add Batch to Run</a></li>
-                <li><a href='./auth/logout'>Logout</a></li>
+                @endif
+                <li><a href='/auth/logout'>Logout</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->

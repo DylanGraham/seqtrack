@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Auth;
+use App\Http\Middleware;
+use Illuminate\Auth\Guard;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -11,9 +13,16 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Guard $auth)
     {
-        //
+
+        view()->composer(array('partials.navbar','runs.edit'), function($view) use ($auth){
+
+            $view->with('currentUserSuper', $auth->user()->super); // does what you expect
+        });
+
+       
+
     }
 
     /**
