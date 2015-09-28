@@ -6,7 +6,8 @@ use App\Http\Requests;
 use App\Http\Requests\SampleRequest;
 use App\Http\Requests\SampleEditRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use App\Batch;
 use App\Sample;
 use App\IndexSet;
@@ -86,6 +87,8 @@ class SamplesController extends Controller
         $iAll = IndexSet::all();
         $pg = ProjectGroup::lists('name', 'id');
 
+        session(['edit_sample_url' => Request::server('HTTP_REFERER')]);
+
         return view('samples.edit', [
             'iSet'  => $iSet,
             'iAll'  => $iAll,
@@ -98,7 +101,10 @@ class SamplesController extends Controller
     {
         $sample->update($request->all());
 
-        return redirect('samples');
+        $url = Session::get('edit_sample_url');
+        Session::forget('edit_sample_url');
+
+        return redirect($url);
     }
 
     public function checkBatchCompatibility(Sample $sample)
