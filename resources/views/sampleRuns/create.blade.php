@@ -67,10 +67,10 @@
 
 
     @include('errors.list')
-    @include('partials.batchCompatibilityJS')
+
 @endsection
 
 @section('footer')
-
+    @include('partials.batchCompatibilityJS')
 @endsection
 
