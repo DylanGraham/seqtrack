@@ -3,16 +3,14 @@
 @include('partials.navbar')
 
 @if (count($user->batches))
-
-    <br><br>
-    Select a batch to add samples to:
-
-    {!! Form::open(['url'=>'samples', 'class'=>'form-inline']) !!}
-
-    @include('partials.batchSelect')
-    or <a href="{!! route('batches.create') !!}">create a new batch</a>
+    <div class="box-container">
+        <h4>Select a batch to add samples to:<h4>
+        <div class="col-md-8">{!! Form::open(['url'=>'samples', 'class'=>'form-inline']) !!}</div>
+        @include('partials.batchSelect')
+        <p>or</p> 
+        <a href="{!! route('batches.create') !!}">Create A New Batch</a>
+    </div>
     
-    <hr/>
 
     @include('partials.sample', ['formName'=>'Create Sample', 'submitButtonText'=>'Submit'])
 
