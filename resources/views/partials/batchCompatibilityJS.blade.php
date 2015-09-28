@@ -183,7 +183,6 @@
     });
 
 
-    window.onunload = function(){};
 
 
 </script>
