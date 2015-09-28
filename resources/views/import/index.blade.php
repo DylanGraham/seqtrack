@@ -59,7 +59,6 @@
 
     @include('errors.list')
 
-    <p class="errors">{!!$errors->first('image')!!}</p>
     @if(Session::has('error'))
         <ul class="alert alert-danger">
             @foreach (Session::get('error') as $error)

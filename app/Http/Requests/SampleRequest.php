@@ -33,9 +33,9 @@ class SampleRequest extends Request
 
             'sample_id'     => array( 'required', 'regex:/[a-zA-Z0-9-]{1,120}/' , 'between:6,120', 'unique:samples,sample_id' ),
 
-            'plate' => array('max:120' , 'regex:/^[a-zA-Z0-9-]{1,120}$/', 'max:120'),
+            'plate' => array('regex:/^[a-zA-Z0-9-]{1,120}$/', 'max:120'),
 
-            'well' => array('max:120' , 'regex:/^[a-zA-Z0-9-]{1,120}$/', 'max:120'),
+            'well' => array('regex:/^[a-zA-Z0-9-]{1,120}$/', 'max:120'),
 
             'i7_index_id'   =>  'required| integer | exists:i7_index,id',
 

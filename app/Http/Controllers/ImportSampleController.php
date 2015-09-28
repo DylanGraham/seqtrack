@@ -267,7 +267,18 @@ class ImportSampleController extends Controller
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
-        $rules = array('sampleFile' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
+        $rules = array('sampleFile' => 'required',
+            'plate' => array('regex:/^[a-zA-Z0-9-]{1,120}$/' , 'max:120'),
+
+            'well' => array('regex:/^[a-zA-Z0-9-]{1,120}$/', 'max:120'),
+
+            'description' => array('regex:/^[a-zA-Z0-9-]{1,120}$/' , 'max:120'),
+
+            'runs_remaining' => array('required', 'integer', 'between:1,60'),
+
+            'instrument_lane' => array('required', 'integer', 'between:1,8'),
+        );
+         //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
@@ -297,11 +308,11 @@ class ImportSampleController extends Controller
                         Session::flash('error', $this->stringErrors);
                     }
                 }
-                return Redirect::to('import');
+                return Redirect::to('import')->withInput();
             } else {
                 // sending back with error message.
                 Session::flash('error', 'uploaded file is not valid');
-                return Redirect::to('import');
+                return Redirect::to('import')->withInput();
             }
         }
     }
