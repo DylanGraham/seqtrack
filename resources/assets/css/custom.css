@@ -37,14 +37,13 @@ p{
 .table-container{
 	background-color: #B4B4B4;
 }
-h4{
-	color: white;
+h1,h2,h3,h4{
+	color: #CCCCCC;
 }
 
 .table-container a{
 	color: #2E5CB8;
 }
-
 a{
 	color: #D6AD33;
 }
@@ -64,6 +63,9 @@ input{
 	float: left;
 	margin-top: 5px;
 }
+input[type='text'], input[type='number']{
+	font-family: monospace; 
+}
 
 select{
 	margin-top: 5px;
@@ -78,8 +80,16 @@ label{
 	margin-top: 5px;
 }
 .form-container{
-	background-color: #292929;
-	padding:5%;
+	background-color: #292929;	
+	border-radius: 25px;
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+	margin-top: 40px;
+	margin-left: 50px;
+	margin-right: 50px;	
+
 }
 form > div {
   overflow: hidden;
