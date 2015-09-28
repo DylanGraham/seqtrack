@@ -1,1 +1,1 @@
-{!! Html::image('images/logo.png', null, ['width'=>'25%', 'height'=>'25%']) !!}
+{!! Html::image('images/logo.png', null, ['width'=>'50%', 'height'=>'50%']) !!}

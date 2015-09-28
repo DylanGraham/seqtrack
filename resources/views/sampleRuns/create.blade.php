@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-    <a href='/'>@include('partials.logo')</a>
 
     {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
     <br/>
@@ -35,7 +34,7 @@
                 {{-- to validate compatability--}}
                 <td><input name="batch_check_id[]" id="batch_check_id" type="checkbox" value="{{($batch->id)}}"
                            onchange="checkSelectedBatches()"/></td>
-                <td> <a href="/batches/{{($batch->id)}} ">{{ ($batch->id)}}    </a> </td>
+                <td> {{ $batch->id }} </td>
                 <td> <a href="/batches/{{($batch->id)}} ">{{ ($batch->batch_name) }} </a> </td>
                 <td> {{ $first_i7_lenghth }}    </td>
                 <td> {{ $first_i5_lenghth }}    </td>
@@ -67,10 +66,10 @@
 
 
     @include('errors.list')
-    @include('partials.batchCompatibilityJS')
+
 @endsection
 
 @section('footer')
-
+    @include('partials.batchCompatibilityJS')
 @endsection
 

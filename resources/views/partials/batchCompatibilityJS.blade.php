@@ -178,13 +178,11 @@
 
 
     }
-
-
-    script.onreadystatechange(function(){
-        if(script.readyState == 'loaded' || script.readyState == 'complete') {
-            checkSelectedBatches();
-
-        }
+    $(document).ready(function(e) {
+        checkSelectedBatches();
     });
+
+
+
 
 </script>

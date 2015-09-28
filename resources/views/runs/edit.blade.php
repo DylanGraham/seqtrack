@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-    <a href='/'>@include('partials.logo')</a>
     <div class="table-container">
     <table class="table table-striped">
         <thead>
@@ -49,6 +48,7 @@
 
     </table>
     </div>
+@if ($currentUserSuper)
     {!! Form::open(['url'=>'runs/setStatus', 'class'=>'form-inline']) !!}
     {!! Form::hidden('run_id',$run->id) !!}
     {!! Form::label('run_status', 'run_status', ['class'=>'sr-only']) !!}
@@ -61,6 +61,7 @@
 
     <p>Where run status is either 'Run built' or 'Run succeed' and it is set to 'Run failed' all included samples will have runs remaining incremented by 1 </p>
     @include('errors.list')
+    @endif
 <h4>Included batches</h4>
 
 

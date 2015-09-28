@@ -12,7 +12,7 @@ class PageController extends Controller
     // Restrict access to authenticated users
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['closed']]);
     }
 
     public function index()

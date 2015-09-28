@@ -6,7 +6,8 @@ use App\Http\Requests;
 use App\Http\Requests\SampleRequest;
 use App\Http\Requests\SampleEditRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use App\Batch;
 use App\Sample;
 use App\IndexSet;
@@ -23,7 +24,12 @@ class SamplesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('super', ['except' => ['index', 'create', 'store', 'show']]);
+        $this->middleware('super', ['except' => [
+            'index',
+            'create',
+            'store',
+            'show'
+        ]]);
     }
 
     public function index()
@@ -38,14 +44,17 @@ class SamplesController extends Controller
     {
         $iSet = IndexSet::lists('name', 'id');
         $iAll = IndexSet::all();
+        $i7 = I7Index::lists('index', 'id');
+        $i5 = I5Index::lists('index', 'id');
         $pg = ProjectGroup::lists('name', 'id');
         $user = Auth::user();
         $batches = $user->batches->lists('batch_name', 'id');
-
  
        return view('samples.create', [
             'iSet'  => $iSet,
             'iAll'  => $iAll,
+            'i7'    => $i7,
+            'i5'    => $i5,
             'pg'    => $pg,
             'user'  => $user,
             'batches' => $batches,
@@ -57,12 +66,7 @@ class SamplesController extends Controller
         $input = $request->all();
 
         $sample = new Sample($input);
-
-        // i5_index_id returned as name from form if null
-        if ($sample->i5_index_id == 'name') {
-            $sample->i5_index_id = null;
-        }
-
+        
         // Check if sample is compatible for batch
         if ($this->checkBatchCompatibility($sample)) {
             $sample->save();
@@ -83,6 +87,8 @@ class SamplesController extends Controller
         $iAll = IndexSet::all();
         $pg = ProjectGroup::lists('name', 'id');
 
+        session(['edit_sample_url' => Request::server('HTTP_REFERER')]);
+
         return view('samples.edit', [
             'iSet'  => $iSet,
             'iAll'  => $iAll,
@@ -95,12 +101,15 @@ class SamplesController extends Controller
     {
         $sample->update($request->all());
 
-        return redirect('samples');
+        $url = Session::get('edit_sample_url');
+        Session::forget('edit_sample_url');
+
+        return redirect($url);
     }
 
     public function checkBatchCompatibility(Sample $sample)
     {
-        
+
         if ($sample->i5_index_id) {
             $i5 = $sample->i5_index->index_set_id;
         }

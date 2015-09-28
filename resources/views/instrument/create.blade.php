@@ -1,11 +1,10 @@
 @extends('app')
 @section('content')
-    <a href='/'>@include('partials.logo')</a>
-
-
+    @include('partials.navbar')
 
     <br/>
     <h3>Instruments</h3>
+    <div class ="table-container">
 
     <table class="table table-striped">
         <tr>
@@ -17,6 +16,7 @@
             </tr>
         @endforeach
     </table>
+        </div>
     {!! Form::open(['url'=>'instrument', 'class'=>'form-inline']) !!}
 
         <span class="group @if ($errors->has('instrument')) has-error @endif">

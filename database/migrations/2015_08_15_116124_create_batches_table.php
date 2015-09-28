@@ -22,7 +22,7 @@ class CreateBatchesTable extends Migration
             $table->string('tube_bar_code', 60);
             $table->string('tube_location', 60);
 
-            $table->float('tape_station_length');
+            $table->integer('tape_station_length');
             $table->string('charge_code', 17);
             $table->timestamps();
 

@@ -1,6 +1,6 @@
 <div>
 
-    <h4>Create sample</h4>
+    <h4>{{ $formName }}</h4>
 
 @if ($formName === "Create Sample")
     <span class="group @if ($errors->has('sample_id')) has-error @endif">
@@ -23,11 +23,11 @@
     </span>
     <span class="group @if ($errors->has('i7_index_id')) has-error @endif">
         {!! Form::label('i7_index_id', 'i7_index_id', ['class'=>'sr-only']) !!}
-        {!! Form::select('i7_index_id', ['name'=>''], null, ['data-toggle'=>'tooltip', 'title'=>'I7 Index','class'=>'form-control']) !!}
+        {!! Form::select('i7_index_id', $i7, ['name'=>'i7_index_id'], ['data-toggle'=>'tooltip', 'title'=>'I7 Index','class'=>'form-control']) !!}
     </span>
     <span class="group @if ($errors->has('i5_index_id')) has-error @endif">
         {!! Form::label('i5_index_id', 'i5_index_id', ['class'=>'sr-only']) !!}
-        {!! Form::select('i5_index_id', ['name'=>''], null, ['data-toggle'=>'tooltip', 'title'=>'I5 index','class'=>'form-control']) !!}
+        {!! Form::select('i5_index_id', $i5, ['name'=>'i5_index_id'], ['data-toggle'=>'tooltip', 'title'=>'I5 index','class'=>'form-control']) !!}
     </span>
 @endif
     <span class="group @if ($errors->has('description')) has-error @endif">
