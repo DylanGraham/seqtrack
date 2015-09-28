@@ -1,5 +1,4 @@
 
-<form class ="form-horizontal">
     <div class="form-container">
         <div class="row">
             <h1>{{ $formName }}</h1>
@@ -67,5 +66,3 @@
             </div>
         </div>
     </div>
-</form>
-
