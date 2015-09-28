@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-    <a href='/'>@include('partials.logo')</a>
     @if(Session::has('success'))
         <div class="alert-box success">
             <h2>{!! Session::get('success') !!}</h2>

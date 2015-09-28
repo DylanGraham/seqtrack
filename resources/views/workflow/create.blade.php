@@ -1,11 +1,10 @@
 @extends('app')
 @section('content')
-    <a href='/'>@include('partials.logo')</a>
-
-
+    @include('partials.navbar')
 
     <br/>
     <h3>Work flows</h3>
+    <div class ="table-container">
 
     <table class="table table-striped">
 
@@ -25,6 +24,7 @@
 
 
     </table>
+        </div>
     {!! Form::open(['url'=>'workflow', 'class'=>'form-inline']) !!}
 
         <span class="group @if ($errors->has('adaptor')) has-error @endif">

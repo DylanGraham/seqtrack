@@ -49,6 +49,7 @@ $(function() {
                         i5ID.append("<option  value={{ $y['id'] }}> {{ $y['index'] }} {{ $y['sequence'] }} </option>");
                     @endforeach
                 @else
+                    i5ID.val('');
                     i5ID.hide();
                 @endif
             }

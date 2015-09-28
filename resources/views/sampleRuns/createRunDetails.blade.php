@@ -1,6 +1,5 @@
 @extends('app')
 @section('content')
-<a href='/'>@include('partials.logo')</a>
 
 {!! Form::open(['url'=>'runDetails', 'class'=>'form-inline']) !!}
 @include('partials.runsForm', ['submitButtonText'=>'Submit'])
@@ -9,7 +8,7 @@
 
 <br/>
 <h3>Selected batches</h3>
-
+<div class="table-container">
 <table class="table table-striped">
 
     <tr>
@@ -27,7 +26,7 @@
     @endforeach
 
 </table>
-
+</div>
 @endsection
 
 @section('footer')

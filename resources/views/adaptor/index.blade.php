@@ -1,11 +1,10 @@
 @extends('app')
 @section('content')
-    <a href='/'>@include('partials.logo')</a>
-
-
+    @include('partials.navbar')
 
     <br/>
-    <h3>Chemistry</h3>
+    <h3>Adaptor</h3>
+    <div class ="table-container">
 
     <table class="table table-striped">
         <tr>
@@ -21,7 +20,7 @@
             </tr>
         @endforeach
     </table>
-
+    </div>
 @endsection
 
 @section('footer')

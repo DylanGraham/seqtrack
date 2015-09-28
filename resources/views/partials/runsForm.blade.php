@@ -43,10 +43,6 @@
         {!! Form::label('chemistry_id', 'Chemistry', ['data-toggle'=>'tooltip', 'title'=>'Chemistry', 'class'=>'sr-only']) !!}
         {!! Form::select('chemistry_id', $chemistry, $default_chemistry_id, ['data-toggle'=>'tooltip','title'=>'Chemistry','class'=>'form-control']) !!}
     </span>
-    <span class="group @if ($errors->has('run_status_id')) has-error @endif">
-        {!! Form::label('run_status_id', 'Run Status', ['data-toggle'=>'tooltip', 'title'=>'Run Status', 'class'=>'sr-only']) !!}
-        {!! Form::select('run_status_id', $run_status, $default_run_status_id, ['data-toggle'=>'tooltip','title'=>'Run Status','class'=>'form-control']) !!}
-    </span>
     <span class="group @if ($errors->has('instrument_id')) has-error @endif">
         {!! Form::label('instrument_id', 'Instrument', ['data-toggle'=>'tooltip', 'title'=>'Instrument', 'class'=>'sr-only']) !!}
         {!! Form::select('instrument_id', $instrument, null, ['data-toggle'=>'tooltip','title'=>'Instrument','class'=>'form-control']) !!}
@@ -65,8 +61,7 @@
         {!! Form::select('run_date', $run_date, null, ['data-toggle'=>'tooltip','title'=>'Date','class'=>'form-control']) !!}
     </span>
 
-
-
+    {!!Form::hidden('run_status_id',$default_run_status_id) !!}
 
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 

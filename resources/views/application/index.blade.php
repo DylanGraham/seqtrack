@@ -1,10 +1,10 @@
 @extends('app')
 @section('content')
-    <a href='/'>@include('partials.logo')</a>
-
+    @include('partials.navbar')
 
     <br/>
     <h3>Applications</h3>
+    <div class ="table-container">
 
     <table class="table table-striped">
 
@@ -24,7 +24,7 @@
 
 
     </table>
-
+    </div>
 @endsection
 
 @section('footer')

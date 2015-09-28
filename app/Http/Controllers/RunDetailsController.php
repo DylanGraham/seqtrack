@@ -91,9 +91,7 @@ class RunDetailsController extends Controller
      */
     public function create()
      {
-
          $this->middleware('super');
-
 
          $batch_ids = Session::get('run_batch_ids');
 

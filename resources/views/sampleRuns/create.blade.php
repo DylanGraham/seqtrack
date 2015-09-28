@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-    <a href='/'>@include('partials.logo')</a>
 
     {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
     <br/>
@@ -67,10 +66,10 @@
 
 
     @include('errors.list')
-    @include('partials.batchCompatibilityJS')
+
 @endsection
 
 @section('footer')
-
+    @include('partials.batchCompatibilityJS')
 @endsection
 
