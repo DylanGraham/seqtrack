@@ -16,6 +16,7 @@ class RealTest extends TestCase
     public function test_navbar()
     {
         $user = factory(App\User::class)->create();
+        $user->super = true;
 
         $this->actingAs($user)
             ->visit('/')
@@ -30,7 +31,6 @@ class RealTest extends TestCase
     public function test_create_sample_mismatch()
     {
         $user = App\User::find(1);
-//        $user->super = true;
 
         $this->actingAs($user)
             ->visit('/samples/create')
