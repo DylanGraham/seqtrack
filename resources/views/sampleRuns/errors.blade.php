@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
     @include('partials.navbar')
-    <a href='/'>@include('partials.logo')</a>
 
     <h4>ERRORS found in following batches see systems administrator</h4>
     <p>they may contain mixed sequence length or duplicate I7 and I5 combinations</p>

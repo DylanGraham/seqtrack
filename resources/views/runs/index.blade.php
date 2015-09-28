@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-    <a href='/'>@include('partials.logo')</a>
     <div class="table-container">
     <table class="table table-striped">
     <thead>

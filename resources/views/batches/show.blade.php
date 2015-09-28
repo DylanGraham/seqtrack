@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
     @include('partials.navbar')
-    <a href='/'>@include('partials.logo')</a>
     <h4>{{ $batch->batch_name }}</h4>
     <div class="table-container">
         <table class="table table-striped">
