@@ -48,7 +48,6 @@ class SamplesController extends Controller
         $pg = ProjectGroup::lists('name', 'id');
         $user = Auth::user();
         $batches = $user->batches->lists('batch_name', 'id');
-
  
        return view('samples.create', [
             'iSet'  => $iSet,
@@ -66,12 +65,7 @@ class SamplesController extends Controller
         $input = $request->all();
 
         $sample = new Sample($input);
-
-        // i5_index_id returned as name from form if null
-        if ($sample->i5_index_id == 'name') {
-            $sample->i5_index_id = null;
-        }
-
+        
         // Check if sample is compatible for batch
         if ($this->checkBatchCompatibility($sample)) {
             $sample->save();
