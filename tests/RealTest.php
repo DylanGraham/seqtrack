@@ -13,16 +13,6 @@ class RealTest extends TestCase
             ->see('SeqTrack');
     }
 
-    public function test_main_link_to_samples()
-    {
-        $user = factory(App\User::class)->create();
-
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Create samples')
-            ->seePageIs('/samples/create');
-    }
-
     public function test_navbar()
     {
         $user = factory(App\User::class)->create();
@@ -124,10 +114,13 @@ class RealTest extends TestCase
     {
         $user = App\User::find(1);
 
+        $input = [
+            'batch_check_id' => [2, 3]
+        ];
+
         $this->actingAs($user)
             ->visit('/sampleRuns/create')
-            ->check('batch_check_id2')
-            ->check('batch_check_id4')
-            ->press('Next -> Enter run details');
+            ->submitForm('Next -> Enter run details', $input)
+            ->seePageIs('/runDetails/create');
     }
 }
