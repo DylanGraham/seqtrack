@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Auth;
-use App\Http\Middleware;
 use Illuminate\Auth\Guard;
 class AppServiceProvider extends ServiceProvider
 {
