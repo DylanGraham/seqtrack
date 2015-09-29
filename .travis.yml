@@ -18,5 +18,8 @@ script:
     - phpunit tests/RealTest.php
     - php artisan migrate:rollback --env=testing --no-interaction -vvv
 
+after_script:
+    - php vendor/bin/coveralls -v
+
 matrix:
     fast_finish: true
