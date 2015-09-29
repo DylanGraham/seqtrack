@@ -267,7 +267,7 @@ class ImportSampleController extends Controller
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
-        $rules = array('sampleFile' => 'required',
+        $rules = array('sampleFile' => array('required', 'mimes:csv,txt'),
             'plate' => array('regex:/^[a-zA-Z0-9-]{1,120}$/' , 'max:120'),
 
             'well' => array('regex:/^[a-zA-Z0-9-]{1,120}$/', 'max:120'),
@@ -286,6 +286,7 @@ class ImportSampleController extends Controller
             return Redirect::to('import')->withInput()->withErrors($validator);
         } else {
             // checking file is valid.
+            //dd(Request::file('sampleFile')->getExtension());
             if (Input::file('sampleFile')->isValid()) {
                 $this->i7Indexes = I7Index::lists('sequence', 'index');
                 $this->i7IndexSetArray = I7Index::lists('index_set_id', 'index');
