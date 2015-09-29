@@ -100,6 +100,8 @@ fi
 
 sed -i 's/# caption always "%{wk/caption always "%{wk/' /etc/screenrc
 
+sed -i 's/memory_limit = 128M/memory_limit = 1024M/' /etc/php.ini
+
 cat <<'EOF' >.vimrc
 set background=dark
 syntax on
