@@ -50,6 +50,7 @@
     </div>
 @if ($currentUserSuper)
     {!! Form::open(['url'=>'runs/setStatus', 'class'=>'form-inline']) !!}
+
     {!! Form::hidden('run_id',$run->id) !!}
     {!! Form::label('run_status', 'run_status', ['class'=>'sr-only']) !!}
     {!! Form::select('run_status', $status_options, null, ['class'=>'form-control']) !!}
