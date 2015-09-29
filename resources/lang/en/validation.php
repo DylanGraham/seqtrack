@@ -149,6 +149,9 @@ return [
         'project_group_id' => [
             'required' => 'BASC Project is required',
         ],
+        'sampleFile' => [
+            'mimes' => 'File not valid, please upload a CSV file',
+        ],
     ],
 
     /*

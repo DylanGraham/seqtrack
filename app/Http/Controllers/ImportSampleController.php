@@ -267,16 +267,16 @@ class ImportSampleController extends Controller
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
-        $rules = array('sampleFile' => 'required',
+        $rules = array('sampleFile' => array('required', 'mimes:csv,txt'),
             'plate' => array('regex:/^[a-zA-Z0-9-]{1,120}$/' , 'max:120'),
 
             'well' => array('regex:/^[a-zA-Z0-9-]{1,120}$/', 'max:120'),
 
             'description' => array('regex:/^[a-zA-Z0-9-]{1,120}$/' , 'max:120'),
 
-            'runs_remaining' => array('required', 'integer', 'between:1,60'),
+            'runs_remaining' => array('integer', 'between:1,60'),
 
-            'instrument_lane' => array('required', 'integer', 'between:1,8'),
+            'instrument_lane' => array('integer', 'between:1,8'),
         );
          //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
@@ -286,6 +286,7 @@ class ImportSampleController extends Controller
             return Redirect::to('import')->withInput()->withErrors($validator);
         } else {
             // checking file is valid.
+            //dd(Request::file('sampleFile')->getExtension());
             if (Input::file('sampleFile')->isValid()) {
                 $this->i7Indexes = I7Index::lists('sequence', 'index');
                 $this->i7IndexSetArray = I7Index::lists('index_set_id', 'index');
@@ -311,7 +312,8 @@ class ImportSampleController extends Controller
                 return Redirect::to('import')->withInput();
             } else {
                 // sending back with error message.
-                Session::flash('error', 'uploaded file is not valid');
+                array_push($this->stringErrors, "Upload file is not valida.");
+                Session::flash('error', $this->stringErrors);
                 return Redirect::to('import')->withInput();
             }
         }
@@ -379,7 +381,7 @@ class ImportSampleController extends Controller
     private function checkHeaders($header)
     {
         if(Count($header) > 5) {
-            array_push($this->errorArray['header'], 'Extra header columns, please check the format of the CSV file.');
+            array_push($this->errorArray[$this->errorTitles[0]], 'Extra header columns, please check the format of the CSV file.');
             return FALSE;
         }
         if (strtolower($header[0]) != 'sampleid') {
@@ -391,7 +393,7 @@ class ImportSampleController extends Controller
             return FALSE;
         }
         if (strtolower($header[2]) != 'i7sequence') {
-            array_push($this->errorArray[$this->errorTitles[0]], 'Column 3 header should be I7IndexID');
+            array_push($this->errorArray[$this->errorTitles[0]], 'Column 3 header should be I7Sequence');
             return FALSE;
         }
         if (strtolower($header[3]) != 'i5indexid') {
@@ -636,7 +638,7 @@ class ImportSampleController extends Controller
         foreach ($this->errorArray as $key=>$value) {
             if(Count($value) > 0) {
                 if ($key == $this->errorTitles[0]) {
-                    array_push($this->stringErrors, $value);
+                    $this->stringErrors = array_merge($this->stringErrors, $value);
                 } elseif ($key == $this->errorTitles[1]) {
                     $this->errorStringHelper($value, "The Sample ID already exists in the database in lines ");
                 } elseif ($key == $this->errorTitles[2]) {
