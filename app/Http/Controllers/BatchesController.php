@@ -26,7 +26,6 @@ class BatchesController extends Controller
 
     public function index()
     {
-
         $batches = Batch::orderBy('created_at','desc')->get();
         return view('batches.index')->with('batches', $batches);
     }

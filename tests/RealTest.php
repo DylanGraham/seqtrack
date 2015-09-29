@@ -28,6 +28,15 @@ class RealTest extends TestCase
             ->see('View Run');
     }
 
+    public function test_batch_create_page()
+    {
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/batches/create')
+            ->see('Create Batch');
+    }
+
     public function test_create_sample_mismatch()
     {
         $user = App\User::find(1);

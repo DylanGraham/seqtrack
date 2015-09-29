@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/DylanGraham/seqtrack.svg?branch=master)](https://travis-ci.org/DylanGraham/seqtrack)
+
 # SeqTrack
 Copyright (C) 2015 Aakash Bhansali, Dylan Graham, Lynne Nguyen, Phillip Reynolds.
 
