@@ -197,6 +197,7 @@ class RunDetailsController extends Controller
 
 
         if (!$errors) {
+            $this->runSamples = array();
             foreach ($batches as $batch) {
                 foreach ($batch->samples as $sample) {
                     if ($sample->runs_remaining > 0) {
@@ -276,6 +277,7 @@ class RunDetailsController extends Controller
 
     public function exportSheet($run) {
         $headerRowCount = 20;
+        dd($run);
         header('Content-Disposition: attachment; filename="export.csv"');
         header("Cache-control: private");
         header("Content-type: application/force-download");
@@ -327,11 +329,13 @@ class RunDetailsController extends Controller
             return $tmpString;
         }
         else if($number == 8) {
-            $tmpString = "Application," ."" . $this->addExtraCommas(8);
+            $application = DB::table('application')->where('id', $run->application_id)->first();
+            $tmpString = "Application," . $application->application;
             return $tmpString;
         }
         else if($number == 9) {
-            $tmpString = "Assay," ."" . $this->addExtraCommas(8);
+            $assay = DB::table('assay')->where('id', $run->assay_id)->first();
+            $tmpString = "Assay," . $assay->name;
             return $tmpString;
         }
         else if($number == 10) {
@@ -399,9 +403,13 @@ class RunDetailsController extends Controller
         $i7Index = DB::table('i7_index')->where('id', $sample->i7_index_id)->first();
         $tempString .= $i7Index->index.$del;
         $tempString .= $i7Index->sequence.$del;
-        $i5Index = DB::table('i5_index')->where('id', $sample->i5_index_id)->first();
-        $tempString .= $i5Index->index.$del;
-        $tempString .= $i5Index->sequence.$del;
+        if($sample->i5_index_id != NULL) {
+            $i5Index = DB::table('i5_index')->where('id', $sample->i5_index_id)->first();
+            $tempString .= $i5Index->index . $del;
+            $tempString .= $i5Index->sequence . $del;
+        } else {
+            $tempString .= $del.$del;
+        }
         $batch = DB::table('batches')->where('id', $sample->batch_id)->first();
         $project = DB::table('project_group')->where('id', $batch->project_group_id)->first();
         $tempString .= $project->name.$del;
