@@ -42,14 +42,14 @@
                 {!! Form::select('i7_index_id', $i7, ['name'=>'i7_index_id'], ['data-toggle'=>'tooltip', 'title'=>'I7 Index','class'=>'form-control']) !!}
             </div>
         </div>
-        <!--<div class="form-group @if ($errors->has('i5_index_id')) has-error @endif">
+        <div class="form-group @if ($errors->has('i5_index_id')) has-error @endif">
             <div class="col-md-3">
-                {!! Form::label('i5_index_id', 'i5 Index ID') !!}
+                {!! Form::label('i5_index_id', 'i5 Index ID',array('id' => 'i5_label')) !!}
             </div>
             <div class="col-md-9">
                 {!! Form::select('i5_index_id', $i5, ['name'=>'i5_index_id'], ['data-toggle'=>'tooltip', 'title'=>'I5 index','class'=>'form-control']) !!}
             </div>
-        </div>-->
+        </div>
     @endif
         <div class="form-group @if ($errors->has('description')) has-error @endif">
             <div class="col-md-3">
