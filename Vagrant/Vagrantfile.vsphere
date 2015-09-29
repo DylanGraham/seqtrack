@@ -1,0 +1,121 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = 'vsphere'
+  config.vm.box_url = './example_box/dummy.box'
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.provider :vsphere do |vsphere|
+    vsphere.host = $vcentre_hostname
+    vsphere.insecure = true
+    vsphere.compute_resource_name = $compute_resource
+    vsphere.template_name = 'Centos7-Vagrant'
+    vsphere.name = 'seqtrack'
+    vsphere.vm_base_path = "vagrant-machines"
+    vsphere.user = $vsphere_user
+    vsphere.password = :ask
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+
+sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/sysconfig/selinux
+setenforce 0
+yum -y update
+systemctl stop firewalld
+systemctl disable firewalld
+
+echo seqtrack > /etc/hostname
+hostname seqtrack
+
+if ! rpm --quiet -q screen vim-enhanced wget epel-release mariadb-server git; then
+    yum -y install screen vim-enhanced wget epel-release mariadb-server git
+fi
+
+if ! rpm --quiet -q ius-release; then
+    rpm -ivh https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm
+fi
+
+if ! rpm --quiet -q php56u php56u-mcrypt php56u-mysqlnd; then
+    yum -y install php56u php56u-mcrypt php56u-mysqlnd
+fi
+
+if ! rpm --quiet -q composer; then
+    yum -y install composer
+fi
+
+sed -i 's/# caption always "%{wk/caption always "%{wk/' /etc/screenrc
+
+sed -i 's/memory_limit = 128M/memory_limit = 1024M/' /etc/php.ini
+
+cat <<'EOF' >.vimrc
+set background=dark
+syntax on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+if match($TERMCAP, 'Co#256:') == 0 || match($TERMCAP, ':Co#256:') > 0           
+    set t_Co=256                                                                
+endif
+EOF
+
+systemctl enable httpd
+systemctl start mariadb
+systemctl enable mariadb
+
+mysql -u root <<-EOF
+UPDATE mysql.user SET Password=PASSWORD('WiadzowUkdai') WHERE User='root';
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+DELETE FROM mysql.user WHERE User='';
+DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%';
+DROP DATABASE test;
+CREATE DATABASE seqtrack CHARACTER SET UTF8;
+CREATE USER seqtrack@localhost IDENTIFIED BY 'WiadzowUkdai';
+GRANT ALL PRIVILEGES ON seqtrack.* TO seqtrack@localhost;
+FLUSH PRIVILEGES;
+EOF
+
+cat <<'EOF' >/etc/httpd/conf.d/seqtrack.conf
+<VirtualHost *:80>
+  ServerName seqtrack.dylangraham.org
+  DocumentRoot "/home/laravel/seqtrack/public"
+  <Directory "/home/laravel/seqtrack/public">
+    AllowOverride all
+    Require all granted
+  </Directory>
+</VirtualHost>
+EOF
+
+mkdir -v /home/laravel
+cd /home/laravel
+git clone https://github.com/DylanGraham/seqtrack.git
+cd seqtrack
+
+cat <<'EOF' >.env
+APP_ENV=local
+APP_DEBUG=false
+APP_KEY=DOrjRbpCH1kdISysRJdl097qbU1C3oju
+
+DB_HOST=localhost
+DB_DATABASE=seqtrack
+DB_USERNAME=seqtrack
+DB_PASSWORD=WiadzowUkdai
+EOF
+
+composer install --no-interaction
+composer dump-autoload --no-interaction
+php artisan key:generate
+php artisan migrate --no-interaction -vvv
+php artisan db:seed --no-interaction -vvv
+
+chown -R :apache storage bootstrap/cache
+chmod -R g+w storage bootstrap/cache
+
+sed -i 's/APP_ENV=local/APP_ENV=production/' .env
+sed -i 's/#ServerName www.example.com:80/ServerName seqtrack.dylangraham.org/' /etc/httpd/conf/httpd.conf
+systemctl start httpd
+
+SHELL
+
+
+end
