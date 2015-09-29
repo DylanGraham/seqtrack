@@ -26,6 +26,9 @@ use Auth;
 
 class RunDetailsController extends Controller
 {
+    private $csvColumnCount = 10;
+    private $runSamples = array();
+
     public function validateBatches($batches)
     {
         $first_sample = $batches[0]->samples[0];
@@ -106,7 +109,7 @@ class RunDetailsController extends Controller
          // count number samples with runs remaining in each selected batch
          foreach ($batches as $batch)
          {
-             $count =0;
+             $count = 0;
 
              foreach ($batch->samples as $sample)
              {
@@ -205,6 +208,7 @@ class RunDetailsController extends Controller
                         $sampleRun->save();
                         $sample->runs_remaining -= 1;
                         $sample->update();
+                        array_push($this->runSamples, $sample);
                     }
                 }
             }
@@ -218,7 +222,9 @@ class RunDetailsController extends Controller
             ]);
         }
 
-        return redirect('runs');
+        $this->exportSheet($run);
+
+        //return redirect('runs');
     }
 
 
@@ -266,5 +272,148 @@ class RunDetailsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportSheet($run) {
+        $headerRowCount = 20;
+        header('Content-Disposition: attachment; filename="export.csv"');
+        header("Cache-control: private");
+        header("Content-type: application/force-download");
+        header("Content-transfer-encoding: binary\n");
+        $out = fopen('php://output', 'w');
+        for($i = 1; $i <= $headerRowCount; $i++) {
+            fputcsv($out, explode(',', $this->getCSVHeader($run, $i)));
+        }
+        fputcsv($out, explode(',', $this->getSamplesHeader()));
+        for($i = 0; $i < Count($this->runSamples); $i++) {
+            fputcsv($out, explode(',', $this->getSampleData($this->runSamples[$i])));
+        }
+        fclose($out);
+    }
+
+    public function getCSVHeader($run, $number) {
+        $tmpString = "";
+        if($number == 1) {
+            $tmpString = "[Header]";
+            return $tmpString;
+        }
+        else if($number == 2) {
+            $iem_file_version = DB::table('iem_file_version')->where('default', $run->iem_file_version_id)->first();
+            $tmpString = "IEMFileVersion," . $iem_file_version->file_version . $this->addExtraCommas(8);
+            return $tmpString;
+        }
+        else if($number == 3) {
+            $user = Auth::user();
+            $tmpString = "InvestigatorName," . $user->name;
+            return $tmpString;
+        }
+        else if($number == 4) {
+            $projectId = DB::table('project_group')->where('id', $run->project_group_id)->first();
+            $tmpString = "ProjectName," . $projectId->name;
+            return $tmpString;
+        }
+        else if($number == 5) {
+            $tmpString = "ExperimentName," . $run->experiment_name;
+            return $tmpString;
+        }
+        //TODO why do we have date selection
+        else if($number == 6) {
+            $tmpString = "Date," . date('d/m/Y');
+            return $tmpString;
+        }
+        else if($number == 7) {
+            $workFlow = DB::table('work_flow')->where('id', $run->work_flow_id)->first();
+            $tmpString = "Workflow," . $workFlow->value;
+            return $tmpString;
+        }
+        else if($number == 8) {
+            $tmpString = "Application," ."" . $this->addExtraCommas(8);
+            return $tmpString;
+        }
+        else if($number == 9) {
+            $tmpString = "Assay," ."" . $this->addExtraCommas(8);
+            return $tmpString;
+        }
+        else if($number == 10) {
+            $tmpString = "Description," . $run->description . $this->addExtraCommas(8);
+            return $tmpString;
+        }
+        else if($number == 11) {
+            $chemistry = DB::table('chemistry')->where('id', $run->work_flow_id)->first();
+            $tmpString = "Chemistry,". $chemistry->chemistry;
+            return $tmpString;
+        }
+        else if($number == 12) {
+            $tmpString = ",";
+            return $tmpString;
+        }
+        else if($number == 13) {
+            $tmpString = "[Reads]";
+            return $tmpString;
+        }
+        else if($number == 14) {
+            $tmpString = $run->read1;
+            return $tmpString;
+        }
+        else if($number == 15) {
+            $tmpString = $run->read2.",";
+            return $tmpString;
+        }
+        else if($number == 16) {
+            $tmpString = ",";
+            return $tmpString;
+        }
+        else if($number == 17) {
+            $tmpString = "[Settings]";
+            return $tmpString;
+        }
+        else if($number == 18) {
+            $adapter = DB::table('adaptor')->where('id', $run->iem_file_version_id)->first();
+            $tmpString = "Adapter," . $adapter->value;
+            return $tmpString;
+        }
+        else if($number == 19) {
+            $tmpString = ",";
+            return $tmpString;
+        }
+        else if($number == 20) {
+            $tmpString = "[Data]";
+            return $tmpString;
+        }
+        else {
+            return $tmpString;
+        }
+    }
+
+    public function getSamplesHeader() {
+        return "Sample_ID,Sample_Name,Sample_Plate,Sample_Well,I7_Index_ID,index,I5_Index_ID,index2,Sample_Project,Description";
+    }
+
+    public function getSampleData($sample) {
+        $del = ",";
+        $tempString = "";
+        $tempString .= $sample->id.$del;
+        $tempString .= $sample->sample_id.$del;
+        $tempString .= $sample->plate.$del;
+        $tempString .= $sample->well.$del;
+        $i7Index = DB::table('i7_index')->where('id', $sample->i7_index_id)->first();
+        $tempString .= $i7Index->index.$del;
+        $tempString .= $i7Index->sequence.$del;
+        $i5Index = DB::table('i5_index')->where('id', $sample->i5_index_id)->first();
+        $tempString .= $i5Index->index.$del;
+        $tempString .= $i5Index->sequence.$del;
+        $batch = DB::table('batches')->where('id', $sample->batch_id)->first();
+        $project = DB::table('project_group')->where('id', $batch->project_group_id)->first();
+        $tempString .= $project->name.$del;
+        $tempString .= $sample->description.$del;
+        return $tempString;
+    }
+
+    public function addExtraCommas($number) {
+        $tmpString = "";
+        for($i = 0; $i < $number; $i++) {
+            $tmpString .= ",";
+        }
+        return $tmpString;
     }
 }
