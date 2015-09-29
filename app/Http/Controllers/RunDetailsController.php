@@ -277,8 +277,8 @@ class RunDetailsController extends Controller
 
     public function exportSheet($run) {
         $headerRowCount = 20;
-        dd($run);
-        header('Content-Disposition: attachment; filename="export.csv"');
+        //dd($run);
+        header('Content-Disposition: attachment; filename="HiSeq.csv"');
         header("Cache-control: private");
         header("Content-type: application/force-download");
         header("Content-transfer-encoding: binary\n");
@@ -291,6 +291,8 @@ class RunDetailsController extends Controller
             fputcsv($out, explode(',', $this->getSampleData($this->runSamples[$i])));
         }
         fclose($out);
+
+        return redirect('runs');
     }
 
     public function getCSVHeader($run, $number) {
@@ -320,7 +322,7 @@ class RunDetailsController extends Controller
         }
         //TODO why do we have date selection
         else if($number == 6) {
-            $tmpString = "Date," . date('d/m/Y');
+            $tmpString = "Date," . $run->run_date->format('d-m-Y');
             return $tmpString;
         }
         else if($number == 7) {
@@ -343,7 +345,7 @@ class RunDetailsController extends Controller
             return $tmpString;
         }
         else if($number == 11) {
-            $chemistry = DB::table('chemistry')->where('id', $run->work_flow_id)->first();
+            $chemistry = DB::table('chemistry')->where('id', $run->chemistry_id)->first();
             $tmpString = "Chemistry,". $chemistry->chemistry;
             return $tmpString;
         }
