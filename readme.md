@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/DylanGraham/seqtrack.svg?branch=master)](https://travis-ci.org/DylanGraham/seqtrack)[![Coverage Status](https://coveralls.io/repos/DylanGraham/seqtrack/badge.svg?branch=master&service=github)](https://coveralls.io/github/DylanGraham/seqtrack?branch=master)
+[![Build Status](https://travis-ci.org/DylanGraham/seqtrack.svg?branch=master)](https://travis-ci.org/DylanGraham/seqtrack) [![Coverage Status](https://coveralls.io/repos/DylanGraham/seqtrack/badge.svg?branch=master&service=github)](https://coveralls.io/github/DylanGraham/seqtrack?branch=master)
 
 # SeqTrack
 Copyright (C) 2015 Aakash Bhansali, Dylan Graham, Lynne Nguyen, Phillip Reynolds.
