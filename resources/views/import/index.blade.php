@@ -46,6 +46,7 @@
                 {!! Form::file('sampleFile', null, ['data-toggle'=>'tooltip', 'title'=>'Upload the file','class'=>'form-control', 'placeholder'=>'Upload the file']) !!}
             </span>
             {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
+        </div>
             {!! Form::close() !!}
         
     @else
@@ -55,7 +56,7 @@
         adding samples.
 
     @endif
-
+            <br/>
     @include('errors.list')
 
     @if(Session::has('error'))
@@ -65,5 +66,4 @@
             @endforeach
         </ul>
     @endif
-    </div>
 @endsection
