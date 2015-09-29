@@ -146,7 +146,7 @@ class RunsController extends Controller
             {
                 DB::table('samples')
                     ->where('id', $sample->id)
-                    ->update(['runs_remaining' => ($sample->runs_remaining -1)]);
+                    ->update(['runs_remaining' => ($sample->runs_remaining +1)]);
             }
         }
 
