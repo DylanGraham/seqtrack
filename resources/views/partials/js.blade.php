@@ -10,6 +10,7 @@ $(function() {
         i5ID.hide();
         i5label.hide();
         i7ID.empty();
+        i5ID.empty();
         @if ( Form::oldInputIsEmpty())
 
             @foreach ($iAll->find(1)->I7Indexes as $x)
@@ -22,7 +23,7 @@ $(function() {
 
 
             @if (count($iAll->find(old('index_set'))->I5Indexes) > 0)
-                i5ID.empty();
+
                 i5ID.show();
                 i5label.show();
                 @foreach ($iAll->find(old('index_set'))->I5Indexes as $x)
@@ -38,7 +39,7 @@ $(function() {
 
     setID.change(function() {
         i7ID.empty();
-
+        i5ID.empty();
         @for ($i=1; $i<=$iSet->count(); $i++)
             if (setID.prop('selectedIndex') == {{ $i-1 }}) {
                 @foreach ($iAll->find($i)->I7Indexes as $x)
@@ -46,7 +47,7 @@ $(function() {
                 @endforeach
 
                 @if (count($iAll->find($i)->i5Indexes))
-                    i5ID.empty();
+
                     i5ID.show();
                     i5label.show();
                     @foreach ($iAll->find($i)->I5Indexes as $y)
