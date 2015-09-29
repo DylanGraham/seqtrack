@@ -19,7 +19,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Requests\SampleImportRequest;
+use App\Http\Requests\ImportSampleRequest;
 use App\I7Index;
 use App\I5Index;
 use App\Batch;
@@ -166,18 +166,10 @@ class ImportSampleController extends Controller
      */
     public function index()
     {
-        $this->middleware('super');
-
-        $iSet = IndexSet::lists('name', 'id');
-        $iAll = IndexSet::all();
-        $pg = ProjectGroup::lists('name', 'id');
         $user = Auth::user();
         $batches = $user->batches->lists('batch_name', 'id');
 
         return view('import.index', [
-            'iSet' => $iSet,
-            'iAll' => $iAll,
-            'pg' => $pg,
             'user' => $user,
             'batches' => $batches,
         ]);
@@ -262,12 +254,12 @@ class ImportSampleController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function validateFile(Request $request)
+    public function validateFile(ImportSampleRequest $request)
     {
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
-        $rules = array('sampleFile' => array('required', 'mimes:csv,txt'),
+        /*$rules = array('sampleFile' => array('required', 'mimes:csv,txt'),
             'plate' => array('regex:/^[a-zA-Z0-9-]{1,120}$/' , 'max:120'),
 
             'well' => array('regex:/^[a-zA-Z0-9-]{1,120}$/', 'max:120'),
@@ -277,9 +269,10 @@ class ImportSampleController extends Controller
             'runs_remaining' => array('integer', 'between:1,60'),
 
             'instrument_lane' => array('integer', 'between:1,8'),
-        );
+        );*/
          //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
+        $rules = array();
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             // send back to the page with the input data and errorBag
