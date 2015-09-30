@@ -308,5 +308,14 @@ class RealTest extends TestCase
             ->seePageIs('/workflow');
     }
 
+    public function test_import_page()
+    {
+        $user = App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/import')
+            ->seePageIs('/import')
+            ->see('Import Samples');
+    }
 
 }
