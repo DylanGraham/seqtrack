@@ -139,6 +139,7 @@ class RealTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/adaptor')
+            ->see('Adaptors')
             ->see('CTGTCTCTTATACACATCT')
             ->seeInDatabase('adaptor', ['id' => '1']);
            
@@ -156,6 +157,73 @@ class RealTest extends TestCase
             ->seeInDatabase('adaptor', ['value' => 'CTGTCTCTTATACACATCA'])
             ->seePageIs('/adaptor');
     }
+
+    public function test_application_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/application')
+            ->seePageIs('/application')
+            ->see('Applications');
+    }
+
+    public function test_assay_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/assay')
+            ->seePageIs('/assay')
+            ->see('Assay');
+    }
+
+    public function test_chemistry_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/chemistry')
+            ->seePageIs('/chemistry')
+            ->see('Chemistry');
+    }
+
+    public function test_instrument_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/instrument')
+            ->seePageIs('/instrument')
+            ->see('Instruments');
+    }
+
+    public function test_project_groups_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/project_groups')
+            ->seePageIs('/project_groups')
+            ->see('Project Group');
+    }
+
+    public function test_workflow_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/workflow')
+            ->seePageIs('/workflow')
+            ->see('Workflow');
+    }
+
 
 
 }
