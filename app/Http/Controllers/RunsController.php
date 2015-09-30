@@ -105,18 +105,6 @@ class RunsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request $request
-     * @param  int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-
-    }
-
-    /**
      * @param Request $request
      * @return string
      */
@@ -156,16 +144,5 @@ class RunsController extends Controller
         $run->update();
 
         return redirect('runs');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
