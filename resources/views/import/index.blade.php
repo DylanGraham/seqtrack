@@ -9,7 +9,7 @@
 
     @if (count($user->batches))
 
-        <br><br>
+        <h3>Import Samples</h3>
 
         <p>Select a batch to add samples to:</p>
 

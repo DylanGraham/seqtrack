@@ -13,6 +13,12 @@ class RealTest extends TestCase
             ->see('SeqTrack');
     }
 
+    public function test_closed_page()
+    {
+        $this->visit('/auth/register')
+            ->see('Registrations are closed at this time');
+    }
+
     public function test_navbar()
     {
         $user = factory(App\User::class)->create();
@@ -110,6 +116,31 @@ class RealTest extends TestCase
             ->see('alert-danger');
     }
 
+    public function test_create_batch_edit()
+    {
+        $user = App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/batches/3/edit')
+            ->type(1.5, 'concentration')
+            ->type(1.5, 'volume')
+            ->type(55, 'tape_station_length')
+            ->press('Update')
+            ->seePageIs('batches');
+    }
+
+    public function test_batch_show()
+    {
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/batches/3')
+            ->see('description13')
+            ->see('description14')
+            ->see('description15')
+            ->see('description16');
+    }
+
     public function test_create_run_denied_for_non_super_user()
     {
         $user = factory(App\User::class)->create();
@@ -132,4 +163,190 @@ class RealTest extends TestCase
             ->submitForm('Next -> Enter run details', $input)
             ->seePageIs('/runDetails/create');
     }
+
+    public function test_adaptor_exists()
+    {
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/adaptor')
+            ->see('Adaptors')
+            ->see('CTGTCTCTTATACACATCT')
+            ->seeInDatabase('adaptor', ['id' => '1']);
+           
+    }
+
+    public function test_adaptor_add()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/adaptor/create')
+            ->type('CTGTCTCTTATACACATCA', 'value')
+            ->press('Save')
+            ->seeInDatabase('adaptor', ['value' => 'CTGTCTCTTATACACATCA'])
+            ->seePageIs('/adaptor');
+    }
+
+    public function test_application_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/application')
+            ->seePageIs('/application')
+            ->see('Applications');
+    }
+
+    public function test_application_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/application/create')
+            ->type('NEWQ', 'application')
+            ->press('Save')
+            ->see('NEWQ')
+            ->seeInDatabase('application', ['application' => 'NEWQ'])
+            ->seePageIs('/application');
+    }
+
+    public function test_assay_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/assay')
+            ->seePageIs('/assay')
+            ->see('Assay');
+    }
+
+    public function test_assay_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/assay/create')
+            ->type('ASSAYnew', 'name')
+            ->press('Save')
+            ->see('ASSAYnew')
+            ->seeInDatabase('assay', ['name' => 'ASSAYnew'])
+            ->seePageIs('/assay');
+    }
+
+    public function test_chemistry_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/chemistry')
+            ->seePageIs('/chemistry')
+            ->see('Chemistry');
+    }
+
+    public function test_chemistry_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/chemistry/create')
+            ->type('newChemistry', 'chemistry')
+            ->press('Save')
+            ->see('newChemistry')
+            ->seeInDatabase('chemistry', ['chemistry' => 'newChemistry'])
+            ->seePageIs('/chemistry');
+    }
+
+    public function test_instrument_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/instrument')
+            ->seePageIs('/instrument')
+            ->see('Instruments');
+    }
+
+    public function test_instrument_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/instrument/create')
+            ->type('XX0011', 'name')
+            ->press('Save')
+            ->see('XX0011')
+            ->seeInDatabase('instrument', ['name' => 'XX0011'])
+            ->seePageIs('/instrument');
+    }
+
+    public function test_project_groups_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/project_groups')
+            ->seePageIs('/project_groups')
+            ->see('Project Group');
+    }
+
+    public function test_project_group_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/project_groups/create')
+            ->type('NEWBASC', 'name')
+            ->press('Save')
+            ->see('NEWBASC')
+            ->seeInDatabase('project_group', ['name' => 'NEWBASC'])
+            ->seePageIs('/project_groups');
+    }
+
+    public function test_workflow_page()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/workflow')
+            ->seePageIs('/workflow')
+            ->see('Workflow');
+    }
+
+    public function test_workflow_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/workflow/create')
+            ->type('WORKflow', 'value')
+            ->press('Save')
+            ->see('WORKflow')
+            ->seeInDatabase('work_flow', ['value' => 'WORKflow'])
+            ->seePageIs('/workflow');
+    }
+
+    public function test_import_page()
+    {
+        $user = App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/import')
+            ->seePageIs('/import')
+            ->see('Import Samples');
+    }
+
 }
