@@ -1,7 +1,5 @@
 <div>
 
-    <h4>{{ $formName }}</h4>
-
 @if ($formName === "Create Sample")
     <span class="group @if ($errors->has('sample_id')) has-error @endif">
         {!! Form::label('sample_id', 'sample_id', ['class'=>'sr-only']) !!}

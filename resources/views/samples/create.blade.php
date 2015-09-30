@@ -4,7 +4,9 @@
 
 @if (count($user->batches))
 
-    <br><br>
+    <br>
+    <h3>Create Samples</h3>
+
     Select a batch to add samples to:
 
     {!! Form::open(['url'=>'samples', 'class'=>'form-inline']) !!}
