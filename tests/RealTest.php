@@ -110,6 +110,31 @@ class RealTest extends TestCase
             ->see('alert-danger');
     }
 
+    public function test_create_batch_edit()
+    {
+        $user = App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/batches/3/edit')
+            ->type(1.5, 'concentration')
+            ->type(1.5, 'volume')
+            ->type(55, 'tape_station_length')
+            ->press('Update')
+            ->seePageIs('batches');
+    }
+
+    public function test_batch_show()
+    {
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/batches/3')
+            ->see('description13')
+            ->see('description14')
+            ->see('description15')
+            ->see('description16');
+    }
+
     public function test_create_run_denied_for_non_super_user()
     {
         $user = factory(App\User::class)->create();
