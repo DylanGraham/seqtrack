@@ -6,4 +6,4 @@ Homestead.yaml
 storage/database.sqlite
 .idea
 _ide_helper.php
-*.composer.lock
+composer.lock
