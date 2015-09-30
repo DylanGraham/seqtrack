@@ -132,4 +132,30 @@ class RealTest extends TestCase
             ->submitForm('Next -> Enter run details', $input)
             ->seePageIs('/runDetails/create');
     }
+
+    public function test_adaptor_exists()
+    {
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/adaptor')
+            ->see('CTGTCTCTTATACACATCT')
+            ->seeInDatabase('adaptor', ['id' => '1']);
+           
+    }
+
+    public function test_adaptor_add()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/adaptor/create')
+            ->type('CTGTCTCTTATACACATCA', 'value')
+            ->press('Save')
+            ->seeInDatabase('adaptor', ['value' => 'CTGTCTCTTATACACATCA'])
+            ->seePageIs('/adaptor');
+    }
+
+
 }
