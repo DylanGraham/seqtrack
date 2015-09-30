@@ -169,6 +169,20 @@ class RealTest extends TestCase
             ->see('Applications');
     }
 
+    public function test_application_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/application/create')
+            ->type('NEWQ', 'application')
+            ->press('Save')
+            ->see('NEWQ')
+            ->seeInDatabase('application', ['application' => 'NEWQ'])
+            ->seePageIs('/application');
+    }
+
     public function test_assay_page()
     {
         $user = factory(App\User::class)->create();
@@ -178,6 +192,20 @@ class RealTest extends TestCase
             ->visit('/assay')
             ->seePageIs('/assay')
             ->see('Assay');
+    }
+
+    public function test_assay_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/assay/create')
+            ->type('ASSAYnew', 'name')
+            ->press('Save')
+            ->see('ASSAYnew')
+            ->seeInDatabase('assay', ['name' => 'ASSAYnew'])
+            ->seePageIs('/assay');
     }
 
     public function test_chemistry_page()
@@ -191,6 +219,20 @@ class RealTest extends TestCase
             ->see('Chemistry');
     }
 
+    public function test_chemistry_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/chemistry/create')
+            ->type('newChemistry', 'chemistry')
+            ->press('Save')
+            ->see('newChemistry')
+            ->seeInDatabase('chemistry', ['chemistry' => 'newChemistry'])
+            ->seePageIs('/chemistry');
+    }
+
     public function test_instrument_page()
     {
         $user = factory(App\User::class)->create();
@@ -200,6 +242,20 @@ class RealTest extends TestCase
             ->visit('/instrument')
             ->seePageIs('/instrument')
             ->see('Instruments');
+    }
+
+    public function test_instrument_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/instrument/create')
+            ->type('XX0011', 'name')
+            ->press('Save')
+            ->see('XX0011')
+            ->seeInDatabase('instrument', ['name' => 'XX0011'])
+            ->seePageIs('/instrument');
     }
 
     public function test_project_groups_page()
@@ -213,6 +269,20 @@ class RealTest extends TestCase
             ->see('Project Group');
     }
 
+    public function test_project_group_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/project_groups/create')
+            ->type('NEWBASC', 'name')
+            ->press('Save')
+            ->see('NEWBASC')
+            ->seeInDatabase('project_group', ['name' => 'NEWBASC'])
+            ->seePageIs('/project_groups');
+    }
+
     public function test_workflow_page()
     {
         $user = factory(App\User::class)->create();
@@ -224,6 +294,19 @@ class RealTest extends TestCase
             ->see('Workflow');
     }
 
+    public function test_workflow_create()
+    {
+        $user = factory(App\User::class)->create();
+        $user->super = true;
+
+        $this->actingAs($user)
+            ->visit('/workflow/create')
+            ->type('WORKflow', 'value')
+            ->press('Save')
+            ->see('WORKflow')
+            ->seeInDatabase('work_flow', ['value' => 'WORKflow'])
+            ->seePageIs('/workflow');
+    }
 
 
 }
