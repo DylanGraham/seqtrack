@@ -13,6 +13,12 @@ class RealTest extends TestCase
             ->see('SeqTrack');
     }
 
+    public function test_closed_page()
+    {
+        $this->visit('/auth/register')
+            ->see('Registrations are closed at this time');
+    }
+
     public function test_navbar()
     {
         $user = factory(App\User::class)->create();
