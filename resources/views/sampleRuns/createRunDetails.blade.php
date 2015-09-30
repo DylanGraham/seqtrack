@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-
+@include('partials.navbar')
 {!! Form::open(['url'=>'runDetails', 'class'=>'form-inline']) !!}
 @include('partials.runsForm', ['submitButtonText'=>'Submit'])
 {!! Form::close() !!}
