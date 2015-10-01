@@ -349,6 +349,21 @@ class RealTest extends TestCase
             ->see('Import Samples');
     }
 
+    public function test_import_file()
+    {
+        $user = App\User::find(1);
+        $this->actingAs($user)
+            ->visit('import')
+            ->select(23, 'batch_id')
+            ->type('TestDesc', 'description')
+            ->type(5, 'runs_remaining')
+            ->type(1, 'instrument_lane')
+            ->attach('storage/temp/sample.csv', 'sampleFile')
+            ->press('Submit')
+            ->see('File Upload Successful');
+
+    }
+
     public function test_runs_page()
     {
         $user = factory(App\User::class)->create();
