@@ -134,9 +134,9 @@ class ModelTest extends TestCase
             ->type('111', 'read1')                                                                                                      
             ->type('222', 'read2')                                                                                                      
             ->type('FCID', 'flow_cell')                                                                                                 
-            ->press('Submit');   
+            ->press('Submit');
 
-        $run = App\Run::find(1);
+        $run = App\Run::first();
         $adaptor = $run->adaptor;
         $application = $run->application;
         $assay = $run->assay;
