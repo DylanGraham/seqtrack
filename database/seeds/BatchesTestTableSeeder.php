@@ -13,8 +13,6 @@ class BatchesTestTableSeeder extends Seeder
     public function run()
     {
         DB::table("batches")->insert([
-
-
             array("batch_name"=>"Batch_name1",  "concentration"=>"1.1",  "volume"=>"10.1",  "user_id"=>"1",  "tube_bar_code"=>"TUBE1",  "tube_location"=>"LOC_1",  "tape_station_length"=>"51",  "charge_code"=>"1234-12345-12-121",  "project_group_id"=>"1",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
             array("batch_name"=>"Batch_name2",  "concentration"=>"2.1",  "volume"=>"11.1",  "user_id"=>"2",  "tube_bar_code"=>"TUBE2",  "tube_location"=>"LOC_2",  "tape_station_length"=>"52",  "charge_code"=>"1234-12345-12-122",  "project_group_id"=>"2",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
             array("batch_name"=>"Batch_name3",  "concentration"=>"3.1",  "volume"=>"12.1",  "user_id"=>"2",  "tube_bar_code"=>"TUBE3",  "tube_location"=>"LOC_3",  "tape_station_length"=>"53",  "charge_code"=>"1234-12345-12-123",  "project_group_id"=>"3",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
@@ -35,7 +33,7 @@ class BatchesTestTableSeeder extends Seeder
             array("batch_name"=>"Batch_name18",  "concentration"=>"18.1",  "volume"=>"27.1",  "user_id"=>"2",  "tube_bar_code"=>"TUBE18",  "tube_location"=>"LOC_18",  "tape_station_length"=>"68",  "charge_code"=>"1234-12345-12-128",  "project_group_id"=>"8",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
             array("batch_name"=>"Batch_name19",  "concentration"=>"19.1",  "volume"=>"28.1",  "user_id"=>"2",  "tube_bar_code"=>"TUBE19",  "tube_location"=>"LOC_19",  "tape_station_length"=>"69",  "charge_code"=>"1234-12345-12-129",  "project_group_id"=>"9",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
             array("batch_name"=>"Batch_name20",  "concentration"=>"20.1",  "volume"=>"29.1",  "user_id"=>"2",  "tube_bar_code"=>"TUBE20",  "tube_location"=>"LOC_20",  "tape_station_length"=>"70",  "charge_code"=>"1234-12345-12-120",  "project_group_id"=>"10",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
-
+            array("batch_name"=>"BatchNameTest",  "concentration"=>"20.1",  "volume"=>"29.1",  "user_id"=>"1",  "tube_bar_code"=>"TUBE20",  "tube_location"=>"LOC_20",  "tape_station_length"=>"70",  "charge_code"=>"1234-12345-12-120",  "project_group_id"=>"10",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
         ]);
     }
 }
