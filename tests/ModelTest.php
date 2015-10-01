@@ -62,6 +62,17 @@ class ModelTest extends TestCase
         $this->assertNotNull($runs);
     }
 
+    public function test_index_set_model()
+    {
+        $set1 = App\IndexSet::find(1);
+        $set3 = App\IndexSet::find(3);
+        $i7 = $set1->I7Indexes;
+        $i5 = $set3->I5Indexes;
+
+        $this->assertNotNull($i7);
+        $this->assertNotNull($i5);
+    }
+
     public function test_i5index_model()
     {
         $i5 = App\I5Index::find(1);
@@ -89,4 +100,76 @@ class ModelTest extends TestCase
 
         $this->assertNotNull($runs);
     }
+
+    public function test_instrument_model()
+    {
+        $inst = App\Instrument::find(1);
+        $runs = $inst->run;
+
+        $this->assertNotNull($runs);
+    }
+
+    public function test_project_group_model()
+    {
+        $pg = App\ProjectGroup::find(1);
+        $batches = $pg->batch;
+
+        $this->assertNotNull($batches);
+    }
+
+    public function test_run_model()
+    {
+        $user = App\User::find(1);                                                                                                      
+                                                                                                                                        
+        $input = [                                                                                                                      
+            'batch_check_id' => [2, 3]                                                                                                  
+        ];                                                                                                                              
+                                                                                                                                        
+        $this->actingAs($user)                                                                                                          
+            ->visit('/sampleRuns/create')                                                                                               
+            ->submitForm('Next -> Enter run details', $input)                                                                           
+            ->seePageIs('/runDetails/create')                                                                                           
+            ->type('TestExperiment', 'experiment_name')                                                                                 
+            ->type('Desc', 'description')                                                                                               
+            ->type('111', 'read1')                                                                                                      
+            ->type('222', 'read2')                                                                                                      
+            ->type('FCID', 'flow_cell')                                                                                                 
+            ->press('Submit');   
+
+        $run = App\Run::find(1);
+        $adaptor = $run->adaptor;
+        $application = $run->application;
+        $assay = $run->assay;
+        $chemistry = $run->chemistry;
+        $iem_file_version = $run->iem_file_version;
+        $instrument = $run->instrument;
+        $run_status = $run->run_status;
+        $work_flow = $run->work_flow;
+        $user = $run->users;
+        $project_group = $run->project_group;
+        $sample_runs = $run->runs;
+
+        $this->assertNotNull($adaptor);
+        $this->assertNotNull($application);
+        $this->assertNotNull($assay);
+        $this->assertNotNull($chemistry);
+        $this->assertNotNull($iem_file_version);
+        $this->assertNotNull($instrument);
+        $this->assertNotNull($run_status);
+        $this->assertNotNull($work_flow);
+        $this->assertNotNull($user);
+        $this->assertNotNull($project_group);
+        $this->assertNotNull($sample_runs);
+    }
+
+    public function test_run_status_model()
+    {
+        $run_status = App\Run_status::find(1);
+        $runs = $run_status->runs;
+
+        $this->assertNotNull($runs);
+    }
+
+
+
 }
