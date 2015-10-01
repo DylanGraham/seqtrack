@@ -141,31 +141,6 @@ class RealTest extends TestCase
             ->see('description16');
     }
 
-    public function test_batch_model_user()
-    {
-        $batch = App\Batch::find(3);
-        $name = $batch->user->name;
-
-        $this->assertEquals($name, "Dylan");
-    }
-
-    public function test_batch_model_samples()
-    {
-        $batch = App\Batch::find(3);
-        $samples = $batch->samples;
-
-        $this->assertNotNull($samples);
-    }
-
-    public function test_batch_model_group()
-    {
-        $batch = App\Batch::find(3);
-        $group = $batch->project_group->name;
-
-        $this->assertEquals($group, "ABALONE");
-    }
-
-
     public function test_create_run_denied_for_non_super_user()
     {
         $user = factory(App\User::class)->create();
@@ -214,14 +189,6 @@ class RealTest extends TestCase
             ->seePageIs('/adaptor');
     }
 
-    public function test_adaptor_model()
-    {
-        $adaptor = App\Adaptor::find(1);
-        $runs = $adaptor->runs;
-
-        $this->assertNotNull($runs);
-    }
-
     public function test_application_page()
     {
         $user = factory(App\User::class)->create();
@@ -247,14 +214,6 @@ class RealTest extends TestCase
             ->seePageIs('/application');
     }
 
-    public function test_application_model()
-    {
-        $application = App\Application::find(1);
-        $runs = $application->runs;
-
-        $this->assertNotNull($runs);
-    }
-
     public function test_assay_page()
     {
         $user = factory(App\User::class)->create();
@@ -278,14 +237,6 @@ class RealTest extends TestCase
             ->see('ASSAYnew')
             ->seeInDatabase('assay', ['name' => 'ASSAYnew'])
             ->seePageIs('/assay');
-    }
-
-    public function test_assay_model()
-    {
-        $assay = App\Assay::find(1);
-        $run = $assay->runs;
-
-        $this->assertNotNull($run);
     }
 
     public function test_chemistry_page()
@@ -433,6 +384,4 @@ class RealTest extends TestCase
             ->visit('/runs/1')
             ->see('TestExperiment');
     }
-
-
 }
