@@ -170,6 +170,20 @@ class ModelTest extends TestCase
         $this->assertNotNull($runs);
     }
 
+    public function test_sample_model()
+    {
+        $s = App\Sample::find(1);
+
+//        $user = $s->user;
+        $batch = $s->batch;
+        $i7 = $s->i7_index;
+        $sample_runs = $s->sampleRuns;
+
+//        $this->assertNotNull($user);
+        $this->assertNotNull($batch);
+        $this->assertNotNull($i7);
+        $this->assertNotNull($sample_runs);
+    }
 
 
 }
