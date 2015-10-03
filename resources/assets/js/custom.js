@@ -1,4 +1,4 @@
-$('div.alert').delay(5000).slideUp('slow');
+$('div.alert').delay(50000).slideUp('slow');
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 

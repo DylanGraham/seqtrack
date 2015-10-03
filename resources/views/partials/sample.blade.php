@@ -61,10 +61,14 @@
         </div>
         <div class="form-group @if ($errors->has('runs_remaining')) has-error @endif">
             <div class="col-md-3">
-                {!! Form::label('runs_remaining', 'Runs Remaining') !!}
+                @if ($formName === "Create Sample")
+                    {!! Form::label('runs_remaining', 'Number of runs') !!}
+                @else
+                    {!! Form::label('runs_remaining', 'Number of runs remaining') !!}
+                @endif
             </div>
             <div class="col-md-9">
-                {!! Form::number('runs_remaining', null, ['data-toggle'=>'tooltip', 'title'=>'Runs','class'=>'form-control', 'placeholder'=>'Runs']) !!}
+                {!! Form::number('runs_remaining', null, ['data-toggle'=>'tooltip', 'title'=>'Runs','class'=>'form-control', 'placeholder'=>'Number of runs']) !!}
             </div>
         </div>
         <div class="form-group @if ($errors->has('instrument_lane')) has-error @endif">

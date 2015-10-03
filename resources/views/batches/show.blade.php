@@ -18,7 +18,7 @@
             </tr>
             </thead>
             <tr>
-                <td>{{ $batch->user_id}}</td>
+                <td>{{ $batch->user->user_id}}</td>
                 <td>{{ $batch->charge_code}}</td>
                 <td>{{ $batch->concentration}}</td>
                 <td>{{ $batch->volume}}</td>
@@ -45,19 +45,17 @@
                 <th>Description</th>
                 <th>Plate</th>
                 <th>Well</th>
-                <th>Instrument Lane</th>
                 <th>Runs Remaining</th>
             </tr>
             </thead>
             @foreach ($batch->samples as $s)
                 <tr>
                     <td><a href="/samples/{{ $s->id }}/edit">{{ $s->sample_id }}</a></td>
-                    <td>{{ $s->i7_index['index'] }}</td>
-                    <td>{{ $s->i5_index['index'] }}</td>
+                    <td>{{ $s->i7_index['index']." / ". $s->i7_index['sequence']}}</td>
+                    <td>{{ $s->i5_index['index']." / ". $s->i5_index['sequence'] }}</td>
                     <td>{{ $s->description }}</td>
                     <td>{{ $s->plate}}</td>
                     <td>{{ $s->well }}</td>
-                    <td>{{ $s->instrument_lane}}</td>
                     <td>{{ $s->runs_remaining}}</td>
                 </tr>
             @endforeach
