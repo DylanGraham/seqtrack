@@ -35,7 +35,6 @@ class ImportSampleRequest extends Request
 
             'runs_remaining' => array('required', 'integer', 'between:1,60'),
 
-            'instrument_lane' => array('required', 'integer', 'between:1,8'),
 
         ];
     }

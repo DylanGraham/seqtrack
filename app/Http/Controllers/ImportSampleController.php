@@ -193,6 +193,7 @@ class ImportSampleController extends Controller
      */
     public function validateFile(ImportSampleRequest $request)
     {
+        $instument_lane =1;
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
@@ -232,7 +233,7 @@ class ImportSampleController extends Controller
                     if($this->checkBatchCompatibility(Input::get()['batch_id'])) {
                         $this->addData(Request::file('sampleFile'), Input::get()['batch_id'], Input::get()['plate'],
                             Input::get()['well'], Input::get()['description'], Input::get()['runs_remaining'],
-                            Input::get()['instrument_lane']);
+                            $instument_lane );
                         Session::flash('success', "File Upload Successful");
                     } else {
                         array_push($this->stringErrors, "File is not compatible with the batch selected.");
