@@ -55,7 +55,6 @@ class RealTest extends TestCase
             ->select(1, 'i7_index_id')
             ->type('PHPUnit', 'description')
             ->type(5, 'runs_remaining')
-            ->type(1, 'instrument_lane')
             ->press('Submit')
             ->see('Index set mismatch!');
     }
