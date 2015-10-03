@@ -21,12 +21,9 @@
                 {{ session('success_message') }}
             </div>
         @endif
-       <ul>
-           <li>
- 
+
         <script src="{{ asset('js/all.js') }}"></script>
-       </li>
-       </ul>
+
         <div class="footer">
             @yield('footer')
         </div>

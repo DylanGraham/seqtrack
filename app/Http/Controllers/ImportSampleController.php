@@ -311,7 +311,11 @@ class ImportSampleController extends Controller
     private function checkHeaders($header)
     {
         if(Count($header) > 5) {
-            array_push($this->errorArray[$this->errorTitles[0]], 'Extra header columns, please check the format of the CSV file.');
+            array_push($this->errorArray[$this->errorTitles[0]], 'Extra header columns, please check the format of the CSV file. Required format: sampleid, i7indexid, i7sequence, i5indexid, i5sequence');
+            return FALSE;
+        }
+        if(Count($header) < 5) {
+            array_push($this->errorArray[$this->errorTitles[0]], 'Missing header columns, please check the format of the CSV file. Required format: sampleid, i7indexid, i7sequence, i5indexid, i5sequence');
             return FALSE;
         }
         if (strtolower($header[0]) != 'sampleid') {
