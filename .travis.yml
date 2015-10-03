@@ -16,7 +16,7 @@ before_script:
 script:
     - php artisan migrate --env=testing --no-interaction -vvv
     - php artisan db:seed --env=testing --no-interaction -vvv
-    - phpunit tests/RealTest.php
+    - phpunit tests/
     - php artisan migrate:rollback --env=testing --no-interaction -vvv
 
 after_script:
