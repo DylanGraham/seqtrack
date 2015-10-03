@@ -38,8 +38,6 @@ class SampleEditRequest extends Request
             'description' => array('required' , 'regex:/^[a-zA-Z0-9]{1,120}$/' , 'max:120'),
 
             'runs_remaining' => 'required | integer | between:1,60',
-
-            'instrument_lane' => 'required | integer | between:1,8'
         ];
     }
 }
