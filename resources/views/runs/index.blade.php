@@ -1,6 +1,7 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
+<h3>Runs</h3>
     <div class="table-container">
     <table class="table table-striped">
     <thead>

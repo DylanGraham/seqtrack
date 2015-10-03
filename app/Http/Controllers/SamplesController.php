@@ -112,42 +112,47 @@ class SamplesController extends Controller
 
         if ($sample->i5_index_id) {
             $i5 = $sample->i5_index->index_set_id;
+            $new_i5_index_id = $sample->i5_index->id;
         }
         $i7 = $sample->i7_index->index_set_id;
+        $new_i7_index_id = $sample->i7_index->id;
+
         $currentIndexSet = IndexSet::find($i7);
+
         $batch = Batch::find($sample->batch_id);
         if (count($batch->samples)) {
             foreach ($batch->samples as $s) {
-                $checkSet = $s->i7_index->index_set_id;
+
+                // Must be from the same index set
+                if ($currentIndexSet->id != $s->i7_index->index_set_id) {
+                    //dd($currentIndexSet->id, $checkSet);
+                    Session::flash('flash_message', "Index set mismatch! &emsp; Existing batch is ".$s->i7_index->IndexSet->name);
+                    return false;
+                }
+
+                // If both i7 & i5 are already used
+                if ($s->i5_index_id) {
+                    if ($s->i7_index_id == $new_i7_index_id && $s->i5_index_id == $new_i5_index_id) {
+                        Session::flash('flash_message', 'I7 and I5 combination already in batch');
+                        return false;
+                    } 
+                // If single index and new i7 is already in batch
+                } elseif ($s->i7_index_id == $new_i7_index_id) {
+                    Session::flash('flash_message', 'Index conflict! &emsp; New I7 index already in single index batch ');
+                    return false;
+                }
 
                 // If using dual index when batch is single
                 if ($sample->i5_index_id && ! $s->i5_index_id) {
-                    Session::flash('flash_message', 'Batch is single index!');
+                    Session::flash('flash_message', 'Batch is single index! New sample is dual &emsp; Existing Index set '. $s->i7_index->IndexSet->name);
                     return false;
-                // Or vice versa
+                    // Or vice versa
                 } elseif ($s->i5_index_id && ! $sample->i5_index_id) {
-                    Session::flash('flash_message', 'Batch is dual index!');
+                    Session::flash('flash_message', "Batch is dual index! New sample is single. &emsp; Existing Index set ". $s->i7_index->IndexSet->name);
                     return false;
                 }
 
-                // If both i7 & i5 are already used 
-                if ($s->i5_index_id) {
-                    if ($s->i7_index_id == $i7 && $s->i5_index_id == $i5) {
-                        Session::flash('flash_message', 'Both indexes conflict!');
-                        return false;
-                    } 
-                // If single index but i7 is used
-                } elseif ($s->i7_index_id == $i7) {
-                    Session::flash('flash_message', 'Index conflict!');
-                    return false;
-                }                
 
-                // Must be from the same index set
-                if ($currentIndexSet->id != $checkSet) {
-                    //dd($currentIndexSet->id, $checkSet);
-                    Session::flash('flash_message', 'Index set mismatch!');
-                    return false;
-                }
             }
         }
         Session::flash('success_message', 'Sample added');

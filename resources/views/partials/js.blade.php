@@ -4,10 +4,13 @@ $(function() {
     var setID = $('#index_set');
     var i7ID = $('#i7_index_id');
     var i5ID = $('#i5_index_id');
+    var i5label = $('#i5_label');
 
     function i7Init() {
         i5ID.hide();
+        i5label.hide();
         i7ID.empty();
+        i5ID.empty();
         @if ( Form::oldInputIsEmpty())
 
             @foreach ($iAll->find(1)->I7Indexes as $x)
@@ -20,8 +23,9 @@ $(function() {
 
 
             @if (count($iAll->find(old('index_set'))->I5Indexes) > 0)
-                i5ID.show();
 
+                i5ID.show();
+                i5label.show();
                 @foreach ($iAll->find(old('index_set'))->I5Indexes as $x)
                      i5ID.append("<option @if (old('i5_index_id')==$x['id'])' selected ' @endif value={{ $x['id'] }}>{{ $x['index'] }} {{ $x['sequence'] }}</option>");
                 @endforeach
@@ -35,7 +39,7 @@ $(function() {
 
     setID.change(function() {
         i7ID.empty();
-
+        i5ID.empty();
         @for ($i=1; $i<=$iSet->count(); $i++)
             if (setID.prop('selectedIndex') == {{ $i-1 }}) {
                 @foreach ($iAll->find($i)->I7Indexes as $x)
@@ -43,14 +47,16 @@ $(function() {
                 @endforeach
 
                 @if (count($iAll->find($i)->i5Indexes))
-                    i5ID.empty();
+
                     i5ID.show();
+                    i5label.show();
                     @foreach ($iAll->find($i)->I5Indexes as $y)
                         i5ID.append("<option  value={{ $y['id'] }}> {{ $y['index'] }} {{ $y['sequence'] }} </option>");
                     @endforeach
                 @else
                     i5ID.val('');
                     i5ID.hide();
+                    i5label.hide();
                 @endif
             }
         @endfor

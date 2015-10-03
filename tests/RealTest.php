@@ -348,4 +348,54 @@ class RealTest extends TestCase
             ->see('Import Samples');
     }
 
+    public function test_import_file()
+    {
+        $user = App\User::find(1);
+        $this->actingAs($user)
+            ->visit('import')
+            ->select(23, 'batch_id')
+            ->type('TestDesc', 'description')
+            ->type(5, 'runs_remaining')
+            ->type(1, 'instrument_lane')
+            ->attach('storage/temp/sample.csv', 'sampleFile')
+            ->press('Submit')
+            ->see('File Upload Successful');
+
+    }
+
+    public function test_runs_page()
+    {
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/runs')
+            ->seePageIs('/runs')
+            ->see('Runs');
+    }
+
+    public function test_create_and_show_run()
+    {
+        $user = App\User::find(1);
+
+        $input = [
+            'batch_check_id' => [2, 3]
+        ];
+
+        $this->actingAs($user)
+            ->visit('/sampleRuns/create')
+            ->submitForm('Next -> Enter run details', $input)
+            ->seePageIs('/runDetails/create')
+            ->type('TestExperiment', 'experiment_name')
+            ->type('Desc', 'description')
+            ->type('111', 'read1')
+            ->type('222', 'read2')
+            ->type('FCID', 'flow_cell')
+            ->press('Submit')
+//            ->seePageIs('/runs') /* Currently not redirecting to runs */
+            ->visit('/runs')
+            ->see('TestExperiment')
+            ->seeInDatabase('runs', ['experiment_name' => 'TestExperiment'])
+            ->visit('/runs/1')
+            ->see('TestExperiment');
+    }
 }
