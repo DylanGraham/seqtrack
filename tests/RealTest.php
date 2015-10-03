@@ -356,7 +356,6 @@ class RealTest extends TestCase
             ->select(23, 'batch_id')
             ->type('TestDesc', 'description')
             ->type(5, 'runs_remaining')
-            ->type(1, 'instrument_lane')
             ->attach('storage/temp/sample.csv', 'sampleFile')
             ->press('Submit')
             ->see('File Upload Successful');
