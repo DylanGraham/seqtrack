@@ -15,7 +15,11 @@
         @foreach ($adaptors as $adaptor)
             <tr>
                 <td>{{($adaptor->value)}}</td>
-                <td>{{($adaptor->default)}}</td>
+                <td>
+                @if( $adaptor->default== 1)
+                    Default
+                    @endif
+                </td>
 
             </tr>
         @endforeach
