@@ -45,7 +45,7 @@ class SampleRequest extends Request
 
             'runs_remaining' => 'required | integer | between:1,60',
 
-            'instrument_lane' => 'required | integer | between:1,8'
+            'instrument_lane' => ' integer | between:1,8'
         ];
     }
 }
