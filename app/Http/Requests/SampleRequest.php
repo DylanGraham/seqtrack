@@ -44,11 +44,8 @@ class SampleRequest extends Request
             'description' => array( 'regex:/^[a-zA-Z0-9-_]{1,120}$/' , 'max:120'),
 
             'runs_remaining' => 'required | integer | between:1,60',
-<<<<<<< HEAD
-=======
 
-            'instrument_lane' => ' integer | between:1,8'
->>>>>>> s8953500-master
+           // 'instrument_lane' => ' integer | between:1,8'
         ];
     }
 }
