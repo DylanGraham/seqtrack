@@ -4,21 +4,20 @@
 
 @if (count($user->batches))
 
-    <br>
-    <h3>Create Samples</h3>
+    <div class="form-container">
+    <h1>Create Samples</h1>
 
-    Select a batch to add samples to:
+    <h4>Select a batch to add samples to, or
+    <a href="{!! route('batches.create') !!}">create a new batch</a></h4>
+
 
     {!! Form::open(['url'=>'samples', 'class'=>'form-inline']) !!}
 
     @include('partials.batchSelect')
-    or <a href="{!! route('batches.create') !!}">create a new batch</a>
-    
-    <hr/>
-
     @include('partials.sample', ['formName'=>'Create Sample', 'submitButtonText'=>'Submit'])
 
     {!! Form::close() !!}
+    </div>
 
 @else
 

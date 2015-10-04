@@ -52,7 +52,7 @@ p{
 .table-container{
 	background-color: #B4B4B4;
 }
-h1,h2,h3,h4{
+h1,h2,h3,h4,h5{
 	color: #CCCCCC;
 }
 
@@ -113,4 +113,5 @@ form > div {
 .col-md-4, .col-md-8{
 	border: solid;
 }
+
 /*# sourceMappingURL=all.css.map */
