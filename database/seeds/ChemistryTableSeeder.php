@@ -14,7 +14,7 @@ class ChemistryTableSeeder extends Seeder
     {
         DB::table('chemistry')->insert(
             array(
-                array("chemistry" => "test_seed", "default" => true, "created_at" => Carbon::now(), "updated_at" => Carbon::now())
+                array("chemistry" => "Amplicon", "default" => true, "created_at" => Carbon::now(), "updated_at" => Carbon::now())
             ));
     }
 }

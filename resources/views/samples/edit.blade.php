@@ -15,7 +15,7 @@
 @endsection
 
 @section('footer')
-    @include('partials.js')
+
 @endsection
 
 @stop

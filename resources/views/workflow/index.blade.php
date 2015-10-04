@@ -17,7 +17,11 @@
         @foreach ($workflows as $workflow)
             <tr>
                 <td>{{($workflow->value)}}</td>
-                <td>{{($workflow->default)}}</td>
+                <td>
+                    @if( $workflow->default== 1)
+                        Default
+                    @endif
+                </td>
 
             </tr>
         @endforeach

@@ -21,7 +21,7 @@
     @foreach ($batches as $b)
     <tr>
         <td><a href="/batches/{{ $b->id }}">{{ $b->batch_name }}</a></td>
-        <td>{{ $b->user_id}}</td>
+        <td>{{ $b->user->user_id}}</td>
         <td>{{ $b->charge_code}}</td>
         <td>{{ $b->concentration}}</td>
         <td>{{ $b->volume}}</td>

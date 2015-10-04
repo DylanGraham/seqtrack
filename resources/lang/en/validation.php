@@ -127,7 +127,7 @@ return [
             'required' => 'Description is required',
         ],
         'tube_location' => [
-            'regex' => 'Tube location may only contain a-z or A-Z or 0-9 or _',
+            'regex' => 'Tube location may only contain a-z or A-Z or 0-9 or _-',
             'required' => 'Tube location is required',
         ],
         'experiment_name' => [

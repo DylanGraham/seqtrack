@@ -16,7 +16,11 @@
             @foreach ($chemistry as $chem)
                 <tr>
                     <td>{{($chem->chemistry)}}</td>
-                    <td>{{($chem->default)}}</td>
+                    <td>
+                        @if( $chem->default== 1)
+                            Default
+                        @endif
+                    </td>
 
                 </tr>
             @endforeach

@@ -66,6 +66,8 @@ class SamplesController extends Controller
         $input = $request->all();
 
         $sample = new Sample($input);
+        // new default for this version of software
+        $sample->instrument_lane =1;
         
         // Check if sample is compatible for batch
         if ($this->checkBatchCompatibility($sample)) {

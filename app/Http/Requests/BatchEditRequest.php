@@ -39,7 +39,7 @@ class BatchEditRequest extends Request
 
             'tube_bar_code' => array('required' , 'regex:/^[A-Z0-9]{1,60}$/' , 'max:60'),
 
-            'tube_location' => array('required' , 'regex:/^[a-zA-Z0-9_]{1,60}$/' , 'max:60'),
+            'tube_location' => array('required' , 'regex:/^[a-zA-Z0-9_-]{1,60}$/' , 'max:60'),
 
             'tape_station_length' => 'required | integer | between:50,900',
 

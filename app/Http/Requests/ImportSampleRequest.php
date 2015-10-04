@@ -35,6 +35,7 @@ class ImportSampleRequest extends Request
 
             'runs_remaining' => array('required', 'integer', 'between:1,60'),
 
+
         ];
     }
 }

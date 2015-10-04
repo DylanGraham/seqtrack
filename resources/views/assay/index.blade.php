@@ -14,7 +14,11 @@
             @foreach ($assays as $assay)
                 <tr>
                     <td>{{($assay->name)}}</td>
-                    <td>{{($assay->default)}}</td>
+                    <td>
+                        @if( $assay->default== 1)
+                            Default
+                        @endif
+                    </td>
 
                 </tr>
             @endforeach

@@ -11,7 +11,8 @@
         </div>
 
         @if (Session::has('flash_message'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger center-block">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 {{ session('flash_message') }}
             </div>
         @endif
@@ -20,7 +21,7 @@
                 {{ session('success_message') }}
             </div>
         @endif
- 
+
         <script src="{{ asset('js/all.js') }}"></script>
 
         <div class="footer">

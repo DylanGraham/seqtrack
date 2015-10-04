@@ -193,6 +193,7 @@ class ImportSampleController extends Controller
      */
     public function validateFile(ImportSampleRequest $request)
     {
+        $instument_lane =1;
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
@@ -232,7 +233,7 @@ class ImportSampleController extends Controller
                     if($this->checkBatchCompatibility(Input::get()['batch_id'])) {
                         $this->addData(Request::file('sampleFile'), Input::get()['batch_id'], Input::get()['plate'],
                             Input::get()['well'], Input::get()['description'], Input::get()['runs_remaining'],
-                            Input::get()['instrument_lane']);
+                            $instument_lane );
                         Session::flash('success', "File Upload Successful");
                     } else {
                         array_push($this->stringErrors, "File is not compatible with the batch selected.");
@@ -311,7 +312,11 @@ class ImportSampleController extends Controller
     private function checkHeaders($header)
     {
         if(Count($header) > 5) {
-            array_push($this->errorArray[$this->errorTitles[0]], 'Extra header columns, please check the format of the CSV file.');
+            array_push($this->errorArray[$this->errorTitles[0]], 'Extra header columns, please check the format of the CSV file. Required format: sampleid, i7indexid, i7sequence, i5indexid, i5sequence');
+            return FALSE;
+        }
+        if(Count($header) < 5) {
+            array_push($this->errorArray[$this->errorTitles[0]], 'Missing header columns, please check the format of the CSV file. Required format: sampleid, i7indexid, i7sequence, i5indexid, i5sequence');
             return FALSE;
         }
         if (strtolower($header[0]) != 'sampleid') {

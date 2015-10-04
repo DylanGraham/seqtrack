@@ -50,9 +50,7 @@
         <div class = "button">
                 <a class="btn btn-default" href="{!! route('import.index') !!}" role="button">Import samples</a>
         </div>
-        <div class = "button">  
-            <a class="btn btn-default" href="{!! route('sampleRuns.create') !!}" role="button">Add Batches to Run</a>
-        </div>
+
         </div> <!-- end content-->
 
 		@include('errors.list')
