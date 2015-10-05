@@ -10,6 +10,14 @@ use App\Work_flow;
 
 class WorkFlowController extends Controller
 {
+
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('super', ['except' => ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -61,11 +69,9 @@ class WorkFlowController extends Controller
                 $workflw->default =0;
                 $workflw->update();
             }
-
         }
 
         $workflow->save();
-
 
         return redirect('workflow/create');
     }

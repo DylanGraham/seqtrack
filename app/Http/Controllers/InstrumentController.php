@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 use App\Instrument;
 class InstrumentController extends Controller
 {
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('super', ['except' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -54,16 +60,5 @@ class InstrumentController extends Controller
 
 
         return redirect('instrument/create');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
     }
 }

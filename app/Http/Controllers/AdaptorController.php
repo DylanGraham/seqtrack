@@ -9,6 +9,14 @@ use App\Http\Requests\AdaptorRequest;
 
 class AdaptorController extends Controller
 {
+
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('super', ['except' => ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
