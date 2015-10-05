@@ -45,10 +45,7 @@
     </table>
     </div>
     <br>
-    {!! Form::label('selected_batches_label', 'none', [ 'id'=>'selected_batches_label'] ) !!}
-    <br/>
-    {!! Form::label('unselected_batches_label', 'none', [ 'id'=>'unselected_batches_label'] ) !!}
-    <br/>
+
     <span style="color: red">
     {!! Form::label('errors_label', ' ', [ 'id'=>'errors_label'] ) !!}
         </span>
@@ -57,9 +54,7 @@
     {!! Form::submit("Next -> Enter run details", ['class'=>'btn btn-primary']) !!}
 
     <br/>
-    <h4>Selected batches sequences</h4>
-    {!! Form::label('used_indexes', 'none', [ 'id'=>'used_indexes'] ) !!}
-    <br/>
+
     {!! Form::close() !!}
 
 
