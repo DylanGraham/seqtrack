@@ -123,5 +123,6 @@
     {!!Form::hidden('run_status_id',$default_run_status_id) !!}
 
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
+
  </div>
 </div>
