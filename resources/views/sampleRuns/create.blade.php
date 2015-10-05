@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-
+<h1>Add Batches to Run</h1>
     <div class="table-container">
     {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
     <table class="table table-striped">
