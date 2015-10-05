@@ -1,15 +1,15 @@
 <div class="form-container">
- <div class="row">
-    <h1>Create run</h1>
-    <div class="group @if ($errors->has('experiment_name')) has-error @endif">
-    <div class="col-md-3">
-       {!! Form::label('experiment_name', 'Experiment Name') !!}
-    </div>
-    <div class="col-md-9">
-       {!! Form::text('experiment_name', null, ['class'=>'form-control', 'placeholder'=>'Experiment Name']) !!}
-    </div>
-    </div>
 
+    <h1>Create run</h1>
+
+    <div class="group @if ($errors->has('experiment_name')) has-error @endif">
+        <div class="col-md-3">
+            {!! Form::label('experiment_name', 'Experiment Name') !!}
+        </div>
+        <div class="col-md-9">
+            {!! Form::text('experiment_name', null, ['class'=>'form-control', 'placeholder'=>'Experiment Name']) !!}
+        </div>
+    </div>
     <div class="group @if ($errors->has('description')) has-error @endif">
         <div class="col-md-3">
             {!! Form::label('description', 'Description') !!}
@@ -54,13 +54,13 @@
         </div>
     </div>
     <div class="group @if ($errors->has('work_flow_id')) has-error @endif">
-    <div class="col-md-3">
-        {!! Form::label('work_flow_id', 'Work Flow') !!}
-    </div>
-    <div class="col-md-9">
-        {!! Form::select('work_flow_id', $work_flow, $default_work_flow_id, ['class'=>'form-control']) !!}
-    </div>
 
+        <div class="col-md-3">
+            {!! Form::label('work_flow_id', 'Work Flow') !!}
+        </div>
+        <div class="col-md-9">
+            {!! Form::select('work_flow_id', $work_flow, $default_work_flow_id, ['class'=>'form-control']) !!}
+        </div>
     </div>
     <div class="group @if ($errors->has('iem_file_version_id')) has-error @endif">
         <div class="col-md-3">
@@ -124,5 +124,7 @@
 
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
 
- </div>
+
+</div>
+
 </div>

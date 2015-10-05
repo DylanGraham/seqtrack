@@ -225,7 +225,7 @@ class RunDetailsController extends Controller
 
         $this->exportSheet($run);
 
-        //return redirect('runs');
+        return redirect('runs');
     }
 
     public function exportSheet($run) {
