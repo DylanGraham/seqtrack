@@ -26,6 +26,14 @@ use Auth;
 
 class RunDetailsController extends Controller
 {
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('super', ['except' => ['index']]);
+    }
+
+
     private $csvColumnCount = 10;
     private $runSamples = array();
 
@@ -76,15 +84,6 @@ class RunDetailsController extends Controller
         }
 
         return $errors;
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-      return "TODO";
     }
 
     /**

@@ -22,7 +22,7 @@ class SampleRunController extends Controller
     // Restrict access to authenticated users
     public function __construct()
     {
-  //      $this->middleware('auth');
+        $this->middleware('auth');
         $this->middleware('super' ,['except' => ['index'=> '' ]]);
     }
 

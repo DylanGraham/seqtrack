@@ -10,6 +10,13 @@ use App\Http\Controllers\Controller;
 
 class AssayController extends Controller
 {
+    // Restrict access to authenticated users
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('super', ['except' => ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -61,13 +68,10 @@ class AssayController extends Controller
                 $ass->default =0;
                 $ass->update();
             }
-
         }
 
         $assay->save();
 
-
         return redirect('assay/create');
     }
-
 }
