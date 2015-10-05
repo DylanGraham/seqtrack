@@ -2,10 +2,10 @@
     @if($formName === "Create Sample")
         <div class="form-group @if ($errors->has('sample_id')) has-error @endif">
             <div class="col-md-3">
-                {!! Form::label('sample_id', 'Sample ID') !!}
+                {!! Form::label('sample_id', 'Sample name') !!}
             </div>
             <div class="col-md-9">
-                {!! Form::text('sample_id', null, ['data-toggle'=>'tooltip', 'title'=>'Sample name','class'=>'form-control', 'placeholder'=>'Sample name']) !!}
+                {!! Form::text('sample_id', null, ['class'=>'form-control', 'placeholder'=>'Sample name']) !!}
             </div>
         </div>
     @endif   
@@ -14,7 +14,7 @@
                 {!! Form::label('plate', 'Plate') !!}
             </div>
             <div class="col-md-9">
-                {!! Form::text('plate', null, ['data-toggle'=>'tooltip', 'title'=>'Plate','class'=>'form-control', 'placeholder'=>'Plate']) !!}
+                {!! Form::text('plate', null, ['class'=>'form-control', 'placeholder'=>'Plate']) !!}
             </div>
         </div>
         <div class="form-group @if ($errors->has('well')) has-error @endif">
@@ -22,16 +22,16 @@
                 {!! Form::label('well', 'Well') !!}
             </div>
             <div class="col-md-9">
-                {!! Form::text('well', null, ['data-toggle'=>'tooltip', 'title'=>'Well','class'=>'form-control', 'placeholder'=>'Well']) !!}
+                {!! Form::text('well', null, ['class'=>'form-control', 'placeholder'=>'Well']) !!}
             </div>
         </div>
     @if ($formName === "Create Sample")
         <div class="form-group @if ($errors->has('index_set')) has-error @endif">
             <div class="col-md-3">
-                {!! Form::label('index_set', 'Index Set', ['data-toggle'=>'tooltip', 'title'=>'Index set']) !!}
+                {!! Form::label('index_set', 'Index Set') !!}
             </div>
             <div class="col-md-9">
-                {!! Form::select('index_set', $iSet, null, ['data-toggle'=>'tooltip', 'title'=>'Index set','class'=>'form-control']) !!}
+                {!! Form::select('index_set', $iSet, null, ['class'=>'form-control']) !!}
             </div>
         </div>
         <div class="form-group @if ($errors->has('i7_index_id')) has-error @endif">
@@ -39,7 +39,7 @@
                 {!! Form::label('i7_index_id', 'i7 Index ID') !!}
             </div>
             <div class="col-md-9">
-                {!! Form::select('i7_index_id', $i7, ['name'=>'i7_index_id'], ['data-toggle'=>'tooltip', 'title'=>'I7 Index','class'=>'form-control']) !!}
+                {!! Form::select('i7_index_id', $i7, ['name'=>'i7_index_id'], ['class'=>'form-control']) !!}
             </div>
         </div>
         <div class="form-group @if ($errors->has('i5_index_id')) has-error @endif">
@@ -47,7 +47,7 @@
                 {!! Form::label('i5_index_id', 'i5 Index ID',array('id' => 'i5_label')) !!}
             </div>
             <div class="col-md-9">
-                {!! Form::select('i5_index_id', $i5, ['name'=>'i5_index_id'], ['data-toggle'=>'tooltip', 'title'=>'I5 index','class'=>'form-control']) !!}
+                {!! Form::select('i5_index_id', $i5, ['name'=>'i5_index_id'], ['class'=>'form-control']) !!}
             </div>
         </div>
     @endif
@@ -68,7 +68,7 @@
                 @endif
             </div>
             <div class="col-md-9">
-                {!! Form::number('runs_remaining', null, ['data-toggle'=>'tooltip', 'title'=>'Runs','class'=>'form-control', 'placeholder'=>'Number of runs']) !!}
+                {!! Form::number('runs_remaining', null, ['class'=>'form-control', 'placeholder'=>'Number of runs']) !!}
             </div>
         </div>
     <div class="col-md-offset-3 col-md-9">

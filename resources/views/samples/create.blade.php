@@ -5,7 +5,7 @@
 @if (count($user->batches))
 
     <div class="form-container">
-    <h1>Create Samples</h1>
+    <h1>Create Sample</h1>
 
     <h4>Select a batch to add samples to, or
     <a href="{!! route('batches.create') !!}">create a new batch</a></h4>
