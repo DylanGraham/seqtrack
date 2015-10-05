@@ -67,8 +67,7 @@ class ApplicationController extends Controller
 
         $application->save();
 
-
-        return redirect('application');
+        return redirect('application/create');
     }
 
 }

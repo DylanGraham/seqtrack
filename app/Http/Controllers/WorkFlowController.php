@@ -67,7 +67,7 @@ class WorkFlowController extends Controller
         $workflow->save();
 
 
-        return redirect('workflow');
+        return redirect('workflow/create');
     }
 
 }

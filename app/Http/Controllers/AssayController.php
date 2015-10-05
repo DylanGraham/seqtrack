@@ -67,7 +67,7 @@ class AssayController extends Controller
         $assay->save();
 
 
-        return redirect('assay');
+        return redirect('assay/create');
     }
 
 }

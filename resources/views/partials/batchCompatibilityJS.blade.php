@@ -7,8 +7,7 @@
 
 
     function checkSelectedBatches() {
-//    }
-//    function tempdisable(){
+
         var $count = 0;
         var $selected = [];
         var $notselected = [];
@@ -20,7 +19,7 @@
 
 
         });
-        document.getElementById('selected_batches_label').innerHTML = 'batches selected ' + $selected;
+
 
 
         $("input:checkbox[id=batch_check_id]").each(function () {
@@ -31,7 +30,7 @@
             }
 
         });
-        document.getElementById('unselected_batches_label').innerHTML = 'batches not selected ' + $notselected;
+
         document.getElementById('errors_label').innerHTML = ' ';
 
         var $used_sequences = {'': 1};
@@ -121,7 +120,7 @@
                 document.getElementById('errors_label').innerHTML = 'Error incompatable batch selected';
             }
         }
-        document.getElementById('used_indexes').innerHTML = $used_pairs;
+
         @endforeach
 
 

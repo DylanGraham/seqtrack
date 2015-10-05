@@ -185,7 +185,7 @@ class RealTest extends TestCase
             ->type('CTGTCTCTTATACACATCA', 'value')
             ->press('Save')
             ->seeInDatabase('adaptor', ['value' => 'CTGTCTCTTATACACATCA'])
-            ->seePageIs('/adaptor');
+            ->seePageIs('/adaptor/create');
     }
 
     public function test_application_page()
@@ -210,7 +210,7 @@ class RealTest extends TestCase
             ->press('Save')
             ->see('NEWQ')
             ->seeInDatabase('application', ['application' => 'NEWQ'])
-            ->seePageIs('/application');
+            ->seePageIs('/application/create');
     }
 
     public function test_assay_page()
@@ -235,7 +235,7 @@ class RealTest extends TestCase
             ->press('Save')
             ->see('ASSAYnew')
             ->seeInDatabase('assay', ['name' => 'ASSAYnew'])
-            ->seePageIs('/assay');
+            ->seePageIs('/assay/create');
     }
 
     public function test_chemistry_page()
@@ -260,7 +260,7 @@ class RealTest extends TestCase
             ->press('Save')
             ->see('newChemistry')
             ->seeInDatabase('chemistry', ['chemistry' => 'newChemistry'])
-            ->seePageIs('/chemistry');
+            ->seePageIs('/chemistry/create');
     }
 
     public function test_instrument_page()
@@ -285,7 +285,7 @@ class RealTest extends TestCase
             ->press('Save')
             ->see('XX0011')
             ->seeInDatabase('instrument', ['name' => 'XX0011'])
-            ->seePageIs('/instrument');
+            ->seePageIs('/instrument/create');
     }
 
     public function test_project_groups_page()
@@ -310,7 +310,7 @@ class RealTest extends TestCase
             ->press('Save')
             ->see('NEWBASC')
             ->seeInDatabase('project_group', ['name' => 'NEWBASC'])
-            ->seePageIs('/project_groups');
+            ->seePageIs('/project_groups/create');
     }
 
     public function test_workflow_page()
@@ -335,7 +335,7 @@ class RealTest extends TestCase
             ->press('Save')
             ->see('WORKflow')
             ->seeInDatabase('work_flow', ['value' => 'WORKflow'])
-            ->seePageIs('/workflow');
+            ->seePageIs('/workflow/create');
     }
 
     public function test_import_page()

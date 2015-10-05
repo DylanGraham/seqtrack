@@ -19,6 +19,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{!! route('batches.create') !!}">Create Batch</a></li>
                         <li><a href="{!! route('samples.create') !!}">Create Sample</a></li>
+                        <li><a href="{!! route('import.index') !!}">Import samples</a></li>
                         @if ($currentUserSuper)
                         <li><a href="{!! route('sampleRuns.create') !!}">Create Run</a></li>
                         @endif

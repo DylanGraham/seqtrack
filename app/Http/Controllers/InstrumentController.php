@@ -53,7 +53,7 @@ class InstrumentController extends Controller
         $instrument->save();
 
 
-        return redirect('instrument');
+        return redirect('instrument/create');
     }
 
     /**

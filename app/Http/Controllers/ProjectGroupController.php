@@ -55,7 +55,7 @@ class ProjectGroupController extends Controller
         $project_group->save();
 
 
-        return redirect('project_groups');
+        return redirect('project_groups/create');
     }
 
 }
