@@ -37,6 +37,9 @@ p{
 .table-container{
 	background-color: #B4B4B4;
 }
+.table-container h1{
+	color: #111111;
+}
 h1,h2,h3,h4,h5{
 	color: #CCCCCC;
 }
@@ -44,8 +47,9 @@ h1,h2,h3,h4,h5{
 .table-container a{
 	color: #2E5CB8;
 }
-a{
-	color: #D6AD33;
+th{
+	color: #111111;
+    text-align: center;
 }
 
 a:hover{
@@ -89,7 +93,6 @@ label{
 	margin-top: 40px;
 	margin-left: 50px;
 	margin-right: 50px;	
-
 }
 form > div {
   overflow: hidden;
