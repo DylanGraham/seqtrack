@@ -2,11 +2,9 @@
 @section('content')
 @include('partials.navbar')
 
-    {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
-    <br/>
-    <h4>Add batches to a run</h4>
-    <br/>
     <div class="table-container">
+    {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
+    <h1>Add batches to a run</h1>
     <table class="table table-striped">
         <thead>
         <tr>
