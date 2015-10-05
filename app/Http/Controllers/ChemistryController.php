@@ -67,7 +67,7 @@ class ChemistryController extends Controller
         $chemistry->save();
 
 
-        return redirect('chemistry');
+        return redirect('chemistry/create');
     }
 
 }

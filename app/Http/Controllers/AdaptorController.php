@@ -67,7 +67,7 @@ class AdaptorController extends Controller
         $adaptor->save();
 
 
-        return redirect('adaptor');
+        return redirect('adaptor/create');
     }
 
 }
