@@ -43,7 +43,7 @@
             @endforeach
 
         </table>
-    </div>
+
     <br>
 
     <span style="color: red">
@@ -57,7 +57,7 @@
 
     {!! Form::close() !!}
 
-
+    </div>
     @include('errors.list')
 
 @endsection
