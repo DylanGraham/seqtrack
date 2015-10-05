@@ -9,7 +9,6 @@
        {!! Form::text('experiment_name', null, ['class'=>'form-control', 'placeholder'=>'Experiment Name']) !!}
     </div>
     </div>
- </div>
     <div class="group @if ($errors->has('description')) has-error @endif">
     <div class="col-md-3">
        {!! Form::label('description', 'Description') !!}
@@ -58,7 +57,7 @@
         {!! Form::label('work_flow_id', 'Work Flow') !!}
     </div>
     <div class="col-md-9">
-        {!! Form::select('work_flow_id', $work_flow, $default_work_flow_id) !!}
+        {!! Form::select('work_flow_id', $work_flow, $default_work_flow_id, ['class'=>'form-control']) !!}
     </div>
     </div>
     <div class="group @if ($errors->has('iem_file_version_id')) has-error @endif">
@@ -122,5 +121,5 @@
     {!!Form::hidden('run_status_id',$default_run_status_id) !!}
 
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
-
+ </div>
 </div>
