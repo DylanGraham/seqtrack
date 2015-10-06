@@ -224,13 +224,25 @@ class RunDetailsController extends Controller
 
         $this->exportSheet($run);
 
-        return redirect('runs');
+        //return redirect('runs');
     }
 
     public function exportSheet($run) {
         $headerRowCount = 20;
         //dd($run);
-        header('Content-Disposition: attachment; filename="HiSeq.csv"');
+        $indexType = "Single";
+        $basesInIndex = 0;
+
+        if(Count($this->runSamples) > 0) {
+            if($this->runSamples[0]->i5_index_id != NULL) {
+                $indexType = "Double";
+            }
+            $i7Index = DB::table('i7_index')->where('id', $this->runSamples[0]->i7_index_id)->first();
+            $basesInIndex = strlen($i7Index->sequence);
+        }
+
+        $fileName = "MiSeq-SampleSheet-".$run->flow_cell."-".$indexType."-".$basesInIndex;
+        header('Content-Disposition: attachment; filename="'.$fileName.'.csv"');
         header("Cache-control: private");
         header("Content-type: application/force-download");
         header("Content-transfer-encoding: binary\n");
@@ -344,13 +356,14 @@ class RunDetailsController extends Controller
     }
 
     public function getSamplesHeader() {
-        return "Sample_ID,Sample_Name,Sample_Plate,Sample_Well,I7_Index_ID,index,I5_Index_ID,index2,Sample_Project,Description";
+        return "Lane,Sample_ID,Sample_Name,Sample_Plate,Sample_Well,I7_Index_ID,index,I5_Index_ID,index2,Sample_Project,Description";
     }
 
     public function getSampleData($sample) {
         $del = ",";
         $tempString = "";
-        $tempString .= $sample->id.$del;
+        $tempString .= $sample->instrument_lane.$del;
+        $tempString .= $sample->sample_id.$del;
         $tempString .= $sample->sample_id.$del;
         $tempString .= $sample->plate.$del;
         $tempString .= $sample->well.$del;
