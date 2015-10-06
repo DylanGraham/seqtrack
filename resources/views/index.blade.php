@@ -13,24 +13,29 @@
                 <br/>
 
                 <p>
-                    <a class="btn btn-default" href="{!! route('batches.create') !!}" role="button">Create Batch</a>
                     <a class="btn btn-default" href="{!! route('batches.index') !!}" role="button">View Batch</a>
+                    <a class="btn btn-default" href="{!! route('batches.create') !!}" role="button">Create Batch</a>
+
+                </p>
+                <p>
+                    <a class="btn btn-default" href="{!! route('samples.index') !!}" role="button">View Sample</a>
+                    <a class="btn btn-default" href="{!! route('runs.index') !!}" role="button">View Run</a>
+
+
                 </p>
                 <p>
                     <a class="btn btn-default" href="{!! route('samples.create') !!}" role="button">Create Sample</a>
-                    <a class="btn btn-default" href="{!! route('samples.index') !!}" role="button">View Sample</a>
-                </p>
-                <p>
-                    <a class="btn btn-default" href="{!! route('sampleRuns.create') !!}" role="button">Add Batches
-                        to Run</a>
+                    <a class="btn btn-default" href="{!! route('import.index') !!}" role="button">Import samples</a>
 
-                    <a class="btn btn-default" href="{!! route('runs.index') !!}" role="button">View Run</a>
-                </p>
-                <p>
-                    <a class="btn btn-default" href="{!! route('import.index') !!}" role="button">Import
-                        samples</a>
-                </p>
 
+
+
+                </p>
+                @if ($currentUserSuper)
+                <p>
+                    <a class="btn btn-default" href="{!! route('sampleRuns.create') !!}" role="button">Add Batches to Run</a>
+                </p>
+                @endif
             </div>
 
         </div>
