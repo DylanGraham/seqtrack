@@ -102,7 +102,13 @@ form > div {
 	border: solid;
 }
 
+
 .home-btn p .btn {
-	width: 150px !important;
+	width: 150px;
 	margin: 12px;
 }
+
+.group {
+    clear: both;
+}
+

@@ -61,8 +61,8 @@
             <div class="col-md-offset-3 col-md-9">
             {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
             </div>
-       </div> 
             {!! Form::close() !!}
+       </div> 
     @else
 
         <br><br>

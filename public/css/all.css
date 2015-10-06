@@ -116,8 +116,15 @@ form > div {
 .col-md-4, .col-md-8{
 	border: solid;
 }
+<<<<<<< HEAD
 .home-btn p .btn {
 	width: 150px !important;
 	margin: 12px;
 }
+=======
+.group {
+    clear: both;
+}
+
+>>>>>>> a704a54f3657dcefc6f89a025313f3e3d43b9443
 /*# sourceMappingURL=all.css.map */
