@@ -101,3 +101,6 @@ form > div {
 .col-md-4, .col-md-8{
 	border: solid;
 }
+.group {
+    clear: both;
+}
