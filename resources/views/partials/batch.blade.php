@@ -1,9 +1,9 @@
 
+            <br/>
+        @if ($formName === "Create Batch")
     <div class="form-container">
         <div class="row">
             <h1>{{ $formName }}</h1>
-            <br/>
-        @if ($formName === "Create Batch")
             <div class="form-group @if ($errors->has('batch_name')) has-error @endif">
                 <div class="col-md-3">
                 {!! Form::label('batch_name', 'Batch Name') !!}
