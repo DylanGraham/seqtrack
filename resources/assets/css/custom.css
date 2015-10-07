@@ -112,3 +112,13 @@ form > div {
     clear: both;
 }
 
+.about {
+	text-align: left;
+}
+
+.about h4 {
+	color: #CCCCCC;
+}
+.about h3 {
+	color: #CCCCCC;
+}
