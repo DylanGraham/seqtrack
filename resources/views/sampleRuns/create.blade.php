@@ -48,8 +48,8 @@
         </span>
         <br/>
 
-        <div class="col-lg-offset-1">
-            {!! Form::submit("Next -> Enter run details", ['class'=>'btn btn-primary']) !!}
+        <div class="col-md-3">
+            {!! Form::submit("Enter run details", ['class'=>'btn btn-primary']) !!}
         </div>
 
         <br/>

@@ -159,7 +159,7 @@ class RealTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/sampleRuns/create')
-            ->submitForm('Next -> Enter run details', $input)
+            ->submitForm('Enter run details', $input)
             ->seePageIs('/runDetails/create');
     }
 
@@ -382,7 +382,7 @@ class RealTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/sampleRuns/create')
-            ->submitForm('Next -> Enter run details', $input)
+            ->submitForm('Enter run details', $input)
             ->seePageIs('/runDetails/create')
             ->type('TestExperiment', 'experiment_name')
             ->type('Desc', 'description')
