@@ -41,7 +41,7 @@ class SampleRunRequest extends Request
 
             'experiment_name' => array('required', 'regex:/^[_a-zA-Z0-9-]{1,120}$/', 'between:6,120'),
 
-            // make a date as integar off set from today eg 1 to 7 days from today
+            // make a date as integer off set from today eg 1 to 7 days from today
             'run_date' => 'required | integer | between:0,7',
 
             'work_flow_id' => 'required | integer |exists:work_flow,id',
