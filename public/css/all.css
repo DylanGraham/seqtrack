@@ -117,8 +117,9 @@ form > div {
 	border: solid;
 }
 
+
 .home-btn p .btn {
-	width: 150px !important;
+	width: 150px;
 	margin: 12px;
 }
 
@@ -136,3 +137,9 @@ form > div {
 .about h3 {
 	color: #CCCCCC;
 }
+.table{
+   max-width: none;
+   background-color: #B4B4B4;
+}
+
+/*# sourceMappingURL=all.css.map */
