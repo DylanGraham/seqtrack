@@ -62,6 +62,7 @@
                     </ul>
                 </li>
                 @endif
+                <li><a href='/about'>About</a></li>
                 <li><a href='/auth/logout'>Logout</a></li>
             </ul>
         </div>

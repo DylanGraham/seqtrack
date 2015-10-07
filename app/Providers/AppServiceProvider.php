@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Guard $auth)
     {
 
-        view()->composer(array('partials.navbar','runs.edit'), function($view) use ($auth){
+        view()->composer(array('partials.navbar','runs.edit','index'), function($view) use ($auth){
 
             $view->with('currentUserSuper', $auth->user()->super); // does what you expect
         });
