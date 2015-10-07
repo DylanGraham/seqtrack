@@ -10,8 +10,7 @@
 
             <div class="about">
                 <p>SeqTrack is designed to capture, validate and store information to generate the control source file
-                    for
-                    a MiSeq DNA sequencing instrument.</p>
+                    for a MiSeq DNA sequencing instrument.</p>
                 <br/>
 
                 <h2>Definitions</h2>
@@ -66,7 +65,7 @@
                     <li>The I5 and I7 Index combination pair for each sample must be unique in a Run</li>
                     <li>If I5 indexes are not used each I7 index can only be use once in the Run.</li>
                 </ul>
-                
+
                 <br/>
                 <br/>
                 <br/>
