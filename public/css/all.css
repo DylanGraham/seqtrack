@@ -50,13 +50,13 @@ p{
 	margin-left: 10%;
 }
 .table-container{
-	background-color: #B4B4B4;
+	background-color: #B4B4B4;color: #CCCCCC;
 }
 .table-container h1{
 	color: #111111;
 }
 h1,h2,h3,h4,h5{
-	color: #CCCCCC;
+
 }
 
 .table-container a{
@@ -126,3 +126,13 @@ form > div {
     clear: both;
 }
 
+.about {
+	text-align: left;
+}
+
+.about h4 {
+	color: #CCCCCC;
+}
+.about h3 {
+	color: #CCCCCC;
+}

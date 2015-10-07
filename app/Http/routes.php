@@ -30,6 +30,8 @@ Route::get('/samplesRunsRemaining', 'SampleRunController@samplesRunsRemaining');
 // To close registrations
 Route::get('/auth/register', 'PageController@closed');
 
+Route::resource('about', 'AboutController');
+
 Route::controllers([
     'auth'      => 'Auth\AuthController',
     'password'  => 'Auth\PasswordController',
