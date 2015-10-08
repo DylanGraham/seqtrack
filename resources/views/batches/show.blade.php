@@ -41,7 +41,9 @@
             <tr>
                 <th>Sample name</th>
                 <th>i7 index</th>
-                <th>i5 index</th>
+                @if ($batch->samples->first()->i5_index_id)
+                    <th>i5 index</th>
+                @endif
                 <th>Description</th>
                 <th>Plate</th>
                 <th>Well</th>
@@ -52,7 +54,9 @@
                 <tr>
                     <td><a href="/samples/{{ $s->id }}/edit">{{ $s->sample_id }}</a></td>
                     <td>{{ $s->i7_index['index']." / ". $s->i7_index['sequence']}}</td>
-                    <td>{{ $s->i5_index['index']." / ". $s->i5_index['sequence'] }}</td>
+                    @if ($batch->samples->first()->i5_index_id)
+                        <td>{{ $s->i5_index['index']." / ". $s->i5_index['sequence'] }}</td>
+                    @endif
                     <td>{{ $s->description }}</td>
                     <td>{{ $s->plate}}</td>
                     <td>{{ $s->well }}</td>
