@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-    <h3>Batches</h3>
+    <h1>Batches</h1>
     <div class="table-container">
     <table class="table table-striped">
     <thead>

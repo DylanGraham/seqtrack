@@ -2,8 +2,7 @@
 @section('content')
     @include('partials.navbar')
 
-    <br/>
-    <h3>Adaptors</h3>
+    <h1>Adaptors</h1>
     <div class="table-container">
     <table class="table table-striped">
 

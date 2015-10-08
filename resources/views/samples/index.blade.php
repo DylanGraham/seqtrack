@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-    <h3>Samples</h3>
+    <h1>Samples</h1>
     <div class ="table-container">
     <table class="table table-striped">
     <thead>

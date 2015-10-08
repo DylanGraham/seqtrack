@@ -2,9 +2,7 @@
 @section('content')
     @include('partials.navbar')
 
-    <br/>
-    <br/>
-    <h3>Assay</h3>
+    <h1>Assays</h1>
     <div class="table-container">
 
         <table class="table table-striped">
