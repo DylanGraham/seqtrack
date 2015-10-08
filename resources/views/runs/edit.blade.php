@@ -1,11 +1,11 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
+<h1>Edit run</h1>
     <div class="table-container">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Run id</th>
             <th>Experiment name</th>
             <th>Read 1</th>
             <th>Read 2</th>
@@ -26,8 +26,6 @@
         </thead>
 
             <tr>
-                <td>{{ $run->id }}</td>
-
                 <td>{{ $run->experiment_name}}</td>
                 <td>{{ $run->read1}}</td>
                 <td>{{ $run->read2}}</td>
@@ -50,13 +48,14 @@
     </div>
 @if ($currentUserSuper)
     {!! Form::open(['url'=>'runs/setStatus', 'class'=>'form-inline']) !!}
+<div class="form-container">
     {!! Form::hidden('run_id',$run->id) !!}
-    {!! Form::label('run_status', 'run_status', ['class'=>'sr-only']) !!}
+    {!! Form::label('run_status', 'Run status') !!}
     {!! Form::select('run_status', $status_options, null, ['class'=>'form-control']) !!}
 
     {!! Form::submit("Set status", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
-
+</div>
     <br><br>
 
     <p>Where run status is either 'Run built' or 'Run succeed' and it is set to 'Run failed' all included samples will have runs remaining incremented by 1 </p>
