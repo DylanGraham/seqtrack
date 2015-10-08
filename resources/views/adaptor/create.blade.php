@@ -2,7 +2,7 @@
 @section('content')
     @include('partials.navbar')
 
-    <h1>Adaptors</h1>
+    <h1>Add Adaptor</h1>
     <div class="table-container">
     <table class="table table-striped">
 
@@ -27,18 +27,20 @@
 
     </table>
     </div>
+
     {!! Form::open(['url'=>'adaptor', 'class'=>'form-inline']) !!}
 
-        <span class="group @if ($errors->has('adaptor')) has-error @endif">
-            {!! Form::label('value', 'value', ['class'=>'sr-only']) !!}
-            {!! Form::text('value', null, ['data-toggle'=>'tooltip', 'title'=>'Adaptor','class'=>'form-control', 'placeholder'=>'Adaptor']) !!}
-        </span>
-    {!! Form::label('default', 'default', ['class'=>'sr-only']) !!}
+    <div class="form-container">
+        <div class="group @if ($errors->has('adaptor')) has-error @endif">
+            {!! Form::label('value', 'Adaptor name') !!}
+            {!! Form::text('value', null, ['data-toggle'=>'tooltip', 'title'=>'Adaptor','class'=>'form-control', 'placeholder'=>'Adaptor name']) !!}
+        </div>
+    {!! Form::label('default', 'Default') !!}
     {!! Form::select('default', $defaults, null, ['class'=>'form-control']) !!}
 
         {!! Form::submit("Save", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
-
+    </div>
     @include('errors.list')
 @endsection
 
