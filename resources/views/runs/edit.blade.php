@@ -51,7 +51,7 @@
 <div class="form-container">
     {!! Form::hidden('run_id',$run->id) !!}
     {!! Form::label('run_status', 'Run status') !!}
-    {!! Form::select('run_status', $status_options, null, ['class'=>'form-control']) !!}
+    {!! Form::select('run_status', $status_options, $run->run_status->id, ['class'=>'form-control']) !!}
 
     {!! Form::submit("Set status", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
