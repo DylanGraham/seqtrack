@@ -25,7 +25,7 @@
 
         <span class="group @if ($errors->has('chemistry')) has-error @endif">
             {!! Form::label('name', 'name', ['class'=>'sr-only']) !!}
-            {!! Form::text('name', null, ['data-toggle'=>'tooltip', 'title'=>'Project name','class'=>'form-control', 'placeholder'=>'Project group name']) !!}
+            {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Project group name']) !!}
         </span>
 
         {!! Form::submit("Save", ['class'=>'btn btn-primary']) !!}

@@ -33,7 +33,7 @@
     <div class="form-container">
         <div class="group @if ($errors->has('adaptor')) has-error @endif">
             {!! Form::label('value', 'Adaptor name') !!}
-            {!! Form::text('value', null, ['data-toggle'=>'tooltip', 'title'=>'Adaptor','class'=>'form-control', 'placeholder'=>'Adaptor name']) !!}
+            {!! Form::text('value', null, ['class'=>'form-control', 'placeholder'=>'Adaptor name']) !!}
         </div>
     {!! Form::label('default', 'Default') !!}
     {!! Form::select('default', $defaults, null, ['class'=>'form-control']) !!}

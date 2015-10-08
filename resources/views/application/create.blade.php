@@ -31,7 +31,7 @@
     <div class="form-container">
         <div class="group @if ($errors->has('application')) has-error @endif">
             {!! Form::label('application', 'Application') !!}
-            {!! Form::text('application', null, ['data-toggle'=>'tooltip', 'title'=>'Application','class'=>'form-control', 'placeholder'=>'Application']) !!}
+            {!! Form::text('application', null, ['class'=>'form-control', 'placeholder'=>'Application']) !!}
         </div>
     {!! Form::label('default', 'Default') !!}
     {!! Form::select('default', $defaults, null, ['class'=>'form-control']) !!}

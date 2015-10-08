@@ -21,7 +21,7 @@
 
         <span class="group @if ($errors->has('instrument')) has-error @endif">
             {!! Form::label('name', 'Instrument name') !!}
-            {!! Form::text('name', null, ['data-toggle'=>'tooltip', 'title'=>'Instrument name','class'=>'form-control', 'placeholder'=>'Instrument name']) !!}
+            {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Instrument name']) !!}
         </span>
 
         {!! Form::submit("Save", ['class'=>'btn btn-primary']) !!}

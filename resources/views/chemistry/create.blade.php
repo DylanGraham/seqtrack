@@ -32,7 +32,7 @@
 
     <span class="group @if ($errors->has('chemistry')) has-error @endif">
             {!! Form::label('chemistry', 'Chemistry name') !!}
-        {!! Form::text('chemistry', null, ['data-toggle'=>'tooltip', 'title'=>'Chemistry','class'=>'form-control', 'placeholder'=>'Chemisrty name']) !!}
+        {!! Form::text('chemistry', null, ['class'=>'form-control', 'placeholder'=>'Chemisrty name']) !!}
         </span>
     {!! Form::label('default', 'Default') !!}
     {!! Form::select('default', $defaults, null, ['class'=>'form-control']) !!}

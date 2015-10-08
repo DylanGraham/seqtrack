@@ -29,7 +29,7 @@
 
     <span class="group @if ($errors->has('assay')) has-error @endif">
         {!! Form::label('name', 'Assay name') !!}
-        {!! Form::text('name', null, ['data-toggle'=>'tooltip', 'title'=>'Assay','class'=>'form-control', 'placeholder'=>'Assay name']) !!}
+        {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Assay name']) !!}
         </span>
     {!! Form::label('default', 'Default') !!}
     {!! Form::select('default', $defaults, null, ['class'=>'form-control']) !!}
