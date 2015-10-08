@@ -43,19 +43,16 @@
         </table>
 
 
+    </div>
         <span style="color: red">
             {!! Form::label('errors_label', ' ', [ 'id'=>'errors_label'] ) !!}
         </span>
-        <br/>
 
         <div class="col-md-3">
             {!! Form::submit("Enter run details", ['class'=>'btn btn-primary']) !!}
         </div>
-
-        <br/>
         {!! Form::close() !!}
 
-    </div>
 
     @include('errors.list')
 
