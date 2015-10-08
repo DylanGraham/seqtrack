@@ -50,6 +50,7 @@ p{
 	margin-left: 10%;
 }
 .table-container{
+	font-family: monospace; 
 	background-color: #B4B4B4;
 }
 .table-container h1{
@@ -87,6 +88,7 @@ input[type='text'], input[type='number']{
 }
 
 select{
+	font-family: monospace; 
 	margin-top: 5px;
 	float: left;
 }
@@ -116,7 +118,6 @@ form > div {
 .col-md-4, .col-md-8{
 	border: solid;
 }
-
 
 .home-btn p .btn {
 	width: 150px;
