@@ -118,7 +118,7 @@ class RunsController extends Controller
 
         // existing run status is either run built or run succeeded and new value is run failed
         // increment all samples in run by one
-        if(($run->run_status_id ==1 ||$run->run_status_id ==1)&&  $input['run_status']==3)
+        if(($run->run_status_id ==1 ||$run->run_status_id ==2)&&  $input['run_status']==3)
         {
             $samples = DB::table('samples')->select('samples.id','runs_remaining')
                 ->join('sample_runs', function ($join) {

@@ -24,6 +24,7 @@ class UserTableSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+
         DB::table('users')->insert(array(
             array("user_id" => "ac29", "name" => "Amanda Chamberlain", "default_project_id" => "5", "default_charge_code" => "8338-03537-21-001", "super" => true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
             array("user_id" => "bm60", "name" => "Brett Mason", "default_project_id" => "5", "default_charge_code" => "8338-03537-21-001", "super" => false,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
@@ -42,6 +43,18 @@ class UserTableSeeder extends Seeder
             array("user_id" => "sk00", "name" => "Sukhjiwan Kaur", "default_project_id" => "4", "default_charge_code" => "8338-11389-21-379", "super" => false,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
             array("user_id" => "km1f", "name" => "Katerina Viduka", "default_project_id" => "6", "default_charge_code" => "8338-01808-21-379", "super" => true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
         ));
+
+        DB::table('users')->insert([
+            'name' => 'Phillip',
+            'email' => 'phillip@example.com',
+            'user_id' => 'efgh',
+            'password' => bcrypt('password'),
+            'super' => '0',
+            'default_project_id' => '4',
+            'default_charge_code' => "8338-11389-21-379",
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
     }
 }
