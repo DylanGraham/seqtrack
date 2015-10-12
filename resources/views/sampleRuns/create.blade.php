@@ -2,8 +2,8 @@
 @section('content')
     @include('partials.navbar')
     <h1>Add Batches to Run</h1>
-    <div class="table-container">
         {!! Form::open(['url'=>'sampleRuns', 'class'=>'form-inline']) !!}
+    <div class="table-container">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -41,22 +41,16 @@
 
 
         </table>
-
+    </div>
+        <div class="col-md-3">
+            {!! Form::submit("Enter run details", ['class'=>'btn btn-primary']) !!}
+        </div>
+        {!! Form::close() !!}
 
         <span style="color: red">
             {!! Form::label('errors_label', ' ', [ 'id'=>'errors_label'] ) !!}
         </span>
-        <br/>
-
-        <div class="col-lg-offset-1">
-            {!! Form::submit("Next -> Enter run details", ['class'=>'btn btn-primary']) !!}
-        </div>
-
-        <br/>
-        {!! Form::close() !!}
-
-    </div>
-
+        
     @include('errors.list')
 
 @endsection

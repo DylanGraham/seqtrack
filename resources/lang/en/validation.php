@@ -152,6 +152,9 @@ return [
         'sampleFile' => [
             'mimes' => 'File not valid, please upload a CSV file',
         ],
+        'batch_check_id' => [
+            'required' => 'Please select at least 1 batch',
+        ],
     ],
 
     /*

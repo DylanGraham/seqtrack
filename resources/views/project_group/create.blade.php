@@ -2,9 +2,7 @@
 @section('content')
     @include('partials.navbar')
 
-    <br/>
-
-    <h3>Project Group</h3>
+    <h1>Add Project Group</h1>
     <div class ="table-container">
 
     <table class="table table-striped">
@@ -23,15 +21,16 @@
     </table>
         </div>
     {!! Form::open(['url'=>'project_groups', 'class'=>'form-inline']) !!}
+    <div class="form-container">
 
         <span class="group @if ($errors->has('chemistry')) has-error @endif">
             {!! Form::label('name', 'name', ['class'=>'sr-only']) !!}
-            {!! Form::text('name', null, ['data-toggle'=>'tooltip', 'title'=>'Project name','class'=>'form-control', 'placeholder'=>'Project group name']) !!}
+            {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Project group name']) !!}
         </span>
 
         {!! Form::submit("Save", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
-
+    </div>
     @include('errors.list')
 @endsection
 

@@ -50,6 +50,7 @@ p{
 	margin-left: 10%;
 }
 .table-container{
+	font-family: monospace; 
 	background-color: #B4B4B4;
 	color:#000000;
 }
@@ -88,6 +89,7 @@ input[type='text'], input[type='number']{
 }
 
 select{
+	font-family: monospace; 
 	margin-top: 5px;
 	float: left;
 }
@@ -119,7 +121,7 @@ form > div {
 }
 
 .home-btn p .btn {
-	width: 150px !important;
+	width: 150px;
 	margin: 12px;
 }
 
@@ -138,12 +140,16 @@ form > div {
 	color: #CCCCCC;
 }
 
-.table{
-	background-color: #B4B4B4;
-	color:#000000;
-}
 
 .table .h3{
 
 	color:#000000;
 }
+
+.table{
+   max-width: none;
+   background-color: #B4B4B4;
+}
+
+/*# sourceMappingURL=all.css.map */
+

@@ -27,7 +27,6 @@
                 <directory suffix=".php">app/Listeners</directory>
                 <directory suffix=".php">app/Providers</directory>
                 <directory suffix=".php">app/Http/Controllers/Auth</directory>
-                <directory suffix=".php">app/Http/Requests</directory>
                 <directory suffix=".php">app/Http/Middleware</directory>
                 <file>app/Http/Controllers/Controller.php</file>
                 <file>app/Http/Requests/Request.php</file>

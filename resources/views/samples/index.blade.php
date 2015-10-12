@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 @include('partials.navbar')
-    <h3>Samples</h3>
+    <h1>Samples</h1>
     <div class ="table-container">
     <table class="table table-striped">
     <thead>
@@ -12,7 +12,6 @@
             <th>Description</th>
             <th>Plate</th>
             <th>Well</th>
-            <th>Instrument Lane</th>
             <th>Runs Remaining</th>
             <th>Created At</th>
             <th>Batch Name</th>
@@ -26,7 +25,6 @@
         <td>{{ $s->description }}</td>
         <td>{{ $s->plate}}</td>
         <td>{{ $s->well }}</td>
-        <td>{{ $s->instrument_lane}}</td>
         <td>{{ $s->runs_remaining}}</td>
         <td>{{ Carbon\Carbon::parse($s->created_at)->format('d M Y')}}</td>
         <td>{{ $s->batch['batch_name']}}</td>

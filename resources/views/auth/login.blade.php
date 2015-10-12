@@ -32,35 +32,21 @@
 
                         <div class="form-group ">
 
-                            <div class="col-md-3">
                                 {!! Form::label('user_id', 'User ID') !!}
-                            </div>
 
-                            <div class="col-md-6">
                                 <input type="user_id" class="form-control" name="user_id" value="{{ old('user_id') }}">
-                            </div>
-                            <br/>
-                            <br/>
 
-                            <div class="col-md-3">
                                 {!! Form::label('password', 'Password') !!}
-                            </div>
 
-                            <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
-                            </div>
 
-                            <div class="col-md-6 col-md-offset-3">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember"> Remember Me
                                     </label>
-                                    <a class="" href="{{ url('/password/email') }}">Forgot Your Password?</a>
                                 </div>
-
-                            </div>
                         </div>
-
+                                    <a class="" href="{{ url('/password/email') }}">Forgot Your Password?</a>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">Login</button>

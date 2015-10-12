@@ -2,8 +2,7 @@
 @section('content')
     @include('partials.navbar')
 
-    <br/>
-    <h3>Applications</h3>
+    <h1>Add Application</h1>
     <div class="table-container">
     <table class="table table-striped">
 
@@ -29,17 +28,18 @@
     </table>
     </div>
     {!! Form::open(['url'=>'application', 'class'=>'form-inline']) !!}
-
-        <span class="group @if ($errors->has('application')) has-error @endif">
-            {!! Form::label('application', 'application', ['class'=>'sr-only']) !!}
-            {!! Form::text('application', null, ['data-toggle'=>'tooltip', 'title'=>'Application','class'=>'form-control', 'placeholder'=>'Application']) !!}
-        </span>
-    {!! Form::label('default', 'default', ['class'=>'sr-only']) !!}
+    <div class="form-container">
+        <div class="group @if ($errors->has('application')) has-error @endif">
+            {!! Form::label('application', 'Application') !!}
+            {!! Form::text('application', null, ['class'=>'form-control', 'placeholder'=>'Application']) !!}
+        </div>
+    {!! Form::label('default', 'Default') !!}
     {!! Form::select('default', $defaults, null, ['class'=>'form-control']) !!}
 
         {!! Form::submit("Save", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
 
+    </div>
     @include('errors.list')
 @endsection
 

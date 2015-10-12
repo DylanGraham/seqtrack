@@ -2,8 +2,7 @@
 @section('content')
     @include('partials.navbar')
 
-    <br/>
-    <h3>Instruments</h3>
+    <h1>Add Instrument</h1>
     <div class ="table-container">
 
     <table class="table table-striped">
@@ -18,15 +17,16 @@
     </table>
         </div>
     {!! Form::open(['url'=>'instrument', 'class'=>'form-inline']) !!}
+    <div class="form-container">
 
         <span class="group @if ($errors->has('instrument')) has-error @endif">
-            {!! Form::label('name', 'name', ['class'=>'sr-only']) !!}
-            {!! Form::text('name', null, ['data-toggle'=>'tooltip', 'title'=>'Instrument name','class'=>'form-control', 'placeholder'=>'Instrument name']) !!}
+            {!! Form::label('name', 'Instrument name') !!}
+            {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Instrument name']) !!}
         </span>
 
         {!! Form::submit("Save", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
-
+    </div>
     @include('errors.list')
 @endsection
 

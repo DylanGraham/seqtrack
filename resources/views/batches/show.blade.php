@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     @include('partials.navbar')
-    <h4>{{ $batch->batch_name }}</h4>
+    <h1>{{ $batch->batch_name }}</h1>
     <div class="table-container">
         <table class="table table-striped">
             <thead>
@@ -34,8 +34,8 @@
         </table>
     </div>
 
+        <h1>Samples</h1>
     <div class="table-container">
-        <h3>Samples</h3>
         <table class="table table-striped">
             <thead>
             <tr>

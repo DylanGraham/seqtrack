@@ -1,5 +1,4 @@
 
-            <br/>
         @if ($formName === "Create Batch")
     <div class="form-container">
         <div class="row">
@@ -12,7 +11,6 @@
                 {!! Form::text('batch_name', null, ['title'=>'Batch name', 'class'=>'form-control', 'placeholder'=>'Batch name']) !!}
                 </div>
             </div>
-            <br/>
         @endif
             <div class="form-group @if ($errors->has('concentration')) has-error @endif">
                 <div class="col-md-3">
@@ -22,7 +20,6 @@
                 {!! Form::number('concentration', null, ['title'=>'Concentration','step'=>'0.1', 'class'=>'form-control', 'placeholder'=>'Concentration']) !!}
                 </div>
             </div>
-            <br/>
             <div class="form-group @if ($errors->has('volume')) has-error @endif">
                 <div class="col-md-3">{!! Form::label('volume', 'Volume') !!}</div>
                 <div class="col-md-9">

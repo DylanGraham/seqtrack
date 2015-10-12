@@ -44,6 +44,7 @@ class UserTableSeeder extends Seeder
             array("user_id" => "km1f", "name" => "Katerina Viduka", "default_project_id" => "6", "default_charge_code" => "8338-01808-21-379", "super" => true,  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now())
         ));
 
+
         DB::table('users')->insert([
             'name' => 'Phillip',
             'email' => 'phillip@example.com',
@@ -55,6 +56,9 @@ class UserTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+
+
+        DB::update("update users set password = ? where user_id = 'bp24'", [bcrypt('password')]);
 
     }
 }

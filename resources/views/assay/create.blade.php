@@ -2,9 +2,7 @@
 @section('content')
     @include('partials.navbar')
 
-    <br/>
-    <br/>
-    <h3>Assay</h3>
+    <h1>Add Assay</h1>
     <div class="table-container">
 
         <table class="table table-striped">
@@ -27,17 +25,18 @@
         </table>
     </div>
     {!! Form::open(['url'=>'assay', 'class'=>'form-inline']) !!}
+    <div class="form-container">
 
     <span class="group @if ($errors->has('assay')) has-error @endif">
-            {!! Form::label('name', 'name', ['class'=>'sr-only']) !!}
-        {!! Form::text('name', null, ['data-toggle'=>'tooltip', 'title'=>'Assay','class'=>'form-control', 'placeholder'=>'Assay']) !!}
+        {!! Form::label('name', 'Assay name') !!}
+        {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Assay name']) !!}
         </span>
-    {!! Form::label('default', 'default', ['class'=>'sr-only']) !!}
+    {!! Form::label('default', 'Default') !!}
     {!! Form::select('default', $defaults, null, ['class'=>'form-control']) !!}
 
     {!! Form::submit("Save", ['class'=>'btn btn-primary']) !!}
     {!! Form::close() !!}
-
+    </div>
     @include('errors.list')
 @endsection
 
