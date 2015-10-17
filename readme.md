@@ -4,6 +4,11 @@
 # SeqTrack
 Copyright (C) 2015 Aakash Bhansali, Dylan Graham, Lynne Nguyen, Phillip Reynolds.
 
+![](http://imgur.com/A5HMQc9)
+![](http://imgur.com/vZKGyEV)
+![](http://imgur.com/l0itbe7)
+![](http://imgur.com/AxZE3w6)
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
