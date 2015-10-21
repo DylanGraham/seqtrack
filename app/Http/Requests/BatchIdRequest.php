@@ -17,7 +17,8 @@ class BatchIdRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to SampleRunController that gets a array list of batch ID's
+     * that have samples to be included in a run.
      *
      * @return array
      */

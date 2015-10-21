@@ -17,7 +17,7 @@ class AdaptorRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to creating a new Adaptor in list form.
      *
      * @return array
      */

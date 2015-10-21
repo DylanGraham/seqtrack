@@ -16,7 +16,7 @@ class ProjectGroupRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to crweating a new Instrument.
      *
      * @return array
      */

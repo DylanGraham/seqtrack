@@ -16,7 +16,7 @@ class RunStatusRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to creating a new option in the Run Status list
      *
      * @return array
      */

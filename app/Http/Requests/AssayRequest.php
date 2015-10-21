@@ -17,7 +17,7 @@ class AssayRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to creating a new Assay form.
      *
      * @return array
      */

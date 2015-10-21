@@ -16,7 +16,7 @@ class RunRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply creating a new Run.
      *
      * @return array
      */
@@ -39,7 +39,7 @@ class RunRequest extends Request
 
             'experiment_name' => array('required' , 'regex:/^[a-zA-Z0-9_-]{1,120}$/' , 'between:6,120'),
 
-            // make a date as integar off set from today eg 1 to 7 days from today
+            // make a date as integer off set from today eg 1 to 7 days from today
             'run_date' => 'required | integer | between:0,7',
 
             'work_flow_id' => 'required | integer |exists:work_flow,id',

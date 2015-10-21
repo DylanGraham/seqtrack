@@ -25,6 +25,7 @@ class AboutController extends Controller
     public function index()
     {
 
+        // display the view see  "resources/views/"
         return view('about', [
 
         ]);

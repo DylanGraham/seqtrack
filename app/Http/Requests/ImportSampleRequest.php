@@ -17,7 +17,8 @@ class ImportSampleRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to common fields in web form when importing samples
+     * into a batch from a csv file
      *
      * @return array
      */

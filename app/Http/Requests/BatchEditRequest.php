@@ -17,7 +17,7 @@ class BatchEditRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to Editing a Batch.
      *
      * @return array
      */
