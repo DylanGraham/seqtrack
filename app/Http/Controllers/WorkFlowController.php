@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests\WorkFlowRequest;
-use App\Http\Controllers\Controller;
 use App\Work_flow;
 
 class WorkFlowController extends Controller
 {
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/WorkFlowRequest.php"
+    */
 
     // Restrict access to authenticated users
     public function __construct()
@@ -21,7 +23,7 @@ class WorkFlowController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     *
      */
     public function index()
     {
@@ -36,7 +38,7 @@ class WorkFlowController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     *
      */
     public function create()
     {
@@ -52,17 +54,17 @@ class WorkFlowController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created WorkFlow in database
      *
-     * @param  Request  $request
-     * @return Response
      */
     public function store(WorkFlowRequest $request)
     {
         $input = $request->all();
         $workflow = new Work_flow($input);
+        // If the new WorkFlow is to be the default one
         if ($workflow->default ==1)
         {
+            // Set all others existing as not being default in database
             $workflows = Work_flow::all();
             foreach($workflows as $workflw)
             {
@@ -71,6 +73,7 @@ class WorkFlowController extends Controller
             }
         }
 
+        // save new WorkFlow
         $workflow->save();
 
         return redirect('workflow/create');

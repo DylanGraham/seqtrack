@@ -17,7 +17,7 @@ class BatchRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to creating a new Batch before samples  are added.
      *
      * @return array
      */
