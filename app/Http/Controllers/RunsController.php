@@ -120,6 +120,7 @@ class RunsController extends Controller
         // increment all samples in run by one
         if(($run->run_status_id ==1 ||$run->run_status_id ==2)&&  $input['run_status']==3)
         {
+            // get all sample (id and runs remaining) that were included in run have status set
             $samples = DB::table('samples')->select('samples.id','runs_remaining')
                 ->join('sample_runs', function ($join) {
                     $join->on('samples.id','=', 'sample_runs.sample_id');
@@ -130,7 +131,7 @@ class RunsController extends Controller
                 ->where('runs.id', '=', $input['run_id'])
                 ->get();
 
-
+            // increment run by one in database
             foreach ($samples as $sample)
             {
                 DB::table('samples')
@@ -139,6 +140,7 @@ class RunsController extends Controller
             }
         }
 
+        // set the run status and update database
         $run->run_status_id = $input['run_status'];
 
 

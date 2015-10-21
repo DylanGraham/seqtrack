@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Application;
-use Illuminate\Http\Request;
 
 use App\Http\Requests\ApplicationRequest;
-use App\Http\Controllers\Controller;
 
+// Allows the creation of new Application
+// and displaying a list of ones available
 class ApplicationController extends Controller
 {
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/ApplicationRequest.php"
+    */
+
     // Restrict access to authenticated users
     public function __construct()
     {
@@ -18,9 +24,9 @@ class ApplicationController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of Application's in system
      *
-     * @return Response
+     *
      */
     public function index()
     {
@@ -34,9 +40,9 @@ class ApplicationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Application in system.
      *
-     * @return Response
+     *
      */
     public function create()
     {
@@ -52,17 +58,17 @@ class ApplicationController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Application in database.
      *
-     * @param  Request  $request
-     * @return Response
      */
     public function store(ApplicationRequest $request)
     {
         $input = $request->all();
         $application = new Application($input);
+        // If the new Application is to be the default one
         if ($application->default ==1)
         {
+            // Set all others existing as not being default in database
             $applications = Application::all();
             foreach($applications as $app)
             {

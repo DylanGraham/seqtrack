@@ -2,23 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests\InstrumentRequest;
-use App\Http\Controllers\Controller;
 use App\Instrument;
+
+// Allows the creation of new Instrument
+// and displaying a list of ones available
 class InstrumentController extends Controller
 {
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/InstrumentRequest.php"
+    */
+
     // Restrict access to authenticated users
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('super', ['except' => ['index']]);
     }
+
     /**
-     * Display a listing of the resource.
+     * Display a listing of Instrument's.
      *
-     * @return Response
+     *
      */
     public function index()
     {
@@ -31,9 +38,9 @@ class InstrumentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Instrument.
      *
-     * @return Response
+     *
      */
     public function create()
     {
@@ -46,10 +53,8 @@ class InstrumentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Instrument in database.
      *
-     * @param  Request  $request
-     * @return Response
      */
     public function store(InstrumentRequest $request)
     {

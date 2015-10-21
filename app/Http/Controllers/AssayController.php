@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AssayRequest;
 use App\Http\Controllers\Controller;
 
+// Allows the creation of new Assay
+// and displaying a list of ones available
 class AssayController extends Controller
 {
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/AssayRequest.php"
+    */
+
     // Restrict access to authenticated users
     public function __construct()
     {
@@ -60,8 +68,10 @@ class AssayController extends Controller
     {
         $input = $request->all();
         $assay = new Assay($input);
+        // If the new Assay is to be the default one
         if ($assay->default ==1)
         {
+            // Set all others existing as not being default in database
             $assays = Assay::all();
             foreach($assays as $ass)
             {

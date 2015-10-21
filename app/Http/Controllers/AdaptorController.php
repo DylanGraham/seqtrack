@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\Adaptor;
 use App\Http\Requests\AdaptorRequest;
 
-
+// Allows the creation of new Adaptor
+// and displaying a list of ones available
 class AdaptorController extends Controller
 {
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/AdaptorRequest.php"
+    */
 
     // Restrict access to authenticated users
     public function __construct()
@@ -18,7 +24,7 @@ class AdaptorController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of Adaptors in system.
      *
      *
      */
@@ -33,14 +39,16 @@ class AdaptorController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Adaptor.
      *
      *
      */
     public function create()
     {
+        // get all current Adaptors from database
         $adaptors = Adaptor::all();
 
+        // get default adaptor from database
         $defaults=[ '1'=>'True', '0'=>'False'];
 
         return view('adaptor.create', [
@@ -51,7 +59,7 @@ class AdaptorController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Adaptor in the database
      *
      * @param AdaptorRequest|Request $request
      *
@@ -61,8 +69,10 @@ class AdaptorController extends Controller
     {
         $input = $request->all();
         $adaptor = new Adaptor($input);
+        // If the new Adaptor is to be the default one
         if ($adaptor->default ==1)
         {
+            // Set all others existing as not being default in database
             $adaptors = Adaptor::all();
             foreach($adaptors as $adapt)
             {
@@ -72,6 +82,7 @@ class AdaptorController extends Controller
 
         }
 
+        // save the new Adaptor
         $adaptor->save();
 
 

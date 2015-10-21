@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Adaptor;
 use App\Http\Requests\AdaptorRequest;
 
-
+// Displays the about information page.
+// Controller only required to maintain a consistent design pattern
 class AboutController extends Controller
 {
 
