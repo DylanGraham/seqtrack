@@ -43,7 +43,7 @@ class RunDetailsController extends Controller
     private $runSamples = array();
 
     // validate samples in batches
-    // if i5 are uses in one sample they must be used in all samples in run
+    // if i5 are used in one sample they must be used in all samples in run
     // AND all samples must have a unique i5, i7 pair combination
     // AND i5 sequences must be of all the same length
     // AND i7 sequences must be of all the same length

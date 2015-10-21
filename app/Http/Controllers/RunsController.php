@@ -34,7 +34,7 @@ class RunsController extends Controller
      */
     public function index()
     {
-        // Show 10 latest samples
+        // Show 100 latest samples
         $runs = Run::orderBy('run_date', 'DESC')->take(100)->get();
 
         return view('runs.index', ['runs' => $runs]);
