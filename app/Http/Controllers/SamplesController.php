@@ -6,7 +6,6 @@ use App\Http\Requests;
 use App\Http\Requests\SampleRequest;
 use App\Http\Requests\SampleEditRequest;
 use App\Http\Controllers\Controller;
-//use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request;
 use App\Batch;
 use App\Sample;
@@ -20,10 +19,12 @@ use Session;
 class SamplesController extends Controller
 {
 
-    // Restrict access to authenticated users
     public function __construct()
     {
+        // Restrict access to authenticated users
         $this->middleware('auth');
+
+        // Restrict access to super users
         $this->middleware('super', ['except' => [
             'index',
             'create',
@@ -66,7 +67,8 @@ class SamplesController extends Controller
         $input = $request->all();
 
         $sample = new Sample($input);
-        // new default for this version of software
+
+        // Default for this version of software
         $sample->instrument_lane =1;
         
         // Check if sample is compatible for batch
@@ -74,8 +76,8 @@ class SamplesController extends Controller
             $sample->save();
         }
 
+        // Return to same page for easy entering of next sample
         return back()->withInput();
-//        return redirect('samples');
     }
 
     public function show(Sample $sample)
@@ -89,6 +91,7 @@ class SamplesController extends Controller
         $iAll = IndexSet::all();
         $pg = ProjectGroup::lists('name', 'id');
 
+        // Set the page where edit came from
         session(['edit_sample_url' => Request::server('HTTP_REFERER')]);
 
         return view('samples.edit', [
@@ -103,6 +106,7 @@ class SamplesController extends Controller
     {
         $sample->update($request->all());
 
+        // Return to the previous HTTP_REFERER
         $url = Session::get('edit_sample_url');
         Session::forget('edit_sample_url');
 
@@ -111,23 +115,25 @@ class SamplesController extends Controller
 
     public function checkBatchCompatibility(Sample $sample)
     {
-
+        // Set i5 indexes if not null
         if ($sample->i5_index_id) {
             $i5 = $sample->i5_index->index_set_id;
             $new_i5_index_id = $sample->i5_index->id;
         }
+
+        // Set i7 indexes
         $i7 = $sample->i7_index->index_set_id;
         $new_i7_index_id = $sample->i7_index->id;
 
         $currentIndexSet = IndexSet::find($i7);
 
+        // Get Batch and loop through its samples
         $batch = Batch::find($sample->batch_id);
         if (count($batch->samples)) {
             foreach ($batch->samples as $s) {
 
                 // Must be from the same index set
                 if ($currentIndexSet->id != $s->i7_index->index_set_id) {
-                    //dd($currentIndexSet->id, $checkSet);
                     Session::flash('flash_message', "Index set mismatch! &emsp; Existing batch is ".$s->i7_index->IndexSet->name);
                     return false;
                 }
@@ -148,13 +154,11 @@ class SamplesController extends Controller
                 if ($sample->i5_index_id && ! $s->i5_index_id) {
                     Session::flash('flash_message', 'Batch is single index! New sample is dual &emsp; Existing Index set '. $s->i7_index->IndexSet->name);
                     return false;
-                    // Or vice versa
+                // Or vice versa
                 } elseif ($s->i5_index_id && ! $sample->i5_index_id) {
                     Session::flash('flash_message', "Batch is dual index! New sample is single. &emsp; Existing Index set ". $s->i7_index->IndexSet->name);
                     return false;
                 }
-
-
             }
         }
         Session::flash('success_message', 'Sample added');
