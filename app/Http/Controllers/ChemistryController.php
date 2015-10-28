@@ -8,8 +8,16 @@ use App\Http\Requests;
 use App\Http\Requests\ChemistryRequest;
 use App\Chemistry;
 
+// Allows the creation of new Chemistry
+// and displaying a list of ones available
 class ChemistryController extends Controller
 {
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/ChemistryRequest.php"
+    */
+
     // Restrict access to authenticated users
     public function __construct()
     {
@@ -17,7 +25,7 @@ class ChemistryController extends Controller
         $this->middleware('super', ['except' => ['index']]);
     }
     /**
-     * Display a listing of the resource.
+     * Display a listing of Chemistry's
      *
      *
      */
@@ -32,7 +40,7 @@ class ChemistryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Chemistry's.
      *
      *
      */
@@ -50,7 +58,7 @@ class ChemistryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Chemistry in database.
      *
      * @param ChemistryRequest|Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -59,8 +67,10 @@ class ChemistryController extends Controller
     {
         $input = $request->all();
         $chemistry = new Chemistry($input);
+        // If the new Chemistry is to be the default one
         if ($chemistry->default ==1)
         {
+            // Set all others existing as not being default in database
             $chemistrys = Chemistry::all();
             foreach($chemistrys as $chem)
             {

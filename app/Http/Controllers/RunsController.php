@@ -5,19 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DB;
-use Auth;
 use App\Http\Requests;
-use App\Http\Requests\RunRequest;
-use App\Application;
-use App\Chemistry;
 use App\Run_status;
-use App\Instrument;
-use App\Iem_file_version;
-use App\Work_flow;
-use App\Assay;
-use App\Adaptor;
-use App\SampleRun;
-use App\ProjectGroup;
 use App\Run;
 use Illuminate\Http\Response;
 use App\Batch;
@@ -45,7 +34,7 @@ class RunsController extends Controller
      */
     public function index()
     {
-        // Show 10 latest samples
+        // Show 100 latest samples
         $runs = Run::orderBy('run_date', 'DESC')->take(100)->get();
 
         return view('runs.index', ['runs' => $runs]);
@@ -118,8 +107,9 @@ class RunsController extends Controller
 
         // existing run status is either run built or run succeeded and new value is run failed
         // increment all samples in run by one
-        if(($run->run_status_id ==1 ||$run->run_status_id ==1)&&  $input['run_status']==3)
+        if(($run->run_status_id ==1 ||$run->run_status_id ==2)&&  $input['run_status']==3)
         {
+            // get all sample (id and runs remaining) that were included in run have status set
             $samples = DB::table('samples')->select('samples.id','runs_remaining')
                 ->join('sample_runs', function ($join) {
                     $join->on('samples.id','=', 'sample_runs.sample_id');
@@ -130,7 +120,7 @@ class RunsController extends Controller
                 ->where('runs.id', '=', $input['run_id'])
                 ->get();
 
-
+            // increment run by one in database
             foreach ($samples as $sample)
             {
                 DB::table('samples')
@@ -139,6 +129,7 @@ class RunsController extends Controller
             }
         }
 
+        // set the run status and update database
         $run->run_status_id = $input['run_status'];
 
 

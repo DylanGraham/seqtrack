@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\ProjectGroup;
-use Illuminate\Http\Request;
 
 use App\Http\Requests\ProjectGroupRequest;
-use App\Http\Controllers\Controller;
 
+
+// Allows the creation of new Project Groups
+// and displaying a list of ones available
 class ProjectGroupController extends Controller
 {
+    /*
+    *  For custom error messages see "resources/lang/en/validation.php"
+    *
+    *  For validation see "Http/Requests/ProjectGroupRequest.php"
+    */
+
     // Restrict access to authenticated users
     public function __construct()
     {
@@ -17,9 +24,9 @@ class ProjectGroupController extends Controller
         $this->middleware('super', ['except' => ['index']]);
     }
     /**
-     * Display a listing of the resource.
+     * Display a listing of the Project Groups.
      *
-     * @return Response
+     *
      */
     public function index()
     {
@@ -32,9 +39,9 @@ class ProjectGroupController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Project Group.
      *
-     * @return Response
+     *
      */
     public function create()
     {
@@ -47,10 +54,8 @@ class ProjectGroupController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Project Group in database.
      *
-     * @param  Request  $request
-     * @return Response
      */
     public function store(ProjectGroupRequest $request)
     {

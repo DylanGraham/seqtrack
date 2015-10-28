@@ -17,10 +17,12 @@ class BatchesController extends Controller
     *  For validation see "Http/Requests/BatchRequest.php"
     */
 
-    // Restrict access to authenticated users
     public function __construct()
     {
+        // Restrict access to authenticated users
         $this->middleware('auth');
+
+        // Restrict access to super users
         $this->middleware('super', ['except' => ['index', 'create', 'store', 'show']]);
     }
 
@@ -30,9 +32,6 @@ class BatchesController extends Controller
         return view('batches.index')->with('batches', $batches);
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function create()
     {
         $pg = ProjectGroup::lists('name', 'id');
@@ -50,7 +49,7 @@ class BatchesController extends Controller
     {
         $input = $request->all();
 
-        // Check input here
+        // Create new Batch and add date/times
         $batch = new Batch($input);
         $batch->created_at = Carbon::now();
         $batch->updated_at = Carbon::now();
