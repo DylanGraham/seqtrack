@@ -8,7 +8,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">SeqTrack</a>
+            <a class="navbar-brand" href="/">
+               {!! Html::image('images/logo.png', 'Logo', ['style'=>'max-width:100px; margin-top:-16px']) !!}
+            </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
