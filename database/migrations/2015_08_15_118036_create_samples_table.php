@@ -14,12 +14,12 @@ class CreateSamplesTable extends Migration
     {
         Schema::create('samples', function (Blueprint $table) {
 
-            $table->integer('batch_id')->unsigned();
-
             $table->increments('id');
-            $table->string('sample_id',120);
-            $table->string('plate',120)->nullable();
-            $table->string('well',120)->nullable();
+            $table->integer('batch_id')->unsigned();
+            $table->string('sample_id', 120);
+            $table->integer('sample_id_suffix');
+            $table->string('plate', 120)->nullable();
+            $table->string('well', 120)->nullable();
 
             $table->integer('i7_index_id')->unsigned();
             $table->integer('i5_index_id')->unsigned()->nullable();
