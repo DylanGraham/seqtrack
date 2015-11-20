@@ -19,7 +19,7 @@
     </thead>
     @foreach ($samples as $s)
     <tr>
-        <td><a href="/samples/{{ $s->id }}/edit">{{ $s->sample_id }}</a></td>
+        <td><a href="/samples/{{ $s->id }}/edit">{{ $s->sample_id }}-{{ $s->sample_id_suffix }}</a></td>
         <td>{{ $s->i7_index['index'] }}</td>
         <td>{{ $s->i5_index['index'] }}</td>
         <td>{{ $s->description }}</td>
