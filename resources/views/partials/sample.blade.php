@@ -8,7 +8,15 @@
                 {!! Form::text('sample_id', null, ['class'=>'form-control', 'placeholder'=>'Sample name']) !!}
             </div>
         </div>
-    @endif   
+         <div class="form-group">
+            <div class="col-md-3">
+                {!! Form::label('Duplicate sampple name allowed', 'Duplicate sample names allowed') !!}
+            </div>
+            <div class="col-md-9">
+                {!! Form::text('dupes_ok', null, ['class'=>'form-control']) !!}
+            </div>
+        </div>
+   @endif   
         <div class="from-group @if ($errors->has('plate')) has-error @endif">
             <div class="col-md-3">
                 {!! Form::label('plate', 'Plate') !!}
@@ -71,7 +79,7 @@
                 {!! Form::number('runs_remaining', null, ['class'=>'form-control', 'placeholder'=>'Number of runs']) !!}
             </div>
         </div>
-    <div class="col-md-offset-3 col-md-9">
+   <div class="col-md-offset-3 col-md-9">
         {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary']) !!}
     </div>
 </div>
