@@ -66,7 +66,6 @@ class SamplesController extends Controller
     public function store(SampleRequest $request)
     {
         $input = $request->all();
-
         $sample = new Sample($input);
 
         // Check for unique name
@@ -76,10 +75,13 @@ class SamplesController extends Controller
 
         $number_of_dupes = count($duplicates);
 
-        // If duplicate, ask user if they want to keep this
-        if ($number_of_dupes >= 1 && $input->dupes_ok == false) {
-            dd('DUPES and DUPES_OK == false');
+        // If duplicate and dupes not allowed
+        if ($number_of_dupes >= 1 && ! isset($input['dupes_ok'])) {
+            Session::flash('flash_message', "Duplicate sample name and duplicates not allowed!");
+            return back()->withInput();
         }
+
+        $sample->sample_id_suffix = $number_of_dupes;
 
         // Default for this version of software
         $sample->instrument_lane =1;
