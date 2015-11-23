@@ -45,7 +45,7 @@
 
                 <h4>Sample Id</h4>
                 <ul>
-                    <p>All sample Ids are generally unique in system. If the user specifies they would like
+                    <p>All sample Ids are generally unique in the system. If the user specifies they would like
                        a duplicate ID, then an incrementing sample ID suffix will be attached.
                     </p>
                 </ul>
