@@ -72,7 +72,6 @@ class SamplesController extends Controller
         $duplicates = DB::table('samples')
                 ->where('sample_id', 'like', $sample->sample_id)
                 ->get();
-
         $number_of_dupes = count($duplicates);
 
         // If duplicate and dupes not allowed
@@ -81,6 +80,7 @@ class SamplesController extends Controller
             return back()->withInput();
         }
 
+        // Update sample suffix
         $sample->sample_id_suffix = $number_of_dupes;
 
         // Default for this version of software
