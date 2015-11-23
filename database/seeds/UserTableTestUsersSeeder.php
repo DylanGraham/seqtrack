@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
-class UserTableSeeder extends Seeder
+class UserTableTestUsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
