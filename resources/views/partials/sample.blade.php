@@ -78,7 +78,7 @@
                 </div>
                 <label>
                 <div class="col-md-9">
-                    {!! Form::checkbox('dupes_ok', 'dupes_ok', false) !!}
+                    {!! Form::checkbox('dupes_ok', true, false) !!}
                 </div>
                 </label>
             </div>
