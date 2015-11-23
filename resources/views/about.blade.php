@@ -45,7 +45,9 @@
 
                 <h4>Sample Id</h4>
                 <ul>
-                    <li>All sample Ids must be unique in system</li>
+                    <p>All sample Ids are generally unique in system. If the user specifies they would like
+                       a duplicate ID, then an incrementing sample ID suffix will be attached.
+                    </p>
                 </ul>
 
                 <h4>Batch</h4>
