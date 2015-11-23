@@ -59,6 +59,26 @@ class RealTest extends TestCase
             ->see('Index set mismatch!');
     }
 
+    public function test_create_sample_duplicate_not_allowed()
+    {
+        $user = App\User::find(1);
+
+        $this->actingAs($user)
+            ->visit('/samples/create')
+            ->select(23, 'batch_id')
+            ->type('DUPE_NAME', 'sample_id')
+            ->select(1, 'index_set')
+            ->select(1, 'i7_index_id')
+            ->type('PHPUnit', 'description')
+            ->type(5, 'runs_remaining')
+            ->press('Submit')
+            ->see('Sample added')
+
+            ->select(2, 'i7_index_id')
+            ->press('Submit')
+            ->see('Duplicate sample name and duplicates not allowed!');
+    }
+
     public function test_create_batch()
     {
         $user = App\User::find(1);
