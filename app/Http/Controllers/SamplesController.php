@@ -84,7 +84,7 @@ class SamplesController extends Controller
         $sample->sample_id_suffix = $number_of_dupes + 1;
 
         // Default for this version of software
-        $sample->instrument_lane =1;
+        $sample->instrument_lane = 1;
         
         // Check if sample is compatible for batch
         if ($this->checkBatchCompatibility($sample)) {
