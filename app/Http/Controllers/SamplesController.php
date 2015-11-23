@@ -81,7 +81,7 @@ class SamplesController extends Controller
         }
 
         // Update sample suffix
-        $sample->sample_id_suffix = $number_of_dupes;
+        $sample->sample_id_suffix = $number_of_dupes + 1;
 
         // Default for this version of software
         $sample->instrument_lane =1;
