@@ -13,6 +13,20 @@ class BatchesTestTableSeeder extends Seeder
     public function run()
     {
         DB::table("batches")->insert([
+                "user_id"       =>  "2",
+                "batch_name"    =>  "NiceBatch",
+                "project_group_id" => "1",
+                "concentration" =>  "0.0",
+                "volume"        =>  "0.0",
+                "tube_bar_code" =>  "TBC",
+                "tube_location" =>  "TL", 
+                "tape_station_length" =>  "0.0",
+                "charge_code"   =>  "1111-11111-11-111",
+                "created_at"    =>  Carbon::now(),
+                "updated_at"    =>  Carbon::now(),
+        ]);
+
+        DB::table("batches")->insert([
             array("batch_name"=>"Batch_name1",  "concentration"=>"1.1",  "volume"=>"10.1",  "user_id"=>"1",  "tube_bar_code"=>"TUBE1",  "tube_location"=>"LOC_1",  "tape_station_length"=>"51",  "charge_code"=>"1234-12345-12-121",  "project_group_id"=>"1",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
             array("batch_name"=>"Batch_name2",  "concentration"=>"2.1",  "volume"=>"11.1",  "user_id"=>"2",  "tube_bar_code"=>"TUBE2",  "tube_location"=>"LOC_2",  "tape_station_length"=>"52",  "charge_code"=>"1234-12345-12-122",  "project_group_id"=>"2",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),
             array("batch_name"=>"Batch_name3",  "concentration"=>"3.1",  "volume"=>"12.1",  "user_id"=>"2",  "tube_bar_code"=>"TUBE3",  "tube_location"=>"LOC_3",  "tape_station_length"=>"53",  "charge_code"=>"1234-12345-12-123",  "project_group_id"=>"3",  "created_at"=>  Carbon::now(),  "updated_at"=>Carbon::now()),

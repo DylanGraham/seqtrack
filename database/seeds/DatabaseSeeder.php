@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ChemistryTableSeeder::class);
         $this->call(BatchesTableSeeder::class);
         $this->call(SamplesTableSeeder::class);
-        $this->call(BatchesTestTableSeeder::class);
-        $this->call(SamplesTestTableSeeder::class);
+//        $this->call(BatchesTestTableSeeder::class);
+//        $this->call(SamplesTestTableSeeder::class);
 
         Model::reguard();
     }
