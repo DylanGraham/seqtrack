@@ -48,7 +48,7 @@
                 <th>Runs Remaining</th>
             </tr>
             </thead>
-            @foreach ($batch->samples as $s)
+            @foreach ($samples as $s)
                 <tr>
                     <td><a href="/samples/{{ $s->id }}/edit">{{ $s->sample_id }}-{{ $s->sample_id_suffix }}</a></td>
                     <td>{{ $s->i7_index['index']." / ". $s->i7_index['sequence']}}</td>

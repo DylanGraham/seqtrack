@@ -62,7 +62,18 @@ class BatchesController extends Controller
 
     public function show(Batch $batch)
     {
-        return view('batches.show')->with('batch', $batch);
+        // If batch is very large, only display 50 samples.
+        // This is to prevent the historical batch crashing.
+        if (count($batch->samples) > 1000) {
+            $samples = $batch->samples->take(50);
+        } else {
+            $samples = $batch->samples;
+        }
+
+        return view('batches.show', [
+            'batch'     =>  $batch,
+            'samples'   =>  $samples,
+        ]);
     }
 
     public function edit(Batch $batch)
