@@ -18,7 +18,7 @@
 
         @include('partials.batchSelectImport')
 
-            <div class="group @if ($errors->has('plate')) has-error @endif">
+            <div class="form-group @if ($errors->has('plate')) has-error @endif">
             <div class="col-md-3">
             {!! Form::label('plate', 'Plate') !!}
             </div>
@@ -26,7 +26,7 @@
             {!! Form::text('plate', null, ['class'=>'form-control', 'placeholder'=>'Plate']) !!}
             </div>
             </div>
-            <div class="group @if ($errors->has('well')) has-error @endif">
+            <div class="form-group @if ($errors->has('well')) has-error @endif">
             <div class="col-md-3">
             {!! Form::label('well', 'Well') !!}
             </div>
@@ -34,7 +34,7 @@
             {!! Form::text('well', null, ['class'=>'form-control', 'placeholder'=>'Well']) !!}
             </div>
             </div>
-            <div class="group @if ($errors->has('description')) has-error @endif">
+            <div class="form-group @if ($errors->has('description')) has-error @endif">
             <div class="col-md-3">
             {!! Form::label('description', 'Description') !!}
             </div>
@@ -42,7 +42,7 @@
             {!! Form::text('description', null, ['class'=>'form-control', 'placeholder'=>'Description']) !!}
             </div>
             </div>
-            <div class="group @if ($errors->has('runs_remaining')) has-error @endif">
+            <div class="form-group @if ($errors->has('runs_remaining')) has-error @endif">
             <div class="col-md-3">
             {!! Form::label('runs_remaining', 'Runs remaining') !!}
             </div>
@@ -50,13 +50,21 @@
             {!! Form::number('runs_remaining', null, ['class'=>'form-control', 'placeholder'=>'Runs']) !!}
             </div>
             </div>
-            <div class="group @if ($errors->has('sampleFile')) has-error @endif">
-            <div class="col-md-3">
-            {!! Form::label('file', 'File') !!}
+           <div class="form-group">
+                <div class="col-md-3">
+                    {!! Form::label('dupes_ok', 'Duplicate sample names allowed') !!}
+                </div>
+                <label>
+                <div class="col-md-9">
+                    {!! Form::checkbox('dupes_ok', true, false) !!}
+                </div>
+                </label>
             </div>
-            <div class="col-md-9">
-                {!! Form::file('sampleFile', null, ['class'=>'form-control', 'placeholder'=>'Upload the file']) !!}
-            </div>
+            <div class="form-group @if ($errors->has('sampleFile')) has-error @endif">
+                <div class="col-md-3">
+                    {!! Form::label('file', ' ') !!}
+                    {!! Form::file('sampleFile', null, ['class'=>'form-control', 'placeholder'=>'Upload the file']) !!}
+                </div>
             </div>
             <div class="col-md-offset-3 col-md-9">
             {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
