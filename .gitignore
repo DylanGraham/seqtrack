@@ -8,3 +8,4 @@ storage/database.sqlite
 _ide_helper.php
 build
 database/seeds/UserTableSeeder.php
+config/mail.php
