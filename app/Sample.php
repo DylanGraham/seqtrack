@@ -43,6 +43,7 @@ class Sample extends Model
         'batch_id',
         'project_group_id',
         'sample_id',
+        'sample_id_suffix',
         'plate',
         'well',
         'i7_index_id',
