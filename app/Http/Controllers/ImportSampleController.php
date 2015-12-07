@@ -167,7 +167,7 @@ class ImportSampleController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $batches = $user->batches->lists('batch_name', 'id');
+        $batches = Batch::where('user_id', $user->id)->orderBy('created_at', 'desc')->lists('batch_name', 'id');
 
         return view('import.index', [
             'user' => $user,
@@ -193,7 +193,11 @@ class ImportSampleController extends Controller
      */
     public function validateFile(ImportSampleRequest $request)
     {
-        $instument_lane =1;
+        // Get form input and check if dupes are ok
+        $input = $request->all();
+        $dupes_ok = isset($input['dupes_ok']);
+
+        $instument_lane = 1;
 
         $file = array('sampleFile' => Input::file('sampleFile'));
         // setting up rules
@@ -225,7 +229,7 @@ class ImportSampleController extends Controller
                 $this->i5IndexSetArray = I5Index::lists('index_set_id', 'index');
                 $this->samplesList = DB::table('samples')->lists('sample_id');
                 $this->loadExistingSamples(Input::get()['batch_id']);
-                $this->csvToArray(Request::file('sampleFile'));
+                $this->csvToArray(Request::file('sampleFile'), ',', $dupes_ok);
                 $this->generateErrors();
                 if (Count($this->stringErrors)) {
                     Session::flash('error', $this->stringErrors);
@@ -243,7 +247,7 @@ class ImportSampleController extends Controller
                 return Redirect::to('import')->withInput();
             } else {
                 // sending back with error message.
-                array_push($this->stringErrors, "Upload file is not valida.");
+                array_push($this->stringErrors, "Upload file is not valid.");
                 Session::flash('error', $this->stringErrors);
                 return Redirect::to('import')->withInput();
             }
@@ -255,7 +259,7 @@ class ImportSampleController extends Controller
      * @param string $delimiter
      * @return array|bool
      */
-    public function csvToArray($filename, $delimiter = ',')
+    public function csvToArray($filename, $delimiter = ',', $dupes_ok)
     {
         $count = 1;
         $header = NULL;
@@ -270,7 +274,7 @@ class ImportSampleController extends Controller
                     }
                 } else {
                     $this->setCompatiblityCheckers($row);
-                    $this->checkSampleId($row[0], $count);
+                    $this->checkSampleId($row[0], $count, $dupes_ok);
                     $this->checkI7Index($row[1], $row[2], $row[3], $count);
                     $this->checkI5Index($row[3], $row[4], $count);
                     $data[] = array_combine($header, $row);
@@ -346,17 +350,17 @@ class ImportSampleController extends Controller
      * @param $line
      * @return bool
      */
-    private function checkSampleId($sampleId, $line)
+    private function checkSampleId($sampleId, $line, $dupes_ok)
     {
         if ($sampleId != "") {
-            if (!in_array($sampleId, $this->uniqueSamples)) {
+            $is_dupe = array_search($sampleId, $this->samplesList) || in_array($sampleId, $this->uniqueSamples);
+
+            if (! $is_dupe) {
                 array_push($this->uniqueSamples, $sampleId);
-                if (array_search($sampleId, $this->samplesList)) {
-                    array_push($this->errorArray[$this->errorTitles[1]], $line);
-                    return FALSE;
-                } else {
-                    return TRUE;
-                }
+                return TRUE;
+            } elseif ($is_dupe && $dupes_ok) {
+                array_push($this->uniqueSamples, $sampleId);
+                return TRUE;
             } else {
                 array_push($this->errorArray[$this->errorTitles[2]], $line);
                 return FALSE;
@@ -470,11 +474,18 @@ class ImportSampleController extends Controller
                         return FALSE;
                     }
                 } else {
+                    // Check for unique name
+                    $dupes_in_db = DB::table('samples')
+                            ->where('sample_id', 'like', $row[0])
+                            ->get();
+                    $number_of_dupes = count($dupes_in_db) + 1;
+
                     //TODO Check for compatiblity
                     $this->getI7IndexId($row[1]);
                     $sample = Sample::create(array(
                         'batch_id' => $batchId,
                         'sample_id' => $row[0],
+                        'sample_id_suffix' => $number_of_dupes,
                         'plate' => $plate,
                         'well' => $well,
                         'i7_index_id' => $this->getI7IndexId($row[1]),
@@ -577,7 +588,7 @@ class ImportSampleController extends Controller
                 } elseif ($key == $this->errorTitles[1]) {
                     $this->errorStringHelper($value, "The Sample ID already exists in the database in lines ");
                 } elseif ($key == $this->errorTitles[2]) {
-                    $this->errorStringHelper($value, "Two or more entries have same Sample ID, check the lines ");
+                    $this->errorStringHelper($value, "Two or more entries have same Sample ID and duplicates not allowed. Check the lines ");
                 } elseif ($key == $this->errorTitles[3]) {
                     $this->errorStringHelper($value, "Column Sample ID is empty for lines ");
                 } elseif ($key == $this->errorTitles[4]) {
