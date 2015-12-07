@@ -50,7 +50,7 @@ class SamplesController extends Controller
         $i5 = I5Index::lists('index', 'id');
         $pg = ProjectGroup::lists('name', 'id');
         $user = Auth::user();
-        $batches = $user->batches->lists('batch_name', 'id');
+        $batches = Batch::where('user_id', $user->id)->orderBy('created_at', 'desc')->lists('batch_name', 'id');
  
        return view('samples.create', [
             'iSet'  => $iSet,
