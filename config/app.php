@@ -138,7 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
+        'Spatie\Backup\BackupServiceProvider',
         /*
          * Application Service Providers...
          */
