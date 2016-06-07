@@ -52,9 +52,9 @@ class RunRequest extends Request
 
             'chemistry_id' => 'required |integer | exists:chemistry,id',
 
-            'read1' => 'required | integer | between:20,600',
+            'read1' => 'required | integer | between:30,600',
 
-            'read2' => 'integer | between:1,600',
+            'read2' => 'integer | between:0,600',
 
             'adaptor_id' =>  'required |integer | exists:adaptor,id',
 
