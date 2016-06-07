@@ -286,7 +286,7 @@ class RunDetailsController extends Controller
         }
         fputcsv($out, explode(',', $this->getSamplesHeader()));
         for($i = 0; $i < Count($this->runSamples); $i++) {
-            fputcsv($out, explode(',', $this->getSampleData($this->runSamples[$i])));
+            fputcsv($out, explode(',', $this->getSampleData($this->runSamples[$i], $run->flow_cell)));
         }
         fclose($out);
 
@@ -393,12 +393,12 @@ class RunDetailsController extends Controller
         return "Lane,Sample_ID,Sample_Name,Sample_Plate,Sample_Well,I7_Index_ID,index,I5_Index_ID,index2,Sample_Project,Description";
     }
 
-    public function getSampleData($sample) {
+    public function getSampleData($sample, $flowcell) {
         $del = ",";
         $tempString = "";
         $tempString .= $sample->instrument_lane.$del;
-        $tempString .= $sample->sample_id.$del;
-        $tempString .= $sample->sample_id.$del;
+        $tempString .= $flowcell . "_" . $sample->sample_id.$del;
+        $tempString .= $flowcell . "_" . $sample->sample_id.$del;
         $tempString .= $sample->plate.$del;
         $tempString .= $sample->well.$del;
         $i7Index = DB::table('i7_index')->where('id', $sample->i7_index_id)->first();
