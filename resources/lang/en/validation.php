@@ -103,7 +103,7 @@ return [
             'required' => 'Tube bar code is required',
         ],
         'sample_id' => [
-            'regex' => 'Sample ID may only contain a-z or A-Z or 0-9 or -_',
+            'regex' => 'Sample ID may only contain a-z or A-Z or 0-9',
             'required' => 'Sample name is required',
         ],
         'well' => [
