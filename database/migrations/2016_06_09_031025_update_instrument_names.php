@@ -16,4 +16,8 @@ class UpdateInstrumentNames extends Migration
         DB::update("update instrument set name='MiSeq02' where name='M03633'");
         DB::update("update instrument set name='MiSeq03' where name='M01697'");
     }
+
+    public function down()
+    {
+    }
 }
