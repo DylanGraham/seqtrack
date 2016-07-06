@@ -355,7 +355,7 @@ class ImportSampleController extends Controller
         if ($sampleId != "") {
             $is_dupe = array_search($sampleId, $this->samplesList) || in_array($sampleId, $this->uniqueSamples);
 
-            if (! $is_dupe) {
+            if ($is_dupe === FALSE) {
                 array_push($this->uniqueSamples, $sampleId);
                 return TRUE;
             } elseif ($is_dupe && $dupes_ok) {
@@ -604,9 +604,9 @@ class ImportSampleController extends Controller
                 } elseif ($key == $this->errorTitles[9]) {
                     $this->errorStringHelper($value, "Column I5Index is missing from the database for lines ");
                 } elseif ($key == $this->errorTitles[10]) {
-                    $this->errorStringHelper($value, "The I7Index Set doesn't matches on lines ");
+                    $this->errorStringHelper($value, "The I7Index Set doesn't match on lines ");
                 } elseif ($key == $this->errorTitles[11]) {
-                    $this->errorStringHelper($value, "The I5Index Set doesn't matches on lines ");
+                    $this->errorStringHelper($value, "The I5Index Set doesn't match on lines ");
                 } elseif ($key == $this->errorTitles[12]) {
                     $this->errorStringHelper($value, "Following lines should have unique i7/i5 pairs ");
                 } elseif ($key == $this->errorTitles[13]) {
