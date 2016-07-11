@@ -19,50 +19,50 @@
         @include('partials.batchSelectImport')
 
             <div class="form-group @if ($errors->has('plate')) has-error @endif">
-            <div class="col-md-3">
-            {!! Form::label('plate', 'Plate') !!}
+                <div class="col-md-3">
+                    {!! Form::label('plate', 'Plate') !!}
+                </div>
+                <div class="col-md-9">
+                    {!! Form::text('plate', null, ['class'=>'form-control', 'placeholder'=>'Plate']) !!}
+                </div>
             </div>
-            <div class="col-md-9">
-            {!! Form::text('plate', null, ['class'=>'form-control', 'placeholder'=>'Plate']) !!}
-            </div>
-            </div>
-            <div class="form-group @if ($errors->has('well')) has-error @endif">
-            <div class="col-md-3">
-            {!! Form::label('well', 'Well') !!}
-            </div>
-            <div class="col-md-9">
-            {!! Form::text('well', null, ['class'=>'form-control', 'placeholder'=>'Well']) !!}
-            </div>
+                <div class="form-group @if ($errors->has('well')) has-error @endif">
+                    <div class="col-md-3">
+                        {!! Form::label('well', 'Well') !!}
+                    </div>
+                <div class="col-md-9">
+                    {!! Form::text('well', null, ['class'=>'form-control', 'placeholder'=>'Well']) !!}
+                </div>
             </div>
             <div class="form-group @if ($errors->has('description')) has-error @endif">
-            <div class="col-md-3">
-            {!! Form::label('description', 'Description') !!}
-            </div>
-            <div class="col-md-9">
-            {!! Form::text('description', null, ['class'=>'form-control', 'placeholder'=>'Description']) !!}
-            </div>
+                <div class="col-md-3">
+                    {!! Form::label('description', 'Description') !!}
+                </div>
+                <div class="col-md-9">
+                    {!! Form::text('description', null, ['class'=>'form-control', 'placeholder'=>'Description']) !!}
+                </div>
             </div>
             <div class="form-group @if ($errors->has('runs_remaining')) has-error @endif">
-            <div class="col-md-3">
-            {!! Form::label('runs_remaining', 'Runs remaining') !!}
-            </div>
-            <div class="col-md-9">
-            {!! Form::number('runs_remaining', null, ['class'=>'form-control', 'placeholder'=>'Runs']) !!}
-            </div>
+                <div class="col-md-3">
+                    {!! Form::label('runs_remaining', 'Runs remaining') !!}
+                </div>
+                <div class="col-md-9">
+                    {!! Form::number('runs_remaining', null, ['class'=>'form-control', 'placeholder'=>'Runs']) !!}
+                </div>
             </div>
            <div class="form-group">
                 <div class="col-md-3">
-                    {!! Form::label('dupes_ok', 'Duplicate sample names allowed') !!}
+                    {!! Form::label('dupes_ok', 'Duplicate sample names') !!}
                 </div>
-                <label>
                 <div class="col-md-9">
                     {!! Form::checkbox('dupes_ok', true, false) !!}
                 </div>
-                </label>
             </div>
             <div class="form-group @if ($errors->has('sampleFile')) has-error @endif">
                 <div class="col-md-3">
-                    {!! Form::label('file', ' ') !!}
+                    {!! Form::label('file', 'File upload') !!}
+                </div>
+                <div class="col-md-9">
                     {!! Form::file('sampleFile', null, ['class'=>'form-control', 'placeholder'=>'Upload the file']) !!}
                 </div>
             </div>
