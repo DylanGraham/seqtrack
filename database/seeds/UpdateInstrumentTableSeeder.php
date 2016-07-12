@@ -1,23 +1,18 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Seeder;
 
-class UpdateInstrumentNames extends Migration
+class UpdateInstrumentTableSeeder extends Seeder
 {
     /**
-     * Run the migrations.
+     * Run the database seeds.
      *
      * @return void
      */
-    public function up()
+    public function run()
     {
         DB::update("update instrument set name='MiSeq01' where name='M01054'");
         DB::update("update instrument set name='MiSeq02' where name='M03633'");
         DB::update("update instrument set name='MiSeq03' where name='M01697'");
-    }
-
-    public function down()
-    {
     }
 }
