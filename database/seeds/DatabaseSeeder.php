@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SamplesTableSeeder::class);
         $this->call(UpdateInstrumentTableSeeder::class);
         $this->call(UpdateIndexSetTableSeeder::class);
+        $this->call(UpdateI7TableSeeder::class);
+        $this->call(UpdateI5TableSeeder::class);
 //        $this->call(BatchesTestTableSeeder::class);
 //        $this->call(SamplesTestTableSeeder::class);
 

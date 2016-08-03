@@ -1,0 +1,118 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Carbon\Carbon;
+
+class UpdateI7TableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('i7_index')->insert(
+            array(
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-01A01", "sequence"=>"ATCACG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-02A01", "sequence"=>"CGATGT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-03A01", "sequence"=>"TTAGGC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-04A01", "sequence"=>"TGACCA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-05A01", "sequence"=>"ACAGTG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-06A01", "sequence"=>"GCCAAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-07A01", "sequence"=>"CAGATC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-08A01", "sequence"=>"ACTTGA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-09A01", "sequence"=>"GATCAG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-10A01", "sequence"=>"TAGCTT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-11A01", "sequence"=>"GGCTAC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-12A01", "sequence"=>"CTTGTA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-13A01", "sequence"=>"AGTCAA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-14A01", "sequence"=>"AGTTCC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-15A01", "sequence"=>"ATGTCA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-16A01", "sequence"=>"CCGTCC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-18A01", "sequence"=>"GTCCGC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-19A01", "sequence"=>"GTGAAA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-20A01", "sequence"=>"GTGGCC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-21A01", "sequence"=>"GTTTCG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-22A01", "sequence"=>"CGTACG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-23A01", "sequence"=>"GAGTGG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-25A01", "sequence"=>"ACTGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"12", "index"=>"TS-INV-HE-27A01", "sequence"=>"ATTCCT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-01A01", "sequence"=>"ATCACG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-02A01", "sequence"=>"CGATGT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-03A01", "sequence"=>"TTAGGC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-04A01", "sequence"=>"TGACCA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-05A01", "sequence"=>"ACAGTG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-06A01", "sequence"=>"GCCAAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-07A01", "sequence"=>"CAGATC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-08A01", "sequence"=>"ACTTGA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-09A01", "sequence"=>"GATCAG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-10A01", "sequence"=>"TAGCTT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-11A01", "sequence"=>"GGCTAC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-12A01", "sequence"=>"CTTGTA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-13A01", "sequence"=>"AGTCAA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-14A01", "sequence"=>"AGTTCC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-15A01", "sequence"=>"ATGTCA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-16A01", "sequence"=>"CCGTCC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-18A01", "sequence"=>"GTCCGC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-19A01", "sequence"=>"GTGAAA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-20A01", "sequence"=>"GTGGCC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-21A01", "sequence"=>"GTTTCG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-22A01", "sequence"=>"CGTACG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-23A01", "sequence"=>"GAGTGG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-25A01", "sequence"=>"ACTGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"13", "index"=>"TS-INV-HE-27A01", "sequence"=>"ATTCCT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-01A01", "sequence"=>"ATCACGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-02A01", "sequence"=>"CGATGTAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-03A01", "sequence"=>"TTAGGCAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-04A01", "sequence"=>"TGACCAAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-05A01", "sequence"=>"ACAGTGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-06A01", "sequence"=>"GCCAATAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-07A01", "sequence"=>"CAGATCAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-08A01", "sequence"=>"ACTTGAAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-09A01", "sequence"=>"GATCAGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-10A01", "sequence"=>"TAGCTTAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-11A01", "sequence"=>"GGCTACAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-12A01", "sequence"=>"CTTGTAAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-13A01", "sequence"=>"AGTCAACA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-14A01", "sequence"=>"AGTTCCGT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-15A01", "sequence"=>"ATGTCAGA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-16A01", "sequence"=>"CCGTCCCG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-18A01", "sequence"=>"GTCCGCAC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-19A01", "sequence"=>"GTGAAACG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-20A01", "sequence"=>"GTGGCCTT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-21A01", "sequence"=>"GTTTCGGA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-22A01", "sequence"=>"CGTACGTA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-23A01", "sequence"=>"GAGTGGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-25A01", "sequence"=>"ACTGATAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"14", "index"=>"TS-INV-HE-27A01", "sequence"=>"ATTCCTTT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-01A01", "sequence"=>"ATCACGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-02A01", "sequence"=>"CGATGTAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-03A01", "sequence"=>"TTAGGCAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-04A01", "sequence"=>"TGACCAAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-05A01", "sequence"=>"ACAGTGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-06A01", "sequence"=>"GCCAATAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-07A01", "sequence"=>"CAGATCAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-08A01", "sequence"=>"ACTTGAAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-09A01", "sequence"=>"GATCAGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-10A01", "sequence"=>"TAGCTTAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-11A01", "sequence"=>"GGCTACAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-12A01", "sequence"=>"CTTGTAAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-13A01", "sequence"=>"AGTCAACA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-14A01", "sequence"=>"AGTTCCGT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-15A01", "sequence"=>"ATGTCAGA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-16A01", "sequence"=>"CCGTCCCG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-18A01", "sequence"=>"GTCCGCAC", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-19A01", "sequence"=>"GTGAAACG", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-20A01", "sequence"=>"GTGGCCTT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-21A01", "sequence"=>"GTTTCGGA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-22A01", "sequence"=>"CGTACGTA", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-23A01", "sequence"=>"GAGTGGAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-25A01", "sequence"=>"ACTGATAT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+                array("index_set_id"=>"15", "index"=>"TS-INV-HE-27A01", "sequence"=>"ATTCCTTT", "created_at"=>Carbon::now(), "updated_at"=>Carbon::now()),
+            ));
+    }
+}
