@@ -44,7 +44,7 @@ class SamplesController extends Controller
 
     public function create()
     {
-        $iSet = IndexSet::lists('name', 'id');
+        $iSet = IndexSet::orderBy('id')->lists('name', 'id');
         $iAll = IndexSet::all();
         $i7 = I7Index::lists('index', 'id');
         $i5 = I5Index::lists('index', 'id');
@@ -102,7 +102,7 @@ class SamplesController extends Controller
 
     public function edit(Sample $sample)
     {
-        $iSet = IndexSet::lists('name', 'id');
+        $iSet = IndexSet::orderBy('id')->lists('name', 'id');
         $iAll = IndexSet::all();
         $pg = ProjectGroup::lists('name', 'id');
 
